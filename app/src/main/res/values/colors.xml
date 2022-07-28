@@ -12,4 +12,5 @@
     <color name="verde_claro2">#D5F0F0</color>
     <color name="verde_medio">#73AB84</color>
     <color name="azul_claro">#ADE1E5</color>
+    <color name="hint">#757575</color>
 </resources>
