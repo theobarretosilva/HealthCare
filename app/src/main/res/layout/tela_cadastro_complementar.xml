@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".TelaCadastroComplementar">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo2_saude"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bem-vindo(a)!"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="324dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
