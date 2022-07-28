@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">HealthCare</string>
+    <string name="logoHealthCare">Logo HealthCare</string>
+    <string name="bemVindoa">Bem-vindo(a)!</string>
+    <string name="antesDeComecar">Antes de começar, precisamos de\nmais algumas informações:</string>
+    <string name="pesoKG">Peso (kg)</string>
+    <string name="alturaCM">Altura (cm)</string>
+    <string name="continuar">Continuar</string>
 </resources>
