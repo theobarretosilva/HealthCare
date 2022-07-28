@@ -94,11 +94,10 @@ public class TelaCadastroComplementar extends AppCompatActivity {
         cadastroComplementar.put("Altura (cm)", alturaA);
         cadastroComplementar.put("Biotipo corporal", biotipoC);
 
-        try {
-            DocumentReference ns = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
-            ns.set(cadastroComplementar);
-        } catch (Exception e){
-            startActivity(irTelaConteudos);
-        }
+        DocumentReference ns = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Cadastro complmentar");
+        ns.set(cadastroComplementar);
+
+        startActivity(irTelaConteudos);
+
     }
 }
