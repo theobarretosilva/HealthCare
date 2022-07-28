@@ -13,7 +13,7 @@
     <string name="telefone">Telefone</string>
     <string name="endereco">Endereço</string>
     <string name="cpf">CPF</string>
-    <string name="spinnerSexo">spinnerEscolhaSexo</string>
+    <string name="spinnerSexo">Spinner de escolha de sexo feminino ou masculino</string>
     <string name="email">E-mail</string>
     <string name="senha">Senha</string>
     <string name="receberNewsletter">Receber newsletter</string>
@@ -27,4 +27,5 @@
     <string name="logar">Logar</string>
     <string name="naoTemUmaConta">Não tem uma conta?</string>
     <string name="registrese">Registre-se!</string>
+    <string name="spinnerBiotipo">Spinner de escolha de biotipo corporal</string>
 </resources>
