@@ -22,4 +22,9 @@
     <string name="cadastro">Cadastro</string>
     <string name="cadastreSeComo">Cadastre-se como</string>
     <string name="empresa">empresa</string>
+    <string name="olaBemVindoaDeVolta">Olá, bem-vindo(a)\nde volta! 👋</string>
+    <string name="esqueceuASenha">Esqueceu a senha?</string>
+    <string name="logar">Logar</string>
+    <string name="naoTemUmaConta">Não tem uma conta?</string>
+    <string name="registrese">Registre-se!</string>
 </resources>
