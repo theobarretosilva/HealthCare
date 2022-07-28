@@ -15,7 +15,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="140dp"
         android:fontFamily="@font/urbanist"
-        android:text="Olá, cadastre-se\npara começar! 👋"
+        android:text="@string/olaCadastreParaComecar"
         android:textColor="#000000"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -31,7 +31,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="204dp"
         android:fontFamily="@font/urbanist"
-        android:text="Insira suas informações:"
+        android:text="@string/insiraSuasInformacoes"
         android:textColor="@color/azul_verde_escuro"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,12 +49,14 @@
         android:background="@drawable/caixa_login"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:hint="Nome completo"
+        android:hint="@string/nomeCompleto"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/dataNascCadasatro"
@@ -66,12 +68,14 @@
         android:background="@drawable/caixa_login"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:hint="Data de nascimento"
+        android:hint="@string/dataDeNascimento"
         android:inputType="date"
         android:minHeight="48dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomeCadastro" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeCadastro"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/telefoneCadastro"
@@ -83,12 +87,14 @@
         android:background="@drawable/caixa_login"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:hint="Telefone"
+        android:hint="@string/telefone"
         android:inputType="number"
         android:minHeight="48dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dataNascCadasatro" />
+        app:layout_constraintTop_toBottomOf="@+id/dataNascCadasatro"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/enderecoCadastro"
@@ -100,12 +106,14 @@
         android:background="@drawable/caixa_login"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:hint="Endereço"
+        android:hint="@string/endereco"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/telefoneCadastro" />
+        app:layout_constraintTop_toBottomOf="@+id/telefoneCadastro"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/cpfCadastro"
@@ -117,12 +125,14 @@
         android:background="@drawable/caixa_login"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:hint="CPF"
+        android:hint="@string/cpf"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enderecoCadastro" />
+        app:layout_constraintTop_toBottomOf="@+id/enderecoCadastro"
+        android:autofillHints="" />
 
     <Spinner
         android:id="@+id/sexoCadastro"
@@ -132,9 +142,11 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/caixa_login"
+        android:contentDescription="@string/spinnerSexo"
         android:minHeight="48dp"
         android:paddingLeft="8dp"
         android:paddingTop="0dp"
+        android:paddingRight="8dp"
         android:paddingBottom="0dp"
         android:theme="@style/SpinnerPeronalizado"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,12 +163,14 @@
         android:background="@drawable/caixa_login"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:hint="E-mail"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sexoCadastro" />
+        app:layout_constraintTop_toBottomOf="@+id/sexoCadastro"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/senhaCadastro"
@@ -165,12 +179,14 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
+        android:autofillHints=""
         android:background="@drawable/caixa_login"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:hint="Senha"
+        android:hint="@string/senha"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailCadastro" />
@@ -183,7 +199,7 @@
         android:buttonTint="#000000"
         android:fontFamily="@font/urbanist"
         android:onClick="receberNewsLetter"
-        android:text="Receber newsletter"
+        android:text="@string/receberNewsletter"
         android:textColor="#000000"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -199,7 +215,7 @@
         android:layout_marginBottom="5dp"
         android:backgroundTint="@color/azul_verde_escuro"
         android:fontFamily="@font/urbanist"
-        android:text="Cadastrar"
+        android:text="@string/cadastrar"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="bold"

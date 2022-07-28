@@ -1,9 +1,21 @@
 <resources>
     <string name="app_name">HealthCare</string>
+    <string name="olaCadastreParaComecar">Olá, cadastre-se\npara começar! 👋</string>
     <string name="logoHealthCare">Logo HealthCare</string>
     <string name="bemVindoa">Bem-vindo(a)!</string>
     <string name="antesDeComecar">Antes de começar, precisamos de\nmais algumas informações:</string>
     <string name="pesoKG">Peso (kg)</string>
     <string name="alturaCM">Altura (cm)</string>
     <string name="continuar">Continuar</string>
+    <string name="insiraSuasInformacoes">Insira suas informações:</string>
+    <string name="nomeCompleto">Nome completo</string>
+    <string name="dataDeNascimento">Data de nascimento</string>
+    <string name="telefone">Telefone</string>
+    <string name="endereco">Endereço</string>
+    <string name="cpf">CPF</string>
+    <string name="spinnerSexo">spinnerEscolhaSexo</string>
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="receberNewsletter">Receber newsletter</string>
+    <string name="cadastrar">Cadastrar</string>
 </resources>
