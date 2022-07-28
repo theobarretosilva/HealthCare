@@ -17,7 +17,7 @@
         android:fontFamily="@font/urbanist"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:text="Login"
+        android:text="@string/login"
         android:textAllCaps="false"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
         android:fontFamily="@font/urbanist"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:text="Cadastro"
+        android:text="@string/cadastro"
         android:textAllCaps="false"
         android:textColor="@color/azul_verde_escuro"
         android:textSize="18sp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/login"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/azul_verde_escuro"
-        app:strokeWidth="3px" />
+        app:strokeWidth="1dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -56,7 +56,7 @@
         android:layout_marginEnd="171dp"
         android:layout_marginBottom="35dp"
         android:fontFamily="@font/urbanist"
-        android:text="Cadastre-se como"
+        android:text="@string/cadastreSeComo"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -74,7 +74,7 @@
         android:layout_marginEnd="109dp"
         android:layout_marginBottom="35dp"
         android:fontFamily="@font/urbanist"
-        android:text="empresa"
+        android:text="@string/empresa"
         android:textColor="@color/azul_verde_escuro"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -91,6 +91,7 @@
         android:layout_marginStart="110dp"
         android:layout_marginTop="420dp"
         android:layout_marginEnd="110dp"
+        android:contentDescription="@string/logoHealthCare"
         app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

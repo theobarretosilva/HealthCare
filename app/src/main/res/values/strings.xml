@@ -18,4 +18,8 @@
     <string name="senha">Senha</string>
     <string name="receberNewsletter">Receber newsletter</string>
     <string name="cadastrar">Cadastrar</string>
+    <string name="login">Login</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="cadastreSeComo">Cadastre-se como</string>
+    <string name="empresa">empresa</string>
 </resources>
