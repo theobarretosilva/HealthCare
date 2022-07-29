@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Spinner xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="48dp"
+    android:fontFamily="@font/urbanist"
+    android:textColor="@color/black"
+    android:textColorHint="#757575"
+    android:textSize="18sp"
+    />

@@ -2,6 +2,7 @@ package com.example.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 public class TelaConteudos extends AppCompatActivity {
@@ -10,5 +11,7 @@ public class TelaConteudos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_conteudos);
+        getWindow().setStatusBarColor(Color.rgb(12,92,100));
+        getSupportActionBar().hide();
     }
 }

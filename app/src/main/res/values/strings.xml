@@ -28,4 +28,5 @@
     <string name="naoTemUmaConta">Não tem uma conta?</string>
     <string name="registrese">Registre-se!</string>
     <string name="spinnerBiotipo">Spinner de escolha de biotipo corporal</string>
+    <string name="ola_nomeusu">Olá, \'nome_usu\'!</string>
 </resources>
