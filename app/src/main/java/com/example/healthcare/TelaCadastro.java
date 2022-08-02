@@ -91,6 +91,7 @@ public class TelaCadastro extends AppCompatActivity {
         cadastrarUsu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String sexo = spinnerSexo.getSelectedItem().toString();
 
                 if(nomeCadastro.getText().length() == 0){
                     nomeCadastro.setError("Você precisa inserir o seu nome para se cadastrar!");
@@ -100,6 +101,12 @@ public class TelaCadastro extends AppCompatActivity {
                 }
                 else if (senhaCadastro.getText().length() < 8){
                     senhaCadastro.setError("A sua deve ter pelo menos 8 caracteres!");
+                }
+                else if(sexo == "Sexo"){
+                    TextView errorText = (TextView)spinnerSexo.getSelectedView();
+                    errorText.setError("anything here, just to add the icon");
+                    errorText.setTextColor(Color.RED);//just to highlight that this is an error
+                    errorText.setText("Selecione um sexo válido");
                 }
                 else{
                     CadastrarUsuario(v);
