@@ -2,9 +2,11 @@ package com.example.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -20,5 +22,8 @@ public class TelaPeso extends AppCompatActivity {
         getSupportActionBar().hide();
     }
 
-
+    public void voltarTelaConteudos(View v){
+        Intent irTelaConteudos = new Intent(this, TelaConteudos.class);
+        startActivity(irTelaConteudos);
+    }
 }
