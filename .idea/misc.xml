@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/drawable/barra_fundo_voltar_titulo.xml" value="0.3255" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/drawable/botao_cadastro.xml" value="0.2985" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/drawable/botoes_conteudos.xml" value="0.3255" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/drawable/caixa_login.xml" value="0.2985" />
@@ -14,6 +15,7 @@
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_inicial.xml" value="0.3625" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_login.xml" value="0.67" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_logo.xml" value="0.3625" />
+        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_peso.xml" value="0.5" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3255" />
         <entry key="..\:/Users/theo_b_silva/AndroidStudioProjects/HealthCare/app/src/main/res/drawable/botao_cadastro.xml" value="0.1" />
         <entry key="..\:/Users/theo_b_silva/AndroidStudioProjects/HealthCare/app/src/main/res/drawable/caixa_login.xml" value="0.1" />

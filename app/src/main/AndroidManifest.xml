@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCare">
         <activity
+            android:name=".TelaPeso"
+            android:exported="false" />
+        <activity
             android:name=".TelaLogo"
             android:exported="true">
             <intent-filter>

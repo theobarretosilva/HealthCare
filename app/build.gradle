@@ -40,6 +40,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation platform('com.google.firebase:firebase-bom:30.0.1')
     implementation 'com.google.firebase:firebase-core:9.6.1'
+
+    implementation 'com.androidplot:androidplot-core:1.5.3'
 }
 
 apply plugin: 'com.google.gms.google-services'
