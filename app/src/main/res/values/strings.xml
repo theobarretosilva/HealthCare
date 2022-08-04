@@ -30,4 +30,13 @@
     <string name="spinnerBiotipo">Spinner de escolha de biotipo corporal</string>
     <string name="ola_nomeusu">Olá, \'nome_usu\'!</string>
     <string name="cadastreSeComoEmpresa">Cadastre-se como empresa</string>
+    <string name="peso_e_imc">Peso e IMC</string>
+    <string name="_18_5"><![CDATA[< 18.5]]></string>
+    <string name="_48_6_kg"><![CDATA[< 48.6 Kg]]></string>
+    <string name="_18_5_a_24_9">18.5 a 24.9</string>
+    <string name="_48_6_a_65_3_kg">48.6 a 65.3 Kg</string>
+    <string name="_24_9_a_30">24.9 a 30</string>
+    <string name="_65_3_a_78_7_kg">65.3 a 78.7 Kg</string>
+    <string name="_30"><![CDATA[> 30]]></string>
+    <string name="_78_7_kg"><![CDATA[> 78.7 Kg]]></string>
 </resources>
