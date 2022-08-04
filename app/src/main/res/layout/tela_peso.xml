@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".TelaPeso">
 
+<<<<<<< HEAD
     <View
         android:id="@+id/view4"
         android:layout_width="0dp"
@@ -18,4 +19,6 @@
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+=======
+>>>>>>> origin/master
 </androidx.constraintlayout.widget.ConstraintLayout>
