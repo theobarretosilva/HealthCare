@@ -16,20 +16,23 @@
         android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Deprecated" />
 
     <ImageView
         android:id="@+id/imageView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:contentDescription="@string/bot_o_para_voltar_para_tela_de_conteudos"
         android:onClick="voltarTelaConteudos"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/textView29"
@@ -70,7 +73,8 @@
         android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView16"
+        tools:ignore="Deprecated" />
 
     <TextView
         android:id="@+id/textView30"
@@ -116,7 +120,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:ignore="Deprecated" />
 
     <TextView
         android:id="@+id/textView33"
@@ -164,7 +169,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView32"
         app:layout_constraintTop_toBottomOf="@+id/textView34"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="Deprecated" />
 
     <TextView
         android:id="@+id/textView50"
@@ -207,7 +213,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView44"
         app:layout_constraintEnd_toEndOf="@+id/textView35"
         app:layout_constraintStart_toStartOf="@+id/textView35"
-        app:layout_constraintTop_toTopOf="@+id/textView44" />
+        app:layout_constraintTop_toTopOf="@+id/textView44"
+        tools:ignore="Deprecated" />
 
     <TextView
         android:id="@+id/textView37"
