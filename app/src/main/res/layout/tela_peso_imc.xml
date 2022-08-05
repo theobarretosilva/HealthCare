@@ -4,6 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5FFFF"
     tools:context=".TelaPeso_IMC">
 
+    <TextView
+        android:id="@+id/textView54"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/barra_fundo_voltar_titulo"
+        android:editable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView54"
+        app:layout_constraintEnd_toEndOf="@+id/textView54"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView54"
+        app:layout_constraintTop_toTopOf="@+id/textView54"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/textView55"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/urbanist"
+        android:text="Calculadora de IMC"
+        android:textColor="#0C5C64"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView54"
+        app:layout_constraintEnd_toEndOf="@+id/textView54"
+        app:layout_constraintStart_toStartOf="@+id/textView54"
+        app:layout_constraintTop_toTopOf="@+id/textView54" />
+
+    <TextView
+        android:id="@+id/textView56"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/container_info_imc_sexo"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView54" />
+
+    <TextView
+        android:id="@+id/textView57"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/container_info_imc_altura"
+        android:editable="false"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView56" />
+
+    <TextView
+        android:id="@+id/textView58"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/container_info_imc_altura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView57" />
+
+    <TextView
+        android:id="@+id/textView59"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/container_info_imc_sexo"
+        android:editable="false"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView58" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="#59A2A9"
+        android:fontFamily="@font/urbanist"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="Calcular"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:cornerRadius="20px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView59"
+        app:layout_constraintVertical_bias="0.0"
+        app:strokeColor="#073C6D"
+        app:strokeWidth="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
