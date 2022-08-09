@@ -25,6 +25,7 @@
         <entry key="..\:/Users/theo_b_silva/AndroidStudioProjects/HealthCare/app/src/main/res/layout/tela_login.xml" value="0.25" />
         <entry key="..\:/Users/theo_b_silva/AndroidStudioProjects/HealthCare/app/src/main/res/layout/tela_logo.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/barra_fundo_voltar_titulo.xml" value="0.1361111111111111" />
+        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/botao_sexo_imc.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/box_conteudos_tela_peso.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/box_imc_tela_peso.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/container_calculadora_imc.xml" value="0.12962962962962962" />
@@ -34,7 +35,7 @@
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/container_info_imc_peso.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_inicial.xml" value="0.5" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_peso.xml" value="0.67" />
-        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_peso_imc.xml" value="0.5" />
+        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_peso_imc.xml" value="0.22" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_vacinas.xml" value="0.20208333333333334" />
       </map>
     </option>
