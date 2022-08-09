@@ -33,9 +33,11 @@
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/container_info_imc_altura.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/container_info_imc_idade.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/container_info_imc_peso.xml" value="0.12962962962962962" />
+        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/container_sexo1_imc.xml" value="0.12962962962962962" />
+        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/container_sexo2_imc.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_inicial.xml" value="0.5" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_peso.xml" value="0.67" />
-        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_peso_imc.xml" value="0.22" />
+        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_peso_imc.xml" value="0.33" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_vacinas.xml" value="0.20208333333333334" />
       </map>
     </option>
