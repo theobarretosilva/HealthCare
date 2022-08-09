@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCare">
         <activity
+            android:name=".TelaPeso_IMC"
+            android:exported="false" />
+        <activity
+            android:name=".TelaVacinas"
+            android:exported="false" />
+        <activity
             android:name=".TelaPeso"
             android:exported="false" />
         <activity

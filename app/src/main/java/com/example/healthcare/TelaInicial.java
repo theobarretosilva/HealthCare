@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+
 public class TelaInicial extends AppCompatActivity {
 
     Button login, cadastrar;
@@ -19,8 +23,8 @@ public class TelaInicial extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-//        Intent irDireto = new Intent (this, TelaConteudos.class);
-//        startActivity(irDireto);
+        Intent irDireto = new Intent (this, TelaPeso_IMC.class);
+        startActivity(irDireto);
 
         login = findViewById(R.id.login);
         cadastrar = findViewById(R.id.cadastrar);
