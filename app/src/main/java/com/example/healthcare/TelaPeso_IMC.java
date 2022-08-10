@@ -1,11 +1,17 @@
 package com.example.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 public class TelaPeso_IMC extends AppCompatActivity {
+
+    TextView btnHomem, btnMulher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,5 +19,20 @@ public class TelaPeso_IMC extends AppCompatActivity {
         setContentView(R.layout.tela_peso_imc);
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
+
+        btnHomem = findViewById(R.id.btnHomem);
+        btnMulher = findViewById(R.id.btnMulher);
     }
+
+    public void mudarSexoHomem(View h){
+        btnHomem.setBackgroundResource(R.drawable.container_sexo2_imc);
+        btnMulher.setBackgroundResource(R.drawable.container_sexo1_imc);
+    }
+
+    public void mudarSexoMulher(View m){
+        btnHomem.setBackgroundResource(R.drawable.container_sexo1_imc);
+        btnMulher.setBackgroundResource(R.drawable.container_sexo2_imc);
+    }
+
+
 }

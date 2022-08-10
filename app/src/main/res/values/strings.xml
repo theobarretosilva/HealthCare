@@ -40,4 +40,13 @@
     <string name="_30"><![CDATA[> 30]]></string>
     <string name="_78_7_kg"><![CDATA[> 78.7 Kg]]></string>
     <string name="bot_o_para_voltar_para_tela_de_conteudos">Botão para voltar para tela de conteudos</string>
+    <string name="voltar_para_tela_de_peso">Voltar para tela de peso</string>
+    <string name="calculadora_de_imc">Calculadora de IMC</string>
+    <string name="calcular">Calcular</string>
+    <string name="s_mbolo_sexo_masculino">Símbolo sexo masculino</string>
+    <string name="homem">Homem</string>
+    <string name="s_mbolo_sexo_feminino">Símbolo sexo feminino</string>
+    <string name="mulher">Mulher</string>
+    <string name="altura_cm">Altura (cm)</string>
+    <string name="peso_kg">Peso (kg)</string>
 </resources>
