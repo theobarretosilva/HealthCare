@@ -49,4 +49,8 @@
     <string name="mulher">Mulher</string>
     <string name="altura_cm">Altura (cm)</string>
     <string name="peso_kg">Peso (kg)</string>
+    <string name="idade">Idade</string>
+    <string name="_0">0</string>
+    <string name="menos">-</string>
+    <string name="mais">+</string>
 </resources>

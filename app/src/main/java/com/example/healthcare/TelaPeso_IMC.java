@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class TelaPeso_IMC extends AppCompatActivity {
 
-    TextView btnHomem, btnMulher;
+    TextView btnHomem, btnMulher, btnMenos, btnMais, idade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,9 @@ public class TelaPeso_IMC extends AppCompatActivity {
 
         btnHomem = findViewById(R.id.btnHomem);
         btnMulher = findViewById(R.id.btnMulher);
+        btnMenos = findViewById(R.id.menos);
+        btnMais = findViewById(R.id.mais);
+        idade = findViewById(R.id.idade);
     }
 
     public void mudarSexoHomem(View h){
@@ -34,5 +37,8 @@ public class TelaPeso_IMC extends AppCompatActivity {
         btnMulher.setBackgroundResource(R.drawable.container_sexo2_imc);
     }
 
+    public void aumentarIdade(){
+        String idadePessoa = idade.getText().toString();
+    }
 
 }

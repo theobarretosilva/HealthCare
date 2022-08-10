@@ -274,7 +274,6 @@
         android:gravity="center"
         android:inputType="number"
         android:maxLength="3"
-        android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/textView58"
         app:layout_constraintEnd_toEndOf="@+id/textView58"
@@ -288,7 +287,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/urbanist"
-        android:text="Idade"
+        android:text="@string/idade"
         android:textColor="#1E232C"
         android:textSize="21sp"
         android:textStyle="bold"
@@ -297,12 +296,12 @@
         app:layout_constraintTop_toTopOf="@+id/textView59" />
 
     <TextView
-        android:id="@+id/textView63"
+        android:id="@+id/idade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/urbanist"
-        android:text="0"
+        android:text="@string/_0"
         android:textColor="#1E232C"
         android:textSize="50sp"
         android:textStyle="bold"
@@ -313,7 +312,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView64"
+        android:id="@+id/menos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -327,7 +326,7 @@
         android:paddingTop="0dp"
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
-        android:text="-"
+        android:text="@string/menos"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="22sp"
@@ -336,10 +335,11 @@
         app:layout_constraintEnd_toStartOf="@+id/textView63"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView59"
-        app:layout_constraintTop_toTopOf="@+id/textView63" />
+        app:layout_constraintTop_toTopOf="@+id/textView63"
+        tools:ignore="Deprecated" />
 
     <TextView
-        android:id="@+id/textView66"
+        android:id="@+id/mais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -353,7 +353,7 @@
         android:paddingTop="0dp"
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
-        android:text="+"
+        android:text="@string/mais"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="22sp"
@@ -362,7 +362,8 @@
         app:layout_constraintEnd_toEndOf="@+id/textView59"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView63"
-        app:layout_constraintTop_toTopOf="@+id/textView63" />
+        app:layout_constraintTop_toTopOf="@+id/textView63"
+        tools:ignore="Deprecated" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
