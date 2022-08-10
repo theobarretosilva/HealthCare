@@ -1,5 +1,7 @@
 package com.example.healthcare;
 
+import static java.lang.Integer.parseInt;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -37,8 +39,11 @@ public class TelaPeso_IMC extends AppCompatActivity {
         btnMulher.setBackgroundResource(R.drawable.container_sexo2_imc);
     }
 
-    public void aumentarIdade(){
-        String idadePessoa = idade.getText().toString();
+    public void aumentarIdade(View a){
+        int idadePessoa = parseInt(idade.getText().toString());
+        int idadePessoaOficial = idadePessoa + 1;
+
+        System.out.println(idadePessoaOficial);
     }
 
 }

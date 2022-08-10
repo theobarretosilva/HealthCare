@@ -437,6 +437,7 @@
         android:height="60dp"
         android:backgroundTint="#59A2A9"
         android:fontFamily="@font/urbanist"
+        android:onClick="irTelaPesoIMC"
         android:text="Calculadora IMC"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"

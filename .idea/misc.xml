@@ -33,7 +33,9 @@
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/container_mais_menos_idade.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/container_sexo1_imc.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/drawable/container_sexo2_imc.xml" value="0.23229166666666667" />
-        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_peso_imc.xml" value="1.0" />
+        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_conteudos.xml" value="0.5" />
+        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_peso.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/theo_b_silva/Documents/HealthCare/app/src/main/res/layout/tela_peso_imc.xml" value="0.25" />
       </map>
     </option>
   </component>

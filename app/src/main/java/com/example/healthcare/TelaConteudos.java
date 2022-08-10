@@ -3,8 +3,10 @@ package com.example.healthcare;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -46,5 +48,15 @@ public class TelaConteudos extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void irTelaPeso(View p){
+        Intent irTelaPeso = new Intent(this, TelaPeso.class);
+        startActivity(irTelaPeso);
+    }
+
+    public void irTelaVacinas(View v){
+        Intent irTelaVacinas = new Intent(this, TelaVacinas.class);
+        startActivity(irTelaVacinas);
     }
 }

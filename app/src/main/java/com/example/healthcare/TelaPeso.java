@@ -26,4 +26,9 @@ public class TelaPeso extends AppCompatActivity {
         Intent irTelaConteudos = new Intent(this, TelaConteudos.class);
         startActivity(irTelaConteudos);
     }
+
+    public void irTelaPesoIMC(View m){
+        Intent irTelaPesoIMC = new Intent(this, TelaPeso_IMC.class);
+        startActivity(irTelaPesoIMC);
+    }
 }
