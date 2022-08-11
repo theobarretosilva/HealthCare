@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCare">
         <activity
+            android:name=".TelaAgua"
+            android:exported="false" />
+        <activity
             android:name=".TelaAlimentacao"
             android:exported="false" />
         <activity
