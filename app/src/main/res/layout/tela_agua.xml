@@ -102,7 +102,7 @@
         app:layout_constraintTop_toTopOf="@+id/dataHojeAgua" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnIngerido"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
@@ -110,6 +110,7 @@
         android:layout_marginBottom="40dp"
         android:backgroundTint="#709FA3"
         android:fontFamily="@font/urbanist"
+        android:onClick="mandarAguaBD"
         android:paddingTop="9dp"
         android:paddingBottom="9dp"
         android:text="Ingerido"
@@ -119,5 +120,34 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qntdAgua"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/qntdAgua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="480dp"
+        android:fontFamily="@font/urbanist"
+        android:text="0/3000ml"
+        android:textColor="#0C5C64"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dataHojeAgua" />
+
+    <ImageView
+        android:id="@+id/imgGarrafa"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/qntdAgua"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dataHojeAgua"
+        app:srcCompat="@drawable/garrafa0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
