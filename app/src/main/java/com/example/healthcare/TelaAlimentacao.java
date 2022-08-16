@@ -2,8 +2,10 @@ package com.example.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -32,5 +34,10 @@ public class TelaAlimentacao extends AppCompatActivity {
         super.onStart();
 
         dataAtual.setText("\uD83D\uDE0B  " + dataHoje);
+    }
+
+    public void voltarTelaConteudos(View m){
+        Intent irTelaConteudos = new Intent(this, TelaConteudos.class);
+        startActivity(irTelaConteudos);
     }
 }

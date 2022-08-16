@@ -55,6 +55,11 @@ public class TelaConteudos extends AppCompatActivity {
         startActivity(irTelaAgua);
     }
 
+    public void irTelaAlimentacao(View l){
+        Intent irTelaAlimentacao = new Intent(this, TelaAlimentacao.class);
+        startActivity(irTelaAlimentacao);
+    }
+
     public void irTelaPeso(View p){
         Intent irTelaPeso = new Intent(this, TelaPeso.class);
         startActivity(irTelaPeso);
