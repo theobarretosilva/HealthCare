@@ -100,4 +100,24 @@
         app:layout_constraintEnd_toEndOf="@+id/textView65"
         app:layout_constraintStart_toEndOf="@+id/dataHojeAgua"
         app:layout_constraintTop_toTopOf="@+id/dataHojeAgua" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#709FA3"
+        android:fontFamily="@font/urbanist"
+        android:paddingTop="9dp"
+        android:paddingBottom="9dp"
+        android:text="Ingerido"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
