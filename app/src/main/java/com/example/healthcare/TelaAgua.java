@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -59,7 +60,9 @@ public class TelaAgua extends AppCompatActivity {
 
     public void mandarAguaBD(View a){
         usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        aguaIngerida  = aguaIngerida + 250;
+        if(aguaIngerida >= 0 && aguaIngerida < 3000){
+            aguaIngerida = aguaIngerida + 250;
+        }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -82,36 +85,41 @@ public class TelaAgua extends AppCompatActivity {
                 if (documentSnapshot != null){
                     int valorAgua = Math.toIntExact((Long) documentSnapshot.getData().get("Água ingerida"));
 
-                    if (valorAgua == 250){
-                        imgGarrafa.setImageResource(R.drawable.garrafa1);
-                    }else if(valorAgua == 500){
-                        imgGarrafa.setImageResource(R.drawable.garrafa2);
-                    }else if(valorAgua == 750){
-                        imgGarrafa.setImageResource(R.drawable.garrafa3);
-                    }else if(valorAgua == 1000){
-                        imgGarrafa.setImageResource(R.drawable.garrafa4);
-                    }else if(valorAgua == 1250){
-                        imgGarrafa.setImageResource(R.drawable.garrafa5);
-                    }else if(valorAgua == 1500){
-                        imgGarrafa.setImageResource(R.drawable.garrafa6);
-                    }else if(valorAgua == 1750){
-                        imgGarrafa.setImageResource(R.drawable.garrafa7);
-                    }else if(valorAgua == 2000){
-                        imgGarrafa.setImageResource(R.drawable.garrafa8);
-                    }else if(valorAgua == 2250){
-                        imgGarrafa.setImageResource(R.drawable.garrafa9);
-                    }else if(valorAgua == 2500){
-                        imgGarrafa.setImageResource(R.drawable.garrafa10);
-                    }else if(valorAgua == 2750){
-                        imgGarrafa.setImageResource(R.drawable.garrafa11);
-                    }else if(valorAgua == 3000){
-                        imgGarrafa.setImageResource(R.drawable.garrafa12);
+                    if(valorAgua >= 0 && valorAgua <= 3000) {
+                        if (valorAgua == 250){
+                            imgGarrafa.setImageResource(R.drawable.garrafa1);
+                        }else if(valorAgua == 500){
+                            imgGarrafa.setImageResource(R.drawable.garrafa2);
+                        }else if(valorAgua == 750){
+                            imgGarrafa.setImageResource(R.drawable.garrafa3);
+                        }else if(valorAgua == 1000){
+                            imgGarrafa.setImageResource(R.drawable.garrafa4);
+                        }else if(valorAgua == 1250){
+                            imgGarrafa.setImageResource(R.drawable.garrafa5);
+                        }else if(valorAgua == 1500){
+                            imgGarrafa.setImageResource(R.drawable.garrafa6);
+                        }else if(valorAgua == 1750){
+                            imgGarrafa.setImageResource(R.drawable.garrafa7);
+                        }else if(valorAgua == 2000){
+                            imgGarrafa.setImageResource(R.drawable.garrafa8);
+                        }else if(valorAgua == 2250){
+                            imgGarrafa.setImageResource(R.drawable.garrafa9);
+                        }else if(valorAgua == 2500){
+                            imgGarrafa.setImageResource(R.drawable.garrafa10);
+                        }else if(valorAgua == 2750){
+                            imgGarrafa.setImageResource(R.drawable.garrafa11);
+                        }else if(valorAgua == 3000){
+                            imgGarrafa.setImageResource(R.drawable.garrafa12);
+                        }
                     }
-
                     qntdAgua.setText(valorAgua + "/3000ml");
                 }
             }
         });
+    }
 
+    public void voltarTelaAgua(View t){
+        Intent voltarTelaAgua = new Intent(this, TelaConteudos.class);
+        startActivity(voltarTelaAgua);
     }
 }
