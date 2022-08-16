@@ -85,7 +85,7 @@ public class TelaAgua extends AppCompatActivity {
                 if (documentSnapshot != null){
                     int valorAgua = Math.toIntExact((Long) documentSnapshot.getData().get("Água ingerida"));
 
-                    if(valorAgua >= 0 && valorAgua <= 3000) {
+
                         if (valorAgua == 250){
                             imgGarrafa.setImageResource(R.drawable.garrafa1);
                         }else if(valorAgua == 500){
@@ -111,7 +111,7 @@ public class TelaAgua extends AppCompatActivity {
                         }else if(valorAgua == 3000){
                             imgGarrafa.setImageResource(R.drawable.garrafa12);
                         }
-                    }
+
                     qntdAgua.setText(valorAgua + "/3000ml");
                 }
             }
