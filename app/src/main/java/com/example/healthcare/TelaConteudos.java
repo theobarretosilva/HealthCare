@@ -71,8 +71,6 @@ public class TelaConteudos extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        pegarFoto();
     }
 
     @Override
@@ -94,7 +92,7 @@ public class TelaConteudos extends AppCompatActivity {
         });
     }
 
-    public void pegarFoto(){
+    public void pegarFoto(View p){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager()) != null){
             startActivityForResult(intent, TAKE_IMAGE_CODE);
