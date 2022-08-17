@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -15,6 +18,8 @@ import java.time.format.DateTimeFormatter;
 public class TelaInicial extends AppCompatActivity {
 
     Button login, cadastrar;
+
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,17 @@ public class TelaInicial extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Intent i = new Intent(TelaInicial.this, TelaConteudos.class);
+            startActivity(i);
+        }
+    }
+
 
     public void irTelaLogin(){
         Intent irTelaLogin = new Intent(this, TelaLogin.class);

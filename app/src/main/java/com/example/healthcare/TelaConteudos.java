@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,6 +21,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 public class TelaConteudos extends AppCompatActivity {
 
     TextView olaUsu;
+    Button deslogar;
+
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,18 @@ public class TelaConteudos extends AppCompatActivity {
         getSupportActionBar().hide();
 
         olaUsu = findViewById(R.id.olaUsu);
+        deslogar = findViewById(R.id.deslogar);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        deslogar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent i = new Intent(TelaConteudos.this, TelaInicial.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

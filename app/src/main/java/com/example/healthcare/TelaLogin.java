@@ -15,6 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,6 +26,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class TelaLogin extends AppCompatActivity {
 
@@ -30,6 +35,9 @@ public class TelaLogin extends AppCompatActivity {
     CheckBox ver_senha;
     Button logar;
 
+    SignInButton btnGoogle;
+    private GoogleSignInClient mGoogleSignInClient;
+    public static final int RC_SIGN_IN = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +46,31 @@ public class TelaLogin extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
+        btnGoogle = findViewById(R.id.btnGoogle);
         email_login = findViewById(R.id.email_login);
         senha_login = findViewById(R.id.senha_login);
         esqueceu_senha = findViewById(R.id.esqueceu_senha);
         ver_senha = findViewById(R.id.ver_senha);
         logar = findViewById(R.id.logar);
 
+        btnGoogle.setOnClickListener(view -> {
+            signIn();
+        });
+        requisita();
+    }
+
+    private void requisita() {
+        GoogleSignInOptions gso = new
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+    }
+
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     public void AutenticarUsuario(View a){
