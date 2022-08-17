@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView65" />
 
     <TextView
-        android:id="@+id/textView67"
+        android:id="@+id/tituloAgua"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -72,8 +72,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView67"
-        app:layout_constraintTop_toBottomOf="@+id/textView67" />
+        app:layout_constraintStart_toStartOf="@+id/tituloAgua"
+        app:layout_constraintTop_toBottomOf="@+id/tituloAgua" />
 
     <TextView
         android:id="@+id/dataHojeAgua"
@@ -111,7 +111,6 @@
         android:layout_marginBottom="40dp"
         android:backgroundTint="#709FA3"
         android:fontFamily="@font/urbanist"
-        android:onClick="mandarAguaBD"
         android:paddingTop="9dp"
         android:paddingBottom="9dp"
         android:text="Ingerido"

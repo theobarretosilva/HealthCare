@@ -28,10 +28,11 @@ import java.util.Map;
 
 public class TelaAgua extends AppCompatActivity {
 
-    TextView dataAtual, qntdAgua;
+    TextView dataAtual, qntdAgua, tituloAgua;
     ImageView imgGarrafa;
+    Button btnIngerido;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     Date data = new Date();
     String dataHoje = sdf.format(data);
 
@@ -49,6 +50,17 @@ public class TelaAgua extends AppCompatActivity {
         dataAtual = findViewById(R.id.dataHojeAgua);
         qntdAgua = findViewById(R.id.qntdAgua);
         imgGarrafa = findViewById(R.id.imgGarrafa);
+        tituloAgua = findViewById(R.id.tituloAgua);
+        btnIngerido = findViewById(R.id.btnIngerido);
+
+        btnIngerido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mandarAguaBD();
+            }
+        });
+
+        setarQtndAgua();
     }
 
     @Override
@@ -58,18 +70,18 @@ public class TelaAgua extends AppCompatActivity {
         dataAtual.setText(dataHoje);
     }
 
-    public void mandarAguaBD(View a){
+    public void mandarAguaBD(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         if(aguaIngerida >= 0 && aguaIngerida < 3000){
             aguaIngerida = aguaIngerida + 250;
         }
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
         Map<String, Object> aguaBD = new HashMap<>();
         aguaBD.put("Água ingerida", aguaIngerida);
 
-        DocumentReference dr = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Água").document("Ingestão de água");
+        DocumentReference dr = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Água").document(dataHoje);
         dr.set(aguaBD);
 
         setarQtndAgua();
@@ -79,45 +91,65 @@ public class TelaAgua extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Água").document("Ingestão de água");
+        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Água").document(dataHoje);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                if (documentSnapshot != null){
+                if (documentSnapshot.exists()){
                     int valorAgua = Math.toIntExact((Long) documentSnapshot.getData().get("Água ingerida"));
 
+                    if(valorAgua == 250){
+                        imgGarrafa.setImageResource(R.drawable.garrafa1);
+                    }else if(valorAgua == 500){
+                        imgGarrafa.setImageResource(R.drawable.garrafa2);
+                    }else if(valorAgua == 750){
+                        imgGarrafa.setImageResource(R.drawable.garrafa3);
+                    }else if(valorAgua == 1000){
+                        imgGarrafa.setImageResource(R.drawable.garrafa4);
+                    }else if(valorAgua == 1250){
+                        imgGarrafa.setImageResource(R.drawable.garrafa5);
+                    }else if(valorAgua == 1500){
+                        imgGarrafa.setImageResource(R.drawable.garrafa6);
+                    }else if(valorAgua == 1750){
+                        imgGarrafa.setImageResource(R.drawable.garrafa7);
+                    }else if(valorAgua == 2000){
+                        imgGarrafa.setImageResource(R.drawable.garrafa8);
+                    }else if(valorAgua == 2250){
+                        imgGarrafa.setImageResource(R.drawable.garrafa9);
+                    }else if(valorAgua == 2500){
+                        imgGarrafa.setImageResource(R.drawable.garrafa10);
+                    }else if(valorAgua == 2750){
+                        imgGarrafa.setImageResource(R.drawable.garrafa11);
+                    }else if(valorAgua == 3000){
+                        imgGarrafa.setImageResource(R.drawable.garrafa12);
+                        tituloAgua.setText("Você concluiu sua meta! \uD83C\uDF89");
+                        btnIngerido.setClickable(false);
+                    }
 
-                        if (valorAgua == 250){
-                            imgGarrafa.setImageResource(R.drawable.garrafa1);
-                        }else if(valorAgua == 500){
-                            imgGarrafa.setImageResource(R.drawable.garrafa2);
-                        }else if(valorAgua == 750){
-                            imgGarrafa.setImageResource(R.drawable.garrafa3);
-                        }else if(valorAgua == 1000){
-                            imgGarrafa.setImageResource(R.drawable.garrafa4);
-                        }else if(valorAgua == 1250){
-                            imgGarrafa.setImageResource(R.drawable.garrafa5);
-                        }else if(valorAgua == 1500){
-                            imgGarrafa.setImageResource(R.drawable.garrafa6);
-                        }else if(valorAgua == 1750){
-                            imgGarrafa.setImageResource(R.drawable.garrafa7);
-                        }else if(valorAgua == 2000){
-                            imgGarrafa.setImageResource(R.drawable.garrafa8);
-                        }else if(valorAgua == 2250){
-                            imgGarrafa.setImageResource(R.drawable.garrafa9);
-                        }else if(valorAgua == 2500){
-                            imgGarrafa.setImageResource(R.drawable.garrafa10);
-                        }else if(valorAgua == 2750){
-                            imgGarrafa.setImageResource(R.drawable.garrafa11);
-                        }else if(valorAgua == 3000){
-                            imgGarrafa.setImageResource(R.drawable.garrafa12);
-                        }
-
-                    qntdAgua.setText(valorAgua + "/3000ml");
+                    qntdAgua.setText(valorAgua + " / 3000ml");
+                }else if(!documentSnapshot.exists()){
+                    imgGarrafa.setImageResource(R.drawable.garrafa0);
                 }
             }
         });
     }
+
+//    public void setarAguaBD(){
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//
+//        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Água").document(dataHoje);
+//        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+//                if (documentSnapshot.exists()){
+//                    setarQtndAgua();
+//                }else if(!documentSnapshot.exists()){
+//                    return;
+//                }
+//            }
+//        });
+//    }
 
     public void voltarTelaAgua(View t){
         Intent voltarTelaAgua = new Intent(this, TelaConteudos.class);
