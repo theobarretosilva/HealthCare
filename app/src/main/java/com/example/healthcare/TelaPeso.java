@@ -7,6 +7,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -14,12 +19,17 @@ import java.time.format.DateTimeFormatter;
 
 public class TelaPeso extends AppCompatActivity {
 
+    TextView pesoAtual;
+     String usuarioUID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_peso);
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
+
+        pesoAtual = findViewById(R.id.pesoAtual);
     }
 
     public void voltarTelaConteudos(View v){
@@ -30,5 +40,10 @@ public class TelaPeso extends AppCompatActivity {
     public void irTelaPesoIMC(View m){
         Intent irTelaPesoIMC = new Intent(this, TelaPeso_IMC.class);
         startActivity(irTelaPesoIMC);
+    }
+
+    public void pesoAtual(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        usuarioUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 }

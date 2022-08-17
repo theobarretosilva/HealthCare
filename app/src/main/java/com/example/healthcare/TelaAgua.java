@@ -77,6 +77,7 @@ public class TelaAgua extends AppCompatActivity {
 
     public void setarQtndAgua(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Água").document("Ingestão de água");
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
