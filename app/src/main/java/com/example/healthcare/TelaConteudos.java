@@ -1,29 +1,54 @@
 package com.example.healthcare;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.healthcare.databinding.TelaConteudosBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 
 public class TelaConteudos extends AppCompatActivity {
 
     TextView olaUsu;
     Button deslogar;
+    ImageView fotoUsu;
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
+    private FirebaseUser mCurrentUser;
+
+    int TAKE_IMAGE_CODE = 10001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +59,7 @@ public class TelaConteudos extends AppCompatActivity {
 
         olaUsu = findViewById(R.id.olaUsu);
         deslogar = findViewById(R.id.deslogar);
+        fotoUsu = findViewById(R.id.fotoUsu);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -45,6 +71,8 @@ public class TelaConteudos extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        pegarFoto();
     }
 
     @Override
@@ -64,6 +92,83 @@ public class TelaConteudos extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void pegarFoto(){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null){
+            startActivityForResult(intent, TAKE_IMAGE_CODE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == TAKE_IMAGE_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                    fotoUsu.setImageBitmap(bitmap);
+                    handleUpload(bitmap);
+            }
+        }
+    }
+
+    private void handleUpload(Bitmap bitmap){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        StorageReference reference = FirebaseStorage.getInstance().getReference()
+                .child("profileImages")
+                .child(uid + ".jpeg");
+
+        reference.putBytes(baos.toByteArray())
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        getDownloadUrl(reference);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e(TAG, "onFailure: " + e.getCause());
+                    }
+                });
+    }
+
+    private void getDownloadUrl(StorageReference reference){
+        reference.getDownloadUrl()
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Log.e(TAG, "onSuccess: " + uri);
+                        setUserProfileUrl(uri);
+                    }
+                });
+    }
+
+    private void setUserProfileUrl(Uri uri){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
+                .setPhotoUri(uri)
+                .build();
+
+        user.updateProfile(request)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(TelaConteudos.this, "Update succesfully", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(TelaConteudos.this, "Profile image failed...", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     public void irTelaAgua(View a){
