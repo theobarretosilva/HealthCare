@@ -61,25 +61,13 @@ public class TelaCadastro extends AppCompatActivity {
         mostrarSenhaCadastro = findViewById(R.id.mostrarSenhaCadastro);
         receberNewsLetter = findViewById(R.id.receberNews);
 
-        spinnerSexo = (Spinner) findViewById(R.id.sexoCadastro);
 
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sexo);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        spinnerSexo = findViewById(R.id.sexoCadastro);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, R.layout.spi_elemento, sexo);
+        adapter3.setDropDownViewResource(R.layout.spi_dropdown_elemento);
         spinnerSexo.setAdapter(adapter3);
+        spinnerSexo.setSelection(0, false);
 
-        spinnerSexo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-
-            }
-        });
 
         cadastrarUsu.setOnClickListener(new View.OnClickListener() {
             @Override

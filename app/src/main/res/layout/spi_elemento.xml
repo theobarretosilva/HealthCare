@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Spinner xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="0dp"
-    android:layout_height="48dp"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:fontFamily="@font/urbanist"
-    android:textColor="@color/black"
-    android:textColorHint="#757575"
-    android:textSize="18sp"
-    />
+    android:textColor="#757575"
+    android:paddingStart="8dp"
+    android:paddingEnd="15dp"
+    android:bottom="8dp"
+    android:top="8dp"
+    android:textSize="18sp" />

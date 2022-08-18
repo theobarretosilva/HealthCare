@@ -44,24 +44,12 @@ public class TelaCadastroComplementar extends AppCompatActivity {
         altura = findViewById(R.id.altura);
         btContinuar = findViewById(R.id.btContinuar);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, biotipoCorporal);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        biotipo = (Spinner) findViewById(R.id.biotipo);
+        biotipo = findViewById(R.id.biotipo);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spi_elemento, biotipoCorporal);
+        adapter.setDropDownViewResource(R.layout.spi_dropdown_elemento);
         biotipo.setAdapter(adapter);
         biotipo.setSelection(0, false);
 
-        biotipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         btContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
