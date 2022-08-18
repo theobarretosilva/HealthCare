@@ -142,6 +142,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
         android:fontFamily="@font/urbanist"
+        android:onClick="irTiposBiotipoInternet"
         android:text="Não sabe o seu biotipo?"
         android:textColor="#073C6D"
         android:textSize="15sp"

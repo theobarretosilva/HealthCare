@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -94,7 +95,10 @@ public class TelaCadastroComplementar extends AppCompatActivity{
         startActivity(irTelaConteudos);
     }
 
-    public void tooltipBiotipo(){
-
+    public void irTiposBiotipoInternet(View j){
+        String url = "https://www.tuasaude.com/como-identificar-o-seu-biotipo/";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 }
