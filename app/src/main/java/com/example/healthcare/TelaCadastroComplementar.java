@@ -13,17 +13,21 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.tomergoldst.tooltips.ToolTipsManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class TelaCadastroComplementar extends AppCompatActivity {
+public class TelaCadastroComplementar extends AppCompatActivity{
 
     EditText peso, altura;
     Spinner biotipo;
@@ -88,6 +92,9 @@ public class TelaCadastroComplementar extends AppCompatActivity {
         ns.set(cadastroComplementar);
 
         startActivity(irTelaConteudos);
+    }
+
+    public void tooltipBiotipo(){
 
     }
 }

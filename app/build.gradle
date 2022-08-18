@@ -55,6 +55,8 @@ dependencies {
 
     // Maskara - https://github.com/santalu/maskara
     implementation 'com.github.santalu:maskara:1.0.0'
+
+    implementation 'com.tomergoldst.android:tooltips:1.0.10'
 }
 
 apply plugin: 'com.google.gms.google-services'
