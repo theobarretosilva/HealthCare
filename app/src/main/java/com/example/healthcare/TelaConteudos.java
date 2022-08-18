@@ -85,8 +85,8 @@ public class TelaConteudos extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
                 if (documentSnapshot != null){
-                    String nomeUsu = documentSnapshot.getString("Nome");
-                    String olaUsuCompleto = "Olá, " + nomeUsu + "!";
+                    String primeiroN = documentSnapshot.getString("Primeiro nome");
+                    String olaUsuCompleto = "Olá " + primeiroN + "!";
                     olaUsu.setText(olaUsuCompleto);
                 }
             }
