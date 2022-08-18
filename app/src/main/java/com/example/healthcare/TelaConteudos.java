@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.healthcare.databinding.TelaConteudosBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -213,5 +212,10 @@ public class TelaConteudos extends AppCompatActivity {
     public void irTelaMedicamentos(View m){
         Intent irTelaMedicamentos = new Intent(this, TelaMedicamentos.class);
         startActivity(irTelaMedicamentos);
+    }
+
+    public void mostrarCardPremium(View g){
+        ExampleBottomSheetDialog bottomSheetDialog = new ExampleBottomSheetDialog();
+        bottomSheetDialog.show(getSupportFragmentManager(), "exampleBottomSheet");
     }
 }
