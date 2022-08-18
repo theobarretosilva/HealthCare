@@ -227,7 +227,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="@color/azul_verde_escuro"
@@ -275,5 +274,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/primeiroNome"
         android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/textView81"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="95dp"
+        android:fontFamily="@font/urbanist"
+        android:text="@string/cadastreSeComo"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cadastrarUsu" />
+
+    <TextView
+        android:id="@+id/textView82"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="77dp"
+        android:fontFamily="@font/urbanist"
+        android:text="@string/empresa"
+        android:textColor="#073C6D"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView81"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView81"
+        app:layout_constraintTop_toTopOf="@+id/textView81" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
