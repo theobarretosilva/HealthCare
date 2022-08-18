@@ -17,7 +17,7 @@
         android:hint="@string/ola_nomeusu"
         android:textColor="#0C5C64"
         android:textColorHint="#0C5C64"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -38,17 +38,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/olaUsu" />
 
-    <ImageView
-        android:id="@+id/imageView5"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoUsu"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:onClick="irTelaPerfil"
+        android:src="@drawable/pessoa"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toTopOf="@+id/olaUsu"
-        app:srcCompat="@drawable/pessoa" />
+        app:layout_constraintTop_toTopOf="@+id/olaUsu" />
 
     <TextView
         android:id="@+id/textView12"
@@ -123,6 +124,7 @@
         android:background="@drawable/botoes_conteudos"
         android:editable="false"
         android:enabled="false"
+        android:onClick="irTelaPassos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -145,6 +147,7 @@
         android:background="@drawable/botoes_conteudos"
         android:editable="false"
         android:enabled="false"
+        android:onClick="irTelaSono"
         app:layout_constraintEnd_toStartOf="@+id/textView18"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toEndOf="@+id/textView16"
@@ -154,13 +157,13 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/botoes_conteudos"
         android:editable="false"
         android:enabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
+        android:onClick="irTelaMedicamentos"
+        app:layout_constraintEnd_toStartOf="@+id/textView67"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
@@ -173,6 +176,7 @@
         android:background="@drawable/botoes_conteudos"
         android:editable="false"
         android:enabled="false"
+        android:onClick="irTelaExercicios"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
@@ -180,14 +184,14 @@
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/urbanist"
         android:text="Água"
         android:textColor="#0C5C64"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
@@ -200,8 +204,8 @@
         android:textColor="#0C5C64"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/textView23"
-        app:layout_constraintStart_toEndOf="@+id/textView21"
+        app:layout_constraintEnd_toEndOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
@@ -209,27 +213,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="61dp"
         android:fontFamily="@font/urbanist"
         android:text="Peso"
         android:textColor="#0C5C64"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <TextView
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/urbanist"
         android:text="Vacinas"
         android:textColor="#0C5C64"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView16"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <TextView
@@ -242,8 +247,8 @@
         android:textColor="#0C5C64"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/textView26"
-        app:layout_constraintStart_toEndOf="@+id/textView24"
+        app:layout_constraintEnd_toEndOf="@+id/textView17"
+        app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
@@ -251,20 +256,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="53dp"
         android:fontFamily="@font/urbanist"
         android:text="Passos"
         android:textColor="#0C5C64"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/urbanist"
         android:text="Exercícios"
@@ -272,7 +276,8 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView19"
+        app:layout_constraintStart_toStartOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView19"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -280,7 +285,6 @@
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/urbanist"
         android:text="Medicamentos"
@@ -288,9 +292,9 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView27"
+        app:layout_constraintEnd_toEndOf="@+id/textView20"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="@+id/textView20"
         app:layout_constraintTop_toBottomOf="@+id/textView20"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -352,6 +356,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:onClick="irTelaSono"
         app:layout_constraintBottom_toBottomOf="@+id/textView17"
         app:layout_constraintEnd_toEndOf="@+id/textView17"
         app:layout_constraintStart_toStartOf="@+id/textView17"
@@ -364,6 +369,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:onClick="irTelaPassos"
         app:layout_constraintBottom_toBottomOf="@+id/textView18"
         app:layout_constraintEnd_toEndOf="@+id/textView18"
         app:layout_constraintStart_toStartOf="@+id/textView18"
@@ -376,6 +382,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:onClick="irTelaExercicios"
         app:layout_constraintBottom_toBottomOf="@+id/textView19"
         app:layout_constraintEnd_toEndOf="@+id/textView19"
         app:layout_constraintStart_toStartOf="@+id/textView19"
@@ -388,6 +395,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:onClick="irTelaMedicamentos"
         app:layout_constraintBottom_toBottomOf="@+id/textView20"
         app:layout_constraintEnd_toEndOf="@+id/textView20"
         app:layout_constraintStart_toStartOf="@+id/textView20"
@@ -461,5 +469,59 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView67"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/botoes_conteudos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/textView78"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Exames"
+        android:textColor="#0C5C64"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView67"
+        app:layout_constraintStart_toStartOf="@+id/textView67"
+        app:layout_constraintTop_toBottomOf="@+id/textView67"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView67"
+        app:layout_constraintEnd_toEndOf="@+id/textView67"
+        app:layout_constraintStart_toStartOf="@+id/textView67"
+        app:layout_constraintTop_toTopOf="@+id/textView67"
+        app:srcCompat="@drawable/exames" />
+
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView67"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView67"
+        app:layout_constraintTop_toBottomOf="@+id/textView26"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cadeado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

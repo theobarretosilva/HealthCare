@@ -1,7 +1,6 @@
 package com.example.healthcare;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -27,10 +26,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +35,7 @@ public class TelaCadastro extends AppCompatActivity {
 
     String usuarioID;
 
-    EditText nomeCadastro, dataNascCadastro, telefoneCadastro, enderecoCadastro, cpfCadastro, emailCadastro, senhaCadastro;
+    EditText primeiroNome, sobrenome, dataNascCadastro, telefoneCadastro, enderecoCadastro, cpfCadastro, emailCadastro, senhaCadastro;
     Button cadastrarUsu;
     CheckBox mostrarSenhaCadastro, receberNewsLetter;
 
@@ -53,7 +49,8 @@ public class TelaCadastro extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-        nomeCadastro = findViewById(R.id.nomeCadastro);
+        primeiroNome = findViewById(R.id.primeiroNome);
+        sobrenome = findViewById(R.id.sobrenome);
         dataNascCadastro = findViewById(R.id.dataNascCadasatro);
         telefoneCadastro = findViewById(R.id.telefoneCadastro);
         enderecoCadastro = findViewById(R.id.enderecoCadastro);
@@ -93,11 +90,14 @@ public class TelaCadastro extends AppCompatActivity {
             public void onClick(View v) {
                 String sexo = spinnerSexo.getSelectedItem().toString();
 
-                if(nomeCadastro.getText().length() == 0){
-                    nomeCadastro.setError("Você precisa inserir o seu nome para se cadastrar!");
+                if(primeiroNome.getText().length() <= 2){
+                    primeiroNome.setError("Insira seu primeiro nome corretamente");
+                }
+                else if(sobrenome.getText().length() <= 2){
+                    sobrenome.setError("Insira seu sobrenome corretamente");
                 }
                 else if (emailCadastro.getText().length() < 5){
-                    emailCadastro.setError("Você precisa inserir um email válido!");
+                    emailCadastro.setError("Insira um email válido!");
                 }
                 else if (senhaCadastro.getText().length() < 8){
                     senhaCadastro.setError("A sua deve ter pelo menos 8 caracteres!");
@@ -158,7 +158,8 @@ public class TelaCadastro extends AppCompatActivity {
         usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Intent irTelaCadastroComplementar = new Intent(this, TelaCadastroComplementar.class);
 
-        String nome = nomeCadastro.getText().toString();
+        String primeiroN = primeiroNome.getText().toString();
+        String sobrenomE = sobrenome.getText().toString();
         String dataNasc = dataNascCadastro.getText().toString();
         String telefone = telefoneCadastro.getText().toString();
         String endereco = enderecoCadastro.getText().toString();
@@ -170,7 +171,9 @@ public class TelaCadastro extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Map<String, Object> cadastroUsuario = new HashMap<>();
-        cadastroUsuario.put("Nome", nome);
+        cadastroUsuario.put("Nome completo", primeiroN + " " + sobrenomE);
+        cadastroUsuario.put("Primeiro nome", primeiroN);
+        cadastroUsuario.put("Sobrenome", sobrenomE);
         cadastroUsuario.put("Data de nascimento", dataNasc);
         cadastroUsuario.put("Telefone", telefone);
         cadastroUsuario.put("Endereço", endereco);

@@ -8,7 +8,8 @@
     <string name="alturaCM">Altura (cm)</string>
     <string name="continuar">Continuar</string>
     <string name="insiraSuasInformacoes">Insira suas informações:</string>
-    <string name="nomeCompleto">Nome completo</string>
+    <string name="primeiroNome">Primeiro nome</string>
+    <string name="sobrenome">Sobrenome</string>
     <string name="dataDeNascimento">Data de nascimento</string>
     <string name="telefone">Telefone</string>
     <string name="endereco">Endereço</string>

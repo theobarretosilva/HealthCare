@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCare">
         <activity
+            android:name=".TelaMedicamentos"
+            android:exported="false" />
+        <activity
+            android:name=".TelaExercicios"
+            android:exported="false" />
+        <activity
+            android:name=".TelaPassos"
+            android:exported="false" />
+        <activity
+            android:name=".TelaSono"
+            android:exported="false" />
+        <activity
+            android:name=".TelaPerfil"
+            android:exported="false" />
+        <activity
+            android:name=".TelaPremium"
+            android:exported="false" />
+        <activity
             android:name=".TelaAgua"
             android:exported="false" />
         <activity
