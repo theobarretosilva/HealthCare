@@ -214,8 +214,8 @@ public class TelaConteudos extends AppCompatActivity {
         startActivity(irTelaMedicamentos);
     }
 
-    public void mostrarCardPremium(View g){
-        ExampleBottomSheetDialog bottomSheetDialog = new ExampleBottomSheetDialog();
-        bottomSheetDialog.show(getSupportFragmentManager(), "exampleBottomSheet");
-    }
+//    public void mostrarCardPremium(View g){
+//        ExampleBottomSheetDialog bottomSheetDialog = new ExampleBottomSheetDialog();
+//        bottomSheetDialog.show(getSupportFragmentManager(), "exampleBottomSheet");
+//    }
 }

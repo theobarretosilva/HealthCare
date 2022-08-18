@@ -46,10 +46,10 @@ public class TelaPeso extends AppCompatActivity {
         startActivity(irTelaPesoIMC);
     }
 
-    public void pesoAtual(){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        usuarioUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    }
+//    public void pesoAtual(){
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        usuarioUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//    }
 
     public void calcularIMCAtual(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();

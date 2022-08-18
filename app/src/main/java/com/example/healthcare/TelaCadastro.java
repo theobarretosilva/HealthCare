@@ -61,8 +61,6 @@ public class TelaCadastro extends AppCompatActivity {
         mostrarSenhaCadastro = findViewById(R.id.mostrarSenhaCadastro);
         receberNewsLetter = findViewById(R.id.receberNews);
 
-        // ------------------------------------------------------------------SPINNER------------------------------------------------------------------ //
-
         spinnerSexo = (Spinner) findViewById(R.id.sexoCadastro);
 
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sexo);
@@ -82,8 +80,6 @@ public class TelaCadastro extends AppCompatActivity {
 
             }
         });
-
-        // ---------------------------------------------------------------------------------------------------------------------------------------------//
 
         cadastrarUsu.setOnClickListener(new View.OnClickListener() {
             @Override

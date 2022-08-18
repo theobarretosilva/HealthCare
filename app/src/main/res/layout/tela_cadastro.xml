@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <EditText
+    <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/dataNascCadasatro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -71,16 +71,19 @@
         android:ems="10"
         android:fontFamily="@font/urbanist"
         android:hint="@string/dataDeNascimento"
-        android:inputType="date"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textColor="#000000"
         android:textColorHint="#757575"
+        app:mask="__/__/____"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sobrenome" />
 
-    <EditText
+    <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/telefoneCadastro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -96,6 +99,9 @@
         android:minHeight="48dp"
         android:textColor="#000000"
         android:textColorHint="#757575"
+        app:mask="(__) _____-____"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dataNascCadasatro" />
@@ -120,7 +126,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/telefoneCadastro" />
 
-    <EditText
+    <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/cpfCadastro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -132,13 +138,16 @@
         android:ems="10"
         android:fontFamily="@font/urbanist"
         android:hint="@string/cpf"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textColor="#000000"
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enderecoCadastro" />
+        app:layout_constraintTop_toBottomOf="@+id/enderecoCadastro"
+        app:mask="___.___.___-__"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
 
     <Spinner
         android:id="@+id/sexoCadastro"
@@ -264,6 +273,7 @@
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/primeiroNome" />
+        app:layout_constraintTop_toBottomOf="@+id/primeiroNome"
+        android:importantForAutofill="no" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
