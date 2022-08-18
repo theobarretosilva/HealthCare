@@ -1,5 +1,7 @@
 package com.example.healthcare;
 
+import static java.lang.Integer.parseInt;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -83,8 +85,8 @@ public class TelaCadastroComplementar extends AppCompatActivity {
         usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Intent irTelaConteudos = new Intent(this, TelaConteudos.class);
 
-        String pesoP = peso.getText().toString();
-        String alturaA = altura.getText().toString();
+        int pesoP = parseInt(peso.getText().toString());
+        int alturaA = parseInt(altura.getText().toString());
         String biotipoC = biotipo.getSelectedItem().toString();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();

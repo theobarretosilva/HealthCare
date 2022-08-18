@@ -150,4 +150,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dataHojeAgua"
         app:srcCompat="@drawable/garrafa0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
