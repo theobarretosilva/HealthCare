@@ -75,13 +75,13 @@
         android:minHeight="48dp"
         android:textColor="#000000"
         android:textColorHint="#757575"
-        app:mask="__/__/____"
-        app:maskCharacter="_"
-        app:maskStyle="completable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sobrenome" />
+        app:layout_constraintTop_toBottomOf="@+id/sobrenome"
+        app:mask="__/__/____"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
 
     <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/telefoneCadastro"
