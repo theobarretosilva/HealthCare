@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/urbanist"
         android:hint="@string/ola_nomeusu"
         android:textColor="#0C5C64"
@@ -56,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/urbanist"
         android:text="Conteúdos"
         android:textColor="#0C5C64"
@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/botoes_conteudos"
         android:editable="false"
         android:enabled="false"
@@ -96,7 +96,7 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/botoes_conteudos"
         android:enabled="false"
         android:onClick="irTelaAlimentacao"
@@ -108,7 +108,7 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/botoes_conteudos"
         android:editable="false"
@@ -512,7 +512,7 @@
         app:srcCompat="@drawable/cadeado" />
 
     <TextView
-        android:id="@+id/textView67"
+        android:id="@+id/clinicasBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -526,15 +526,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/clinicasLogo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView67"
-        app:layout_constraintEnd_toEndOf="@+id/textView67"
-        app:layout_constraintStart_toStartOf="@+id/textView67"
-        app:layout_constraintTop_toTopOf="@+id/textView67"
+        app:layout_constraintBottom_toBottomOf="@+id/clinicasBox"
+        app:layout_constraintEnd_toEndOf="@+id/clinicasBox"
+        app:layout_constraintStart_toStartOf="@+id/clinicasBox"
+        app:layout_constraintTop_toTopOf="@+id/clinicasBox"
         app:srcCompat="@drawable/clinicas_parceiras" />
 
     <TextView
@@ -548,21 +548,23 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView69"
-        app:layout_constraintEnd_toEndOf="@+id/textView67"
-        app:layout_constraintStart_toStartOf="@+id/textView67"
-        app:layout_constraintTop_toBottomOf="@+id/textView67"
+        app:layout_constraintEnd_toEndOf="@+id/clinicasBox"
+        app:layout_constraintStart_toStartOf="@+id/clinicasBox"
+        app:layout_constraintTop_toBottomOf="@+id/clinicasBox"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="260dp"
         android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView67"
+        app:layout_constraintBottom_toBottomOf="@+id/clinicasBox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textView67"
+        app:layout_constraintStart_toStartOf="@+id/clinicasBox"
         app:layout_constraintTop_toBottomOf="@+id/textView27"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/cadeado" />

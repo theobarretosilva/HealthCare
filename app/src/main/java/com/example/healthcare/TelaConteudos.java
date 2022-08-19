@@ -44,10 +44,9 @@ public class TelaConteudos extends AppCompatActivity {
 
     BottomSheetDialog dialog;
 
-    TextView olaUsu, examesBox;
-    Button deslogar;
+    TextView olaUsu, examesBox, clinicasBox;
     CircleImageView fotoUsu;
-    ImageView examesLogo, cadeado;
+    ImageView examesLogo, clinicasLogo, cadeado;
 
 
     private FirebaseAuth mAuth;
@@ -63,25 +62,17 @@ public class TelaConteudos extends AppCompatActivity {
         getSupportActionBar().hide();
 
         olaUsu = findViewById(R.id.olaUsu);
-        deslogar = findViewById(R.id.deslogar);
         fotoUsu = findViewById(R.id.fotoUsu);
         examesBox = findViewById(R.id.examesBox);
         examesLogo = findViewById(R.id.examesLogo);
+        clinicasBox = findViewById(R.id.clinicasBox);
+        clinicasLogo = findViewById(R.id.clinicasLogo);
         cadeado = findViewById(R.id.cadeado);
 
         dialog = new BottomSheetDialog(this);
         mostrarCardPremium();
 
         mAuth = FirebaseAuth.getInstance();
-
-        deslogar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                Intent i = new Intent(TelaConteudos.this, TelaInicial.class);
-                startActivity(i);
-            }
-        });
 
         examesBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +83,18 @@ public class TelaConteudos extends AppCompatActivity {
         examesLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dialog.show();
+            }
+        });
+        clinicasBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
+        clinicasLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 dialog.show();
             }
         });
