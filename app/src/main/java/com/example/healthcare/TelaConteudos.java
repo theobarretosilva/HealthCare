@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -20,8 +21,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,6 +40,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -53,6 +60,8 @@ public class TelaConteudos extends AppCompatActivity {
     private FirebaseUser mCurrentUser;
 
     int TAKE_IMAGE_CODE = 10001;
+
+    Bitmap imagem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +107,8 @@ public class TelaConteudos extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+//        pegarImagemStorage();
     }
 
     @Override
@@ -119,9 +130,37 @@ public class TelaConteudos extends AppCompatActivity {
         });
     }
 
-    public void pegarImagemStorage(){
-
-    }
+//    public void pegarImagemStorage(){
+//        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//        FirebaseStorage storage = FirebaseStorage.getInstance();
+//        StorageReference storageRef = storage.getReference();
+//        String fotoUsuStorage = usuarioID + ".jpeg";
+//        String calma = "gs://healthcare-4e72c.appspot.com/profileImages/" + fotoUsuStorage;
+//        StorageReference pathReference = storageRef.child("profileImages/" + fotoUsuStorage);
+//        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://healthcare-4e72c.appspot.com/profileImages/ub8NShFHnNeZp05jz0MxDkJXNWs2.jpeg");
+//
+//        Glide.with(this)
+//                .load(storageReference)
+//                .into(fotoUsu);
+//
+//        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//        try {
+//            GoogleSignInAccount account = task.getResult(ApiException.class);
+//            firebaseAuthWithGoogle(account.getIdToken());
+//            SharedPreferences.Editor editor = getApplicationContext()
+//                    .getSharedPreferences("Pref", MODE_PRIVATE)
+//                    .edit();
+//            account.getPhotoUrl();
+//            Bundle extras = data.getExtras();
+//            fotoUsu.setImageBitmap();
+//        }
+//
+//        mAuth = FirebaseAuth.getInstance();
+//        mCurrentUser = mAuth.getCurrentUser();
+//
+//        Picasso.get().load(mCurrentUser.getPhotoUrl())
+//                .into(fotoUsu);
+//    }
 
 //    public void pegarFoto(View p){
 //        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
