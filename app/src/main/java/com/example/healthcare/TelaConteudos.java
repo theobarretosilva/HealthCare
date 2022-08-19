@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -41,9 +42,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TelaConteudos extends AppCompatActivity {
 
-    TextView olaUsu;
+    BottomSheetDialog dialog;
+
+    TextView olaUsu, examesBox;
     Button deslogar;
     CircleImageView fotoUsu;
+    ImageView examesLogo, cadeado;
+
 
     private FirebaseAuth mAuth;
     private FirebaseUser mCurrentUser;
@@ -60,6 +65,12 @@ public class TelaConteudos extends AppCompatActivity {
         olaUsu = findViewById(R.id.olaUsu);
         deslogar = findViewById(R.id.deslogar);
         fotoUsu = findViewById(R.id.fotoUsu);
+        examesBox = findViewById(R.id.examesBox);
+        examesLogo = findViewById(R.id.examesLogo);
+        cadeado = findViewById(R.id.cadeado);
+
+        dialog = new BottomSheetDialog(this);
+        mostrarCardPremium();
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -69,6 +80,19 @@ public class TelaConteudos extends AppCompatActivity {
                 mAuth.signOut();
                 Intent i = new Intent(TelaConteudos.this, TelaInicial.class);
                 startActivity(i);
+            }
+        });
+
+        examesBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
+            }
+        });
+        examesLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
             }
         });
     }
@@ -90,6 +114,10 @@ public class TelaConteudos extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void pegarImagemStorage(){
+
     }
 
 //    public void pegarFoto(View p){
@@ -214,8 +242,22 @@ public class TelaConteudos extends AppCompatActivity {
         startActivity(irTelaMedicamentos);
     }
 
-//    public void mostrarCardPremium(View g){
-//        ExampleBottomSheetDialog bottomSheetDialog = new ExampleBottomSheetDialog();
-//        bottomSheetDialog.show(getSupportFragmentManager(), "exampleBottomSheet");
-//    }
+    public void irTelaPremium(View g){
+        Intent irTelaPremium = new Intent(this, TelaPremium.class);
+        startActivity(irTelaPremium);
+    }
+
+    public void mostrarCardPremium(){
+        View view = getLayoutInflater().inflate(R.layout.card_premium, null, false);
+
+        Button irTelaPremium = view.findViewById(R.id.saberMais);
+        irTelaPremium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                irTelaPremium(view);
+            }
+        });
+
+        dialog.setContentView(view);
+    }
 }

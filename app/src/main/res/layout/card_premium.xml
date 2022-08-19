@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D5F0F0"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
     <TextView
         android:id="@+id/textView79"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:fontFamily="@font/urbanist"
         android:gravity="center"
@@ -28,6 +29,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="12dp"
         android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="#4A858B"
         android:fontFamily="@font/urbanist"
         android:text="Quero saber mais!"
