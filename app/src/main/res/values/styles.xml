@@ -17,4 +17,13 @@
         <item name="android:height">280px</item>
     </style>
 
+    <style name="botao_mais_menos">
+        <item name="backgroundTint">#FFFFFF</item>
+        <item name="borderColor">#4A858B</item>
+        <item name="borderWidth">1dp</item>
+        <item name="android:radius">10px</item>
+        <item name="android:width">85px</item>
+        <item name="height">5px</item>
+    </style>
+
 </resources>
