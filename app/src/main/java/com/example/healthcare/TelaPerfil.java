@@ -2,16 +2,29 @@ package com.example.healthcare;
 
 import static java.lang.Integer.parseInt;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,10 +38,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class TelaPerfil extends AppCompatActivity {
 
     TextView nomeUsu, idadeUsu, telefoneUsu, emailUsu, pesoUsu, alturaUsu, biotipoUsu;
     Button btnVoltar, btnLogout;
+    ImageView fotoUsuPerfil;
+
+    private Uri uri_imagem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,25 +64,43 @@ public class TelaPerfil extends AppCompatActivity {
         biotipoUsu = findViewById(R.id.biotipoPerfil);
         btnVoltar = findViewById(R.id.btnVoltar);
         btnLogout = findViewById(R.id.btnLogout);
+        fotoUsuPerfil = findViewById(R.id.fotoUsuPerfil);
 
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent voltarTelaConteudos = new Intent(TelaPerfil.this, TelaConteudos.class);
-                startActivity(voltarTelaConteudos);
-            }
+        btnVoltar.setOnClickListener(view -> {
+            Intent voltarTelaConteudos = new Intent(TelaPerfil.this, TelaConteudos.class);
+            startActivity(voltarTelaConteudos);
         });
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent logout = new Intent(TelaPerfil.this, TelaInicial.class);
-                startActivity(logout);
-            }
+        btnLogout.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent logout = new Intent(TelaPerfil.this, TelaInicial.class);
+            startActivity(logout);
         });
 
         setarInfoCadastro();
         setarInfoCadasComple();
+        permissao();
+    }
+
+    private void permissao(){
+        String permissoes [] = new String[]{
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+        };
+        Permissao.permissao(this, 0, permissoes);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        for (int result: grantResults){
+            if (result == PackageManager.PERMISSION_DENIED){
+                Toast.makeText(this, "Aceite as permissões para o aplicativo funcionar corretamente", Toast.LENGTH_SHORT).show();
+                finish();
+
+                break;
+            }
+        }
     }
 
     public void setarInfoCadastro(){
@@ -119,5 +155,40 @@ public class TelaPerfil extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void obterImagemGaleria(View m){
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+
+        startActivityForResult(Intent.createChooser(intent, "Escolha uma imagem"), 0);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == RESULT_OK){
+
+            if (requestCode == 0){
+
+                if (data != null){
+                    uri_imagem = data.getData();
+                    Glide.with(getBaseContext()).asBitmap().load(uri_imagem).listener(new RequestListener<Bitmap>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
+                            Toast.makeText(getBaseContext(), "Falha ao selecionar imagem", Toast.LENGTH_LONG).show();
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    }).into(fotoUsuPerfil);
+                }else{
+                    Toast.makeText(getBaseContext(), "Falha ao selecionar imagem", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 }
