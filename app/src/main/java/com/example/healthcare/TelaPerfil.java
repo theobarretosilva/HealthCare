@@ -5,12 +5,14 @@ import static java.lang.Integer.parseInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,13 +27,19 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -47,6 +55,7 @@ public class TelaPerfil extends AppCompatActivity {
     ImageView fotoUsuPerfil;
 
     private Uri uri_imagem;
+    private FirebaseStorage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +75,8 @@ public class TelaPerfil extends AppCompatActivity {
         btnLogout = findViewById(R.id.btnLogout);
         fotoUsuPerfil = findViewById(R.id.fotoUsuPerfil);
 
+        storage = FirebaseStorage.getInstance();
+
         btnVoltar.setOnClickListener(view -> {
             Intent voltarTelaConteudos = new Intent(TelaPerfil.this, TelaConteudos.class);
             startActivity(voltarTelaConteudos);
@@ -76,17 +87,13 @@ public class TelaPerfil extends AppCompatActivity {
             startActivity(logout);
         });
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+        }
+
         setarInfoCadastro();
         setarInfoCadasComple();
-        permissao();
-    }
-
-    private void permissao(){
-        String permissoes [] = new String[]{
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-        };
-        Permissao.permissao(this, 0, permissoes);
     }
 
     @Override
@@ -188,7 +195,72 @@ public class TelaPerfil extends AppCompatActivity {
                 }else{
                     Toast.makeText(getBaseContext(), "Falha ao selecionar imagem", Toast.LENGTH_LONG).show();
                 }
+//                uploadImagem();
             }
         }
     }
+
+//    private void uploadImagem(){
+//        String uidUsuario = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//        StorageReference reference = storage.getReference().child("Imagens de perfil dos usuários");
+//        StorageReference nomeImagem = reference.child(uidUsuario + ".jpg");
+//
+//        BitmapDrawable drawable = (BitmapDrawable) fotoUsuPerfil.getDrawable();
+//        Bitmap bitmap = drawable.getBitmap();
+//        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+//
+//        UploadTask uploadTask = nomeImagem.putBytes(bytes.toByteArray());
+//
+//        uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+//
+//
+//            @Override
+//            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+//                if (task.isSuccessful()){
+//                    Toast.makeText(getBaseContext(), "Sucesso ao realizar upload", Toast.LENGTH_LONG).show();
+//                }else{
+//                    Toast.makeText(getBaseContext(), "Erro ao realizar upload", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//
+//    }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == TAKE_IMAGE_CODE){
+//            switch (resultCode){
+//                case RESULT_OK:
+//                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+//                    fotoUsu.setImageBitmap(bitmap);
+//                    handleUpload(bitmap);
+//            }
+//        }
+//    }
+//
+//    private void handleUpload(Bitmap bitmap){
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//
+//        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//        StorageReference reference = FirebaseStorage.getInstance().getReference()
+//                .child("profileImages")
+//                .child(uid + ".jpeg");
+//
+//        reference.putBytes(baos.toByteArray())
+//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                        getDownloadUrl(reference);
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.e(TAG, "onFailure: " + e.getCause());
+//                    }
+//                });
+//    }
 }
