@@ -28,6 +28,9 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -141,10 +144,16 @@ public class TelaCadastro extends AppCompatActivity {
 
         usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Intent irTelaCadastroComplementar = new Intent(this, TelaCadastroComplementar.class);
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
         String primeiroN = primeiroNome.getText().toString();
         String sobrenomE = sobrenome.getText().toString();
-        String dataNasc = dataNascCadastro.getText().toString();
+        Date dataNasc = null;
+        try {
+            dataNasc = formato.parse(dataNascCadastro.getText().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         String telefone = telefoneCadastro.getText().toString();
         String endereco = enderecoCadastro.getText().toString();
         String cpf = cpfCadastro.getText().toString();

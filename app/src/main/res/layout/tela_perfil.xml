@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnVoltar" />
 
     <TextView
-        android:id="@+id/textView94"
+        android:id="@+id/nomeUsuPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
@@ -80,33 +80,33 @@
         android:id="@+id/textView95"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="120dp"
-        android:layout_marginBottom="370dp"
+        android:layout_marginBottom="365dp"
         android:background="@drawable/box_azul"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView94" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeUsuPerfil" />
 
     <TextView
         android:id="@+id/textView96"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="370dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="365dp"
         android:background="@drawable/box_azul"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView95"
-        app:layout_constraintTop_toBottomOf="@+id/textView94" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeUsuPerfil" />
 
     <TextView
-        android:id="@+id/textView97"
+        android:id="@+id/idadePerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -121,7 +121,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView95" />
 
     <TextView
-        android:id="@+id/textView98"
+        android:id="@+id/telefonePerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -133,10 +133,10 @@
         app:layout_constraintEnd_toEndOf="@+id/textView95"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView95"
-        app:layout_constraintTop_toBottomOf="@+id/textView97" />
+        app:layout_constraintTop_toBottomOf="@+id/idadePerfil" />
 
     <TextView
-        android:id="@+id/textView99"
+        android:id="@+id/emailPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -149,55 +149,47 @@
         app:layout_constraintEnd_toEndOf="@+id/textView95"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView95"
-        app:layout_constraintTop_toBottomOf="@+id/textView98"
+        app:layout_constraintTop_toBottomOf="@+id/telefonePerfil"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView100"
+        android:id="@+id/pesoPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/urbanist"
         android:text="615 quilos"
         android:textColor="#063E44"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textView96"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView96"
         app:layout_constraintTop_toTopOf="@+id/textView96" />
 
     <TextView
-        android:id="@+id/textView101"
+        android:id="@+id/alturaPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="10dp"
         android:fontFamily="@font/urbanist"
         android:text="120 cm"
         android:textColor="#063E44"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/biotipoPerfil"
         app:layout_constraintEnd_toEndOf="@+id/textView96"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView96"
-        app:layout_constraintTop_toBottomOf="@+id/textView100" />
+        app:layout_constraintTop_toBottomOf="@+id/pesoPerfil" />
 
     <TextView
-        android:id="@+id/textView102"
+        android:id="@+id/biotipoPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="12dp"
         android:fontFamily="@font/urbanist"
         android:text="Biotipo"
         android:textColor="#063E44"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView96"
         app:layout_constraintEnd_toEndOf="@+id/textView96"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView96"
-        app:layout_constraintTop_toBottomOf="@+id/textView101"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/textView96" />
 
     <TextView
         android:id="@+id/textView103"
