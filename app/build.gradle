@@ -64,6 +64,8 @@ dependencies {
 
     implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
 
+    implementation "com.androidplot:androidplot-core:1.5.10"
+
 }
 
 apply plugin: 'com.google.gms.google-services'
