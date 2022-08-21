@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.healthcare"
-        minSdk 27
+        minSdk 28
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -61,6 +61,8 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
 
     implementation 'com.squareup.picasso:picasso:2.8'
+
+    implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
 
 }
 

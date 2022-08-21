@@ -55,7 +55,7 @@ public class TelaPerfil extends AppCompatActivity {
     ImageView fotoUsuPerfil;
 
     private Uri uri_imagem;
-    private FirebaseStorage storage;
+    private static StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +75,6 @@ public class TelaPerfil extends AppCompatActivity {
         btnLogout = findViewById(R.id.btnLogout);
         fotoUsuPerfil = findViewById(R.id.fotoUsuPerfil);
 
-        storage = FirebaseStorage.getInstance();
-
         btnVoltar.setOnClickListener(view -> {
             Intent voltarTelaConteudos = new Intent(TelaPerfil.this, TelaConteudos.class);
             startActivity(voltarTelaConteudos);
@@ -94,6 +92,13 @@ public class TelaPerfil extends AppCompatActivity {
 
         setarInfoCadastro();
         setarInfoCadasComple();
+    }
+
+    public static StorageReference getStorageReference(){
+        if (storageReference == null){
+            storageReference = FirebaseStorage.getInstance().getReference();
+        }
+        return storageReference;
     }
 
     @Override
