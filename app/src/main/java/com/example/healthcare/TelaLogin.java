@@ -73,7 +73,7 @@ public class TelaLogin extends AppCompatActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    public void AutenticarUsuario(View a){
+    public void autenticarUsuario(View a){
         Intent irTelaConteudos = new Intent(this, TelaConteudos.class);
 
         String email = email_login.getText().toString();

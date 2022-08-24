@@ -121,7 +121,7 @@
         android:layout_marginEnd="30dp"
         android:backgroundTint="@color/azul_verde_escuro"
         android:fontFamily="@font/urbanist"
-        android:onClick="AutenticarUsuario"
+        android:onClick="autenticarUsuario"
         android:text="@string/logar"
         android:textAllCaps="false"
         android:textSize="18sp"
