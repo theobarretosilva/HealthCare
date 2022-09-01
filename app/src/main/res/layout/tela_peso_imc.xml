@@ -228,7 +228,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView57" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/alturaImc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -263,7 +263,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView58" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/pesoImc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"

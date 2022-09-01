@@ -58,7 +58,7 @@ public class TelaAdicionarCafe_da_manha extends AppCompatActivity {
         cafeDaManha.put("Calorias por porção", kcal);
         cafeDaManha.put("Quantidade por porção", g);
 
-        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Alimentação").document("Café da manhã").collection("");
+       // DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Alimentação").document("Café da manhã").collection("");
 
 
     }
