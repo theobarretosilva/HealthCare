@@ -6,4 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".TelaPassos">
 
+    <TextView
+        android:id="@+id/textView74"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/barra_fundo_voltar_titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:onClick="voltarTelaConteudos"
+        app:layout_constraintBottom_toBottomOf="@+id/textView74"
+        app:layout_constraintEnd_toEndOf="@+id/textView74"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView74"
+        app:layout_constraintTop_toTopOf="@+id/textView74"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/textView112"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/urbanist"
+        android:text="Contagem de passos"
+        android:textColor="#0C5C64"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView74"
+        app:layout_constraintEnd_toEndOf="@+id/textView74"
+        app:layout_constraintStart_toStartOf="@+id/textView74"
+        app:layout_constraintTop_toTopOf="@+id/textView74" />
 </androidx.constraintlayout.widget.ConstraintLayout>
