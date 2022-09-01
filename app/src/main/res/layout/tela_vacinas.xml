@@ -79,4 +79,244 @@
         app:layout_constraintStart_toEndOf="@+id/textView71"
         app:layout_constraintTop_toTopOf="@+id/textView71" />
 
+    <HorizontalScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="410dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView71"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/box1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/fundo_card_vacinas" />
+
+                <ImageView
+                    android:id="@+id/imgCrianca"
+                    android:layout_width="110dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="14dp"
+                    app:srcCompat="@drawable/criancas" />
+
+                <TextView
+                    android:id="@+id/textCrianca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="100dp"
+                    android:fontFamily="@font/urbanist"
+                    android:text="Criança"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/idadeCrianca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="124dp"
+                    android:fontFamily="@font/urbanist"
+                    android:text="Entre 0 e 10 anos"
+                    android:textColor="#FFFFFF" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp">
+
+                <TextView
+                    android:id="@+id/box2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/fundo_card_vacinas" />
+
+                <ImageView
+                    android:id="@+id/imgJovem"
+                    android:layout_width="110dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="14dp"
+                    app:srcCompat="@drawable/jovem" />
+
+                <TextView
+                    android:id="@+id/textJovem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="41dp"
+                    android:layout_marginTop="100dp"
+                    android:fontFamily="@font/urbanist"
+                    android:text="Jovem"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/idadeJovem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="124dp"
+                    android:fontFamily="@font/urbanist"
+                    android:text="Entre 11 e 19 anos"
+                    android:textColor="#FFFFFF" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp">
+
+                <TextView
+                    android:id="@+id/box3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/fundo_card_vacinas"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgAdulto"
+                    android:layout_width="110dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="14dp"
+                    app:srcCompat="@drawable/adulto" />
+
+                <TextView
+                    android:id="@+id/textAdulto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="41dp"
+                    android:layout_marginTop="100dp"
+                    android:fontFamily="@font/urbanist"
+                    android:text="Adulto"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/idadeAdulto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="124dp"
+                    android:fontFamily="@font/urbanist"
+                    android:text="Entre 20 e 59 anos"
+                    android:textColor="#FFFFFF" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp">
+
+                <TextView
+                    android:id="@+id/box4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/fundo_card_vacinas" />
+
+                <ImageView
+                    android:id="@+id/imgGestante"
+                    android:layout_width="110dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="14dp"
+                    app:srcCompat="@drawable/gestante" />
+
+                <TextView
+                    android:id="@+id/textGestante"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="100dp"
+                    android:fontFamily="@font/urbanist"
+                    android:text="Gestante"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/idadeGestante"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="124dp"
+                    android:fontFamily="@font/urbanist"
+                    android:text="Período gestacional"
+                    android:textColor="#FFFFFF" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp">
+
+                <TextView
+                    android:id="@+id/box5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/fundo_card_vacinas" />
+
+                <ImageView
+                    android:id="@+id/imgIdoso"
+                    android:layout_width="110dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="14dp"
+                    app:srcCompat="@drawable/idoso" />
+
+                <TextView
+                    android:id="@+id/textIdoso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginTop="100dp"
+                    android:fontFamily="@font/urbanist"
+                    android:text="Idoso"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/idadeIdoso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="124dp"
+                    android:fontFamily="@font/urbanist"
+                    android:text="+60 anos"
+                    android:textColor="#FFFFFF" />
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
