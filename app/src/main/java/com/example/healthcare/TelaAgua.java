@@ -28,13 +28,16 @@ import java.util.Map;
 
 public class TelaAgua extends AppCompatActivity {
 
-    TextView dataAtual, qntdAgua, tituloAgua;
+    TextView dataAtual, qntdAgua, tituloAgua, texto;
     ImageView imgGarrafa;
     Button btnIngerido;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat sdfBarra = new SimpleDateFormat("dd/MM/yyyy");
+
     Date data = new Date();
     String dataHoje = sdf.format(data);
+    String dataHojeBarra = sdf.format(data);
 
     String usuarioID;
 
@@ -51,6 +54,7 @@ public class TelaAgua extends AppCompatActivity {
         qntdAgua = findViewById(R.id.qntdAgua);
         imgGarrafa = findViewById(R.id.imgGarrafa);
         tituloAgua = findViewById(R.id.tituloAgua);
+        texto = findViewById(R.id.texto);
         btnIngerido = findViewById(R.id.btnIngerido);
 
         btnIngerido.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +71,7 @@ public class TelaAgua extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        dataAtual.setText(dataHoje);
+        dataAtual.setText(dataHojeBarra);
     }
 
     public void mandarAguaBD(){
@@ -123,6 +127,7 @@ public class TelaAgua extends AppCompatActivity {
                     }else if(valorAgua == 3000){
                         imgGarrafa.setImageResource(R.drawable.garrafa12);
                         tituloAgua.setText("Você concluiu sua meta! \uD83C\uDF89");
+                        texto.setText(" ");
                         btnIngerido.setClickable(false);
                     }
 

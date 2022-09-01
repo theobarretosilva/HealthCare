@@ -9,13 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TelaPeso_IMC extends AppCompatActivity {
 
     TextView btnHomem, btnMulher, btnMenos, btnMais, idade;
     TextView altura, peso;
     String genero;
-    Button btn;
+    Button calcular;
 
     Integer idadePessoa;
 
@@ -38,8 +39,15 @@ public class TelaPeso_IMC extends AppCompatActivity {
         altura = findViewById(R.id.alturaImc);
         peso = findViewById(R.id.pesoImc);
 
+
         idadePessoa = 0;
-        calculaImc();
+        calcular = findViewById(R.id.calcular);
+        calcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculaImc();
+            }
+        });
 
         btnMenos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +83,7 @@ public class TelaPeso_IMC extends AppCompatActivity {
 
     public void calculaImc(){
         // Acho que está tendo um problema com o tipo CharSequence
-        int alturaImc = parseInt(altura.getText().toString());
+        int alturaImc = Integer.parseInt(altura.getText().toString());
         int pesoImc=   Integer.parseInt(peso.getText().toString());
 
         float alturaFinal = (alturaImc/100)^2;
@@ -85,10 +93,26 @@ public class TelaPeso_IMC extends AppCompatActivity {
         System.out.println(imc);
 
         if(idadePessoa> 1 && idadePessoa<18){
-            String magreza = "";
-            String normal = "";
-            String sobrepeso = "";
-            String obesidade = "";
+//            Magreza: <17,3 (< 47.1 Kg)
+//            Normal: 17.3 a 25.5 (47.1 a 69.4 Kg)
+//            Sobrepeso: 25.5 a 29.7  (69.4 a 80.9 Kg)
+//            Obesidade: > 29.7 (> 80.9 Kg)
+
+            if(imc < 17.3){
+                String magreza = "";
+            }else if(imc>17.3  && imc<25.5 ){
+                String normal = "";
+            }else if(imc>25.5  && imc<60){
+                String sobrepeso = "";
+            }else if(imc>29.7){
+                String obesidade = "";
+            }else{
+                Toast.makeText(this, "Reveja suas informações!", Toast.LENGTH_SHORT).show();
+            }
+
+
+
+
         }
 
         if(idadePessoa> 18 && idadePessoa<60){
