@@ -13,6 +13,8 @@ import android.widget.TextView;
 public class TelaPeso_IMC extends AppCompatActivity {
 
     TextView btnHomem, btnMulher, btnMenos, btnMais, idade;
+    TextView altura, peso;
+    String genero;
     Button btn;
 
     Integer idadePessoa;
@@ -33,14 +35,19 @@ public class TelaPeso_IMC extends AppCompatActivity {
         btnMulher = findViewById(R.id.btnMulher);
         btnMenos = findViewById(R.id.btnMenos);
         btnMais = findViewById(R.id.btnMais);
+        altura = findViewById(R.id.alturaImc);
+        peso = findViewById(R.id.pesoImc);
 
         idadePessoa = 0;
+        calculaImc();
 
         btnMenos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                idadePessoa -= 1;
-                atualizaContador();
+                if(idadePessoa != 0){
+                    idadePessoa -= 1;
+                    atualizaContador();
+                }
             }
         });
         btnMais.setOnClickListener(new View.OnClickListener() {
@@ -57,11 +64,45 @@ public class TelaPeso_IMC extends AppCompatActivity {
     public void mudarSexoHomem(View h){
         btnHomem.setBackgroundResource(R.drawable.container_sexo2_imc);
         btnMulher.setBackgroundResource(R.drawable.container_sexo1_imc);
+        genero = "masculino";
     }
 
     public void mudarSexoMulher(View m){
         btnHomem.setBackgroundResource(R.drawable.container_sexo1_imc);
         btnMulher.setBackgroundResource(R.drawable.container_sexo2_imc);
+        genero = "feminino";
     }
 
+    public void calculaImc(){
+        // Acho que está tendo um problema com o tipo CharSequence
+        int alturaImc = parseInt(altura.getText().toString());
+        int pesoImc=   Integer.parseInt(peso.getText().toString());
+
+        float alturaFinal = (alturaImc/100)^2;
+        System.out.println("altura"+alturaFinal);
+        System.out.println("altura");
+        float imc =(float) pesoImc/alturaFinal;
+        System.out.println(imc);
+
+        if(idadePessoa> 1 && idadePessoa<18){
+            String magreza = "";
+            String normal = "";
+            String sobrepeso = "";
+            String obesidade = "";
+        }
+
+        if(idadePessoa> 18 && idadePessoa<60){
+            String magreza = "";
+            String normal = "";
+            String sobrepeso = "";
+            String obesidade = "";
+        }
+
+        if(idadePessoa> 60 && idadePessoa<101 &&  genero.equals("feminino")){
+
+        }
+        if(idadePessoa> 60 && idadePessoa<101 &&  genero.equals("masculino")){
+
+        }
+    }
 }
