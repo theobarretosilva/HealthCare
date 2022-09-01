@@ -2,13 +2,19 @@ package com.example.healthcare;
 
 import static java.lang.Integer.parseInt;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -16,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TelaAdicionarCafe_da_manha extends AppCompatActivity {
+public class TelaAdicionarCafe_da_manha extends AppCompatActivity{
 
     EditText nomeAlimento, kcalAlimento, gAlimento;
 
@@ -58,8 +64,14 @@ public class TelaAdicionarCafe_da_manha extends AppCompatActivity {
         cafeDaManha.put("Calorias por porção", kcal);
         cafeDaManha.put("Quantidade por porção", g);
 
-       // DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Alimentação").document("Café da manhã").collection("");
+        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Alimentação").document("Café da manhã").collection("Café da manhã").document(alimento);
+        documentReference.set(cafeDaManha).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                Toast.makeText(this, "Alimento adicionado com sucesso", Toast.LENGTH_LONG).show();
 
-
+                Intent irTelaCafeManhaAdicionado = new Intent(this, TelaCafeManhaAdicionado.class);
+                startActivity(irTelaCafeManhaAdicionado);
+            }
+        });
     }
 }

@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCare">
         <activity
+            android:name=".TelaCafeManhaAdicionado"
+            android:exported="false" />
+        <activity
             android:name=".TelaAdicionarCafe_da_manha"
             android:exported="false" />
         <activity
