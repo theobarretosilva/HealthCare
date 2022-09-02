@@ -99,7 +99,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/urbanist"
-        android:hint="79,6 kg"
         android:textColor="#1E232C"
         android:textColorHint="#1E232C"
         android:textSize="40sp"
@@ -140,12 +139,11 @@
         app:layout_constraintTop_toTopOf="@+id/textView32" />
 
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/resIMC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/urbanist"
-        android:hint="24,8 kg/m²"
         android:textColor="#1E232C"
         android:textColorHint="#1E232C"
         android:textSize="40sp"
@@ -169,7 +167,7 @@
         app:layout_constraintEnd_toEndOf="@+id/textView32"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView32"
-        app:layout_constraintTop_toBottomOf="@+id/textView34"
+        app:layout_constraintTop_toBottomOf="@+id/resIMC"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="Deprecated" />
 
