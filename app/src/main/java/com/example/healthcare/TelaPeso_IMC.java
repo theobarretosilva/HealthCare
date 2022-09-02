@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class TelaPeso_IMC extends AppCompatActivity {
 
     TextView btnHomem, btnMulher, btnMenos, btnMais, idade;
@@ -82,7 +86,6 @@ public class TelaPeso_IMC extends AppCompatActivity {
     }
 
     public void calculaImc(){
-        // Acho que está tendo um problema com o tipo CharSequence
         int alturaImc = Integer.parseInt(altura.getText().toString());
         int pesoImc=   Integer.parseInt(peso.getText().toString());
 
@@ -90,7 +93,12 @@ public class TelaPeso_IMC extends AppCompatActivity {
         System.out.println("altura"+alturaFinal);
         System.out.println("altura");
         float imc =(float) pesoImc/alturaFinal;
+
+
+        BigDecimal bd = new BigDecimal(imc);
+        float res = bd.setScale(1, RoundingMode.FLOOR).floatValue();
         System.out.println(imc);
+        Toast.makeText(this, "Seu resultado: "+res, Toast.LENGTH_SHORT).show();
 
         if(idadePessoa> 1 && idadePessoa<18){
 //            Magreza: <17,3 (< 47.1 Kg)
@@ -98,13 +106,13 @@ public class TelaPeso_IMC extends AppCompatActivity {
 //            Sobrepeso: 25.5 a 29.7  (69.4 a 80.9 Kg)
 //            Obesidade: > 29.7 (> 80.9 Kg)
 
-            if(imc < 17.3){
+            if(res < 17.3){
                 String magreza = "";
-            }else if(imc>17.3  && imc<25.5 ){
+            }else if(res>17.3  && res<25.5 ){
                 String normal = "";
-            }else if(imc>25.5  && imc<60){
+            }else if(res>25.5  && res<60){
                 String sobrepeso = "";
-            }else if(imc>29.7){
+            }else if(res>29.7){
                 String obesidade = "";
             }else{
                 Toast.makeText(this, "Reveja suas informações!", Toast.LENGTH_SHORT).show();
