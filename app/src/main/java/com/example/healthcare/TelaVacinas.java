@@ -3,8 +3,10 @@ package com.example.healthcare;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,11 +41,16 @@ public class TelaVacinas extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
                 if (documentSnapshot != null){
-                    String nomeUsu = documentSnapshot.getString("Nome");
+                    String nomeUsu = documentSnapshot.getString("Primeiro nome");
                     String olaUsuCompleto = "Olá, " + nomeUsu + "!";
                     olaNomeUsu.setText(olaUsuCompleto);
                 }
             }
         });
+    }
+
+    public void irTelaPerfil(View f){
+        Intent irTelaPerfil = new Intent(this, TelaPerfil.class);
+        startActivity(irTelaPerfil);
     }
 }

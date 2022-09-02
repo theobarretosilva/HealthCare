@@ -54,7 +54,6 @@ public class TelaConteudos extends AppCompatActivity {
     TextView olaUsu, examesBox, clinicasBox;
     CircleImageView fotoUsu;
     ImageView examesLogo, clinicasLogo, cadeado;
-    Button btnSair;
 
 
     private FirebaseAuth mAuth;
@@ -78,7 +77,6 @@ public class TelaConteudos extends AppCompatActivity {
         clinicasBox = findViewById(R.id.clinicasBox);
         clinicasLogo = findViewById(R.id.clinicasLogo);
         cadeado = findViewById(R.id.cadeado);
-        btnSair = findViewById(R.id.button8);
 
         dialog = new BottomSheetDialog(this);
         mostrarCardPremium();
@@ -111,15 +109,6 @@ public class TelaConteudos extends AppCompatActivity {
         });
 
 //        pegarImagemStorage();
-
-        btnSair.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent logout = new Intent(TelaConteudos.this, TelaInicial.class);
-                startActivity(logout);
-            }
-        });
     }
 
     @Override
