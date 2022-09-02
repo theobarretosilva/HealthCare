@@ -27,6 +27,10 @@ import java.time.format.DateTimeFormatter;
 public class TelaPeso extends AppCompatActivity {
 
     TextView pesoAtual, resIMC;
+    TextView imcMagreza, pesoMagreza;
+    TextView imcNormal, pesoNormal;
+    TextView imcSobrepeso, pesoSobrepeso;
+    TextView imcObesidade, pesoObesidade;
     String usuarioID;
 
     @Override
@@ -38,6 +42,14 @@ public class TelaPeso extends AppCompatActivity {
 
         pesoAtual = findViewById(R.id.pesoAtual);
         resIMC = findViewById(R.id.resIMC);
+        imcMagreza = findViewById(R.id.imcMagreza);
+        pesoMagreza = findViewById(R.id.pesoMagreza);
+        imcNormal = findViewById(R.id.imcNormal);
+        pesoNormal = findViewById(R.id.pesoNormal);
+        imcSobrepeso = findViewById(R.id.imcSobrepeso);
+        pesoSobrepeso = findViewById(R.id.pesoSobrepeso);
+        imcObesidade = findViewById(R.id.imcObesidade);
+        pesoObesidade = findViewById(R.id.pesoObesidade);
 
         calcularIMCAtual();
     }
@@ -76,7 +88,9 @@ public class TelaPeso extends AppCompatActivity {
                     resIMC.setText(res+" kg/m²");
                     pesoAtual.setText(peso+" kg");
 
-                    Toast.makeText(TelaPeso.this, "Seu resultado: "+res, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(TelaPeso.this, "Seu resultado: "+res, Toast.LENGTH_SHORT).show();
+
+                    setarNaTelaIMC(res);
 
                 }
             }
@@ -84,8 +98,40 @@ public class TelaPeso extends AppCompatActivity {
 
     }
 
-    public void setInfoCadastroComplementar(){
+    public void setarNaTelaIMC(float valor){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String usuarioUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        DocumentReference dr = db.collection("Usuarios").document(usuarioUID).collection("Informações pessoais").document("Informações de cadastro");
+        dr.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                if (documentSnapshot != null){
+                    String sexo = documentSnapshot.getString("Sexo");
+                    String dataNasc = documentSnapshot.getString("Data de nascimento");
+
+                    LocalDate dataNascFormatada = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    LocalDate dataHoje = LocalDate.now();
+
+                    int idade = dataHoje.getYear() - dataNascFormatada.getYear();
+                    String idadeString = String.valueOf(idade);
+
+                    if (sexo == "Masculino" && idade >= 60){
+                        if(valor < 21.9){
+
+
+                        }else if(valor>22.0  && valor<=27.0 ){
+
+                        }else if(valor>27.1  && valor<=32.0){
+
+                        }else if(valor>32.1){
+
+                        }else{
+                            Toast.makeText(TelaPeso.this, "Reveja suas informações!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        });
     }
 }
