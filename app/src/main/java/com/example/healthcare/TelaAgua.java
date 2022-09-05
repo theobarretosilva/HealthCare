@@ -32,12 +32,13 @@ public class TelaAgua extends AppCompatActivity {
     ImageView imgGarrafa;
     Button btnIngerido;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-    SimpleDateFormat sdfBarra = new SimpleDateFormat("dd/MM/yyyy");
-
     Date data = new Date();
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     String dataHoje = sdf.format(data);
-    String dataHojeBarra = sdf.format(data);
+
+    SimpleDateFormat sdfBarra = new SimpleDateFormat("dd/MM/yyyy");
+    String dataHojeBarra = sdfBarra.format(data);
 
     String usuarioID;
 

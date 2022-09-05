@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,6 +55,10 @@ public class TelaAdicionarCafe_da_manha extends AppCompatActivity{
     public void mandarParaBD(){
         String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        Date data = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String dataHoje = sdf.format(data);
+
         String alimento = nomeAlimento.getText().toString();
         int kcal = parseInt(kcalAlimento.getText().toString());
         int g = parseInt(gAlimento.getText().toString());
@@ -64,7 +70,7 @@ public class TelaAdicionarCafe_da_manha extends AppCompatActivity{
         cafeDaManha.put("Calorias por porção", kcal);
         cafeDaManha.put("Quantidade por porção", g);
 
-        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Alimentação").document("Café da manhã").collection("Café da manhã").document(alimento);
+        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Alimentação").document("Café da manhã").collection(dataHoje).document(alimento);
         documentReference.set(cafeDaManha).addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 Toast.makeText(this, "Alimento adicionado com sucesso", Toast.LENGTH_LONG).show();
