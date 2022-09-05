@@ -90,7 +90,7 @@ public class TelaPeso extends AppCompatActivity {
 
 //                    Toast.makeText(TelaPeso.this, "Seu resultado: "+res, Toast.LENGTH_SHORT).show();
 
-                    setarNaTelaIMC(res);
+                    setarNaTelaIMCHI(res);
 
                 }
             }
@@ -98,7 +98,7 @@ public class TelaPeso extends AppCompatActivity {
 
     }
 
-    public void setarNaTelaIMC(float valor){
+    public void setarNaTelaIMCHI(float valor){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         String usuarioUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -117,17 +117,18 @@ public class TelaPeso extends AppCompatActivity {
                     String idadeString = String.valueOf(idade);
 
                     if (sexo == "Masculino" && idade >= 60){
+                        imcMagreza.setText("<21.9");
+                        imcNormal.setText("22.0 a 27.0");
+                        imcSobrepeso.setText("27.1 a 30.0");
+                        imcObesidade.setText(">30.1");
                         if(valor < 21.9){
-
 
                         }else if(valor>22.0  && valor<=27.0 ){
 
-                        }else if(valor>27.1  && valor<=32.0){
+                        }else if(valor>27.1  && valor<=30.0){
 
-                        }else if(valor>32.1){
+                        }else if(valor>30.1){
 
-                        }else{
-                            Toast.makeText(TelaPeso.this, "Reveja suas informações!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
