@@ -172,7 +172,7 @@
         tools:ignore="Deprecated" />
 
     <TextView
-        android:id="@+id/textView50"
+        android:id="@+id/fundoMagreza"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -181,13 +181,13 @@
         android:backgroundTint="#008C8C"
         android:enabled="false"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/textView42"
+        app:layout_constraintBottom_toBottomOf="@+id/imcMagreza"
         app:layout_constraintEnd_toEndOf="@+id/textView35"
         app:layout_constraintStart_toStartOf="@+id/textView35"
-        app:layout_constraintTop_toTopOf="@+id/textView42" />
+        app:layout_constraintTop_toTopOf="@+id/imcMagreza" />
 
     <TextView
-        android:id="@+id/textView36"
+        android:id="@+id/magreza"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -200,7 +200,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
     <TextView
-        android:id="@+id/textView51"
+        android:id="@+id/fundoNormal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -209,14 +209,14 @@
         android:backgroundTint="#008C8C"
         android:editable="false"
         android:enabled="false"
-        app:layout_constraintBottom_toBottomOf="@+id/textView44"
+        app:layout_constraintBottom_toBottomOf="@+id/imcNormal"
         app:layout_constraintEnd_toEndOf="@+id/textView35"
         app:layout_constraintStart_toStartOf="@+id/textView35"
-        app:layout_constraintTop_toTopOf="@+id/textView44"
+        app:layout_constraintTop_toTopOf="@+id/imcNormal"
         tools:ignore="Deprecated" />
 
     <TextView
-        android:id="@+id/textView37"
+        android:id="@+id/normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -227,10 +227,10 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView35"
-        app:layout_constraintTop_toBottomOf="@+id/textView36" />
+        app:layout_constraintTop_toBottomOf="@+id/magreza" />
 
     <TextView
-        android:id="@+id/textView52"
+        android:id="@+id/fundoSobrepeso"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -239,13 +239,13 @@
         android:backgroundTint="#008C8C"
         android:enabled="false"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/textView46"
+        app:layout_constraintBottom_toBottomOf="@+id/imcSobrepeso"
         app:layout_constraintEnd_toEndOf="@+id/textView35"
         app:layout_constraintStart_toStartOf="@+id/textView35"
-        app:layout_constraintTop_toTopOf="@+id/textView46" />
+        app:layout_constraintTop_toTopOf="@+id/imcSobrepeso" />
 
     <TextView
-        android:id="@+id/textView38"
+        android:id="@+id/sobrepeso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -255,10 +255,10 @@
         android:textColor="#1E232C"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView35"
-        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+        app:layout_constraintTop_toBottomOf="@+id/normal" />
 
     <TextView
-        android:id="@+id/textView53"
+        android:id="@+id/fundoObesidade"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -266,13 +266,13 @@
         android:background="@drawable/barra_fundo_voltar_titulo"
         android:backgroundTint="#008C8C"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/textView48"
+        app:layout_constraintBottom_toBottomOf="@+id/imcObesidade"
         app:layout_constraintEnd_toEndOf="@+id/textView35"
         app:layout_constraintStart_toStartOf="@+id/textView35"
-        app:layout_constraintTop_toTopOf="@+id/textView48" />
+        app:layout_constraintTop_toTopOf="@+id/imcObesidade" />
 
     <TextView
-        android:id="@+id/textView39"
+        android:id="@+id/obesidade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -283,7 +283,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView35"
         app:layout_constraintStart_toStartOf="@+id/textView35"
-        app:layout_constraintTop_toBottomOf="@+id/textView38"
+        app:layout_constraintTop_toBottomOf="@+id/sobrepeso"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -316,7 +316,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView35" />
 
     <TextView
-        android:id="@+id/textView42"
+        android:id="@+id/imcMagreza"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -329,7 +329,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
     <TextView
-        android:id="@+id/textView43"
+        android:id="@+id/pesoMagreza"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -342,7 +342,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
     <TextView
-        android:id="@+id/textView44"
+        android:id="@+id/imcNormal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -351,12 +351,12 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView42"
-        app:layout_constraintStart_toStartOf="@+id/textView42"
-        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+        app:layout_constraintEnd_toEndOf="@+id/imcMagreza"
+        app:layout_constraintStart_toStartOf="@+id/imcMagreza"
+        app:layout_constraintTop_toBottomOf="@+id/imcMagreza" />
 
     <TextView
-        android:id="@+id/textView45"
+        android:id="@+id/pesoNormal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -365,12 +365,12 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView43"
-        app:layout_constraintStart_toStartOf="@+id/textView43"
-        app:layout_constraintTop_toBottomOf="@+id/textView43" />
+        app:layout_constraintEnd_toEndOf="@+id/pesoMagreza"
+        app:layout_constraintStart_toStartOf="@+id/pesoMagreza"
+        app:layout_constraintTop_toBottomOf="@+id/pesoMagreza" />
 
     <TextView
-        android:id="@+id/textView46"
+        android:id="@+id/imcSobrepeso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -378,12 +378,12 @@
         android:text="@string/_24_9_a_30"
         android:textColor="#1E232C"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView44"
-        app:layout_constraintStart_toStartOf="@+id/textView44"
-        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+        app:layout_constraintEnd_toEndOf="@+id/imcNormal"
+        app:layout_constraintStart_toStartOf="@+id/imcNormal"
+        app:layout_constraintTop_toBottomOf="@+id/imcNormal" />
 
     <TextView
-        android:id="@+id/textView47"
+        android:id="@+id/pesoSobrepeso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -391,12 +391,12 @@
         android:text="@string/_65_3_a_78_7_kg"
         android:textColor="#1E232C"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView45"
-        app:layout_constraintStart_toStartOf="@+id/textView45"
-        app:layout_constraintTop_toBottomOf="@+id/textView45" />
+        app:layout_constraintEnd_toEndOf="@+id/pesoNormal"
+        app:layout_constraintStart_toStartOf="@+id/pesoNormal"
+        app:layout_constraintTop_toBottomOf="@+id/pesoNormal" />
 
     <TextView
-        android:id="@+id/textView48"
+        android:id="@+id/imcObesidade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -405,13 +405,13 @@
         android:textColor="#1E232C"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView35"
-        app:layout_constraintEnd_toEndOf="@+id/textView46"
-        app:layout_constraintStart_toStartOf="@+id/textView46"
-        app:layout_constraintTop_toBottomOf="@+id/textView46"
+        app:layout_constraintEnd_toEndOf="@+id/imcSobrepeso"
+        app:layout_constraintStart_toStartOf="@+id/imcSobrepeso"
+        app:layout_constraintTop_toBottomOf="@+id/imcSobrepeso"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView49"
+        android:id="@+id/pesoObesidade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -420,9 +420,9 @@
         android:textColor="#1E232C"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView35"
-        app:layout_constraintEnd_toEndOf="@+id/textView47"
-        app:layout_constraintStart_toStartOf="@+id/textView47"
-        app:layout_constraintTop_toBottomOf="@+id/textView47"
+        app:layout_constraintEnd_toEndOf="@+id/pesoSobrepeso"
+        app:layout_constraintStart_toStartOf="@+id/pesoSobrepeso"
+        app:layout_constraintTop_toBottomOf="@+id/pesoSobrepeso"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
