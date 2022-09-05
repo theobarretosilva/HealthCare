@@ -130,11 +130,14 @@ public class TelaPerfil extends AppCompatActivity {
                     String nomeCompleto = documentSnapshot.getString("Nome completo");
                     nomeUsu.setText(nomeCompleto);
 
-//                    String dataNasc = documentSnapshot.getString("Data de nascimento");
-//                    LocalDate dataNascOf = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-//                    LocalDate dataAtual = LocalDate.now();
-//                    int dataN = (dataAtual.getYear() - dataNascOf.getYear());
-//                    idadeUsu.setText(dataN);
+                    String dataNasc = documentSnapshot.getString("Data de nascimento");
+
+                    LocalDate dataNascFormatada = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    LocalDate dataHoje = LocalDate.now();
+
+                    int idade = dataHoje.getYear() - dataNascFormatada.getYear();
+                    String idadeString = String.valueOf(idade);
+                    idadeUsu.setText("\uD83C\uDF82 "+ idadeString+" anos");
 
                     String telefone = documentSnapshot.getString("Telefone");
                     String telefoneE = "\uD83D\uDCDE " + telefone;
