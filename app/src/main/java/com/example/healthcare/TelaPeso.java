@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
@@ -26,6 +28,7 @@ import java.time.format.DateTimeFormatter;
 
 public class TelaPeso extends AppCompatActivity {
 
+    TextView magreza, normal,sobrepeso,obesidade;
     TextView pesoAtual, resIMC;
     TextView imcMagreza, pesoMagreza;
     TextView imcNormal, pesoNormal;
@@ -55,6 +58,10 @@ public class TelaPeso extends AppCompatActivity {
         fundoNormal = findViewById(R.id.fundoNormal);
         fundoSobrepeso = findViewById(R.id.fundoSobrepeso);
         fundoObesidade = findViewById(R.id.fundoObesidade);
+        magreza = findViewById(R.id.magreza);
+        normal = findViewById(R.id.normal);
+        sobrepeso = findViewById(R.id.sobrepeso);
+        obesidade = findViewById(R.id.obesidade);
 
         calcularIMCAtual();
     }
@@ -120,8 +127,8 @@ public class TelaPeso extends AppCompatActivity {
 
                     int idade = dataHoje.getYear() - dataNascFormatada.getYear();
                     String idadeString = String.valueOf(idade);
-                    idade = 65;
-                    sexo = "Masculino";
+
+                    String calma = "vai";
 
                     if (sexo == "Masculino" && idade >= 60){
                         imcMagreza.setText("<21.9");
@@ -129,11 +136,19 @@ public class TelaPeso extends AppCompatActivity {
                         imcSobrepeso.setText("27.1 a 30.0");
                         imcObesidade.setText(">30.1");
 
-                        if(valor < 21.9){
+                        if(calma == "vai"){
                             fundoMagreza.setVisibility(View.VISIBLE);
                             fundoNormal.setVisibility(View.INVISIBLE);
+                            magreza.setTypeface(magreza.getTypeface(), Typeface.BOLD);
+                            imcMagreza.setTypeface(imcMagreza.getTypeface(), Typeface.BOLD);
+                            pesoMagreza.setTypeface(pesoMagreza.getTypeface(), Typeface.BOLD);
+                            normal.setTypeface(normal.getTypeface(), Typeface.NORMAL);
+                            normal.setTextColor(Color.parseColor("#1E232C"));
+                            imcNormal.setTypeface(imcNormal.getTypeface(), Typeface.NORMAL);
+                            imcNormal.setTextColor(Color.parseColor("#1E232C"));
+                            pesoNormal.setTypeface(pesoNormal.getTypeface(), Typeface.NORMAL);
+                            pesoNormal.setTextColor(0xAA1E232C);
                         }else if(valor>22.0  && valor<=27.0 ){
-
 
                         }else if(valor>27.1  && valor<=30.0){
 
