@@ -31,6 +31,7 @@ public class TelaPeso extends AppCompatActivity {
     TextView imcNormal, pesoNormal;
     TextView imcSobrepeso, pesoSobrepeso;
     TextView imcObesidade, pesoObesidade;
+    TextView fundoMagreza, fundoNormal, fundoSobrepeso, fundoObesidade;
     String usuarioID;
 
     @Override
@@ -50,6 +51,10 @@ public class TelaPeso extends AppCompatActivity {
         pesoSobrepeso = findViewById(R.id.pesoSobrepeso);
         imcObesidade = findViewById(R.id.imcObesidade);
         pesoObesidade = findViewById(R.id.pesoObesidade);
+        fundoMagreza = findViewById(R.id.fundoMagreza);
+        fundoNormal = findViewById(R.id.fundoNormal);
+        fundoSobrepeso = findViewById(R.id.fundoSobrepeso);
+        fundoObesidade = findViewById(R.id.fundoObesidade);
 
         calcularIMCAtual();
     }
@@ -100,9 +105,9 @@ public class TelaPeso extends AppCompatActivity {
 
     public void setarNaTelaIMCHI(float valor){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String usuarioUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        DocumentReference dr = db.collection("Usuarios").document(usuarioUID).collection("Informações pessoais").document("Informações de cadastro");
+        DocumentReference dr = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
         dr.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
@@ -115,15 +120,20 @@ public class TelaPeso extends AppCompatActivity {
 
                     int idade = dataHoje.getYear() - dataNascFormatada.getYear();
                     String idadeString = String.valueOf(idade);
+                    idade = 65;
+                    sexo = "Masculino";
 
                     if (sexo == "Masculino" && idade >= 60){
                         imcMagreza.setText("<21.9");
                         imcNormal.setText("22.0 a 27.0");
                         imcSobrepeso.setText("27.1 a 30.0");
                         imcObesidade.setText(">30.1");
-                        if(valor < 21.9){
 
+                        if(valor < 21.9){
+                            fundoMagreza.setVisibility(View.VISIBLE);
+                            fundoNormal.setVisibility(View.INVISIBLE);
                         }else if(valor>22.0  && valor<=27.0 ){
+
 
                         }else if(valor>27.1  && valor<=30.0){
 
