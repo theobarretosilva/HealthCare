@@ -120,6 +120,8 @@ public class TelaPeso extends AppCompatActivity {
 
                     int idade = dataHoje.getYear() - dataNascFormatada.getYear();
                     String idadeString = String.valueOf(idade);
+                    System.out.println("Sua idade: "+idade);
+
                     idade = 65;
                     sexo = "Masculino";
 
