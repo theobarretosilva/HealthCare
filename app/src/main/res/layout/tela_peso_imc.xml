@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:contentDescription="@string/voltar_para_tela_de_peso"
+        android:onClick="retornaTela"
         app:layout_constraintBottom_toBottomOf="@+id/textView54"
         app:layout_constraintEnd_toEndOf="@+id/textView54"
         app:layout_constraintHorizontal_bias="0.0"
