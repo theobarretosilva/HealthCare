@@ -4,6 +4,7 @@ import static java.lang.Integer.parseInt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -136,5 +137,10 @@ public class TelaPeso_IMC extends AppCompatActivity {
         if(idadePessoa> 60 && idadePessoa<101 &&  genero.equals("masculino")){
 
         }
+    }
+
+    public  void retornaTela(View v){
+        Intent i = new Intent(this, TelaPeso.class);
+        startActivity(i);
     }
 }

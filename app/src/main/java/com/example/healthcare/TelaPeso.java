@@ -76,7 +76,6 @@ public class TelaPeso extends AppCompatActivity {
                     resIMC.setText(res+" kg/m²");
                     pesoAtual.setText(peso+" kg");
 
-                    Toast.makeText(TelaPeso.this, "Seu resultado: "+res, Toast.LENGTH_SHORT).show();
 
                 }
             }
