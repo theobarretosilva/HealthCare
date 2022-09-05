@@ -6,4 +6,148 @@
     android:layout_height="match_parent"
     tools:context=".TelaSono_adicionar">
 
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Registrar sono"
+        android:textColor="#0C5C64"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView45"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView45"
+        app:layout_constraintTop_toTopOf="@+id/imageView45" />
+
+    <ImageView
+        android:id="@+id/imageView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Fui dormir:"
+        android:textColor="#000000"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Acordei às:"
+        android:textColor="#000000"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/horaDormir"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="80dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/textView43"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView43"
+        app:layout_constraintTop_toTopOf="@+id/textView43"
+        app:mask="__:__"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
+
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/horaAcordei"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="80dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#000000"
+        app:mask="__:__"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
+        app:layout_constraintBottom_toBottomOf="@+id/textView44"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView44"
+        app:layout_constraintTop_toTopOf="@+id/textView44" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/urbanist"
+        android:text="hrs."
+        android:textColor="#000000"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/horaDormir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/horaDormir"
+        app:layout_constraintTop_toTopOf="@+id/horaDormir"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/urbanist"
+        android:text="hrs."
+        android:textColor="#000000"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/horaAcordei"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/horaAcordei"
+        app:layout_constraintTop_toTopOf="@+id/horaAcordei"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="65dp"
+        android:backgroundTint="#6E9EA2"
+        android:fontFamily="@font/urbanist"
+        android:paddingTop="9dp"
+        android:paddingBottom="9dp"
+        android:text="Gravar"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView44"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
