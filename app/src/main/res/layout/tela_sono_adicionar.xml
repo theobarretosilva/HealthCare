@@ -65,14 +65,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView43" />
 
     <com.santalu.maskara.widget.MaskEditText
-        android:id="@+id/horaDormir"
+        android:id="@+id/horaDormi"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="80dp"
         android:ems="10"
         android:inputType="number"
+        android:textAlignment="viewEnd"
         android:textColor="#000000"
+        android:textColorHighlight="#000000"
+        android:textColorHint="#000000"
+        android:textColorLink="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/textView43"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -90,15 +94,19 @@
         android:layout_marginEnd="80dp"
         android:ems="10"
         android:inputType="number"
+        android:textAlignment="viewEnd"
         android:textColor="#000000"
-        app:mask="__:__"
-        app:maskCharacter="_"
-        app:maskStyle="completable"
+        android:textColorHighlight="#000000"
+        android:textColorHint="#000000"
+        android:textColorLink="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/textView44"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView44"
-        app:layout_constraintTop_toTopOf="@+id/textView44" />
+        app:layout_constraintTop_toTopOf="@+id/textView44"
+        app:mask="__:__"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
 
     <TextView
         android:id="@+id/textView45"
@@ -108,12 +116,12 @@
         android:text="hrs."
         android:textColor="#000000"
         android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="@+id/horaDormir"
+        app:layout_constraintBottom_toBottomOf="@+id/horaDormi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/horaDormir"
-        app:layout_constraintTop_toTopOf="@+id/horaDormir"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintStart_toEndOf="@+id/horaDormi"
+        app:layout_constraintTop_toTopOf="@+id/horaDormi"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/textView46"
@@ -128,7 +136,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/horaAcordei"
         app:layout_constraintTop_toTopOf="@+id/horaAcordei"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/button"
@@ -139,6 +147,7 @@
         android:layout_marginEnd="65dp"
         android:backgroundTint="#6E9EA2"
         android:fontFamily="@font/urbanist"
+        android:onClick="verificarPreenchimento"
         android:paddingTop="9dp"
         android:paddingBottom="9dp"
         android:text="Gravar"
