@@ -127,11 +127,11 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView117"
+        android:id="@+id/dectaPasso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/urbanist"
-        android:hint="4.523"
+        android:hint="0"
         android:textColor="#0C5C64"
         android:textColorHint="#0C5C64"
         android:textSize="52dp"
