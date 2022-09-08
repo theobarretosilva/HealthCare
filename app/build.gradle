@@ -66,6 +66,8 @@ dependencies {
 
     implementation "com.androidplot:androidplot-core:1.5.10"
 
+    implementation 'com.google.firebase:firebase-storage'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
