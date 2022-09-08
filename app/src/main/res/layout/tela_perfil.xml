@@ -50,42 +50,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/imagemRedonda"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoUsuPerfil"
         android:layout_width="0dp"
         android:layout_height="154dp"
-        android:layout_marginStart="118dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="118dp"
         android:onClick="verificaPermissaoGaleria"
-        app:cardCornerRadius="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnVoltar"
-        app:layout_constraintVertical_bias="0.0">
-
-        <ImageView
-            android:id="@+id/fotoUsuPerfil"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="550dp"
-            android:onClick="obterImagemGaleria"
-            android:src="@drawable/pessoa"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnVoltar" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/nomeUsuPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/urbanist"
         android:hint="Nome usuario"
         android:textColor="#0C5C64"
@@ -93,7 +75,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagemRedonda" />
+        app:layout_constraintTop_toBottomOf="@+id/fotoUsuPerfil" />
 
     <TextView
         android:id="@+id/textView95"

@@ -31,6 +31,8 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -59,7 +61,7 @@ public class TelaPerfil extends AppCompatActivity {
 
     TextView nomeUsu, idadeUsu, telefoneUsu, emailUsu, pesoUsu, alturaUsu, biotipoUsu;
     Button btnVoltar, btnLogout;
-    private ImageView fotoUsuPerfil;
+    private CircleImageView fotoUsuPerfil;
 
     private static final int REQUEST_GALERIA = 100;
     private String caminhoImagem;
@@ -177,6 +179,23 @@ public class TelaPerfil extends AppCompatActivity {
         });
     }
 
+    private void salvarImagemUsu(){
+        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        StorageReference reference = FirebaseHelper.getStorageReference()
+                .child("imagens")
+                .child("Fotos de perfil")
+                .child(usuarioID)
+                .child(usuarioID + ".jpeg");
+
+        UploadTask uploadTask = reference.putFile(Uri.parse(caminhoImagem));
+        uploadTask.addOnSuccessListener(taskSnapshot -> reference.getDownloadUrl().addOnCompleteListener(task -> {
+
+
+
+        })).addOnFailureListener(e -> Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
     private void iniciarComponentes(){
         nomeUsu = findViewById(R.id.nomeUsuPerfil);
         idadeUsu = findViewById(R.id.idadePerfil);
@@ -214,7 +233,8 @@ public class TelaPerfil extends AppCompatActivity {
                     }
                 }
 
-                Log.i("INFOTESTE", "onActivityResult: " + caminhoImagem);
+                fotoUsuPerfil.setImageBitmap(imagem);
+                salvarImagemUsu();
             }
         }
     }
