@@ -42,7 +42,7 @@ public class TelaAlimentacao extends AppCompatActivity {
     }
 
     public void irCafeDaManha(View g){
-        Intent irCafeDaManha = new Intent(this, TelaAdicionarCafe_da_manha.class);
+        Intent irCafeDaManha = new Intent(this, TelaAlimentacao_adCafedamanha.class);
         startActivity(irCafeDaManha);
     }
 }

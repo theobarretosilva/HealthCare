@@ -209,7 +209,7 @@
         android:backgroundTint="#008C8C"
         android:editable="false"
         android:enabled="false"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/imcNormal"
         app:layout_constraintEnd_toEndOf="@+id/textView35"
         app:layout_constraintStart_toStartOf="@+id/textView35"

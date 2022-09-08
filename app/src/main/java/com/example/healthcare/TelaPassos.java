@@ -40,11 +40,11 @@ public class TelaPassos extends AppCompatActivity implements SensorEventListener
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mStepDetectorSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+
+        setarData();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+    public void setarData(){
         String textoPronto = "\uD83C\uDFC3\uD83C\uDFFD " + dataHoje;
 
         dataAtual.setText(textoPronto);

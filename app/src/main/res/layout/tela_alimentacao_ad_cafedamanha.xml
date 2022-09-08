@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaAdicionarCafe_da_manha">
+    tools:context=".TelaAlimentacao_adCafedamanha">
 
     <ImageView
         android:id="@+id/imageView37"

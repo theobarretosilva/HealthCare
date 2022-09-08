@@ -129,26 +129,34 @@ public class TelaPeso extends AppCompatActivity {
                     String idadeString = String.valueOf(idade);
 
                     String calma = "vai";
+                    String calma2 = "vai";
 
-                    if (sexo == "Masculino" && idade >= 60){
+                    String sexoMasculino = "Masculino";
+
+                    idade = 62;
+
+                    if (sexo.equals(sexoMasculino) && idade >= 60){
                         imcMagreza.setText("<21.9");
                         imcNormal.setText("22.0 a 27.0");
                         imcSobrepeso.setText("27.1 a 30.0");
                         imcObesidade.setText(">30.1");
 
-                        if(calma == "vai"){
+
                             fundoMagreza.setVisibility(View.VISIBLE);
                             fundoNormal.setVisibility(View.INVISIBLE);
-                            magreza.setTypeface(magreza.getTypeface(), Typeface.BOLD);
-                            imcMagreza.setTypeface(imcMagreza.getTypeface(), Typeface.BOLD);
-                            pesoMagreza.setTypeface(pesoMagreza.getTypeface(), Typeface.BOLD);
-                            normal.setTypeface(normal.getTypeface(), Typeface.NORMAL);
-                            normal.setTextColor(Color.parseColor("#1E232C"));
+                            magreza.setTypeface(Typeface.DEFAULT_BOLD);
+                            imcMagreza.setTypeface(Typeface.DEFAULT_BOLD);
+                            pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
+                            magreza.setTextColor(getResources().getColor(R.color.white));
+                            imcMagreza.setTextColor(getResources().getColor(R.color.white));
+                            pesoMagreza.setTextColor(getResources().getColor(R.color.white));
+                            normal.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                            normal.setTextColor(getResources().getColor(R.color.azul_escuro));
                             imcNormal.setTypeface(imcNormal.getTypeface(), Typeface.NORMAL);
-                            imcNormal.setTextColor(Color.parseColor("#1E232C"));
+                            imcNormal.setTextColor(getResources().getColor(R.color.azul_escuro));
                             pesoNormal.setTypeface(pesoNormal.getTypeface(), Typeface.NORMAL);
-                            pesoNormal.setTextColor(0xAA1E232C);
-                        }else if(valor>22.0  && valor<=27.0 ){
+                            pesoNormal.setTextColor(getResources().getColor(R.color.azul_escuro));
+                        if(valor>22.0  && valor<=27.0 ){
 
                         }else if(valor>27.1  && valor<=30.0){
 

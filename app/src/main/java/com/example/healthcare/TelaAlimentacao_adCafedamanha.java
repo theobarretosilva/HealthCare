@@ -2,19 +2,15 @@ package com.example.healthcare;
 
 import static java.lang.Integer.parseInt;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -24,14 +20,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TelaAdicionarCafe_da_manha extends AppCompatActivity{
+public class TelaAlimentacao_adCafedamanha extends AppCompatActivity{
 
     EditText nomeAlimento, kcalAlimento, gAlimento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_adicionar_cafe_da_manha);
+        setContentView(R.layout.tela_alimentacao_ad_cafedamanha);
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 

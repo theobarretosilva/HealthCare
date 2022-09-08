@@ -5,9 +5,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.sensor.stepdetector"  android:required="true"/>
-    <uses-feature android:name="android.hardware.sensor.stepcounter"  android:required="true"/>
 
+    <uses-feature
+        android:name="android.hardware.sensor.stepdetector"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.stepcounter"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +20,39 @@
         android:roundIcon="@mipmap/ic_launcher_healthcare_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCare">
+        <activity
+            android:name=".TelaAlimentacao_adLanche"
+            android:exported="false" />
+        <activity
+            android:name=".TelaAlimentacao1_Lanche"
+            android:exported="false" />
+        <activity
+            android:name=".TelaAlimentacao_Lanche"
+            android:exported="false" />
+        <activity
+            android:name=".TelaAlimentacao_adJantar"
+            android:exported="false" />
+        <activity
+            android:name=".TelaAlimentacao1_Jantar"
+            android:exported="false" />
+        <activity
+            android:name=".TelaAlimentacao_Jantar"
+            android:exported="false" />
+        <activity
+            android:name=".TelaAlimentacao_adAlmoco"
+            android:exported="false" />
+        <activity
+            android:name=".TelaAlimentacao1_Almoco"
+            android:exported="false" />
+        <activity
+            android:name=".TelaAlimentacao_Almoco"
+            android:exported="false" />
+        <activity
+            android:name=".TelaAlimentacao1_Cafedamanha"
+            android:exported="false" />
+        <activity
+            android:name=".TelaAlimentacao_Cafedamanha"
+            android:exported="false" />
         <activity
             android:name=".TelaExercicios_adicionar"
             android:exported="false" />
@@ -26,7 +63,7 @@
             android:name=".TelaCafeManhaAdicionado"
             android:exported="false" />
         <activity
-            android:name=".TelaAdicionarCafe_da_manha"
+            android:name=".TelaAlimentacao_adCafedamanha"
             android:exported="false" />
         <activity
             android:name=".TelaPerfil_Premium"
