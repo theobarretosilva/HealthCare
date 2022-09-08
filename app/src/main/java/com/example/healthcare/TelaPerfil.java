@@ -12,10 +12,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.ImageDecoder;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -42,6 +45,7 @@ import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -57,9 +61,9 @@ public class TelaPerfil extends AppCompatActivity {
     Button btnVoltar, btnLogout;
     private ImageView fotoUsuPerfil;
 
-    private Uri uri_imagem;
-
     private static final int REQUEST_GALERIA = 100;
+    private String caminhoImagem;
+    private Bitmap imagem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +88,7 @@ public class TelaPerfil extends AppCompatActivity {
         setarInfoCadasComple();
     }
 
-    public void abrirGaleria(View view){
-        verificaPermissaoGaleria();
-    }
-
-    private void verificaPermissaoGaleria(){
+    public void verificaPermissaoGaleria(View view){
         PermissionListener permissionListener = new PermissionListener() {
             @Override
             public void onPermissionGranted() {
@@ -188,5 +188,34 @@ public class TelaPerfil extends AppCompatActivity {
         btnVoltar = findViewById(R.id.btnVoltar);
         btnLogout = findViewById(R.id.btnLogout);
         fotoUsuPerfil = findViewById(R.id.fotoUsuPerfil);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK){
+            if (requestCode == REQUEST_GALERIA){
+                Uri localImagemSelecionada = data.getData();
+                caminhoImagem = localImagemSelecionada.toString();
+
+                if (Build.VERSION.SDK_INT > 28){
+                    try {
+                        imagem = MediaStore.Images.Media.getBitmap(getBaseContext().getContentResolver(), localImagemSelecionada);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    ImageDecoder.Source source = ImageDecoder.createSource(getBaseContext().getContentResolver(), localImagemSelecionada);
+                    try {
+                        imagem = ImageDecoder.decodeBitmap(source);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                Log.i("INFOTESTE", "onActivityResult: " + caminhoImagem);
+            }
+        }
     }
 }
