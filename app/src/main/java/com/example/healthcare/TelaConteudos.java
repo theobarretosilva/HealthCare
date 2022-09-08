@@ -55,13 +55,10 @@ public class TelaConteudos extends AppCompatActivity {
     CircleImageView fotoUsu;
     ImageView examesLogo, clinicasLogo, cadeado;
 
-
     private FirebaseAuth mAuth;
-    private FirebaseUser mCurrentUser;
 
-    int TAKE_IMAGE_CODE = 10001;
-
-    Bitmap imagem;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private StorageReference storageRef = storage.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +105,7 @@ public class TelaConteudos extends AppCompatActivity {
             }
         });
 
-//        pegarImagemStorage();
+        setarImagemPerfil();
     }
 
     @Override
@@ -129,115 +126,6 @@ public class TelaConteudos extends AppCompatActivity {
             }
         });
     }
-
-//    public void pegarImagemStorage(){
-//        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//        FirebaseStorage storage = FirebaseStorage.getInstance();
-//        StorageReference storageRef = storage.getReference();
-//        String fotoUsuStorage = usuarioID + ".jpeg";
-//        String calma = "gs://healthcare-4e72c.appspot.com/profileImages/" + fotoUsuStorage;
-//        StorageReference pathReference = storageRef.child("profileImages/" + fotoUsuStorage);
-//        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://healthcare-4e72c.appspot.com/profileImages/ub8NShFHnNeZp05jz0MxDkJXNWs2.jpeg");
-//
-//        Glide.with(this)
-//                .load(storageReference)
-//                .into(fotoUsu);
-//
-//        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-//        try {
-//            GoogleSignInAccount account = task.getResult(ApiException.class);
-//            firebaseAuthWithGoogle(account.getIdToken());
-//            SharedPreferences.Editor editor = getApplicationContext()
-//                    .getSharedPreferences("Pref", MODE_PRIVATE)
-//                    .edit();
-//            account.getPhotoUrl();
-//            Bundle extras = data.getExtras();
-//            fotoUsu.setImageBitmap();
-//        }
-//
-//        mAuth = FirebaseAuth.getInstance();
-//        mCurrentUser = mAuth.getCurrentUser();
-//
-//        Picasso.get().load(mCurrentUser.getPhotoUrl())
-//                .into(fotoUsu);
-//    }
-
-//    public void pegarFoto(View p){
-//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        if (intent.resolveActivity(getPackageManager()) != null){
-//            startActivityForResult(intent, TAKE_IMAGE_CODE);
-//        }
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == TAKE_IMAGE_CODE){
-//            switch (resultCode){
-//                case RESULT_OK:
-//                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-//                    fotoUsu.setImageBitmap(bitmap);
-//                    handleUpload(bitmap);
-//            }
-//        }
-//    }
-//
-//    private void handleUpload(Bitmap bitmap){
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-//
-//        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//        StorageReference reference = FirebaseStorage.getInstance().getReference()
-//                .child("profileImages")
-//                .child(uid + ".jpeg");
-//
-//        reference.putBytes(baos.toByteArray())
-//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                        getDownloadUrl(reference);
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.e(TAG, "onFailure: " + e.getCause());
-//                    }
-//                });
-//    }
-//
-//    private void getDownloadUrl(StorageReference reference){
-//        reference.getDownloadUrl()
-//                .addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                    @Override
-//                    public void onSuccess(Uri uri) {
-//                        Log.e(TAG, "onSuccess: " + uri);
-//                        setUserProfileUrl(uri);
-//                    }
-//                });
-//    }
-//
-//    private void setUserProfileUrl(Uri uri){
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//
-//        UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
-//                .setPhotoUri(uri)
-//                .build();
-//
-//        user.updateProfile(request)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//                        Toast.makeText(TelaConteudos.this, "Update succesfully", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(TelaConteudos.this, "Profile image failed...", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//    }
 
     public void irTelaPerfil(View t){
         Intent irTelaPerfil = new Intent (this, TelaPerfil.class);
@@ -301,5 +189,16 @@ public class TelaConteudos extends AppCompatActivity {
         });
 
         dialog.setContentView(view);
+    }
+
+    public void setarImagemPerfil(){
+        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        storageRef.child("imagens/Fotos de perfil/" + usuarioID + "/" + usuarioID + ".jpeg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(fotoUsu);
+            }
+        });
     }
 }

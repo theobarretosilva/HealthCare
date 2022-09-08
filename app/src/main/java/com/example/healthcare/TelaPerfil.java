@@ -45,6 +45,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -66,6 +67,8 @@ public class TelaPerfil extends AppCompatActivity {
     private static final int REQUEST_GALERIA = 100;
     private String caminhoImagem;
     private Bitmap imagem;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private StorageReference storageRef = storage.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,7 @@ public class TelaPerfil extends AppCompatActivity {
 
         setarInfoCadastro();
         setarInfoCadasComple();
+        setarImagemPerfil();
     }
 
     public void verificaPermissaoGaleria(View view){
@@ -189,11 +193,6 @@ public class TelaPerfil extends AppCompatActivity {
                 .child(usuarioID + ".jpeg");
 
         UploadTask uploadTask = reference.putFile(Uri.parse(caminhoImagem));
-        uploadTask.addOnSuccessListener(taskSnapshot -> reference.getDownloadUrl().addOnCompleteListener(task -> {
-
-
-
-        })).addOnFailureListener(e -> Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void iniciarComponentes(){
@@ -237,5 +236,16 @@ public class TelaPerfil extends AppCompatActivity {
                 salvarImagemUsu();
             }
         }
+    }
+
+    public void setarImagemPerfil(){
+        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        storageRef.child("imagens/Fotos de perfil/" + usuarioID + "/" + usuarioID + ".jpeg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(fotoUsuPerfil);
+            }
+        });
     }
 }
