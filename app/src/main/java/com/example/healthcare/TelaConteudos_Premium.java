@@ -5,20 +5,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TelaConteudos_Premium extends AppCompatActivity {
 
     TextView olaUsu_Premium;
+    CircleImageView fotoUsu;
+
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private StorageReference storageRef = storage.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +38,8 @@ public class TelaConteudos_Premium extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-        olaUsu_Premium = findViewById(R.id.olaUsu_Premium);
+        iniciarComponentes();
+        setarImagemPerfil();
     }
 
     @Override
@@ -47,6 +59,11 @@ public class TelaConteudos_Premium extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void iniciarComponentes(){
+        olaUsu_Premium = findViewById(R.id.olaUsu_Premium);
+        fotoUsu = findViewById(R.id.fotoUsu_Premium);
     }
 
     public void irTelaPerfil_Premium(View t){
@@ -94,5 +111,24 @@ public class TelaConteudos_Premium extends AppCompatActivity {
         startActivity(irTelaVacinas);
     }
 
+    public void irTelaExames(View j){
+        Intent irTelaExames = new Intent(TelaConteudos_Premium.this, TelaExames.class);
+        startActivity(irTelaExames);
+    }
 
+    public void irTelaClinicas(View c){
+        Intent irTelaClinicas = new Intent(this, TelaClinicas.class);
+        startActivity(irTelaClinicas);
+    }
+
+    public void setarImagemPerfil(){
+        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        storageRef.child("imagens/Fotos de perfil/" + usuarioID + "/" + usuarioID + ".jpeg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(fotoUsu);
+            }
+        });
+    }
 }

@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
 
     <uses-feature
         android:name="android.hardware.sensor.stepdetector"
@@ -20,6 +21,15 @@
         android:roundIcon="@mipmap/ic_launcher_healthcare_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCare">
+        <activity
+            android:name=".TelaClinicas"
+            android:exported="false" />
+        <activity
+            android:name=".TelaExames_ad"
+            android:exported="false" />
+        <activity
+            android:name=".TelaExames"
+            android:exported="false" />
         <activity
             android:name=".TelaAlimentacao_adLanche"
             android:exported="false" />
