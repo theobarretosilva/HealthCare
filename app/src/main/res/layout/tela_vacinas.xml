@@ -39,8 +39,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/olaNomeUsu" />
 
-    <ImageView
-        android:id="@+id/imageView20"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoUsuVacinas"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
