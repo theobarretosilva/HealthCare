@@ -26,8 +26,8 @@ public class TelaInicial extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-        Intent irDireto = new Intent (this, TelaConteudos_Premium.class);
-        startActivity(irDireto);
+//        Intent irDireto = new Intent (this, TelaConteudos_Premium.class);
+//        startActivity(irDireto);
 
         login = findViewById(R.id.login);
         cadastrar = findViewById(R.id.cadastrar);
