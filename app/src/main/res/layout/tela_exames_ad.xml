@@ -24,9 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="Adic. novo exame"
+        android:textColor="#0C5C64"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#0C5C64"
         app:fontFamily="@font/urbanist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,39 +35,122 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
         android:ems="10"
+        android:fontFamily="@font/urbanist"
+        android:hint="Clínica"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="421dp" />
+        android:textColorHint="#1E232C"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView20"
+        app:layout_constraintTop_toBottomOf="@+id/textView53" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:ems="10"
+        android:fontFamily="@font/urbanist"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="489dp" />
+        android:gravity="center"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/textView75"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView75"
+        app:layout_constraintTop_toTopOf="@+id/textView75" />
 
-    <EditText
+    <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:ems="10"
+        android:fontFamily="@font/urbanist"
         android:inputType="date"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="568dp" />
+        android:gravity="center"
+        android:textAlignment="center"
+        app:mask="__/__/____"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
+        app:layout_constraintBottom_toBottomOf="@+id/textView76"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView76"
+        app:layout_constraintTop_toTopOf="@+id/textView76" />
 
-    <EditText
+    <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/editTextTime"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:fontFamily="@font/urbanist"
+        android:inputType="time"
+        android:gravity="center"
+        android:textAlignment="center"
+        app:mask="__:__"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
+        app:layout_constraintBottom_toBottomOf="@+id/textView77"
+        app:layout_constraintEnd_toEndOf="@+id/editTextDate"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView77"
+        app:layout_constraintTop_toTopOf="@+id/textView77" />
+
+    <TextView
+        android:id="@+id/textView75"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="time"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="648dp" />
+        android:layout_marginTop="40dp"
+        android:text="Tipo de exame"
+        android:textColor="#1E232C"
+        android:textSize="21sp"
+        app:fontFamily="@font/urbanist"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <TextView
+        android:id="@+id/textView76"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="Data"
+        android:textColor="#1E232C"
+        android:textSize="21sp"
+        app:fontFamily="@font/urbanist"
+        app:layout_constraintStart_toStartOf="@+id/textView75"
+        app:layout_constraintTop_toBottomOf="@+id/textView75" />
+
+    <TextView
+        android:id="@+id/textView77"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Horário"
+        android:textColor="#1E232C"
+        android:textSize="21sp"
+        app:fontFamily="@font/urbanist"
+        app:layout_constraintStart_toStartOf="@+id/textView76"
+        app:layout_constraintTop_toBottomOf="@+id/textView76" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="65dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
