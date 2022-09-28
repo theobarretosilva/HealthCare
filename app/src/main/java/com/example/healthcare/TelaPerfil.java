@@ -128,10 +128,6 @@ public class TelaPerfil extends AppCompatActivity {
     }
 
     public void setarInfoCadastro(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy"); //Formata a data
-        Date data = new Date(); // Pega a data atual
-        int dataAtual = parseInt(sdf.format(data));
-
         String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");

@@ -4,7 +4,277 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaPerfil_Premium"
-    android:background="#D5F0F0">
+    tools:context=".TelaPerfil_Premium">
 
+    <Button
+        android:id="@+id/btnVoltarP"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#6F9FA3"
+        android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
+        android:drawableTint="#FFFFFF"
+        android:fontFamily="@font/urbanist"
+        android:paddingStart="3dp"
+        android:paddingEnd="7dp"
+        android:text="Voltar"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="15px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSairP"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#6F9FA3"
+        android:drawableRight="@drawable/ic_baseline_logout_24"
+        android:fontFamily="@font/urbanist"
+        android:paddingStart="3dp"
+        android:paddingEnd="7dp"
+        android:text="Sair"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="15px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoUsuP"
+        android:layout_width="0dp"
+        android:layout_height="154dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:src="@drawable/pessoa"
+        android:onClick="verificaPermissaoGaleriaP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnVoltarP" />
+
+    <TextView
+        android:id="@+id/nomeUsuP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/urbanist"
+        android:hint="Nome usuario"
+        android:textColor="#0C5C64"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fotoUsuP" />
+
+    <TextView
+        android:id="@+id/textView133"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="120dp"
+        android:background="@drawable/box_azul"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomeUsuP"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView134"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="365dp"
+        android:background="@drawable/box_azul"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView133"
+        app:layout_constraintTop_toBottomOf="@+id/nomeUsuP"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/idadeUsuP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/urbanist"
+        android:text="🎂 16 anos"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView133"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView133"
+        app:layout_constraintTop_toTopOf="@+id/textView133" />
+
+    <TextView
+        android:id="@+id/telUsuP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/urbanist"
+        android:text="📞 48 9999-9999"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView133"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView133"
+        app:layout_constraintTop_toBottomOf="@+id/idadeUsuP" />
+
+    <TextView
+        android:id="@+id/emailUsuP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/urbanist"
+        android:text="📧 barretotheo25@gmail.com"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView133"
+        app:layout_constraintEnd_toEndOf="@+id/textView133"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView133"
+        app:layout_constraintTop_toBottomOf="@+id/telUsuP"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/pesoUsuP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/urbanist"
+        android:text="615 quilos"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView134"
+        app:layout_constraintStart_toStartOf="@+id/textView134"
+        app:layout_constraintTop_toTopOf="@+id/textView134" />
+
+    <TextView
+        android:id="@+id/alturaUsuP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/urbanist"
+        android:text="120 cm"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/biotipoUsuP"
+        app:layout_constraintEnd_toEndOf="@+id/textView134"
+        app:layout_constraintStart_toStartOf="@+id/textView134"
+        app:layout_constraintTop_toBottomOf="@+id/pesoUsuP" />
+
+    <TextView
+        android:id="@+id/biotipoUsuP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Biotipo"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView134"
+        app:layout_constraintEnd_toEndOf="@+id/textView134"
+        app:layout_constraintStart_toStartOf="@+id/textView134" />
+
+    <View
+        android:id="@+id/view13"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:background="#0C5C64"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView133"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView141"
+        android:layout_width="0dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/box_azul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view13" />
+
+    <TextView
+        android:id="@+id/textView142"
+        android:layout_width="0dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/box_azul"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView141"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView51"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView142"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/logo2_saude" />
+
+    <TextView
+        android:id="@+id/textView130"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Clínicas vinculadas:"
+        android:textColor="#063E44"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView141"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView141"
+        app:layout_constraintTop_toTopOf="@+id/textView141" />
+
+    <TextView
+        android:id="@+id/textView143"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Lembretes"
+        android:fontFamily="@font/urbanist"
+        android:textColor="#063E44"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView142"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView142"
+        app:layout_constraintTop_toTopOf="@+id/textView142" />
 </androidx.constraintlayout.widget.ConstraintLayout>

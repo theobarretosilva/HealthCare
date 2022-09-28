@@ -57,8 +57,8 @@
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:inputType="textPersonName"
         android:gravity="center"
+        android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/textView75"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
@@ -73,17 +73,17 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:inputType="date"
         android:gravity="center"
+        android:inputType="date"
         android:textAlignment="center"
-        app:mask="__/__/____"
-        app:maskCharacter="_"
-        app:maskStyle="completable"
         app:layout_constraintBottom_toBottomOf="@+id/textView76"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView76"
-        app:layout_constraintTop_toTopOf="@+id/textView76" />
+        app:layout_constraintTop_toTopOf="@+id/textView76"
+        app:mask="__/__/____"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
 
     <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/editTextTime"
@@ -92,17 +92,17 @@
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:inputType="time"
         android:gravity="center"
+        android:inputType="time"
         android:textAlignment="center"
-        app:mask="__:__"
-        app:maskCharacter="_"
-        app:maskStyle="completable"
         app:layout_constraintBottom_toBottomOf="@+id/textView77"
         app:layout_constraintEnd_toEndOf="@+id/editTextDate"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView77"
-        app:layout_constraintTop_toTopOf="@+id/textView77" />
+        app:layout_constraintTop_toTopOf="@+id/textView77"
+        app:mask="__:__"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
 
     <TextView
         android:id="@+id/textView75"
