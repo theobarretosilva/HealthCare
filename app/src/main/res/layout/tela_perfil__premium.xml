@@ -111,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="14dp"
         android:fontFamily="@font/urbanist"
         android:text="🎂 16 anos"
         android:textColor="#063E44"
@@ -142,6 +142,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="14dp"
         android:fontFamily="@font/urbanist"
         android:text="📧 barretotheo25@gmail.com"
         android:textColor="#063E44"
@@ -151,13 +152,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView133"
         app:layout_constraintTop_toBottomOf="@+id/telUsuP"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/pesoUsuP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="14dp"
         android:fontFamily="@font/urbanist"
         android:text="615 quilos"
         android:textColor="#063E44"
@@ -183,7 +184,7 @@
         android:id="@+id/biotipoUsuP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="14dp"
         android:fontFamily="@font/urbanist"
         android:text="Biotipo"
         android:textColor="#063E44"
@@ -209,7 +210,7 @@
     <TextView
         android:id="@+id/textView141"
         android:layout_width="0dp"
-        android:layout_height="115dp"
+        android:layout_height="118dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
@@ -221,7 +222,7 @@
     <TextView
         android:id="@+id/textView142"
         android:layout_width="0dp"
-        android:layout_height="115dp"
+        android:layout_height="118dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
@@ -245,6 +246,22 @@
         app:layout_constraintTop_toBottomOf="@+id/textView142"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/logo2_saude" />
+
+    <TextView
+        android:id="@+id/textView136"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/urbanist"
+        android:text="🏥 Clínica Diagnóstico - São José"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView141"
+        app:layout_constraintEnd_toEndOf="@+id/textView141"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView135"
+        app:layout_constraintTop_toBottomOf="@+id/textView135"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView130"
@@ -277,4 +294,48 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView142"
         app:layout_constraintTop_toTopOf="@+id/textView142" />
+
+    <TextView
+        android:id="@+id/textView135"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/urbanist"
+        android:text="🏥 São Lucas - Palhoça"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView141"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView130"
+        app:layout_constraintTop_toBottomOf="@+id/textView130" />
+
+    <TextView
+        android:id="@+id/textView137"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/urbanist"
+        android:text="📌 Fazer consultar com nutricionista"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView142"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView143"
+        app:layout_constraintTop_toBottomOf="@+id/textView143" />
+
+    <TextView
+        android:id="@+id/textView138"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/urbanist"
+        android:text="📌 Fazer exame periódico"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView142"
+        app:layout_constraintEnd_toEndOf="@+id/textView142"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView137"
+        app:layout_constraintTop_toBottomOf="@+id/textView137"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
