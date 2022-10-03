@@ -86,9 +86,9 @@
         android:id="@+id/textView147"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="A fazer:"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/urbanist"
+        android:text="A fazer:"
         android:textColor="#0C5C64"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -106,14 +106,13 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView147"
         app:layout_constraintTop_toTopOf="@+id/textView147"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_round_add_24" />
 
     <TextView
         android:id="@+id/textView148"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/urbanist"
         android:text="05/09"
         android:textColor="#2EA371"
@@ -263,8 +262,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
         android:text="Clínica São Lucas"
+        android:fontFamily="@font/urbanist"
         android:textColor="#063E44"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -304,7 +303,8 @@
         android:id="@+id/textView160"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/urbanist"
         android:text="Resultados:"
         android:textColor="#0C5C64"
@@ -312,32 +312,34 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView147"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView159" />
 
     <TextView
         android:id="@+id/textView161"
-        android:layout_width="155dp"
-        android:layout_height="86dp"
+        android:layout_width="172dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/box_azul"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView160"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView160"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView162"
-        android:layout_width="155dp"
-        android:layout_height="86dp"
+        android:layout_width="172dp"
+        android:layout_height="95dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/box_azul"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView139"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView161"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView160"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -345,48 +347,130 @@
         android:id="@+id/textView146"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/urbanist"
         android:text="Clínica São Lucas"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="661dp" />
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView161"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView161"
+        app:layout_constraintTop_toTopOf="@+id/textView161" />
 
     <TextView
         android:id="@+id/textView163"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/urbanist"
         android:text="Hemograma"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="690dp" />
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView164"
+        app:layout_constraintEnd_toEndOf="@+id/textView161"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView146"
+        app:layout_constraintTop_toBottomOf="@+id/textView146" />
 
     <TextView
         android:id="@+id/textView164"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="717dp" />
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Pronto"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView161"
+        app:layout_constraintEnd_toEndOf="@+id/textView161"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView161" />
 
     <TextView
         android:id="@+id/textView165"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="664dp" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Clínica Unimed"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView162"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView162"
+        app:layout_constraintTop_toTopOf="@+id/textView162" />
 
     <TextView
         android:id="@+id/textView166"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="201dp"
-        tools:layout_editor_absoluteY="691dp" />
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Raio-x"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView167"
+        app:layout_constraintEnd_toEndOf="@+id/textView162"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView162"
+        app:layout_constraintTop_toBottomOf="@+id/textView165" />
 
     <TextView
         android:id="@+id/textView167"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="717dp" />
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Em andamento"
+        android:textColor="#063E44"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView162"
+        app:layout_constraintEnd_toEndOf="@+id/textView162"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView162" />
+
+    <ImageView
+        android:id="@+id/imageView54"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView164"
+        app:layout_constraintEnd_toStartOf="@+id/textView164"
+        app:layout_constraintStart_toStartOf="@+id/textView163"
+        app:layout_constraintTop_toTopOf="@+id/textView164"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/check" />
+
+    <ImageView
+        android:id="@+id/imageView55"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView167"
+        app:layout_constraintEnd_toStartOf="@+id/textView167"
+        app:layout_constraintStart_toStartOf="@+id/textView166"
+        app:layout_constraintTop_toTopOf="@+id/textView167"
+        app:srcCompat="@drawable/loading" />
+
+    <ImageView
+        android:id="@+id/imageView56"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView162"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/logo2_saude" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
