@@ -57,7 +57,7 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="30dp"
         android:background="#0C5C64"
         app:layout_constraintBottom_toBottomOf="@+id/dataAtualcafedamanha"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,31 +79,12 @@
 
     <ImageView
         android:id="@+id/imageView49"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="340dp"
+        android:layout_width="75dp"
+        android:layout_height="65dp"
         android:onClick="irTelaADAlimentacaoCafedamanha"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView117"
         app:srcCompat="@drawable/adicionar" />
 
-    <ImageView
-        android:id="@+id/imageView50"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="310dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView49"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/logo2_saude" />
 </androidx.constraintlayout.widget.ConstraintLayout>

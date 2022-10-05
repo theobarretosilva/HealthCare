@@ -263,18 +263,4 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView35"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/imageView36"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="320dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView101"
-        app:srcCompat="@drawable/logo2_saude" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
