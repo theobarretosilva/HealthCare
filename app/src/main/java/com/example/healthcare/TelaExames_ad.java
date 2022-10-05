@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TelaExames_ad extends AppCompatActivity {
-    EditText clinica, exame, data, horario;
+    EditText clinica, exame, date, horario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +29,12 @@ public class TelaExames_ad extends AppCompatActivity {
 
         clinica = findViewById(R.id.clinica);
         exame = findViewById(R.id.exame);
-        data = findViewById(R.id.data);
+        date = findViewById(R.id.data);
         horario = findViewById(R.id.horario);
 
     }
 
-    public void salvarBD(){
+    public void salvarBD(View v){
         String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         Date data = new Date();
@@ -41,14 +42,16 @@ public class TelaExames_ad extends AppCompatActivity {
         String dataHoje = sdf.format(data);
 
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        dateFormat.format()
+        String novaData = dateFormat.format(date);
+        System.out.println(novaData);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Map<String, Object> novoExame = new HashMap<>();
         novoExame.put("Clínica", clinica.getText().toString());
         novoExame.put("Exame", exame.getText().toString());
-        novoExame.put("Data", );
+        novoExame.put("Data", novaData ); // Ver se está funcionando
+        novoExame.put("Horario", horario.getText().toString());
 
         try {
             DocumentReference ns = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Sono").document(dataHoje);

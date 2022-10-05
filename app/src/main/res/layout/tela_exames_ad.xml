@@ -149,6 +149,7 @@
         android:layout_marginEnd="65dp"
         android:backgroundTint="#6E9EA2"
         android:fontFamily="@font/urbanist"
+        android:onClick="salvarBD"
         android:paddingTop="9dp"
         android:paddingBottom="9dp"
         android:text="Gravar"
