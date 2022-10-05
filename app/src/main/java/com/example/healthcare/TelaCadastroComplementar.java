@@ -2,28 +2,22 @@ package com.example.healthcare;
 
 import static java.lang.Integer.parseInt;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.tomergoldst.tooltips.ToolTipsManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -96,7 +90,7 @@ public class TelaCadastroComplementar extends AppCompatActivity{
     }
 
     public void irTiposBiotipoInternet(View j){
-        String url = "https://www.tuasaude.com/como-identificar-o-seu-biotipo/";
+        String url = "https://health-care-site.vercel.app/";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
