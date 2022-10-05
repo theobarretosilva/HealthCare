@@ -6,14 +6,19 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TelaSono_adicionar extends AppCompatActivity {
 
@@ -67,8 +72,22 @@ public class TelaSono_adicionar extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dataHoje = sdf.format(data);
 
-        LocalTime horarioDeDurmida = LocalTime.parse(horaDormi.getText());
-        LocalTime horarioAcordou = LocalTime.parse(horaAcordei.getText());
+        String horarioDeDurmida = horaDormi.getText().toString();
+        String horarioAcordou = horaAcordei.getText().toString();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Map<String, Object> sonoAdd = new HashMap<>();
+        sonoAdd.put("Horário que dormiu", horarioDeDurmida);
+        sonoAdd.put("Horário que acordou", horarioAcordou);
+
+        try {
+            DocumentReference ns = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Sono").document(dataHoje);
+            ns.set(sonoAdd);
+            Toast.makeText(this, "Sucesso!", Toast.LENGTH_SHORT).show();
+        } catch (Exception e){
+            Toast.makeText(this, "Não foi possível cadastrar suas informações!", Toast.LENGTH_SHORT).show();
+        }
 
 
     }

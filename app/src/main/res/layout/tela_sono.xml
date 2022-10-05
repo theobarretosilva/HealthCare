@@ -169,12 +169,12 @@
         app:layout_constraintTop_toTopOf="@+id/textView122" />
 
     <TextView
-        android:id="@+id/textView125"
+        android:id="@+id/hAcordou"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/urbanist"
-        android:hint="06:40"
+        android:hint="-"
         android:textColor="@color/azul_escuro"
         android:textColorHint="@color/hint"
         android:textSize="18sp"
@@ -185,12 +185,12 @@
         app:layout_constraintTop_toTopOf="@+id/textView122" />
 
     <TextView
-        android:id="@+id/textView126"
+        android:id="@+id/hDormiu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/urbanist"
-        android:hint="23:30"
+        android:hint="-"
         android:textColor="@color/azul_escuro"
         android:textColorHint="@color/hint"
         android:textSize="18sp"
@@ -216,7 +216,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView122" />
 
     <TextView
-        android:id="@+id/textView128"
+        android:id="@+id/tempoDormido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="115dp"
@@ -245,7 +245,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView128"
+        app:layout_constraintTop_toBottomOf="@+id/tempoDormido"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/logo2_saude" />
 
@@ -259,11 +259,11 @@
         android:textColor="#0C5C64"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView128"
+        app:layout_constraintBottom_toBottomOf="@+id/tempoDormido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView128"
-        app:layout_constraintTop_toTopOf="@+id/textView128"
+        app:layout_constraintStart_toEndOf="@+id/tempoDormido"
+        app:layout_constraintTop_toTopOf="@+id/tempoDormido"
         app:layout_constraintVertical_bias="1.0" />
 
     <View
