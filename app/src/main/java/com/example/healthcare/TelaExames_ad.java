@@ -41,7 +41,7 @@ public class TelaExames_ad extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dataHoje = sdf.format(data);
 
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String novaData = dateFormat.format(date);
         System.out.println(novaData);
 

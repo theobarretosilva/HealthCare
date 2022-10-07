@@ -70,6 +70,7 @@ public class TelaPassos extends AppCompatActivity implements SensorEventListener
         if(sensor.getType() == Sensor.TYPE_STEP_DETECTOR){
             totalPassos ++;
             dectaPasso.setText(""+totalPassos);
+            System.out.println(totalPassos);
         }
 
     }
