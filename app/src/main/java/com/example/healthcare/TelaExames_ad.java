@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DateFormat;
@@ -19,7 +20,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TelaExames_ad extends AppCompatActivity {
+
     EditText clinica, exame, date, horario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +30,14 @@ public class TelaExames_ad extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
+        iniciarComponentes();
+    }
+
+    public void iniciarComponentes(){
         clinica = findViewById(R.id.clinica);
         exame = findViewById(R.id.exame);
         date = findViewById(R.id.data);
         horario = findViewById(R.id.horario);
-
     }
 
     public void salvarBD(View v){
@@ -60,5 +66,21 @@ public class TelaExames_ad extends AppCompatActivity {
         } catch (Exception e){
             Toast.makeText(this, "Não foi possível cadastrar suas informações!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void mandarExamesBD(View g){
+
+        String clinicaExame = clinica.getText().toString();
+        String tipoExame = exame.getText().toString();
+        String dataExame = date.getText().toString();
+        String horarioExame = horario.getText().toString();
+
+        Exame exame = new Exame();
+        exame.setClinica(clinicaExame);
+        exame.setTipo(tipoExame);
+        exame.setData(dataExame);
+        exame.setHorario(horarioExame);
+
+        exame.salvarExame();
     }
 }
