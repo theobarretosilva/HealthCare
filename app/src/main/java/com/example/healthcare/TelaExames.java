@@ -12,8 +12,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.Externalizable;
+import java.util.List;
 
 public class TelaExames extends AppCompatActivity {
+
+    List<Exame> exameList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +27,19 @@ public class TelaExames extends AppCompatActivity {
     }
 
     public void recuperaExames(){
-        DatabaseReference produtosRef = FirebaseHelper.getDatabaseReference();
-        produtosRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference examesRef = FirebaseHelper.getDatabaseReference()
+                .child("Registros")
+                .child(uidUsuario)
+                .child("Exames")
+        examesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snap : snapshot.getChildren()){
                     Exame exame = snap.getValue(Exame.class);
+                    exameList.add(exame);
                 }
+
+
             }
 
             @Override

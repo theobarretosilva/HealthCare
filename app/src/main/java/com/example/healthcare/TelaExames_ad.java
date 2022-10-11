@@ -2,6 +2,7 @@ package com.example.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -75,12 +76,20 @@ public class TelaExames_ad extends AppCompatActivity {
         String dataExame = date.getText().toString();
         String horarioExame = horario.getText().toString();
 
-        Exame exame = new Exame();
-        exame.setClinica(clinicaExame);
-        exame.setTipo(tipoExame);
-        exame.setData(dataExame);
-        exame.setHorario(horarioExame);
+        try{
+            Exame exame = new Exame();
+            exame.setClinica(clinicaExame);
+            exame.setTipo(tipoExame);
+            exame.setData(dataExame);
+            exame.setHorario(horarioExame);
 
-        exame.salvarExame();
+            exame.salvarExame();
+            Toast.makeText(this, "Sucesso ao adicionar o exame!", Toast.LENGTH_SHORT).show();
+            Intent irTelaExames = new Intent(TelaExames_ad.this, TelaExames.class);
+            startActivity(irTelaExames);
+        }catch (Exception e){
+            Toast.makeText(this, "Não foi possível adicionar o exame!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
