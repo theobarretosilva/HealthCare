@@ -27,10 +27,11 @@ public class TelaExames extends AppCompatActivity {
     }
 
     public void recuperaExames(){
+        String uidUsuario = FirebaseHelper.getUIDUsuario();
         DatabaseReference examesRef = FirebaseHelper.getDatabaseReference()
                 .child("Registros")
                 .child(uidUsuario)
-                .child("Exames")
+                .child("Exames");
         examesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
