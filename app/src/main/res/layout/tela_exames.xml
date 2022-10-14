@@ -101,6 +101,7 @@
         android:id="@+id/imageView53"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="irTelaAddExame"
         app:layout_constraintBottom_toBottomOf="@+id/textView147"
         app:layout_constraintEnd_toEndOf="@+id/view14"
         app:layout_constraintHorizontal_bias="1.0"
@@ -113,6 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/urbanist"
         android:text="Resultados:"
         android:textColor="#0C5C64"
@@ -121,7 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="595dp" />
+        app:layout_constraintTop_toBottomOf="@+id/rv" />
 
     <TextView
         android:id="@+id/textView161"
@@ -282,14 +284,13 @@
         app:srcCompat="@drawable/logo2_saude" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="350dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
-        tools:listitem="@layout/item_exame"
-        app:layout_constraintBottom_toTopOf="@+id/textView160"
         app:layout_constraintEnd_toEndOf="@+id/imageView53"
         app:layout_constraintStart_toStartOf="@+id/textView147"
-        app:layout_constraintTop_toBottomOf="@+id/textView147" />
+        app:layout_constraintTop_toBottomOf="@+id/textView147"
+        tools:listitem="@layout/item_exame" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

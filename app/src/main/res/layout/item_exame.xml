@@ -6,13 +6,13 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView148"
+        android:id="@+id/dataExame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/urbanist"
         android:text="05/09"
         android:textColor="#2EA371"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -20,55 +20,54 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView149"
+        android:id="@+id/localExame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/urbanist"
         android:text="Clínica São Lucas"
         android:textColor="#063E44"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView148"
-        app:layout_constraintTop_toBottomOf="@+id/textView148" />
+        app:layout_constraintStart_toStartOf="@+id/dataExame"
+        app:layout_constraintTop_toBottomOf="@+id/dataExame" />
 
     <TextView
-        android:id="@+id/textView150"
+        android:id="@+id/tipoExame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/urbanist"
         android:text="Hemograma"
         android:textColor="#063E44"
-        android:textSize="17sp"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView149"
-        app:layout_constraintTop_toBottomOf="@+id/textView149" />
+        app:layout_constraintStart_toStartOf="@+id/localExame"
+        app:layout_constraintTop_toBottomOf="@+id/localExame" />
 
     <TextView
-        android:id="@+id/textView151"
+        android:id="@+id/horarioExame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/urbanist"
         android:text="07:40 hrs"
         android:textColor="#063E44"
-        android:textSize="17sp"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView150"
-        app:layout_constraintTop_toBottomOf="@+id/textView150" />
+        app:layout_constraintStart_toStartOf="@+id/tipoExame"
+        app:layout_constraintTop_toBottomOf="@+id/tipoExame" />
 
     <View
         android:id="@+id/view15"
-        android:layout_width="0dp"
+        android:layout_width="160dp"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
         android:background="#0C5C64"
-        app:layout_constraintEnd_toEndOf="@+id/textView149"
-        app:layout_constraintStart_toStartOf="@+id/textView149"
-        app:layout_constraintTop_toBottomOf="@+id/textView151" />
+        app:layout_constraintStart_toStartOf="@+id/localExame"
+        app:layout_constraintTop_toBottomOf="@+id/horarioExame" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
