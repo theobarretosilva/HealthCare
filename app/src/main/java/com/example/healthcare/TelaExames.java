@@ -44,6 +44,11 @@ public class TelaExames extends AppCompatActivity {
         startActivity(irTelaAddExame);
     }
 
+    public void voltarTelaConteudos(View h){
+        Intent voltarTelaConteudos = new Intent(this, TelaConteudos_Premium.class);
+        startActivity(voltarTelaConteudos);
+    }
+
     private void configReciclerView(){
         rvExames.setLayoutManager(new LinearLayoutManager(this));
         rvExames.setHasFixedSize(true);
