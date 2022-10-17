@@ -23,6 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCare">
         <activity
+            android:name=".TelaVinculacaoClinicas"
+            android:exported="false" />
+        <activity
             android:name=".TelaLembretes_ad"
             android:exported="false" />
         <activity
