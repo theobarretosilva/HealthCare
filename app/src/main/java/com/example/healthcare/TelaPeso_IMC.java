@@ -148,41 +148,44 @@ public class TelaPeso_IMC extends AppCompatActivity {
         dialog.setContentView(R.layout.imc_dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        ImageView imgClose = findViewById(R.id.imgClose);
-        TextView resIMC = findViewById(R.id.resultadoImc);
-        TextView tipo = findViewById(R.id.tipoIMC);
-        Button btnClose = findViewById(R.id.btnOK);
-        System.out.println(resIMC.getText());
-//        imgClose.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//                Toast.makeText(TelaPeso_IMC.this, "Fechando", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        ImageView imgClose = dialog.findViewById(R.id.imgClose);
+        TextView resIMC = dialog.findViewById(R.id.resultadoImc);
+        TextView tipo = dialog.findViewById(R.id.tipoIMC);
+        Button btnClose = dialog.findViewById(R.id.btnOK);
 
-//        btnClose.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//            }
-//        });
+        resIMC.setText(""+valor);
 
-//        resIMC.setText(""+valor);
-//        if(idadePessoa> 1 && idadePessoa<18){
-//            if(valor < 17.3){
-//               tipo.setText("Magreza");
-//            }else if(valor>17.3  && valor<25.5 ){
-//                tipo.setText("Normal");
-//            }else if(valor>25.5  && valor<60){
-//                tipo.setText("Sobrepeso");
-//            }else if(valor>29.7){
-//                tipo.setText("Obesidade");
-//            }else{
-//                Toast.makeText(this, "Reveja suas informações!", Toast.LENGTH_SHORT).show();
-//            }
-//
-//        }
+        imgClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Toast.makeText(TelaPeso_IMC.this, "Fechando", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        resIMC.setText(""+valor);
+
+        if(idadePessoa> 1 && idadePessoa<18){
+            if(valor < 17.3){
+               tipo.setText("Magreza");
+            }else if(valor>17.3  && valor<25.5 ){
+                tipo.setText("Normal");
+            }else if(valor>25.5  && valor<60){
+                tipo.setText("Sobrepeso");
+            }else if(valor>29.7){
+                tipo.setText("Obesidade");
+            }else{
+                Toast.makeText(this, "Reveja suas informações!", Toast.LENGTH_SHORT).show();
+            }
+
+        }
 
         if(idadePessoa> 18 && idadePessoa<60){
             String magreza = "";
