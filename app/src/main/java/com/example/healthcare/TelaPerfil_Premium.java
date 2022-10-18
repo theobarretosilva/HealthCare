@@ -233,4 +233,9 @@ public class TelaPerfil_Premium extends AppCompatActivity {
             }
         });
     };
+
+    public void irTelaAddLembretes(View f){
+        Intent irTelaLembretes = new Intent(this, TelaLembretes_ad.class);
+        startActivity(irTelaLembretes);
+    }
 }
