@@ -1,17 +1,20 @@
 package com.example.healthcare;
 
-import android.widget.ImageView;
+import android.graphics.drawable.Drawable;
 
 public class VincularClinicas {
     String nomeClinica, enderecoClinica, telefoneClinica, servicosClinica;
-    ImageView fotoClinica;
+    Drawable fotoClinica;
 
-    public VincularClinicas(String nomeClinica, String enderecoClinica, String telefoneClinica, String servicosClinica, ImageView fotoClinica) {
+    public VincularClinicas(String nomeClinica, String enderecoClinica, String telefoneClinica, String servicosClinica, Drawable fotoClinica) {
         this.nomeClinica = nomeClinica;
         this.enderecoClinica = enderecoClinica;
         this.telefoneClinica = telefoneClinica;
         this.servicosClinica = servicosClinica;
         this.fotoClinica = fotoClinica;
+    }
+
+    public VincularClinicas() {
     }
 
     public String getNomeClinica() {
@@ -42,10 +45,10 @@ public class VincularClinicas {
         this.servicosClinica = servicosClinica;
     }
 
-    public ImageView getFotoClinica() {
+    public Drawable getFotoClinica() {
         return fotoClinica;
     }
-    public void setFotoClinica(ImageView fotoClinica) {
+    public void setFotoClinica(Drawable fotoClinica) {
         this.fotoClinica = fotoClinica;
     }
 }
