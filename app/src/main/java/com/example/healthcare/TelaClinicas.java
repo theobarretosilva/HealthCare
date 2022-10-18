@@ -1,13 +1,13 @@
 package com.example.healthcare;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TelaClinicas extends AppCompatActivity {
 
@@ -29,7 +29,6 @@ public class TelaClinicas extends AppCompatActivity {
     }
 
     public void setarSaoLucas(View s){
-        try {
             VincularClinicas vincularClinicas = new VincularClinicas();
             vincularClinicas.setNomeClinica("Clínica São Lucas");
             vincularClinicas.setEnderecoClinica("\uD83D\uDCCD Av. Barão do Rio Branco, 461 - Centro,\nPalhoça - SC, 88130-101");
@@ -38,9 +37,7 @@ public class TelaClinicas extends AppCompatActivity {
             vincularClinicas.setFotoClinica(clinicaSaoLucas.getDrawable());
             Intent irTelaVinculacao = new Intent(this, TelaVinculacaoClinicas.class);
             startActivity(irTelaVinculacao);
-        }catch (Exception e){
-            Toast.makeText(this, "Não foi possível vincular a clínica", Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     public void setarBaiaSul(View b){

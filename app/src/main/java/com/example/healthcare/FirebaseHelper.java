@@ -11,6 +11,7 @@ public class FirebaseHelper {
 
     private static StorageReference storageReference;
     private static DatabaseReference databaseReference;
+    private static FirebaseFirestore firebaseFirestore;
     private static String UIDUsuario;
 
     public static StorageReference getStorageReference(){
@@ -25,6 +26,13 @@ public class FirebaseHelper {
             databaseReference = FirebaseDatabase.getInstance().getReference();
         }
         return databaseReference;
+    }
+
+    public static FirebaseFirestore getFirebaseFirestore(){
+        if (firebaseFirestore == null){
+            firebaseFirestore = FirebaseFirestore.getInstance();
+        }
+        return firebaseFirestore;
     }
 
     public static String getUIDUsuario() {

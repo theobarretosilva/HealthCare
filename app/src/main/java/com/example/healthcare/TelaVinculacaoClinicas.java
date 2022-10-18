@@ -1,11 +1,10 @@
 package com.example.healthcare;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.media.Image;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TelaVinculacaoClinicas extends AppCompatActivity {
 
@@ -29,10 +28,10 @@ public class TelaVinculacaoClinicas extends AppCompatActivity {
     }
 
     public void getSetClinica(){
-        nomeClinica.setText(telaClinicas.vincularClinicas.getNomeClinica());
-        enderecoClinica.setText(telaClinicas.vincularClinicas.getEnderecoClinica());
-        telefoneClinica.setText(telaClinicas.vincularClinicas.getTelefoneClinica());
-        servicosClinica.setText(telaClinicas.vincularClinicas.getServicosClinica());
-        fotoClinica.setImageDrawable(telaClinicas.vincularClinicas.getFotoClinica());
+        nomeClinica.setText(vincularClinicas.getNomeClinica());
+        enderecoClinica.setText(vincularClinicas.getEnderecoClinica());
+        telefoneClinica.setText(vincularClinicas.getTelefoneClinica());
+        servicosClinica.setText(vincularClinicas.getServicosClinica());
+        fotoClinica.setImageDrawable(vincularClinicas.getFotoClinica());
     }
 }

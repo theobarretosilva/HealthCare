@@ -1,7 +1,5 @@
 package com.example.healthcare;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,16 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TelaExames_ad extends AppCompatActivity {
 
@@ -39,34 +28,6 @@ public class TelaExames_ad extends AppCompatActivity {
         exame = findViewById(R.id.exame);
         date = findViewById(R.id.data);
         horario = findViewById(R.id.horario);
-    }
-
-    public void salvarBD(View v){
-        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        Date data = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        String dataHoje = sdf.format(data);
-
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String novaData = dateFormat.format(date);
-        System.out.println(novaData);
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        Map<String, Object> novoExame = new HashMap<>();
-        novoExame.put("Clínica", clinica.getText().toString());
-        novoExame.put("Exame", exame.getText().toString());
-        novoExame.put("Data", novaData ); // Ver se está funcionando
-        novoExame.put("Horario", horario.getText().toString());
-
-        try {
-            DocumentReference ns = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Sono").document(dataHoje);
-            ns.set(novoExame);
-            Toast.makeText(this, "Sucesso!", Toast.LENGTH_SHORT).show();
-        } catch (Exception e){
-            Toast.makeText(this, "Não foi possível cadastrar suas informações!", Toast.LENGTH_SHORT).show();
-        }
     }
 
     public void mandarExamesBD(View g){
@@ -91,5 +52,10 @@ public class TelaExames_ad extends AppCompatActivity {
             Toast.makeText(this, "Não foi possível adicionar o exame!", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void voltarTela(View h){
+        Intent voltarTelaExames = new Intent(this, TelaExames.class);
+        startActivity(voltarTelaExames);
     }
 }
