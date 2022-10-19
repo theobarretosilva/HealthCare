@@ -41,7 +41,7 @@ public class TelaSono extends AppCompatActivity {
     }
 
     public void adicionarRegistro(View g){
-        Intent irTelaRegistroSono = new Intent(this, TelaSono_adicionar.class);
+        Intent irTelaRegistroSono = new Intent(this, TelaSono_add.class);
         startActivity(irTelaRegistroSono);
     }
 

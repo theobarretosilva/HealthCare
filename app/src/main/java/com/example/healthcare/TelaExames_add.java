@@ -9,14 +9,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TelaExames_ad extends AppCompatActivity {
+public class TelaExames_add extends AppCompatActivity {
 
     EditText clinica, exame, date, horario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_exames_ad);
+        setContentView(R.layout.tela_exames_add);
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
@@ -46,7 +46,7 @@ public class TelaExames_ad extends AppCompatActivity {
 
             exame.salvarExame();
             Toast.makeText(this, "Sucesso ao adicionar o exame!", Toast.LENGTH_SHORT).show();
-            Intent irTelaExames = new Intent(TelaExames_ad.this, TelaExames.class);
+            Intent irTelaExames = new Intent(TelaExames_add.this, TelaExames.class);
             startActivity(irTelaExames);
         }catch (Exception e){
             Toast.makeText(this, "Não foi possível adicionar o exame!", Toast.LENGTH_SHORT).show();

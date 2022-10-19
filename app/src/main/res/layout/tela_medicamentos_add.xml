@@ -4,98 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3FAFA"
-    tools:context=".TelaExercicios_add">
+    tools:context=".TelaMedicamentos_add">
 
     <ImageView
-        android:id="@+id/imageView59"
+        android:id="@+id/imageView68"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
-        android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <TextView
-        android:id="@+id/textView186"
+        android:id="@+id/textView193"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/urbanist"
-        android:text="Adic. novo exercício"
+        android:text="Adic. medicamento"
         android:textColor="#0C5C64"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView59"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView68"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView59"
-        app:layout_constraintTop_toTopOf="@+id/imageView59" />
+        app:layout_constraintStart_toEndOf="@+id/imageView68"
+        app:layout_constraintTop_toTopOf="@+id/imageView68" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextTextPersonName3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
         android:fontFamily="@font/urbanist"
-        android:hint="Nome do exercício"
+        android:hint="Nome do medicamento"
         android:inputType="textPersonName"
         android:textColor="#1E232C"
         android:textColorHint="#1E232C"
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView59"
-        app:layout_constraintTop_toBottomOf="@+id/textView186" />
+        app:layout_constraintStart_toStartOf="@+id/imageView68"
+        app:layout_constraintTop_toBottomOf="@+id/textView193" />
 
     <TextView
-        android:id="@+id/textView187"
+        android:id="@+id/textView194"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/urbanist"
-        android:text="Tempo"
+        android:text="Quantidade"
         android:textColor="#000000"
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/editTextTextPersonName4"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:inputType="textPersonName"
         android:fontFamily="@font/urbanist"
-        android:inputType="number"
         android:maxLength="2"
         android:textAlignment="viewEnd"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/textView187"
-        app:layout_constraintEnd_toStartOf="@+id/textView188"
+        app:layout_constraintBottom_toBottomOf="@+id/textView194"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName3"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView187"
-        app:layout_constraintTop_toTopOf="@+id/textView187" />
+        app:layout_constraintStart_toEndOf="@+id/textView194"
+        app:layout_constraintTop_toTopOf="@+id/textView194" />
 
     <TextView
-        android:id="@+id/textView188"
+        android:id="@+id/textView195"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/urbanist"
-        android:text="min."
+        android:text="Mg/dosagem"
         android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumber" />
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView194"
+        app:layout_constraintTop_toBottomOf="@+id/textView194" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName5"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:fontFamily="@font/urbanist"
+        android:maxLength="2"
+        android:textAlignment="viewEnd"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/textView195"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView195"
+        app:layout_constraintTop_toTopOf="@+id/textView195" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/button11"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="65dp"
@@ -112,6 +129,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5"
         app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

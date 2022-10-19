@@ -23,16 +23,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthCare">
         <activity
+            android:name=".TelaMedicamentos_add"
+            android:exported="true" />
+        <activity
             android:name=".TelaVinculacaoClinicas"
             android:exported="false" />
         <activity
-            android:name=".TelaLembretes_ad"
+            android:name=".TelaLembretes_add"
             android:exported="false" />
         <activity
             android:name=".TelaClinicas"
             android:exported="false" />
         <activity
-            android:name=".TelaExames_ad"
+            android:name=".TelaExames_add"
             android:exported="false" />
         <activity
             android:name=".TelaExames"
@@ -74,7 +77,7 @@
             android:name=".TelaExercicios_add"
             android:exported="false" />
         <activity
-            android:name=".TelaSono_adicionar"
+            android:name=".TelaSono_add"
             android:exported="false" />
         <activity
             android:name=".TelaCafeManhaAdicionado"

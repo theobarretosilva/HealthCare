@@ -34,10 +34,8 @@ import com.gun0912.tedpermission.normal.TedPermission;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -235,7 +233,7 @@ public class TelaPerfil_Premium extends AppCompatActivity {
     };
 
     public void irTelaAddLembretes(View f){
-        Intent irTelaLembretes = new Intent(this, TelaLembretes_ad.class);
+        Intent irTelaLembretes = new Intent(this, TelaLembretes_add.class);
         startActivity(irTelaLembretes);
     }
 }

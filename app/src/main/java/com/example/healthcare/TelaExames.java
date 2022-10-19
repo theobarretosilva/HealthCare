@@ -15,7 +15,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Externalizable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class TelaExames extends AppCompatActivity {
     }
 
     public void irTelaAddExame(View g){
-        Intent irTelaAddExame = new Intent(this, TelaExames_ad.class);
+        Intent irTelaAddExame = new Intent(this, TelaExames_add.class);
         startActivity(irTelaAddExame);
     }
 
