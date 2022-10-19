@@ -277,4 +277,19 @@
         app:layout_constraintStart_toStartOf="@+id/dataAtualSono"
         app:layout_constraintTop_toBottomOf="@+id/textView122" />
 
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#4A858B"
+        android:fontFamily="@font/urbanist"
+        android:text="Gerar relatório"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tempoDormido" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

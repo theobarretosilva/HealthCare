@@ -71,7 +71,7 @@
             android:name=".TelaAlimentacao_Cafedamanha"
             android:exported="false" />
         <activity
-            android:name=".TelaExercicios_adicionar"
+            android:name=".TelaExercicios_add"
             android:exported="false" />
         <activity
             android:name=".TelaSono_adicionar"
