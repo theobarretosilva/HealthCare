@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -96,10 +97,12 @@ public class TelaVinculacaoClinicas extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        Toast.makeText(TelaVinculacaoClinicas.this, "Não foi possível vincular a clínica.", Toast.LENGTH_LONG).show();
                     }
                 });
             }
+        } else {
+            Toast.makeText(TelaVinculacaoClinicas.this, "Leia e concorde com os Termos de Vinculação!", Toast.LENGTH_SHORT).show();
         }
     }
 }

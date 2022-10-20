@@ -1,11 +1,11 @@
 package com.example.healthcare;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.os.Bundle;
 
-public class TelaAlimentacao_adAlmoco extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class TelaAlimentacao_add extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

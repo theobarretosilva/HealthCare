@@ -85,22 +85,11 @@
         app:layout_constraintStart_toEndOf="@+id/dataAtual"
         app:layout_constraintTop_toTopOf="@+id/dataAtual" />
 
-    <ImageView
-        android:id="@+id/imageView21"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/logo2_saude" />
-
     <TextView
         android:id="@+id/textView94"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/box_alimentacao"
         android:onClick="irCafeDaManha"
@@ -114,9 +103,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="50dp"
         android:onClick="irCafeDaManha"
         app:layout_constraintBottom_toBottomOf="@+id/textView94"
         app:layout_constraintEnd_toEndOf="@+id/textView94"
@@ -128,7 +117,7 @@
         android:id="@+id/textView97"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/urbanist"
         android:onClick="irCafeDaManha"
         android:text="Café da manhã"
@@ -146,6 +135,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/box_alimentacao"
         app:layout_constraintEnd_toEndOf="@+id/textView62"
         app:layout_constraintHorizontal_bias="1.0"
@@ -162,8 +152,10 @@
         android:layout_marginBottom="45dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView98"
         app:layout_constraintEnd_toEndOf="@+id/textView98"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView98"
         app:layout_constraintTop_toTopOf="@+id/textView98"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/almoco" />
 
     <TextView
@@ -198,7 +190,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:background="@drawable/box_alimentacao"
-        app:layout_constraintEnd_toEndOf="@+id/textView62"
+        app:layout_constraintEnd_toEndOf="@+id/textView98"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView98" />
@@ -235,7 +227,6 @@
         android:id="@+id/textView102"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:fontFamily="@font/urbanist"
         android:text="Jantar"
         android:textColor="#278292"
@@ -251,7 +242,6 @@
         android:id="@+id/textView106"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:fontFamily="@font/urbanist"
         android:text="Lanches"
         android:textColor="#278292"
@@ -262,5 +252,19 @@
         app:layout_constraintStart_toStartOf="@+id/textView101"
         app:layout_constraintTop_toBottomOf="@+id/imageView35"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView36"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView101"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/logo2_saude" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

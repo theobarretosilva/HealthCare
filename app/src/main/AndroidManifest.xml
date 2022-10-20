@@ -47,13 +47,10 @@
             android:name=".TelaAlimentacao_Jantar"
             android:exported="false" />
         <activity
-            android:name=".TelaAlimentacao_adAlmoco"
+            android:name=".TelaAlimentacao_add"
             android:exported="false" />
         <activity
-            android:name=".TelaAlimentacao1_Almoco"
-            android:exported="false" />
-        <activity
-            android:name=".TelaAlimentacao_Almoco"
+            android:name=".TelaAlimentacao2"
             android:exported="false" />
         <activity
             android:name=".TelaExercicios_add"

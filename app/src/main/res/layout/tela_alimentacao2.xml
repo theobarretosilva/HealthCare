@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F3FAFA"
-    tools:context=".TelaAlimentacao_Almoco">
+    tools:context=".TelaAlimentacao2">
 
     <ImageView
         android:id="@+id/imageView62"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:fontFamily="@font/urbanist"
-        android:text="Almoço"
+        android:hint="tipoRefeição"
         android:textColor="#0C5C64"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView62" />
 
     <TextView
-        android:id="@+id/textView180"
+        android:id="@+id/dataAlimentacao2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -59,10 +59,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="30dp"
         android:background="#0C5C64"
-        app:layout_constraintBottom_toBottomOf="@+id/textView180"
+        app:layout_constraintBottom_toBottomOf="@+id/dataAlimentacao2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView180"
-        app:layout_constraintTop_toTopOf="@+id/textView180" />
+        app:layout_constraintStart_toEndOf="@+id/dataAlimentacao2"
+        app:layout_constraintTop_toTopOf="@+id/dataAlimentacao2" />
 
     <TextView
         android:id="@+id/textView181"
@@ -73,18 +73,44 @@
         android:text="Nenhum alimento foi adicionado"
         android:textColor="#1E232C"
         android:textSize="19sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView180" />
+        app:layout_constraintTop_toBottomOf="@+id/dataAlimentacao2" />
 
     <ImageView
         android:id="@+id/imageView63"
         android:layout_width="75dp"
         android:layout_height="65dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView181"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/adicionar" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_add_24_preto"
+        app:layout_constraintBottom_toBottomOf="@+id/textView179"
+        app:layout_constraintEnd_toEndOf="@+id/view19"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView179"
+        app:layout_constraintTop_toTopOf="@+id/textView179" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAlimentacao"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view19"
+        app:layout_constraintStart_toStartOf="@+id/dataAlimentacao2"
+        app:layout_constraintTop_toBottomOf="@+id/dataAlimentacao2"
+        tools:listitem="@layout/item_alimento"
+        tools:itemCount="2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
