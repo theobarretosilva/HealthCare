@@ -160,7 +160,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="25dp"
 
-        app:layout_constraintBottom_toTopOf="@id/checkBox"
+        app:layout_constraintBottom_toTopOf="@id/checkTermos"
         app:layout_constraintEnd_toEndOf="@+id/textView151"
         app:layout_constraintStart_toStartOf="@+id/textView151"
         app:layout_constraintTop_toBottomOf="@+id/textView156">
@@ -183,7 +183,7 @@
     </ScrollView>
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkTermos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Li e concordo com os Termos\nde Vinculação"
@@ -202,6 +202,7 @@
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/urbanist"
+        android:onClick="vincularClinica"
         android:paddingTop="7dp"
         android:paddingBottom="7dp"
         android:text="Vincule-se"
