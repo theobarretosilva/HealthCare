@@ -1,14 +1,10 @@
 package com.example.healthcare;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,6 +12,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,10 +27,6 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,25 +48,7 @@ public class TelaCadastro extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-        primeiroNome = findViewById(R.id.primeiroNome);
-        sobrenome = findViewById(R.id.sobrenome);
-        dataNascCadastro = findViewById(R.id.dataNascCadasatro);
-        telefoneCadastro = findViewById(R.id.telefoneCadastro);
-        enderecoCadastro = findViewById(R.id.enderecoCadastro);
-        cpfCadastro = findViewById(R.id.cpfCadastro);
-        emailCadastro = findViewById(R.id.emailCadastro);
-        senhaCadastro = findViewById(R.id.senhaCadastro);
-        cadastrarUsu = findViewById(R.id.cadastrarUsu);
-        mostrarSenhaCadastro = findViewById(R.id.mostrarSenhaCadastro);
-        receberNewsLetter = findViewById(R.id.receberNews);
-
-
-        spinnerSexo = findViewById(R.id.sexoCadastro);
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, R.layout.spi_elemento, sexo);
-        adapter3.setDropDownViewResource(R.layout.spi_dropdown_elemento);
-        spinnerSexo.setAdapter(adapter3);
-        spinnerSexo.setSelection(0, false);
-
+        iniciarComponentes();
 
         cadastrarUsu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +78,26 @@ public class TelaCadastro extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void iniciarComponentes(){
+        primeiroNome = findViewById(R.id.primeiroNome);
+        sobrenome = findViewById(R.id.sobrenome);
+        dataNascCadastro = findViewById(R.id.dataNascCadasatro);
+        telefoneCadastro = findViewById(R.id.telefoneCadastro);
+        enderecoCadastro = findViewById(R.id.enderecoCadastro);
+        cpfCadastro = findViewById(R.id.cpfCadastro);
+        emailCadastro = findViewById(R.id.emailCadastro);
+        senhaCadastro = findViewById(R.id.senhaCadastro);
+        cadastrarUsu = findViewById(R.id.cadastrarUsu);
+        mostrarSenhaCadastro = findViewById(R.id.mostrarSenhaCadastro);
+        receberNewsLetter = findViewById(R.id.receberNews);
+
+        spinnerSexo = findViewById(R.id.sexoCadastro);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, R.layout.spi_elemento, sexo);
+        adapter3.setDropDownViewResource(R.layout.spi_dropdown_elemento);
+        spinnerSexo.setAdapter(adapter3);
+        spinnerSexo.setSelection(0, false);
     }
 
     public void CadastrarUsuario(View v){

@@ -1,6 +1,9 @@
 package com.example.healthcare;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,28 +13,41 @@ public class TelaVinculacaoClinicas extends AppCompatActivity {
 
     TextView nomeClinica, enderecoClinica, telefoneClinica, servicosClinica;
     ImageView fotoClinica;
-    VincularClinicas vincularClinicas;
-    TelaClinicas telaClinicas = new TelaClinicas();
+
+    TelaClinicas telaClinicas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_vinculacao_clinicas);
+        getWindow().setStatusBarColor(Color.rgb(12,92,100));
+        getSupportActionBar().hide();
 
+        iniciarComponentes();
+        getSetClinica();
+    }
+
+    public void iniciarComponentes(){
         nomeClinica = findViewById(R.id.nomeClinica);
         enderecoClinica = findViewById(R.id.enderecoClinica);
         telefoneClinica = findViewById(R.id.telefoneClinica);
         servicosClinica = findViewById(R.id.servicosClinicas);
         fotoClinica = findViewById(R.id.fotoClinica);
-
-        getSetClinica();
     }
 
     public void getSetClinica(){
-        nomeClinica.setText(vincularClinicas.getNomeClinica());
-        enderecoClinica.setText(vincularClinicas.getEnderecoClinica());
-        telefoneClinica.setText(vincularClinicas.getTelefoneClinica());
-        servicosClinica.setText(vincularClinicas.getServicosClinica());
-        fotoClinica.setImageDrawable(vincularClinicas.getFotoClinica());
+        System.out.println(telaClinicas.lClinicas);
+        for (VincularClinicas c : telaClinicas.lClinicas){
+            nomeClinica.setText(c.getNomeClinica());
+            enderecoClinica.setText(c.getEnderecoClinica());
+            telefoneClinica.setText(c.getTelefoneClinica());
+            servicosClinica.setText(c.getServicosClinica());
+            fotoClinica.setImageDrawable(c.getFotoClinica());
+        }
+    }
+
+    public void voltarTela(View g){
+        Intent voltarTela = new Intent(this, TelaClinicas.class);
+        startActivity(voltarTela);
     }
 }

@@ -9,10 +9,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class TelaClinicas extends AppCompatActivity {
 
     ImageView clinicaSaoLucas, hospitalBaiaSul, hospitalUnimed, clinicaUniOdonto;
-    VincularClinicas vincularClinicas;
+    static ArrayList<VincularClinicas> lClinicas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,20 +23,27 @@ public class TelaClinicas extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
+        iniciarComponentes();
+    }
+
+    public void iniciarComponentes(){
         clinicaSaoLucas = findViewById(R.id.clinicaSaoLucas);
         hospitalBaiaSul = findViewById(R.id.hospitalBaiaSul);
         hospitalUnimed = findViewById(R.id.hospitalUnimed);
         clinicaUniOdonto = findViewById(R.id.clinicaUniOdonto);
-
     }
 
     public void setarSaoLucas(View s){
         try {
-            vincularClinicas.setNomeClinica("Clínica São Lucas");
-            vincularClinicas.setEnderecoClinica("\uD83D\uDCCD Av. Barão do Rio Branco, 461 - Centro,\nPalhoça - SC, 88130-101");
-            vincularClinicas.setTelefoneClinica("\uD83D\uDCDE (48) 3242-7788");
-            vincularClinicas.setServicosClinica("• Laboratório para realização de diversos exames\n• Raio - x\n• Tomografia\n• Ressonância\nEspecialista da área:\n• Cardiologia;\n• Ortopedia;\n• Pscicologia;\n• Reumatologia;\n• Fisoterapia;\n• Clínico Geral;\n• Pediatria;\n• Ginecologista;\n• Urologista;\n• Dermatologia;");
-            vincularClinicas.setFotoClinica(clinicaSaoLucas.getDrawable());
+            VincularClinicas saoLucas = new VincularClinicas(
+                    "Clínica São Lucas",
+                    "\uD83D\uDCCD Av. Barão do Rio Branco, 461 - Centro,\nPalhoça - SC, 88130-101",
+                    "\uD83D\uDCDE (48) 3242-7788",
+                    "• Laboratório para realização de diversos exames\n• Raio - x\n• Tomografia\n• Ressonância\nEspecialista da área:\n• Cardiologia;\n• Ortopedia;\n• Pscicologia;\n• Reumatologia;\n• Fisoterapia;\n• Clínico Geral;\n• Pediatria;\n• Ginecologista;\n• Urologista;\n• Dermatologia;",
+                    clinicaSaoLucas.getDrawable()
+            );
+            lClinicas.add(saoLucas);
+
             Intent irTelaVinculacao = new Intent(this, TelaVinculacaoClinicas.class);
             startActivity(irTelaVinculacao);
         } catch (Exception e) {
@@ -44,12 +53,15 @@ public class TelaClinicas extends AppCompatActivity {
 
     public void setarBaiaSul(View b){
         try {
-            VincularClinicas vincularClinicas = new VincularClinicas();
-            vincularClinicas.setNomeClinica("Hospital Baia-Sul");
-            vincularClinicas.setEnderecoClinica("\uD83D\uDCCD Rua Menino Deus, 63 Centro,\nFlorianópolis - SC");
-            vincularClinicas.setTelefoneClinica("\uD83D\uDCDE (48) 3229-7777");
-            vincularClinicas.setServicosClinica("• Laboratório para realização de diversos exames\n• Exames por imagem\n• Diagnóstico\n• Cirurgia Plástica\nEspecialista da área:\n• Cardiologia;\n• Ortopedia;\n• Pscicologia;\n• Reumatologia;\n• Fisoterapia;\n• Clínico Geral;\n• Pediatria;\n• Ginecologista;\n• Urologista;\n• Oncologista;\n• Oftalmologia");
-            vincularClinicas.setFotoClinica(hospitalBaiaSul.getDrawable());
+            VincularClinicas baiaSul = new VincularClinicas(
+                    "Hospital Baia-Sul",
+                    "\uD83D\uDCCD Rua Menino Deus, 63 Centro,\nFlorianópolis - SC",
+                    "\uD83D\uDCDE (48) 3229-7777",
+                    "• Laboratório para realização de diversos exames\n• Exames por imagem\n• Diagnóstico\n• Cirurgia Plástica\nEspecialista da área:\n• Cardiologia;\n• Ortopedia;\n• Pscicologia;\n• Reumatologia;\n• Fisoterapia;\n• Clínico Geral;\n• Pediatria;\n• Ginecologista;\n• Urologista;\n• Oncologista;\n• Oftalmologia",
+                    hospitalBaiaSul.getDrawable()
+            );
+            lClinicas.add(baiaSul);
+
             Intent irTelaVinculacao = new Intent(this, TelaVinculacaoClinicas.class);
             startActivity(irTelaVinculacao);
         } catch (Exception e) {
@@ -59,12 +71,15 @@ public class TelaClinicas extends AppCompatActivity {
 
     public void setarUnimed(View u){
         try {
-            VincularClinicas vincularClinicas = new VincularClinicas();
-            vincularClinicas.setNomeClinica("Hospital Unimed");
-            vincularClinicas.setEnderecoClinica("\uD83D\uDCCD R. Manoel Loureiro, 1909 - Barreiros,\nSão José - SC, 88117-331");
-            vincularClinicas.setTelefoneClinica("\uD83D\uDCDE (48) 3288-4100");
-            vincularClinicas.setServicosClinica("• Laboratório para realização de diversos exames\n• Exames por imagem\n• Aura\n• Participação no clube de benefícios\nEspecialista da área:\n•Cardiologia;\n• Ortopedia;\n• Pscicologia;\n• Reumatologia;\n• Fisoterapia;\n• Clínico Geral;\n• Pediatria;\n• Oftalmologia;\n• Nutricionista;");
-            vincularClinicas.setFotoClinica(hospitalUnimed.getDrawable());
+            VincularClinicas unimed = new VincularClinicas(
+                    "Hospital Unimed",
+                    "\uD83D\uDCCD R. Manoel Loureiro, 1909 - Barreiros,\nSão José - SC, 88117-331",
+                    "\uD83D\uDCDE (48) 3288-4100",
+                    "• Laboratório para realização de diversos exames\n• Exames por imagem\n• Aura\n• Participação no clube de benefícios\nEspecialista da área:\n•Cardiologia;\n• Ortopedia;\n• Pscicologia;\n• Reumatologia;\n• Fisoterapia;\n• Clínico Geral;\n• Pediatria;\n• Oftalmologia;\n• Nutricionista;",
+                    hospitalUnimed.getDrawable()
+            );
+            lClinicas.add(unimed);
+
             Intent irTelaVinculacao = new Intent(this, TelaVinculacaoClinicas.class);
             startActivity(irTelaVinculacao);
         } catch (Exception e) {
@@ -74,12 +89,16 @@ public class TelaClinicas extends AppCompatActivity {
 
     public void setarUniOdonto(View o){
         try {
-            VincularClinicas vincularClinicas = new VincularClinicas();
-            vincularClinicas.setNomeClinica("Clínica UniOdonto");
-            vincularClinicas.setEnderecoClinica("\uD83D\uDCCD R. Irmãos Vieira, 967 - sala 208 -\nCampinas, São José - SC, 88101-290");
-            vincularClinicas.setTelefoneClinica("\uD83D\uDCDE (48) 3247-1717");
-            vincularClinicas.setServicosClinica("• Exames por imagem\n• Prótese\n• Atividade educativa\n• Restauração\n• Manutenção aparelho\n• Colocação aparelho\n• Limpeza bucal\n• Extração de dentes");
-            vincularClinicas.setFotoClinica(clinicaUniOdonto.getDrawable());Intent irTelaVinculacao = new Intent(this, TelaVinculacaoClinicas.class);
+            VincularClinicas uniOdonto = new VincularClinicas(
+                    "Clínica UniOdonto",
+                    "\uD83D\uDCCD R. Irmãos Vieira, 967 - sala 208 -\nCampinas, São José - SC, 88101-290",
+                    "\uD83D\uDCDE (48) 3247-1717",
+                    "• Exames por imagem\n• Prótese\n• Atividade educativa\n• Restauração\n• Manutenção aparelho\n• Colocação aparelho\n• Limpeza bucal\n• Extração de dentes",
+                    clinicaUniOdonto.getDrawable()
+            );
+            lClinicas.add(uniOdonto);
+
+            Intent irTelaVinculacao = new Intent(this, TelaVinculacaoClinicas.class);
             startActivity(irTelaVinculacao);
         } catch (Exception e) {
             Toast.makeText(this, "Não foi possível vincular a clínica", Toast.LENGTH_SHORT).show();
