@@ -1,9 +1,5 @@
 package com.example.healthcare;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,8 +8,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -129,7 +126,7 @@ public class TelaAgua extends AppCompatActivity {
                         imgGarrafa.setImageResource(R.drawable.garrafa12);
                         tituloAgua.setText("Você concluiu sua meta! \uD83C\uDF89");
                         texto.setText(" ");
-                        btnIngerido.setClickable(false);
+                        btnIngerido.setVisibility(View.GONE);
                     }
 
                     qntdAgua.setText(valorAgua + " / 3000ml");

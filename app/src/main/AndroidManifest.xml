@@ -41,19 +41,7 @@
             android:name=".TelaExames"
             android:exported="false" />
         <activity
-            android:name=".TelaAlimentacao_adLanche"
-            android:exported="false" />
-        <activity
-            android:name=".TelaAlimentacao1_Lanche"
-            android:exported="false" />
-        <activity
             android:name=".TelaAlimentacao_Lanche"
-            android:exported="false" />
-        <activity
-            android:name=".TelaAlimentacao_adJantar"
-            android:exported="false" />
-        <activity
-            android:name=".TelaAlimentacao1_Jantar"
             android:exported="false" />
         <activity
             android:name=".TelaAlimentacao_Jantar"
@@ -68,12 +56,6 @@
             android:name=".TelaAlimentacao_Almoco"
             android:exported="false" />
         <activity
-            android:name=".TelaAlimentacao1_Cafedamanha"
-            android:exported="false" />
-        <activity
-            android:name=".TelaAlimentacao_Cafedamanha"
-            android:exported="false" />
-        <activity
             android:name=".TelaExercicios_add"
             android:exported="false" />
         <activity
@@ -81,9 +63,6 @@
             android:exported="false" />
         <activity
             android:name=".TelaCafeManhaAdicionado"
-            android:exported="false" />
-        <activity
-            android:name=".TelaAlimentacao_adCafedamanha"
             android:exported="false" />
         <activity
             android:name=".TelaPerfil_Premium"

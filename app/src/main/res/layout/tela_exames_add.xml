@@ -72,7 +72,7 @@
         android:id="@+id/data"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:fontFamily="@font/urbanist"
         android:gravity="center"
@@ -110,11 +110,13 @@
         android:id="@+id/textView75"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="Tipo de exame"
         android:textColor="#1E232C"
         android:textSize="21sp"
         app:fontFamily="@font/urbanist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/clinica"
         app:layout_constraintTop_toBottomOf="@+id/clinica" />
 
@@ -122,11 +124,13 @@
         android:id="@+id/textView76"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="25dp"
         android:text="Data"
         android:textColor="#1E232C"
         android:textSize="21sp"
         app:fontFamily="@font/urbanist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView75"
         app:layout_constraintTop_toBottomOf="@+id/textView75" />
 
@@ -134,11 +138,13 @@
         android:id="@+id/textView77"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="25dp"
         android:text="Horário"
         android:textColor="#1E232C"
         android:textSize="21sp"
         app:fontFamily="@font/urbanist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView76"
         app:layout_constraintTop_toBottomOf="@+id/textView76" />
 

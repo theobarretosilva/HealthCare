@@ -10,7 +10,7 @@ public class TelaAlimentacao_adAlmoco extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_alimentacao_ad_almoco);
+        setContentView(R.layout.tela_alimentacao_add);
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
     }
