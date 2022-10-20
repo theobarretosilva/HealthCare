@@ -105,12 +105,12 @@
         android:id="@+id/rvAlimentacao"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view19"
         app:layout_constraintStart_toStartOf="@+id/dataAlimentacao2"
         app:layout_constraintTop_toBottomOf="@+id/dataAlimentacao2"
-        tools:listitem="@layout/item_alimento"
-        tools:itemCount="2" />
+        tools:listitem="@layout/item_alimento"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
