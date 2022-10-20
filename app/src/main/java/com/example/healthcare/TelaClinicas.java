@@ -29,7 +29,7 @@ public class TelaClinicas extends AppCompatActivity {
     }
 
     public void setarSaoLucas(View s){
-            VincularClinicas vincularClinicas = new VincularClinicas();
+        try {
             vincularClinicas.setNomeClinica("Clínica São Lucas");
             vincularClinicas.setEnderecoClinica("\uD83D\uDCCD Av. Barão do Rio Branco, 461 - Centro,\nPalhoça - SC, 88130-101");
             vincularClinicas.setTelefoneClinica("\uD83D\uDCDE (48) 3242-7788");
@@ -37,7 +37,9 @@ public class TelaClinicas extends AppCompatActivity {
             vincularClinicas.setFotoClinica(clinicaSaoLucas.getDrawable());
             Intent irTelaVinculacao = new Intent(this, TelaVinculacaoClinicas.class);
             startActivity(irTelaVinculacao);
-
+        } catch (Exception e) {
+            Toast.makeText(this, "Não foi possível vincular a clínica", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void setarBaiaSul(View b){
@@ -53,7 +55,6 @@ public class TelaClinicas extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "Não foi possível vincular a clínica", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public void setarUnimed(View u){
