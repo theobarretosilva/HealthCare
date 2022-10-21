@@ -1,7 +1,9 @@
 package com.example.healthcare;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +13,7 @@ import java.util.Date;
 
 public class TelaAlimentacao2 extends AppCompatActivity {
 
-    TextView dataAlimentacao2;
+    TextView dataAlimentacao2, tipoAlimentacao;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date data = new Date();
@@ -24,7 +26,25 @@ public class TelaAlimentacao2 extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
+        iniciarComponentes();
+        setarTipoAlimentacao();
+    }
+
+    private void iniciarComponentes(){
         dataAlimentacao2 = findViewById(R.id.dataAlimentacao2);
         dataAlimentacao2.setText(dataHoje);
+        tipoAlimentacao = findViewById(R.id.tipoAlimentacao);
+    }
+
+    public void voltarTelaAlimentacao(View ir){
+        Intent voltarTela = new Intent(this, TelaAlimentacao.class);
+        startActivity(voltarTela);
+    }
+
+    public void setarTipoAlimentacao(){
+        for (Alimentacao c : TelaAlimentacao.lAlimentacao){
+            System.out.println(c.getTipoAlimentacao());
+            tipoAlimentacao.setText(c.getTipoAlimentacao());
+        }
     }
 }

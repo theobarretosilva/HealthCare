@@ -4,7 +4,18 @@ import com.google.firebase.database.DatabaseReference;
 
 public class Alimentacao {
     String alimento, gramas, kcal;
+    String tipoAlimentacao;
     private String id;
+
+    public Alimentacao(String alimento, String gramas, String kcal) {
+        this.alimento = alimento;
+        this.gramas = gramas;
+        this.kcal = kcal;
+    }
+
+    public Alimentacao(String tipoAlimentacao){
+
+    }
 
     public Alimentacao() {
         DatabaseReference reference = FirebaseHelper.getDatabaseReference();
@@ -77,5 +88,12 @@ public class Alimentacao {
     }
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTipoAlimentacao() {
+        return tipoAlimentacao;
+    }
+    public void setTipoAlimentacao(String tipoAlimentacao) {
+        this.tipoAlimentacao = tipoAlimentacao;
     }
 }

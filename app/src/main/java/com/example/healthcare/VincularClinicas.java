@@ -14,9 +14,6 @@ public class VincularClinicas {
         this.fotoClinica = fotoClinica;
     }
 
-    public VincularClinicas() {
-    }
-
     public String getNomeClinica() {
         return nomeClinica;
     }
