@@ -103,59 +103,174 @@
                 android:id="@+id/textView197"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="15dp"
                 android:text="Início"
+                android:textColor="#1E232C"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView183" />
+
 
             <TextView
                 android:id="@+id/textView198"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:fontFamily="@font/urbanist"
                 android:text="Água"
-                tools:layout_editor_absoluteX="116dp"
-                tools:layout_editor_absoluteY="180dp" />
+                android:textColor="#1E232C"
+                app:layout_constraintBottom_toTopOf="@+id/view18"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView43"
+                app:layout_constraintTop_toBottomOf="@+id/view12" />
 
             <TextView
                 android:id="@+id/textView199"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
                 android:text="Alimentação"
-                tools:layout_editor_absoluteX="102dp"
-                tools:layout_editor_absoluteY="229dp" />
+                android:textColor="#1E232C"
+                app:layout_constraintBottom_toBottomOf="@+id/view20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView49"
+                app:layout_constraintTop_toBottomOf="@+id/view18" />
 
             <TextView
                 android:id="@+id/textView200"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Peso e IMC"
-                tools:layout_editor_absoluteX="109dp"
-                tools:layout_editor_absoluteY="260dp" />
+                android:textColor="#1E232C"
+                tools:layout_editor_absoluteX="108dp"
+                tools:layout_editor_absoluteY="337dp" />
 
             <TextView
                 android:id="@+id/textView202"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Vacinas"
-                tools:layout_editor_absoluteX="111dp"
-                tools:layout_editor_absoluteY="300dp" />
+                android:textColor="#1E232C"
+                tools:layout_editor_absoluteX="109dp"
+                tools:layout_editor_absoluteY="356dp" />
 
             <TextView
                 android:id="@+id/textView203"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sono"
-                tools:layout_editor_absoluteX="111dp"
-                tools:layout_editor_absoluteY="336dp" />
+                android:textColor="#1E232C"
+                tools:layout_editor_absoluteX="112dp"
+                tools:layout_editor_absoluteY="372dp" />
 
             <TextView
                 android:id="@+id/textView204"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                tools:layout_editor_absoluteX="110dp"
-                tools:layout_editor_absoluteY="363dp" />
+                android:text="Passos"
+                tools:layout_editor_absoluteX="109dp"
+                tools:layout_editor_absoluteY="410dp" />
+
+            <ImageView
+                android:id="@+id/imageView43"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view12"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/agua_preta" />
+
+            <TextView
+                android:id="@+id/textView131"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exercícios"
+                tools:layout_editor_absoluteX="108dp"
+                tools:layout_editor_absoluteY="455dp" />
+
+            <TextView
+                android:id="@+id/textView132"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medicamentos"
+                tools:layout_editor_absoluteX="101dp"
+                tools:layout_editor_absoluteY="481dp" />
+
+            <TextView
+                android:id="@+id/textView205"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exames"
+                tools:layout_editor_absoluteX="99dp"
+                tools:layout_editor_absoluteY="516dp" />
+
+            <TextView
+                android:id="@+id/textView206"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clínicas Parceiras"
+                tools:layout_editor_absoluteX="89dp"
+                tools:layout_editor_absoluteY="550dp" />
+
+            <TextView
+                android:id="@+id/textView207"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sair"
+                tools:layout_editor_absoluteX="108dp"
+                tools:layout_editor_absoluteY="600dp" />
+
+            <View
+                android:id="@+id/view12"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#A7AFAF"
+                app:layout_constraintBottom_toTopOf="@+id/textView198"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView197"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/view18"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="#A7AFAF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView43" />
+
+            <ImageView
+                android:id="@+id/imageView49"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="@+id/view18"
+                app:srcCompat="@drawable/alimentacao_preta"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <View
+                android:id="@+id/view20"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="#A7AFAF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView49" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

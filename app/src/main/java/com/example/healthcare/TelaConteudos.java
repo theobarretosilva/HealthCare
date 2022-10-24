@@ -6,10 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -50,6 +52,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class TelaConteudos extends AppCompatActivity {
 
     BottomSheetDialog dialog;
+    Dialog dialogMenu;
 
     TextView olaUsu, examesBox, clinicasBox;
     CircleImageView fotoUsu;
@@ -77,6 +80,8 @@ public class TelaConteudos extends AppCompatActivity {
 
         dialog = new BottomSheetDialog(this);
         mostrarCardPremium();
+
+        dialogMenu = new Dialog(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -200,5 +205,12 @@ public class TelaConteudos extends AppCompatActivity {
                 Picasso.get().load(uri).into(fotoUsu);
             }
         });
+    }
+
+    public void openMenuModal(View view){
+        dialogMenu.setContentView(R.layout.menu_dialog);
+        dialogMenu.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
     }
 }
