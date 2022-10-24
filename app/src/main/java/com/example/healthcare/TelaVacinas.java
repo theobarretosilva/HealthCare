@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -80,5 +81,25 @@ public class TelaVacinas extends AppCompatActivity {
                 Picasso.get().load(uri).into(fotoUsu);
             }
         });
+    }
+
+    public void setaCrianca(View crianca){
+        Toast.makeText(this, "Setando", Toast.LENGTH_SHORT).show();
+    }
+
+    public void setaJovem(View jovem){
+        Toast.makeText(this, "Setando", Toast.LENGTH_SHORT).show();
+    }
+
+    public void setaAdulto(View adulto){
+        Toast.makeText(this, "Setando", Toast.LENGTH_SHORT).show();
+    }
+
+    public void setaGestante(View gestante){
+        Toast.makeText(this, "Setando", Toast.LENGTH_SHORT).show();
+    }
+
+    public void setaIdoso(View idoso){
+        Toast.makeText(this, "Setando", Toast.LENGTH_SHORT).show();
     }
 }

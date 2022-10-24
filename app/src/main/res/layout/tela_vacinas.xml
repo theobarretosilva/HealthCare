@@ -81,6 +81,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView71" />
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="15dp"
@@ -101,7 +102,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:onClick="setaCrianca" >
 
                 <TextView
                     android:id="@+id/box1"
@@ -144,7 +146,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp">
+                android:layout_marginStart="20dp"
+                android:onClick="setaJovem" >
 
                 <TextView
                     android:id="@+id/box2"
@@ -187,7 +190,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp">
+                android:layout_marginStart="20dp"
+                android:onClick="setaAdulto" >
 
                 <TextView
                     android:id="@+id/box3"
@@ -231,7 +235,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp">
+                android:layout_marginStart="20dp"
+                android:onClick="setaGestante" >
 
                 <TextView
                     android:id="@+id/box4"
@@ -274,7 +279,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp">
+                android:layout_marginStart="20dp"
+                android:onClick="setaIdoso" >
 
                 <TextView
                     android:id="@+id/box5"
@@ -319,5 +325,35 @@
 
 
     </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/textView107"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Vacinas crianças"
+        android:textColor="#0C5C64"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/urbanist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+    <TextView
+        android:id="@+id/textView108"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Para vacinar, basta levar a criança a um\nposto ou Unidade Básica de Saúde com o\ncartão de vacinação"
+        android:textColor="#1E232C"
+        android:textSize="17sp"
+        app:fontFamily="@font/urbanist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView107"
+        app:layout_constraintTop_toBottomOf="@+id/textView107" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
