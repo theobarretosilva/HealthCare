@@ -8,9 +8,6 @@ public class Vacinas {
         this.subTitulo = subTitulo;
     }
 
-    public Vacinas() {
-    }
-
     public String getTitulo() {
         return titulo;
     }

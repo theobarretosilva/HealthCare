@@ -84,7 +84,6 @@
         android:id="@+id/horizontalScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="410dp"
@@ -92,7 +91,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView71"
         app:layout_constraintTop_toBottomOf="@+id/textView71"
         app:layout_constraintVertical_bias="1.0">
 
@@ -103,7 +102,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="setaCrianca" >
+                android:onClick="setaCrianca">
 
                 <TextView
                     android:id="@+id/box1"
@@ -147,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:onClick="setaJovem" >
+                android:onClick="setaJovem">
 
                 <TextView
                     android:id="@+id/box2"
@@ -191,7 +190,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:onClick="setaAdulto" >
+                android:onClick="setaAdulto">
 
                 <TextView
                     android:id="@+id/box3"
@@ -236,7 +235,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:onClick="setaGestante" >
+                android:onClick="setaGestante">
 
                 <TextView
                     android:id="@+id/box4"
@@ -280,7 +279,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:onClick="setaIdoso" >
+                android:onClick="setaIdoso">
 
                 <TextView
                     android:id="@+id/box5"
@@ -327,15 +326,15 @@
     </HorizontalScrollView>
 
     <TextView
-        android:id="@+id/textView107"
+        android:id="@+id/tituloVacinas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:text="Vacinas crianças"
         android:textColor="#0C5C64"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:fontFamily="@font/urbanist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -343,17 +342,18 @@
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
     <TextView
-        android:id="@+id/textView108"
+        android:id="@+id/subtituloVacinas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="Para vacinar, basta levar a criança a um\nposto ou Unidade Básica de Saúde com o\ncartão de vacinação"
         android:textColor="#1E232C"
         android:textSize="17sp"
+        android:visibility="invisible"
         app:fontFamily="@font/urbanist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView107"
-        app:layout_constraintTop_toBottomOf="@+id/textView107" />
+        app:layout_constraintStart_toStartOf="@+id/tituloVacinas"
+        app:layout_constraintTop_toBottomOf="@+id/tituloVacinas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView107"
+        android:id="@+id/tituloVacinas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView108"
+        android:id="@+id/subtituloVacinas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -28,10 +28,10 @@
         android:textStyle="bold"
         android:textColor="#1E232C"
         android:fontFamily="@font/urbanist"
-        app:layout_constraintEnd_toEndOf="@+id/textView107"
+        app:layout_constraintEnd_toEndOf="@+id/tituloVacinas"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView107"
-        app:layout_constraintTop_toTopOf="@+id/textView107" />
+        app:layout_constraintStart_toStartOf="@+id/tituloVacinas"
+        app:layout_constraintTop_toTopOf="@+id/tituloVacinas" />
 
     <TextView
         android:id="@+id/textView109"
@@ -43,11 +43,11 @@
         android:textColor="#1E232C"
         android:textSize="17sp"
         android:fontFamily="@font/urbanist"
-        app:layout_constraintBottom_toBottomOf="@+id/textView107"
-        app:layout_constraintEnd_toEndOf="@+id/textView107"
+        app:layout_constraintBottom_toBottomOf="@+id/tituloVacinas"
+        app:layout_constraintEnd_toEndOf="@+id/tituloVacinas"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView107"
-        app:layout_constraintTop_toBottomOf="@+id/textView108"
+        app:layout_constraintStart_toStartOf="@+id/tituloVacinas"
+        app:layout_constraintTop_toBottomOf="@+id/subtituloVacinas"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -59,9 +59,9 @@
         android:textSize="18sp"
         android:textColor="#1E232C"
         android:fontFamily="@font/urbanist"
-        app:layout_constraintBottom_toBottomOf="@+id/textView107"
-        app:layout_constraintEnd_toEndOf="@+id/textView107"
+        app:layout_constraintBottom_toBottomOf="@+id/tituloVacinas"
+        app:layout_constraintEnd_toEndOf="@+id/tituloVacinas"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textView107"
-        app:layout_constraintTop_toTopOf="@+id/textView107" />
+        app:layout_constraintStart_toStartOf="@+id/tituloVacinas"
+        app:layout_constraintTop_toTopOf="@+id/tituloVacinas" />
 </androidx.constraintlayout.widget.ConstraintLayout>
