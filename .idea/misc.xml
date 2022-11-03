@@ -70,6 +70,7 @@
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3255" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/drawable/box_alimento.xml" value="0.2203125" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/drawable/box_azul.xml" value="0.2203125" />
+        <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/drawable/box_imc_tela_peso.xml" value="0.2203125" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/drawable/ic_baseline_add_24_preto.xml" value="0.2203125" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2203125" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.2203125" />
@@ -79,9 +80,9 @@
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/drawable/imc_close_26.xml" value="0.2203125" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/layout/header.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/layout/imc_dialog.xml" value="0.25" />
-        <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/layout/menu_dialog.xml" value="0.67" />
+        <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/layout/menu_dialog.xml" value="0.4083333333333333" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/layout/tela_cadastro_complementar.xml" value="0.18206521739130435" />
-        <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/layout/tela_conteudos.xml" value="0.1" />
+        <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/layout/tela_conteudos.xml" value="0.33" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/layout/tela_passos.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/layout/tela_perfil.xml" value="0.67" />
         <entry key="..\:/Users/eduarda_franderlinde/Documents/HealthCare/app/src/main/res/layout/tela_perfil__premium.xml" value="0.25" />

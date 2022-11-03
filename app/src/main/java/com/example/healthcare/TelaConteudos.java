@@ -56,7 +56,7 @@ public class TelaConteudos extends AppCompatActivity {
 
     TextView olaUsu, examesBox, clinicasBox;
     CircleImageView fotoUsu;
-    ImageView examesLogo, clinicasLogo, cadeado;
+    ImageView examesLogo, clinicasLogo, cadeado, menu;
 
     private FirebaseAuth mAuth;
 
@@ -77,6 +77,15 @@ public class TelaConteudos extends AppCompatActivity {
         clinicasBox = findViewById(R.id.clinicasBox);
         clinicasLogo = findViewById(R.id.clinicasLogo);
         cadeado = findViewById(R.id.cadeado);
+        menu = findViewById(R.id.menu);
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogMenu.show();
+                openMenuModal();
+            }
+        });
 
         dialog = new BottomSheetDialog(this);
         mostrarCardPremium();
@@ -207,7 +216,7 @@ public class TelaConteudos extends AppCompatActivity {
         });
     }
 
-    public void openMenuModal(View view){
+    public void openMenuModal(){
         dialogMenu.setContentView(R.layout.menu_dialog);
         dialogMenu.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
