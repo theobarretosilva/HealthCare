@@ -27,7 +27,7 @@ public class TelaVacinas extends AppCompatActivity {
 
     TextView olaNomeUsu, tituloVacinas, subtituloVacinas;
     CircleImageView fotoUsu;
-    ArrayList<Vacina> lVacinas= new ArrayList<>();
+    ArrayList<Vacinas> lsVacinas = new ArrayList<>();
 
     private FirebaseStorage storage = FirebaseStorage.getInstance();
     private StorageReference storageRef = storage.getReference();
@@ -83,67 +83,71 @@ public class TelaVacinas extends AppCompatActivity {
     }
 
     public void setaCrianca(View crianca){
-        Vacina vacinas = new Vacina("Vacinas Crianças",
-                "Para vacinar, basta levar a criança a um\nposto ou Unidade Básica de Saúde com o\ncartão de vacinação"
-        );
-        lVacinas.add(vacinas);
-
-        for (Vacina c : lVacinas){
-            tituloVacinas.setText(c.getTitulo());
-            subtituloVacinas.setText(c.getSubTitulo());
-        }
+        tituloVacinas.setText("Vacinas crianças");
+        subtituloVacinas.setText("Para vacinar, basta levar a criança a um\nposto ou Unidade Básica de Saúde com o\ncartão de vacinação");
 
         tituloVacinas.setVisibility(View.VISIBLE);
         subtituloVacinas.setVisibility(View.VISIBLE);
+
+        Vacinas vacinas = new Vacinas("BCG (Bacilo Calmette-Guerin)", "Dose única");
+        lsVacinas.add(vacinas);
+        Vacinas vacinas1 = new Vacinas("Hepatite B", "Dose única");
+        lsVacinas.add(vacinas1);
+        Vacinas vacinas2 = new Vacinas("Pentavalente (DTP/HB/Hib)", "1°, 2° e 3° dose");
+        lsVacinas.add(vacinas2);
+        Vacinas vacinas3 = new Vacinas("VIP (Poliomielite inativada)", "1°, 2° e 3° dose");
+        lsVacinas.add(vacinas3);
+        Vacinas vacinas4 = new Vacinas("Pneumocócica 10V", "1° e 2°  dose");
+        lsVacinas.add(vacinas4);
+        Vacinas vacinas5 = new Vacinas("Vacina rotavírus humanos G1P1", "1° e 2°  dose");
+        lsVacinas.add(vacinas5);
+        Vacinas vacinas6 = new Vacinas("Meningocócica C conjugada", "1° e 2°  dose");
+        lsVacinas.add(vacinas6);
+        Vacinas vacinas7 = new Vacinas("Febre amarela", "Dose única");
+        lsVacinas.add(vacinas7);
+        Vacinas vacinas8 = new Vacinas("Pneumocócica 10 Valente", "Reforço");
+        lsVacinas.add(vacinas8);
+        Vacinas vacinas9 = new Vacinas("Tríplice Viral", "1° dose");
+        lsVacinas.add(vacinas9);
+        Vacinas vacinas10 = new Vacinas("Hepatite A", "Dose única");
+        lsVacinas.add(vacinas10);
+        Vacinas vacinas11 = new Vacinas("Poliomelite oral VOP", "1° e 2° reforço");
+        lsVacinas.add(vacinas11);
+        Vacinas vacinas12 = new Vacinas("DTP", "1° e 2° reforço");
+        lsVacinas.add(vacinas12);
+        Vacinas vacinas13 = new Vacinas("Vacirela atenuada", "");
+        lsVacinas.add(vacinas13);
+
+
     }
 
     public void setaJovem(View jovem){
-        Vacina vacinas = new Vacina("Vacinas Jovens", "A cardeneta de vacinação deve ser\nfrequentemente atualizada, pois algumas\ndelas só são administradas na adolescência.");
-        lVacinas.add(vacinas);
-
-        for (Vacina c : lVacinas){
-            tituloVacinas.setText(c.getTitulo());
-            subtituloVacinas.setText(c.getSubTitulo());
-        }
+        tituloVacinas.setText("Vacinas jovens");
+        subtituloVacinas.setText("A cardeneta de vacinação deve ser\nfrequentemente atualizada, pois algumas\ndelas só são administradas na adolescência.");
 
         tituloVacinas.setVisibility(View.VISIBLE);
         subtituloVacinas.setVisibility(View.VISIBLE);
     }
 
     public void setaAdulto(View adulto){
-        Vacina vacinas = new Vacina("Vacinas Adultos", "A vacina também evita a transmissão para\noutras pessoas que não podem ser\nvacinadas.");
-        lVacinas.add(vacinas);
-
-        for (Vacina c : lVacinas){
-            tituloVacinas.setText(c.getTitulo());
-            subtituloVacinas.setText(c.getSubTitulo());
-        }
+        tituloVacinas.setText("Vacinas adultos");
+        subtituloVacinas.setText("A vacina também evita a transmissão para\noutras pessoas que não podem ser\nvacinadas.");
 
         tituloVacinas.setVisibility(View.VISIBLE);
         subtituloVacinas.setVisibility(View.VISIBLE);
     }
 
     public void setaGestante(View gestante){
-        Vacina vacinas = new Vacina("Vacinas Gestante", "A vacina para mulheres grávidas é essencial\npara previnir doenças para si e para o bebê");
-        lVacinas.add(vacinas);
-
-        for (Vacina c : lVacinas){
-            tituloVacinas.setText(c.getTitulo());
-            subtituloVacinas.setText(c.getSubTitulo());
-        }
+        tituloVacinas.setText("Vacinas gestantes");
+        subtituloVacinas.setText("A vacina para mulheres grávidas é essencial\npara previnir doenças para si e para o bebê");
 
         tituloVacinas.setVisibility(View.VISIBLE);
         subtituloVacinas.setVisibility(View.VISIBLE);
     }
 
     public void setaIdoso(View idoso){
-        Vacina vacinas = new Vacina("Vacinas Idoso", "São três as vacinas disponíveis para pessoas\nacima de 60 anos, além da vacinação contra\ngripe.");
-        lVacinas.add(vacinas);
-
-        for (Vacina c : lVacinas){
-            tituloVacinas.setText(c.getTitulo());
-            subtituloVacinas.setText(c.getSubTitulo());
-        }
+        tituloVacinas.setText("Vacinas idosos");
+        subtituloVacinas.setText("São três as vacinas disponíveis para pessoas\nacima de 60 anos, além da vacinação contra\ngripe.");
 
         tituloVacinas.setVisibility(View.VISIBLE);
         subtituloVacinas.setVisibility(View.VISIBLE);

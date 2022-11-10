@@ -46,25 +46,28 @@ public class TelaLogin extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-        btnGoogle = findViewById(R.id.btnGoogle);
-        email_login = findViewById(R.id.email_login);
-        senha_login = findViewById(R.id.senha_login);
-        esqueceu_senha = findViewById(R.id.esqueceu_senha);
-        ver_senha = findViewById(R.id.ver_senha);
-        logar = findViewById(R.id.logar);
-
+        iniciarComponentes();
         btnGoogle.setOnClickListener(view -> {
             signIn();
         });
         requisita();
     }
 
+    public void iniciarComponentes(){
+        btnGoogle = findViewById(R.id.btnGoogle);
+        email_login = findViewById(R.id.email_login);
+        senha_login = findViewById(R.id.senha_login);
+        esqueceu_senha = findViewById(R.id.esqueceu_senha);
+        ver_senha = findViewById(R.id.ver_senha);
+        logar = findViewById(R.id.logar);
+    }
+
     private void requisita() {
-        GoogleSignInOptions gso = new
-                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
 
@@ -79,24 +82,21 @@ public class TelaLogin extends AppCompatActivity {
         String email = email_login.getText().toString();
         String senha = senha_login.getText().toString();
 
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    startActivity(irTelaConteudos);
-                }else {
-                    String erro;
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+                startActivity(irTelaConteudos);
+            }else {
+                String erro;
 
-                    try {
-                        throw task.getException();
-                    }catch (Exception e){
-                        erro = "Erro ao logar o usuário";
-                    }
-                    Snackbar snackbar = Snackbar.make(a,erro,Snackbar.LENGTH_LONG);
-                    snackbar.setBackgroundTint(Color.WHITE);
-                    snackbar.setTextColor(Color.BLACK);
-                    snackbar.show();
+                try {
+                    throw task.getException();
+                }catch (Exception e){
+                    erro = "Erro ao logar o usuário";
                 }
+                Snackbar snackbar = Snackbar.make(a,erro,Snackbar.LENGTH_LONG);
+                snackbar.setBackgroundTint(Color.WHITE);
+                snackbar.setTextColor(Color.BLACK);
+                snackbar.show();
             }
         });
     }
@@ -121,17 +121,13 @@ public class TelaLogin extends AppCompatActivity {
     }
 
     private void enviarEmail(String email){
-        FirebaseAuth.getInstance().sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(getBaseContext(), "Enviamos uma mensagem para o seu email com um link para redefinir", Toast.LENGTH_LONG).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getBaseContext(), "Erro ao enviar o email", Toast.LENGTH_LONG).show();
-            }
-        });
+        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                .addOnSuccessListener(unused ->
+                        Toast.makeText(getBaseContext(), "Enviamos uma mensagem para o seu email com um link para redefinir", Toast.LENGTH_LONG).show()
+                )
+                .addOnFailureListener(e ->
+                        Toast.makeText(getBaseContext(), "Erro ao enviar o email", Toast.LENGTH_LONG).show()
+                );
     }
 
     public void irTelaCadastro(View i){
