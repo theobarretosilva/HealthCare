@@ -1,9 +1,9 @@
 package com.example.healthcare;
 
-public class Vacinas {
+public class Vacina {
     String titulo, subTitulo;
 
-    public Vacinas(String titulo, String subTitulo) {
+    public  Vacina(String titulo, String subTitulo) {
         this.titulo = titulo;
         this.subTitulo = subTitulo;
     }

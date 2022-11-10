@@ -1,17 +1,14 @@
 package com.example.healthcare;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,7 +27,7 @@ public class TelaVacinas extends AppCompatActivity {
 
     TextView olaNomeUsu, tituloVacinas, subtituloVacinas;
     CircleImageView fotoUsu;
-    ArrayList<Vacinas> lVacinas= new ArrayList<>();
+    ArrayList<Vacina> lVacinas= new ArrayList<>();
 
     private FirebaseStorage storage = FirebaseStorage.getInstance();
     private StorageReference storageRef = storage.getReference();
@@ -78,21 +75,20 @@ public class TelaVacinas extends AppCompatActivity {
     }
 
     public void setarImagemPerfil(){
-        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        storageRef.child("imagens/Fotos de perfil/" + usuarioID + "/" + usuarioID + ".jpeg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(fotoUsu);
-            }
-        });
+        storageRef.child("imagens/Fotos de perfil/" + FirebaseHelper.getUIDUsuario() + "/" + FirebaseHelper.getUIDUsuario() + ".jpeg")
+                .getDownloadUrl()
+                .addOnSuccessListener(uri ->
+                        Picasso.get().load(uri).into(fotoUsu)
+                );
     }
 
     public void setaCrianca(View crianca){
-        Vacinas vacinas = new Vacinas("Vacinas Crianças", "Para vacinar, basta levar a criança a um\nposto ou Unidade Básica de Saúde com o\ncartão de vacinação");
+        Vacina vacinas = new Vacina("Vacinas Crianças",
+                "Para vacinar, basta levar a criança a um\nposto ou Unidade Básica de Saúde com o\ncartão de vacinação"
+        );
         lVacinas.add(vacinas);
 
-        for (Vacinas c : lVacinas){
+        for (Vacina c : lVacinas){
             tituloVacinas.setText(c.getTitulo());
             subtituloVacinas.setText(c.getSubTitulo());
         }
@@ -102,10 +98,10 @@ public class TelaVacinas extends AppCompatActivity {
     }
 
     public void setaJovem(View jovem){
-        Vacinas vacinas = new Vacinas("Vacinas Jovens", "A cardeneta de vacinação deve ser\nfrequentemente atualizada, pois algumas\ndelas só são administradas na adolescência.");
+        Vacina vacinas = new Vacina("Vacinas Jovens", "A cardeneta de vacinação deve ser\nfrequentemente atualizada, pois algumas\ndelas só são administradas na adolescência.");
         lVacinas.add(vacinas);
 
-        for (Vacinas c : lVacinas){
+        for (Vacina c : lVacinas){
             tituloVacinas.setText(c.getTitulo());
             subtituloVacinas.setText(c.getSubTitulo());
         }
@@ -115,10 +111,10 @@ public class TelaVacinas extends AppCompatActivity {
     }
 
     public void setaAdulto(View adulto){
-        Vacinas vacinas = new Vacinas("Vacinas Adultos", "A vacina também evita a transmissão para\noutras pessoas que não podem ser\nvacinadas.");
+        Vacina vacinas = new Vacina("Vacinas Adultos", "A vacina também evita a transmissão para\noutras pessoas que não podem ser\nvacinadas.");
         lVacinas.add(vacinas);
 
-        for (Vacinas c : lVacinas){
+        for (Vacina c : lVacinas){
             tituloVacinas.setText(c.getTitulo());
             subtituloVacinas.setText(c.getSubTitulo());
         }
@@ -128,10 +124,10 @@ public class TelaVacinas extends AppCompatActivity {
     }
 
     public void setaGestante(View gestante){
-        Vacinas vacinas = new Vacinas("Vacinas Gestante", "A vacina para mulheres grávidas é essencial\npara previnir doenças para si e para o bebê");
+        Vacina vacinas = new Vacina("Vacinas Gestante", "A vacina para mulheres grávidas é essencial\npara previnir doenças para si e para o bebê");
         lVacinas.add(vacinas);
 
-        for (Vacinas c : lVacinas){
+        for (Vacina c : lVacinas){
             tituloVacinas.setText(c.getTitulo());
             subtituloVacinas.setText(c.getSubTitulo());
         }
@@ -141,10 +137,10 @@ public class TelaVacinas extends AppCompatActivity {
     }
 
     public void setaIdoso(View idoso){
-        Vacinas vacinas = new Vacinas("Vacinas Idoso", "São três as vacinas disponíveis para pessoas\nacima de 60 anos, além da vacinação contra\ngripe.");
+        Vacina vacinas = new Vacina("Vacinas Idoso", "São três as vacinas disponíveis para pessoas\nacima de 60 anos, além da vacinação contra\ngripe.");
         lVacinas.add(vacinas);
 
-        for (Vacinas c : lVacinas){
+        for (Vacina c : lVacinas){
             tituloVacinas.setText(c.getTitulo());
             subtituloVacinas.setText(c.getSubTitulo());
         }
