@@ -5,14 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class TelaInicial extends AppCompatActivity {
 
@@ -25,7 +18,7 @@ public class TelaInicial extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-        Intent irDireto = new Intent (this, TelaConteudos_Premium .class);
+        Intent irDireto = new Intent (this, TelaVacinas.class);
         startActivity(irDireto);
 
         login = findViewById(R.id.login);

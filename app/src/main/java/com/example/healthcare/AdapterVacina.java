@@ -29,11 +29,23 @@ public class AdapterVacina extends RecyclerView.Adapter<AdapterVacina.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Vacinas vacinas = vacinasList.get(position);
 
-        holder.
+        holder.titulo.setText(vacinas.getTitulo());
+        holder.subtitulo.setText(vacinas.getSubtitulo());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return vacinasList.size();
+    }
+
+    static class MyViewHolder extends RecyclerView.ViewHolder{
+
+        TextView titulo, subtitulo;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            titulo = itemView.findViewById(R.id.tituloCardVacina);
+            subtitulo = itemView.findViewById(R.id.subtituloCardVacina);
+        }
     }
 }
