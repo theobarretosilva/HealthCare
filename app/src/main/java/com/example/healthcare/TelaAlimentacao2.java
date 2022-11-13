@@ -42,9 +42,11 @@ public class TelaAlimentacao2 extends AppCompatActivity {
     }
 
     public void setarTipoAlimentacao(){
-        for (Alimentacao c : TelaAlimentacao.lAlimentacao){
-            System.out.println(c.getTipoAlimentacao());
-            tipoAlimentacao.setText(c.getTipoAlimentacao());
-        }
+        tipoAlimentacao.setText(TelaAlimentacao.tipoAlimentacao);
+    }
+
+    public void irTelaAddAlimentacao(View a){
+        Intent irTelaAddAlimentacao = new Intent(this, TelaAlimentacao_add.class);
+        startActivity(irTelaAddAlimentacao);
     }
 }

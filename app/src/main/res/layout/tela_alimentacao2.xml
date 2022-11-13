@@ -95,6 +95,7 @@
         android:id="@+id/imageView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="irTelaAddAlimentacao"
         android:src="@drawable/ic_baseline_add_24_preto"
         app:layout_constraintBottom_toBottomOf="@+id/tipoAlimentacao"
         app:layout_constraintEnd_toEndOf="@+id/view19"

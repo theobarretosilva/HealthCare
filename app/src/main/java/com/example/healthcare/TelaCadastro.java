@@ -13,26 +13,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class TelaCadastro extends AppCompatActivity {
-
-    String usuarioID;
 
     EditText primeiroNome, sobrenome, dataNascCadastro, telefoneCadastro, enderecoCadastro, cpfCadastro, emailCadastro, senhaCadastro;
     Button cadastrarUsu;
@@ -107,40 +100,36 @@ public class TelaCadastro extends AppCompatActivity {
 
         Intent irTelaCadastroComplementar = new Intent(this, TelaCadastroComplementar.class);
 
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
 
-                    salvarDadosCadastro();
+                salvarDadosCadastro();
 
-                    startActivity(irTelaCadastroComplementar);
-                }else{
-                    String erro;
-                    try {
-                        throw task.getException();
-                    }catch (FirebaseAuthWeakPasswordException e){
-                        erro = "Digite uma senha com no mínimo 6 caracteres!";
-                    }catch (FirebaseAuthUserCollisionException e){
-                        erro = "Esta conta de email já está cadastrada!";
-                    }catch (FirebaseAuthInvalidCredentialsException e){
-                        erro = "Email inválido";
-                    }catch (Exception e){
-                        erro = "Erro ao cadastrar o usuário";
-                    }
-
-                    Snackbar snackbar = Snackbar.make(v,erro,Snackbar.LENGTH_LONG);
-                    snackbar.setBackgroundTint(Color.WHITE);
-                    snackbar.setTextColor(Color.BLACK);
-                    snackbar.show();
+                startActivity(irTelaCadastroComplementar);
+            }else{
+                String erro;
+                try {
+                    throw task.getException();
+                }catch (FirebaseAuthWeakPasswordException e){
+                    erro = "Digite uma senha com no mínimo 6 caracteres!";
+                }catch (FirebaseAuthUserCollisionException e){
+                    erro = "Esta conta de email já está cadastrada!";
+                }catch (FirebaseAuthInvalidCredentialsException e){
+                    erro = "Email inválido";
+                }catch (Exception e){
+                    erro = "Erro ao cadastrar o usuário";
                 }
+
+                Snackbar snackbar = Snackbar.make(v,erro,Snackbar.LENGTH_LONG);
+                snackbar.setBackgroundTint(Color.WHITE);
+                snackbar.setTextColor(Color.BLACK);
+                snackbar.show();
             }
         });
     }
 
     public void salvarDadosCadastro(){
 
-        usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Intent irTelaCadastroComplementar = new Intent(this, TelaCadastroComplementar.class);
 
         String primeiroN = primeiroNome.getText().toString();
@@ -153,8 +142,6 @@ public class TelaCadastro extends AppCompatActivity {
         String email = emailCadastro.getText().toString();
         String senha = senhaCadastro.getText().toString();
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
         Map<String, Object> cadastroUsuario = new HashMap<>();
         cadastroUsuario.put("Nome completo", primeiroN + " " + sobrenomE);
         cadastroUsuario.put("Primeiro nome", primeiroN);
@@ -166,9 +153,14 @@ public class TelaCadastro extends AppCompatActivity {
         cadastroUsuario.put("Sexo", sexo);
         cadastroUsuario.put("Email", email);
         cadastroUsuario.put("Senha", senha);
+        cadastroUsuario.put("Premium", false);
 
         try {
-            DocumentReference ns = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
+            DocumentReference ns = FirebaseHelper.getFirebaseFirestore()
+                    .collection("Usuarios")
+                    .document(FirebaseHelper.getUIDUsuario())
+                    .collection("Informações pessoais")
+                    .document("Informações de cadastro");
             ns.set(cadastroUsuario);
         } catch (Exception e){
             startActivity(irTelaCadastroComplementar);

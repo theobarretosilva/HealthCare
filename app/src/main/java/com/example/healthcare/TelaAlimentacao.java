@@ -9,17 +9,17 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class TelaAlimentacao extends AppCompatActivity {
 
     TextView dataAtual;
-    static ArrayList<Alimentacao> lAlimentacao = new ArrayList<>();
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date data = new Date();
     String dataHoje = sdf.format(data);
+
+    public static String tipoAlimentacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,28 @@ public class TelaAlimentacao extends AppCompatActivity {
     }
 
     public void setarCafeDaManha(View c){
-        Alimentacao alimentacao = new Alimentacao("Café da manhã");
-        lAlimentacao.add(alimentacao);
+        tipoAlimentacao = "Café da manhã";
+
+        Intent irTelaAlimentacao2 = new Intent(this, TelaAlimentacao2.class);
+        startActivity(irTelaAlimentacao2);
+    }
+
+    public void setarAlmoco(View a){
+        tipoAlimentacao = "Almoço";
+
+        Intent irTelaAlimentacao2 = new Intent(this, TelaAlimentacao2.class);
+        startActivity(irTelaAlimentacao2);
+    }
+
+    public void setarJantar(View j){
+        tipoAlimentacao = "Jantar";
+
+        Intent irTelaAlimentacao2 = new Intent(this, TelaAlimentacao2.class);
+        startActivity(irTelaAlimentacao2);
+    }
+
+    public void setarLanches(View l){
+        tipoAlimentacao = "Lanches";
 
         Intent irTelaAlimentacao2 = new Intent(this, TelaAlimentacao2.class);
         startActivity(irTelaAlimentacao2);
