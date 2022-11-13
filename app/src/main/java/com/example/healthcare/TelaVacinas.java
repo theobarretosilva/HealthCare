@@ -62,7 +62,7 @@ public class TelaVacinas extends AppCompatActivity {
         olaNomeUsu = findViewById(R.id.olaNomeUsu);
         fotoUsu = findViewById(R.id.fotoUsuVacinas);
         tituloVacinas = findViewById(R.id.tituloVacinas);
-        subtituloVacinas = findViewById(R.id.subtituloVacinas);
+        subtituloVacinas = findViewById(R.id.nomeAlimentoCard);
         rvVacinas = findViewById(R.id.rvVacinas);
     }
 

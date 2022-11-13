@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/subtituloVacinas"
+        android:id="@+id/nomeAlimentoCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="@+id/tituloVacinas" />
 
     <TextView
-        android:id="@+id/textView109"
+        android:id="@+id/gAlimentoCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -47,11 +47,11 @@
         app:layout_constraintEnd_toEndOf="@+id/tituloVacinas"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tituloVacinas"
-        app:layout_constraintTop_toBottomOf="@+id/subtituloVacinas"
+        app:layout_constraintTop_toBottomOf="@+id/nomeAlimentoCard"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView110"
+        android:id="@+id/kcalAlimentoCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"

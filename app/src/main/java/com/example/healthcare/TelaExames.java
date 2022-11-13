@@ -1,14 +1,14 @@
 package com.example.healthcare;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -56,10 +56,9 @@ public class TelaExames extends AppCompatActivity {
     }
 
     public void recuperaExames(){
-        String uidUsuario = FirebaseHelper.getUIDUsuario();
         DatabaseReference examesRef = FirebaseHelper.getDatabaseReference()
                 .child("Registros")
-                .child(uidUsuario)
+                .child(FirebaseHelper.getUIDUsuario())
                 .child("Exames");
         examesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

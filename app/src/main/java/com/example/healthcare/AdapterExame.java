@@ -33,7 +33,6 @@ public class AdapterExame extends RecyclerView.Adapter<AdapterExame.MyViewHolder
         holder.localExame.setText(exame.getClinica());
         holder.tipoExame.setText(exame.getTipo());
         holder.horarioExame.setText(exame.getHorario());
-
     }
 
     @Override

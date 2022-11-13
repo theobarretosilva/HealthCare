@@ -66,7 +66,7 @@
         app:layout_constraintTop_toTopOf="@+id/dataAlimentacao2" />
 
     <TextView
-        android:id="@+id/textView181"
+        android:id="@+id/textSemAlimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="260dp"
@@ -80,14 +80,14 @@
         app:layout_constraintTop_toBottomOf="@+id/dataAlimentacao2" />
 
     <ImageView
-        android:id="@+id/imageView63"
+        android:id="@+id/imgSemAlimento"
         android:layout_width="75dp"
         android:layout_height="65dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView181"
+        app:layout_constraintTop_toBottomOf="@+id/textSemAlimento"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/adicionar" />
 
