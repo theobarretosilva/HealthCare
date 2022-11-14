@@ -33,7 +33,7 @@ public class TelaAlimentacao2 extends AppCompatActivity {
     String dataHoje = sdf.format(data);
 
     private List<Alimentacao> alimentacaoList = new ArrayList<>();
-    AdapterAlimento adapterAlimento;
+    private AdapterAlimento adapterAlimento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class TelaAlimentacao2 extends AppCompatActivity {
         iniciarComponentes();
         setarTipoAlimentacao();
         recuperarAlimentos();
+        configReciclerView();
     }
 
     private void iniciarComponentes(){
@@ -61,29 +62,28 @@ public class TelaAlimentacao2 extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        DatabaseReference reference = FirebaseHelper.getDatabaseReference()
-                .child("Registros")
-                .child(FirebaseHelper.getUIDUsuario())
-                .child("Alimentação");
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    configReciclerView();
-                    maisAlimento.setVisibility(View.VISIBLE);
-                } else {
-                    rvAlimentos.setVisibility(View.INVISIBLE);
-                    textSemAlimento.setVisibility(View.VISIBLE);
-                    imgSemAlimento.setVisibility(View.VISIBLE);
+            DatabaseReference reference = FirebaseHelper.getDatabaseReference()
+                    .child("Registros")
+                    .child(FirebaseHelper.getUIDUsuario())
+                    .child("Alimentação")
+                    .child(TelaAlimentacao.tipoAlimentacao);
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (!snapshot.exists()){
+                        rvAlimentos.setVisibility(View.GONE);
+                        maisAlimento.setVisibility(View.GONE);
+                        textSemAlimento.setVisibility(View.VISIBLE);
+                        imgSemAlimento.setVisibility(View.VISIBLE);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+
     }
 
     public void configReciclerView(){
@@ -94,28 +94,29 @@ public class TelaAlimentacao2 extends AppCompatActivity {
     }
 
     public void recuperarAlimentos(){
-        if (TelaAlimentacao.tipoAlimentacao.equals("Café da manhã")){
-            DatabaseReference reference = FirebaseHelper.getDatabaseReference()
-                    .child("Registros")
-                    .child(FirebaseHelper.getUIDUsuario())
-                    .child("Alimentação")
-                    .child("Café da manhã");
-            reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
+        DatabaseReference reference = FirebaseHelper.getDatabaseReference()
+                .child("Registros")
+                .child(FirebaseHelper.getUIDUsuario())
+                .child("Alimentação")
+                .child(TelaAlimentacao.tipoAlimentacao);
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
                     for (DataSnapshot snap : snapshot.getChildren()){
+                        alimentacaoList.clear();
                         Alimentacao alimentacao = snap.getValue(Alimentacao.class);
                         alimentacaoList.add(alimentacao);
                     }
-//                    adapterAlimento.notifyDataSetChanged();
+                    adapterAlimento.notifyDataSetChanged();
                 }
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
-        }
+            }
+        });
     }
 
     public void voltarTelaAlimentacao(View ir){

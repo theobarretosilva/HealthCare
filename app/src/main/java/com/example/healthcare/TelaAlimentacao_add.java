@@ -1,7 +1,5 @@
 package com.example.healthcare;
 
-import static java.lang.Integer.parseInt;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -45,8 +43,8 @@ public class TelaAlimentacao_add extends AppCompatActivity {
 
     public void mandarAlimentoBD(){
         String alimento = nomeAlimento.getText().toString();
-        int kcal = parseInt(kcalAlimento.getText().toString());
-        int g = parseInt(gAlimento.getText().toString());
+        int kcal = Integer.parseInt(kcalAlimento.getText().toString());
+        int g = Integer.parseInt(gAlimento.getText().toString());
 
         try {
             Alimentacao alimentacao = new Alimentacao();

@@ -18,7 +18,7 @@ public class Alimentacao {
                 .child(FirebaseHelper.getUIDUsuario())
                 .child("Alimentação")
                 .child("Café da manhã")
-                .child(this.id);
+                .child(this.alimento);
         reference.setValue(this);
     }
 
@@ -28,7 +28,7 @@ public class Alimentacao {
                 .child(FirebaseHelper.getUIDUsuario())
                 .child("Alimentação")
                 .child("Almoço")
-                .child(this.id);
+                .child(this.alimento);
         reference.setValue(this);
     }
 
@@ -38,7 +38,7 @@ public class Alimentacao {
                 .child(FirebaseHelper.getUIDUsuario())
                 .child("Alimentação")
                 .child("Jantar")
-                .child(this.id);
+                .child(this.alimento);
         reference.setValue(this);
     }
 
@@ -48,7 +48,7 @@ public class Alimentacao {
                 .child(FirebaseHelper.getUIDUsuario())
                 .child("Alimentação")
                 .child("Lanches")
-                .child(this.id);
+                .child(this.alimento);
         reference.setValue(this);
     }
 

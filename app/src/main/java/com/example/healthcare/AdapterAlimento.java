@@ -29,9 +29,14 @@ public class AdapterAlimento extends RecyclerView.Adapter<AdapterAlimento.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Alimentacao alimentacao = alimentacaoList.get(position);
 
-        holder.nomeAlimentoCard.setText(alimentacao.getAlimento());
-        holder.gAlimentoCard.setText(alimentacao.getGramas());
-        holder.kcalAlimentoCard.setText(alimentacao.getKcal());
+        try {
+            holder.nomeAlimentoCard.setText(alimentacao.getAlimento());
+            holder.gAlimentoCard.setText("" + alimentacao.getGramas() + " g");
+            holder.kcalAlimentoCard.setText("" + alimentacao.getKcal() + " kcal");
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
     }
 
     @Override
