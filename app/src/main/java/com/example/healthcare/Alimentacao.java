@@ -3,8 +3,8 @@ package com.example.healthcare;
 import com.google.firebase.database.DatabaseReference;
 
 public class Alimentacao {
-    String alimento, kcal;
-    int gramas;
+    String alimento;
+    int gramas, kcal;
     private String id;
 
     public Alimentacao() {
@@ -66,10 +66,10 @@ public class Alimentacao {
         this.gramas = gramas;
     }
 
-    public String getKcal() {
+    public int getKcal() {
         return kcal;
     }
-    public void setKcal(String kcal) {
+    public void setKcal(int kcal) {
         this.kcal = kcal;
     }
 

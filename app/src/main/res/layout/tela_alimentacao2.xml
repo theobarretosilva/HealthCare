@@ -83,6 +83,7 @@
         android:id="@+id/imgSemAlimento"
         android:layout_width="75dp"
         android:layout_height="65dp"
+        android:onClick="irTelaAddAlimentacao"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,11 +93,12 @@
         app:srcCompat="@drawable/adicionar" />
 
     <ImageView
-        android:id="@+id/imageView21"
+        android:id="@+id/maisAlimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="irTelaAddAlimentacao"
         android:src="@drawable/ic_baseline_add_24_preto"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tipoAlimentacao"
         app:layout_constraintEnd_toEndOf="@+id/view19"
         app:layout_constraintHorizontal_bias="1.0"

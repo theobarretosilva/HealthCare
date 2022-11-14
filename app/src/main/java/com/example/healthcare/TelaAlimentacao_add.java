@@ -31,9 +31,21 @@ public class TelaAlimentacao_add extends AppCompatActivity {
         gAlimento = findViewById(R.id.gAlimento);
     }
 
-    public void mandarAlimentoBD(View t){
+    public void verificarPreenchimento(View t){
+        if (nomeAlimento.length() == 0){
+            nomeAlimento.setError("Preencha este campo");
+        } else if(kcalAlimento.length() == 0){
+            kcalAlimento.setError("Preencha este campo");
+        } else if(gAlimento.length() == 0){
+            gAlimento.setError("Preencha este campo");
+        } else {
+            mandarAlimentoBD();
+        }
+    }
+
+    public void mandarAlimentoBD(){
         String alimento = nomeAlimento.getText().toString();
-        String kcal = nomeAlimento.getText().toString();
+        int kcal = parseInt(kcalAlimento.getText().toString());
         int g = parseInt(gAlimento.getText().toString());
 
         try {

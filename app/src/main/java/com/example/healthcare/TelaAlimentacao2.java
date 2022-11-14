@@ -25,7 +25,7 @@ import java.util.List;
 public class TelaAlimentacao2 extends AppCompatActivity {
 
     TextView dataAlimentacao2, tipoAlimentacao, textSemAlimento;
-    ImageView imgSemAlimento;
+    ImageView imgSemAlimento, maisAlimento;
     RecyclerView rvAlimentos;
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -54,6 +54,7 @@ public class TelaAlimentacao2 extends AppCompatActivity {
         rvAlimentos = findViewById(R.id.rvAlimentacao);
         textSemAlimento = findViewById(R.id.textSemAlimento);
         imgSemAlimento = findViewById(R.id.imgSemAlimento);
+        maisAlimento = findViewById(R.id.maisAlimento);
     }
 
     @Override
@@ -69,10 +70,8 @@ public class TelaAlimentacao2 extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
-                    rvAlimentos.setLayoutManager(new LinearLayoutManager(this));
-                    rvAlimentos.setHasFixedSize(true);
-                    adapterAlimento = new AdapterAlimento(alimentacaoList);
-                    rvAlimentos.setAdapter(adapterAlimento);
+                    configReciclerView();
+                    maisAlimento.setVisibility(View.VISIBLE);
                 } else {
                     rvAlimentos.setVisibility(View.INVISIBLE);
                     textSemAlimento.setVisibility(View.VISIBLE);
@@ -85,6 +84,13 @@ public class TelaAlimentacao2 extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void configReciclerView(){
+        rvAlimentos.setLayoutManager(new LinearLayoutManager(this));
+        rvAlimentos.setHasFixedSize(true);
+        adapterAlimento = new AdapterAlimento(alimentacaoList);
+        rvAlimentos.setAdapter(adapterAlimento);
     }
 
     public void recuperarAlimentos(){
