@@ -94,7 +94,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="@+id/textView7" />
 
-    <TextView
+    <EditText
         android:id="@+id/pesoAtual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,6 +103,10 @@
         android:textColorHint="#1E232C"
         android:textSize="40sp"
         android:textStyle="bold"
+        android:text="79,6 kg"
+        android:inputType="textPersonName"
+        android:enabled="false"
+        android:background="#001E232C"
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -148,6 +152,7 @@
         android:textColorHint="#1E232C"
         android:textSize="40sp"
         android:textStyle="bold"
+        android:text="24,8 kg/m²"
         app:layout_constraintEnd_toEndOf="@+id/textView32"
         app:layout_constraintStart_toStartOf="@+id/textView32"
         app:layout_constraintTop_toBottomOf="@+id/textView33" />
@@ -451,16 +456,17 @@
         app:strokeColor="#073C6D"
         app:strokeWidth="1dp" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <CheckBox
+        android:id="@+id/editPesoT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="5dp"
+        android:button="@drawable/ic_baseline_edit_24"
+        android:buttonTint="#32976C"
+        android:onClick="setarPeso"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView30"
-        app:layout_constraintTop_toTopOf="@+id/textView7"
-        app:srcCompat="@drawable/ic_baseline_edit_24" />
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,9 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,13 +28,14 @@ import java.time.format.DateTimeFormatter;
 public class TelaPeso extends AppCompatActivity {
 
     TextView magreza, normal,sobrepeso,obesidade;
-    TextView pesoAtual, resIMC;
+    TextView resIMC;
     TextView imcMagreza, pesoMagreza;
     TextView imcNormal, pesoNormal;
     TextView imcSobrepeso, pesoSobrepeso;
     TextView imcObesidade, pesoObesidade;
     TextView fundoMagreza, fundoNormal, fundoSobrepeso, fundoObesidade;
-    String usuarioID;
+    EditText pesoAtual;
+    CheckBox editPeso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,10 @@ public class TelaPeso extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
+//        calcularIMCAtual();
+    }
+
+    public void iniciarComponentes(){
         pesoAtual = findViewById(R.id.pesoAtual);
         resIMC = findViewById(R.id.resultadoImc);
         imcMagreza = findViewById(R.id.imcMagreza);
@@ -58,8 +66,7 @@ public class TelaPeso extends AppCompatActivity {
         normal = findViewById(R.id.normal);
         sobrepeso = findViewById(R.id.sobrepeso);
         obesidade = findViewById(R.id.obesidade);
-
-        calcularIMCAtual();
+        editPeso = findViewById(R.id.editPesoT);
     }
 
     public void voltarTelaConteudos(View v){
@@ -72,94 +79,97 @@ public class TelaPeso extends AppCompatActivity {
         startActivity(irTelaPesoIMC);
     }
 
-//    public void pesoAtual(){
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        usuarioUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//    public void calcularIMCAtual(){
+//        DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
+//                .collection("Usuarios")
+//                .document(FirebaseHelper.getUIDUsuario())
+//                .collection("Informações pessoais")
+//                .document("Cadastro complementar");
+//        documentReference.addSnapshotListener((documentSnapshot, error) -> {
+//            if(documentSnapshot != null){
+//                int peso = Math.toIntExact((Long) documentSnapshot.getData().get("Peso (kg)"));
+//                int altura = Math.toIntExact((Long) documentSnapshot.getData().get("Altura (cm)"));
+//
+//                float alturaFinal = (altura/100)^2;
+//                float imc =(float) peso/alturaFinal;
+//                BigDecimal bd = new BigDecimal(imc);
+//                float res = bd.setScale(1, RoundingMode.FLOOR).floatValue();
+//                resIMC.setText(res+" kg/m²");
+//                pesoAtual.setText(peso+" kg");
+//
+//                setarNaTelaIMCHI(res);
+//
+//            }
+//        });
+//
 //    }
 
-    public void calcularIMCAtual(){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public void setarNaTelaIMCHI(float valor){
+        DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
+                .collection("Usuarios")
+                .document(FirebaseHelper.getUIDUsuario())
+                .collection("Informações pessoais")
+                .document("Informações de cadastro");
+        dr.addSnapshotListener((documentSnapshot, error) -> {
+            if (documentSnapshot != null){
+                String sexo = documentSnapshot.getString("Sexo");
+                String dataNasc = documentSnapshot.getString("Data de nascimento");
 
-        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Cadastro complementar");
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                if(documentSnapshot != null){
-                    int peso = Math.toIntExact((Long) documentSnapshot.getData().get("Peso (kg)"));
-                    int altura = Math.toIntExact((Long) documentSnapshot.getData().get("Altura (cm)"));
+                LocalDate dataNascFormatada = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate dataHoje = LocalDate.now();
 
-                    float alturaFinal = (altura/100)^2;
-                    float imc =(float) peso/alturaFinal;
-                    BigDecimal bd = new BigDecimal(imc);
-                    float res = bd.setScale(1, RoundingMode.FLOOR).floatValue();
-                    resIMC.setText(res+" kg/m²");
-                    pesoAtual.setText(peso+" kg");
+                int idade = dataHoje.getYear() - dataNascFormatada.getYear();
 
-//                    Toast.makeText(TelaPeso.this, "Seu resultado: "+res, Toast.LENGTH_SHORT).show();
+                idade = 62;
 
-                    setarNaTelaIMCHI(res);
+                if (sexo.equals("Masculino") && idade >= 60){
+                    imcMagreza.setText("<21.9");
+                    imcNormal.setText("22.0 a 27.0");
+                    imcSobrepeso.setText("27.1 a 30.0");
+                    imcObesidade.setText(">30.1");
 
+
+                        fundoMagreza.setVisibility(View.VISIBLE);
+                        fundoNormal.setVisibility(View.INVISIBLE);
+                        magreza.setTypeface(Typeface.DEFAULT_BOLD);
+                        imcMagreza.setTypeface(Typeface.DEFAULT_BOLD);
+                        pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
+                        magreza.setTextColor(getResources().getColor(R.color.white));
+                        imcMagreza.setTextColor(getResources().getColor(R.color.white));
+                        pesoMagreza.setTextColor(getResources().getColor(R.color.white));
+                        normal.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                        normal.setTextColor(getResources().getColor(R.color.azul_escuro));
+                        imcNormal.setTypeface(imcNormal.getTypeface(), Typeface.NORMAL);
+                        imcNormal.setTextColor(getResources().getColor(R.color.azul_escuro));
+                        pesoNormal.setTypeface(pesoNormal.getTypeface(), Typeface.NORMAL);
+                        pesoNormal.setTextColor(getResources().getColor(R.color.azul_escuro));
+                    if(valor>22.0  && valor<=27.0 ){
+
+                    }else if(valor>27.1  && valor<=30.0){
+
+                    }else if(valor>30.1){
+
+                    }
                 }
             }
         });
-
     }
 
-    public void setarNaTelaIMCHI(float valor){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public void setarPeso(View s){
+        if (editPeso.isChecked()){ // <- essa condição ta dando erro, tem que rever
+            System.out.println("ta checkado");
+        }
+        String pesoTela = pesoAtual.getText().toString();
+        DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
+                .collection("Usuarios")
+                .document(FirebaseHelper.getUIDUsuario())
+                .collection("Informações pessoais")
+                .document("Cadastro complementar");
+        dr.addSnapshotListener((documentSnapshot, error) -> {
+            if (documentSnapshot != null){
+                String peso = documentSnapshot.getString("Peso (kg)");
+                if (!peso.equals(pesoTela)){
 
-        DocumentReference dr = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
-        dr.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                if (documentSnapshot != null){
-                    String sexo = documentSnapshot.getString("Sexo");
-                    String dataNasc = documentSnapshot.getString("Data de nascimento");
-
-                    LocalDate dataNascFormatada = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                    LocalDate dataHoje = LocalDate.now();
-
-                    int idade = dataHoje.getYear() - dataNascFormatada.getYear();
-                    String idadeString = String.valueOf(idade);
-
-                    String calma = "vai";
-                    String calma2 = "vai";
-
-                    String sexoMasculino = "Masculino";
-
-                    idade = 62;
-
-                    if (sexo.equals(sexoMasculino) && idade >= 60){
-                        imcMagreza.setText("<21.9");
-                        imcNormal.setText("22.0 a 27.0");
-                        imcSobrepeso.setText("27.1 a 30.0");
-                        imcObesidade.setText(">30.1");
-
-
-                            fundoMagreza.setVisibility(View.VISIBLE);
-                            fundoNormal.setVisibility(View.INVISIBLE);
-                            magreza.setTypeface(Typeface.DEFAULT_BOLD);
-                            imcMagreza.setTypeface(Typeface.DEFAULT_BOLD);
-                            pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
-                            magreza.setTextColor(getResources().getColor(R.color.white));
-                            imcMagreza.setTextColor(getResources().getColor(R.color.white));
-                            pesoMagreza.setTextColor(getResources().getColor(R.color.white));
-                            normal.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-                            normal.setTextColor(getResources().getColor(R.color.azul_escuro));
-                            imcNormal.setTypeface(imcNormal.getTypeface(), Typeface.NORMAL);
-                            imcNormal.setTextColor(getResources().getColor(R.color.azul_escuro));
-                            pesoNormal.setTypeface(pesoNormal.getTypeface(), Typeface.NORMAL);
-                            pesoNormal.setTextColor(getResources().getColor(R.color.azul_escuro));
-                        if(valor>22.0  && valor<=27.0 ){
-
-                        }else if(valor>27.1  && valor<=30.0){
-
-                        }else if(valor>30.1){
-
-                        }
-                    }
                 }
             }
         });
