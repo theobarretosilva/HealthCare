@@ -58,11 +58,6 @@ public class TelaConteudos extends AppCompatActivity {
     CircleImageView fotoUsu;
     ImageView examesLogo, clinicasLogo, cadeado, menu;
 
-    private FirebaseAuth mAuth;
-
-    private FirebaseStorage storage = FirebaseStorage.getInstance();
-    private StorageReference storageRef = storage.getReference();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +65,44 @@ public class TelaConteudos extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
+        iniciarComponentes();
+        setarImagemPerfil();
+
+        menu.setOnClickListener(v -> {
+            dialogMenu.show();
+            openMenuModal();
+        });
+
+        dialog = new BottomSheetDialog(this);
+        mostrarCardPremium();
+        dialogMenu = new Dialog(this);
+
+        examesBox.setOnClickListener(view -> dialog.show());
+        examesLogo.setOnClickListener(view -> dialog.show());
+        clinicasBox.setOnClickListener(v -> dialog.show());
+        clinicasLogo.setOnClickListener(v -> dialog.show());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
+                .collection("Usuarios")
+                .document(FirebaseHelper.getUIDUsuario())
+                .collection("Informações pessoais")
+                .document("Informações de cadastro");
+
+        documentReference.addSnapshotListener((documentSnapshot, error) -> {
+            if (documentSnapshot != null){
+                String primeiroN = documentSnapshot.getString("Primeiro nome");
+                String olaUsuCompleto = "Olá " + primeiroN + "!";
+                olaUsu.setText(olaUsuCompleto);
+            }
+        });
+    }
+
+    public void iniciarComponentes(){
         olaUsu = findViewById(R.id.olaUsu);
         fotoUsu = findViewById(R.id.fotoUsu);
         examesBox = findViewById(R.id.examesBox);
@@ -78,67 +111,6 @@ public class TelaConteudos extends AppCompatActivity {
         clinicasLogo = findViewById(R.id.clinicasLogo);
         cadeado = findViewById(R.id.cadeado);
         menu = findViewById(R.id.menu);
-
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogMenu.show();
-                openMenuModal();
-            }
-        });
-
-        dialog = new BottomSheetDialog(this);
-        mostrarCardPremium();
-
-        dialogMenu = new Dialog(this);
-
-        mAuth = FirebaseAuth.getInstance();
-
-        examesBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.show();
-            }
-        });
-        examesLogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.show();
-            }
-        });
-        clinicasBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-            }
-        });
-        clinicasLogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-            }
-        });
-
-        setarImagemPerfil();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                if (documentSnapshot != null){
-                    String primeiroN = documentSnapshot.getString("Primeiro nome");
-                    String olaUsuCompleto = "Olá " + primeiroN + "!";
-                    olaUsu.setText(olaUsuCompleto);
-                }
-            }
-        });
     }
 
     public void irTelaPerfil(View t){
@@ -195,31 +167,23 @@ public class TelaConteudos extends AppCompatActivity {
         View view = getLayoutInflater().inflate(R.layout.card_premium, null, false);
 
         Button irTelaPremium = view.findViewById(R.id.saberMais);
-        irTelaPremium.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                irTelaPremium(view);
-            }
-        });
+        irTelaPremium.setOnClickListener(view1 -> irTelaPremium(view1));
 
         dialog.setContentView(view);
     }
 
     public void setarImagemPerfil(){
-        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        storageRef.child("imagens/Fotos de perfil/" + usuarioID + "/" + usuarioID + ".jpeg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(fotoUsu);
-            }
-        });
+        FirebaseHelper.getStorageReference()
+                .child("imagens/Fotos de perfil/" + FirebaseHelper.getUIDUsuario() + "/" + FirebaseHelper.getUIDUsuario() + ".jpeg")
+                .getDownloadUrl()
+                .addOnSuccessListener(uri ->
+                        Picasso.get().load(uri).into(fotoUsu)
+                );
     }
 
     public void openMenuModal(){
         dialogMenu.setContentView(R.layout.menu_dialog);
         dialogMenu.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-
     }
 }
