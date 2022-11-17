@@ -32,26 +32,35 @@ public class TelaExames_add extends AppCompatActivity {
 
     public void mandarExamesBD(View g){
 
-        String clinicaExame = clinica.getText().toString();
-        String tipoExame = exame.getText().toString();
-        String dataExame = date.getText().toString();
-        String horarioExame = horario.getText().toString();
+        if (clinica.getText().length() == 0){
+            clinica.setError("Preencha este campo!");
+        } else if (exame.getText().length() == 0) {
+            exame.setError("Preencha este campo!");
+        } else if (date.getText().length() == 0) {
+            date.setError("Preencha este campo!");
+        } else if (horario.getText().length() == 0) {
+            horario.setError("Preencha este campo!");
+        } else {
+            String clinicaExame = clinica.getText().toString();
+            String tipoExame = exame.getText().toString();
+            String dataExame = date.getText().toString();
+            String horarioExame = horario.getText().toString();
 
-        try{
-            Exame exame = new Exame();
-            exame.setClinica(clinicaExame);
-            exame.setTipo(tipoExame);
-            exame.setData(dataExame);
-            exame.setHorario(horarioExame);
+            try{
+                Exame exame = new Exame();
+                exame.setClinica(clinicaExame);
+                exame.setTipo(tipoExame);
+                exame.setData(dataExame);
+                exame.setHorario(horarioExame);
 
-            exame.salvarExame();
-            Toast.makeText(this, "Sucesso ao adicionar o exame!", Toast.LENGTH_SHORT).show();
-            Intent irTelaExames = new Intent(TelaExames_add.this, TelaExames.class);
-            startActivity(irTelaExames);
-        }catch (Exception e){
-            Toast.makeText(this, "Não foi possível adicionar o exame!", Toast.LENGTH_SHORT).show();
+                exame.salvarExame();
+                Toast.makeText(this, "Sucesso ao adicionar o exame!", Toast.LENGTH_SHORT).show();
+                Intent irTelaExames = new Intent(TelaExames_add.this, TelaExames.class);
+                startActivity(irTelaExames);
+            }catch (Exception e){
+                Toast.makeText(this, "Não foi possível adicionar o exame!", Toast.LENGTH_SHORT).show();
+            }
         }
-
     }
 
     public void voltarTela(View h){

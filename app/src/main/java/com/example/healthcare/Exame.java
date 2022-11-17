@@ -7,15 +7,16 @@ public class Exame {
     private String id;
 
     public Exame() {
-        DatabaseReference reference = FirebaseHelper.getDatabaseReference();
-        this.setId(reference.push().getKey());
+        this.setId(FirebaseHelper.getDatabaseReference()
+                .push()
+                .getKey()
+        );
     }
 
     public void salvarExame(){
-        String uidUsuario = FirebaseHelper.getUIDUsuario();
         DatabaseReference reference = FirebaseHelper.getDatabaseReference()
                 .child("Registros")
-                .child(uidUsuario)
+                .child(FirebaseHelper.getUIDUsuario())
                 .child("Exames")
                 .child(this.id);
         reference.setValue(this);

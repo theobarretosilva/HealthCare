@@ -4,6 +4,8 @@ import static java.lang.Integer.parseInt;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import android.Manifest;
 import android.content.Intent;
@@ -49,8 +51,6 @@ public class TelaPerfil_Premium extends AppCompatActivity {
     private static final int REQUEST_GALERIA = 100;
     private String caminhoImagem;
     private Bitmap imagem;
-    private FirebaseStorage storage = FirebaseStorage.getInstance();
-    private StorageReference storageRef = storage.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,26 +60,11 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         getSupportActionBar().hide();
 
         iniciarComponentes();
-
-        btnVoltarP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent voltarTelaConteudosP = new Intent(TelaPerfil_Premium.this, TelaConteudos_Premium.class);
-                startActivity(voltarTelaConteudosP);
-            }
-        });
-        btnSairP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent logout = new Intent(TelaPerfil_Premium.this, TelaInicial.class);
-                startActivity(logout);
-            }
-        });
-
         setarInfoCadastroP();
         setarInfoCadasCompP();
         setarImagemPerfilP();
+        setarClinicas();
+        setarLembretes();
     }
 
     public void iniciarComponentes(){
@@ -93,6 +78,26 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         btnVoltarP = findViewById(R.id.btnVoltarP);
         btnSairP = findViewById(R.id.btnSairP);
         fotoUsuP = findViewById(R.id.fotoUsuP);
+    }
+
+    public void setarClinicas(){
+
+    }
+
+    public void setarLembretes(){
+
+    }
+
+    public void voltarTelaConteudosPremium(View d){
+        Intent voltarTelaConteudosPremium = new Intent(this, TelaConteudos_Premium.class);
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+        ActivityCompat.startActivity(TelaPerfil_Premium.this, voltarTelaConteudosPremium, activityOptionsCompat.toBundle());
+    }
+
+    public void logoff(View a){
+        FirebaseAuth.getInstance().signOut();
+        Intent logout = new Intent(TelaPerfil_Premium.this, TelaInicial.class);
+        startActivity(logout);
     }
 
     public void verificaPermissaoGaleriaP(View viewp){
@@ -127,66 +132,64 @@ public class TelaPerfil_Premium extends AppCompatActivity {
     };
 
     public void setarInfoCadastroP(){
-        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                if (documentSnapshot != null){
-                    String nomeCompleto = documentSnapshot.getString("Nome completo");
-                    nomeUsuP.setText(nomeCompleto);
+        DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
+                .collection("Usuarios")
+                .document(FirebaseHelper.getUIDUsuario())
+                .collection("Informações pessoais")
+                .document("Informações de cadastro");
 
-                    String dataNasc = documentSnapshot.getString("Data de nascimento");
+        documentReference.addSnapshotListener((documentSnapshot, error) -> {
+            if (documentSnapshot != null){
+                String nomeCompleto = documentSnapshot.getString("Nome completo");
+                nomeUsuP.setText(nomeCompleto);
 
-                    LocalDate dataNascFormatada = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                    LocalDate dataHoje = LocalDate.now();
+                String dataNasc = documentSnapshot.getString("Data de nascimento");
 
-                    int idade = dataHoje.getYear() - dataNascFormatada.getYear();
-                    String idadeString = String.valueOf(idade);
-                    idadeUsuP.setText("\uD83C\uDF82 "+ idadeString+" anos");
+                LocalDate dataNascFormatada = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate dataHoje = LocalDate.now();
 
-                    String telefone = documentSnapshot.getString("Telefone");
-                    String telefoneE = "\uD83D\uDCDE " + telefone;
-                    telefoneUsuP.setText(telefoneE);
+                int idade = dataHoje.getYear() - dataNascFormatada.getYear();
+                String idadeString = String.valueOf(idade);
+                idadeUsuP.setText("\uD83C\uDF82 "+ idadeString+" anos");
 
-                    String email = documentSnapshot.getString("Email");
-                    String emailL = "\uD83D\uDCE7 " + email;
-                    emailUsuP.setText(emailL);
-                }
+                String telefone = documentSnapshot.getString("Telefone");
+                String telefoneE = "\uD83D\uDCDE " + telefone;
+                telefoneUsuP.setText(telefoneE);
+
+                String email = documentSnapshot.getString("Email");
+                String emailL = "\uD83D\uDCE7 " + email;
+                emailUsuP.setText(emailL);
             }
         });
     };
 
     public void setarInfoCadasCompP(){
-        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Cadastro complementar");
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                if (documentSnapshot != null){
-                    int peso = Math.toIntExact((Long) documentSnapshot.getData().get("Peso (kg)"));
-                    pesoUsuP.setText(peso + " quilos");
+        DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
+                .collection("Usuarios")
+                .document(FirebaseHelper.getUIDUsuario())
+                .collection("Informações pessoais")
+                .document("Cadastro complementar");
 
-                    int altura = Math.toIntExact((Long) documentSnapshot.getData().get("Altura (cm)"));
-                    alturaUsuP.setText(altura + " cm");
+        documentReference.addSnapshotListener((documentSnapshot, error) -> {
+            if (documentSnapshot != null){
+                int peso = Math.toIntExact((Long) documentSnapshot.getData().get("Peso (kg)"));
+                pesoUsuP.setText(peso + " quilos");
 
-                    String biotipo = documentSnapshot.getString("Biotipo corporal");
-                    biotipoUsuP.setText(biotipo);
-                }
+                int altura = Math.toIntExact((Long) documentSnapshot.getData().get("Altura (cm)"));
+                alturaUsuP.setText(altura + " cm");
+
+                String biotipo = documentSnapshot.getString("Biotipo corporal");
+                biotipoUsuP.setText(biotipo);
             }
         });
     };
 
     private void salvarImagemUsuP(){
-        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
         StorageReference reference = FirebaseHelper.getStorageReference()
                 .child("imagens")
                 .child("Fotos de perfil")
-                .child(usuarioID)
-                .child(usuarioID + ".jpeg");
+                .child(FirebaseHelper.getUIDUsuario())
+                .child(FirebaseHelper.getUIDUsuario() + ".jpeg");
 
         UploadTask uploadTask = reference.putFile(Uri.parse(caminhoImagem));
     };
@@ -222,14 +225,12 @@ public class TelaPerfil_Premium extends AppCompatActivity {
     };
 
     public void setarImagemPerfilP(){
-        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        storageRef.child("imagens/Fotos de perfil/" + usuarioID + "/" + usuarioID + ".jpeg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(fotoUsuP);
-            }
-        });
+        FirebaseHelper.getStorageReference()
+                .child("imagens/Fotos de perfil/" + FirebaseHelper.getUIDUsuario() + "/" + FirebaseHelper.getUIDUsuario() + ".jpeg")
+                .getDownloadUrl()
+                .addOnSuccessListener(uri ->
+                        Picasso.get().load(uri).into(fotoUsuP)
+                );
     };
 
     public void irTelaAddLembretes(View f){

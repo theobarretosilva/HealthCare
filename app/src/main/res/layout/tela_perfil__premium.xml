@@ -23,6 +23,7 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:onClick="voltarTelaConteudosPremium"
         app:cornerRadius="15px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -44,6 +45,7 @@
         android:textAllCaps="false"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:onClick="logoff"
         app:cornerRadius="15px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -248,23 +250,6 @@
         app:srcCompat="@drawable/logo2_saude" />
 
     <TextView
-        android:id="@+id/textView136"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/urbanist"
-        android:text="🏥 Clínica Diagnóstico - São José"
-        android:textColor="#063E44"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/textView141"
-        app:layout_constraintEnd_toEndOf="@+id/textView141"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView135"
-        app:layout_constraintTop_toBottomOf="@+id/textView135"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
         android:id="@+id/textView130"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -297,51 +282,38 @@
         app:layout_constraintTop_toTopOf="@+id/textView142" />
 
     <TextView
-        android:id="@+id/textView135"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:id="@+id/clinicasP"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
         android:fontFamily="@font/urbanist"
-        android:text="🏥 São Lucas - Palhoça"
+        android:hint="🏥 São Lucas - Palhoça"
         android:textColor="#063E44"
         android:textSize="18sp"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/textView141"
         app:layout_constraintEnd_toEndOf="@+id/textView141"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView130"
         app:layout_constraintTop_toBottomOf="@+id/textView130" />
 
     <TextView
-        android:id="@+id/textView137"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/urbanist"
-        android:text="📌 Fazer consultar com nutricionista"
-        android:textColor="#063E44"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/textView142"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView143"
-        app:layout_constraintTop_toBottomOf="@+id/textView143" />
-
-    <TextView
-        android:id="@+id/textView138"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/lembretesP"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
         android:fontFamily="@font/urbanist"
-        android:text="📌 Fazer exame periódico"
+        android:hint="📌 Fazer consultar com nutricionista"
         android:textColor="#063E44"
         android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/textView142"
         app:layout_constraintEnd_toEndOf="@+id/textView142"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView137"
-        app:layout_constraintTop_toBottomOf="@+id/textView137"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/textView143"
+        app:layout_constraintTop_toBottomOf="@+id/textView143" />
 
     <ImageView
         android:id="@+id/imageView65"
@@ -360,6 +332,7 @@
         android:id="@+id/textView125"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/urbanist"
         android:text="Nenhuma clínica vinculada"
         android:textColor="#063E44"
@@ -373,6 +346,7 @@
         android:id="@+id/textView126"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/urbanist"
         android:text="Nenhum lembrete adicionado"
         android:textColor="#063E44"

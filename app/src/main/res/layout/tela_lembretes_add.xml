@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView66" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/descriLembrete"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -59,11 +59,11 @@
         android:textColor="#1E232C"
         android:textSize="21sp"
         app:fontFamily="@font/urbanist"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintStart_toStartOf="@+id/descriLembrete"
+        app:layout_constraintTop_toBottomOf="@+id/descriLembrete" />
 
     <com.santalu.maskara.widget.MaskEditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/dataLembrete"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -73,7 +73,7 @@
         android:inputType="date"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/textView149"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/descriLembrete"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView149"
         app:layout_constraintTop_toTopOf="@+id/textView149"
@@ -99,7 +99,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+        app:layout_constraintTop_toBottomOf="@+id/dataLembrete"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
