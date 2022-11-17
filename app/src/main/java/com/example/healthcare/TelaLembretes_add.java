@@ -2,11 +2,14 @@ package com.example.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TelaLembretes_add extends AppCompatActivity {
@@ -35,8 +38,26 @@ public class TelaLembretes_add extends AppCompatActivity {
             dataLembrete.setError("Preencha este campo!");
         } else {
             String descricao = descriLembrete.getText().toString();
-            Date data =
+            String data = dataLembrete.getText().toString();
+
+            try {
+                Lembrete lembrete = new Lembrete();
+                lembrete.setNomeLembrete(descricao);
+                lembrete.setDataLembrete(data);
+
+                lembrete.salvarLembrete();
+                Toast.makeText(this, "Sucesso ao adicionar o lembrete!", Toast.LENGTH_SHORT).show();
+                Intent irTelaLembretes = new Intent(this, TelaPerfil_Premium.class);
+                startActivity(irTelaLembretes);
+            }catch (Exception e){
+                Toast.makeText(this, "Não foi possível adicionar o lembrete!", Toast.LENGTH_SHORT).show();
+            }
         }
+    }
+
+    public void voltarTelaPerfilP(View d){
+        Intent voltarTelaPerfilP = new Intent(this, TelaPerfil_Premium.class);
+        startActivity(voltarTelaPerfilP);
     }
 
 }

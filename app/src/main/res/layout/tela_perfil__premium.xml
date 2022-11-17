@@ -298,23 +298,6 @@
         app:layout_constraintStart_toStartOf="@+id/textView130"
         app:layout_constraintTop_toBottomOf="@+id/textView130" />
 
-    <TextView
-        android:id="@+id/lembretesP"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="@font/urbanist"
-        android:hint="📌 Fazer consultar com nutricionista"
-        android:textColor="#063E44"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/textView142"
-        app:layout_constraintEnd_toEndOf="@+id/textView142"
-        app:layout_constraintStart_toStartOf="@+id/textView143"
-        app:layout_constraintTop_toBottomOf="@+id/textView143" />
-
     <ImageView
         android:id="@+id/imageView65"
         android:layout_width="wrap_content"
@@ -355,4 +338,18 @@
         app:layout_constraintEnd_toEndOf="@+id/textView142"
         app:layout_constraintStart_toStartOf="@+id/textView142"
         app:layout_constraintTop_toTopOf="@+id/textView142" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLembretes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView142"
+        app:layout_constraintEnd_toEndOf="@+id/textView142"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView142"
+        app:layout_constraintTop_toBottomOf="@+id/textView143" />
 </androidx.constraintlayout.widget.ConstraintLayout>
