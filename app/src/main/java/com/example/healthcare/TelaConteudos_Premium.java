@@ -28,9 +28,6 @@ public class TelaConteudos_Premium extends AppCompatActivity {
   TextView olaUsu_Premium;
   CircleImageView fotoUsu;
 
-  private FirebaseStorage storage = FirebaseStorage.getInstance();
-  private StorageReference storageRef = storage.getReference();
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -46,17 +43,17 @@ public class TelaConteudos_Premium extends AppCompatActivity {
   protected void onStart() {
     super.onStart();
 
-    String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
-    documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-      @Override
-      public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-        if (documentSnapshot != null){
-          String primeiroN = documentSnapshot.getString("Primeiro nome");
-          String olaUsuCompleto = "Olá " + primeiroN + "! ⭐";
-          olaUsu_Premium.setText(olaUsuCompleto);
-        }
+    DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
+            .collection("Usuarios")
+            .document(FirebaseHelper.getUIDUsuario())
+            .collection("Informações pessoais")
+            .document("Informações de cadastro");
+
+    documentReference.addSnapshotListener((documentSnapshot, error) -> {
+      if (documentSnapshot != null){
+        String primeiroN = documentSnapshot.getString("Primeiro nome");
+        String olaUsuCompleto = "Olá " + primeiroN + "! ⭐";
+        olaUsu_Premium.setText(olaUsuCompleto);
       }
     });
   }
@@ -122,13 +119,12 @@ public class TelaConteudos_Premium extends AppCompatActivity {
   }
 
   public void setarImagemPerfil(){
-    String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-    storageRef.child("imagens/Fotos de perfil/" + usuarioID + "/" + usuarioID + ".jpeg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-      @Override
-      public void onSuccess(Uri uri) {
-        Picasso.get().load(uri).into(fotoUsu);
-      }
-    });
+    FirebaseHelper.getStorageReference()
+            .child("imagens/Fotos de perfil/" + FirebaseHelper.getUIDUsuario() + "/" + FirebaseHelper.getUIDUsuario() + ".jpeg")
+            .getDownloadUrl()
+            .addOnSuccessListener(uri ->
+                    Picasso.get().load(uri).into(fotoUsu)
+            );
   }
+
 }

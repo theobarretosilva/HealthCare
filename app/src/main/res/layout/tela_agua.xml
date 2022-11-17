@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
     tools:context=".TelaAgua">
 
     <TextView
@@ -111,6 +112,7 @@
         android:layout_marginBottom="40dp"
         android:backgroundTint="#709FA3"
         android:fontFamily="@font/urbanist"
+        android:onClick="mandarAguaBD"
         android:paddingTop="9dp"
         android:paddingBottom="9dp"
         android:text="Ingerido"
