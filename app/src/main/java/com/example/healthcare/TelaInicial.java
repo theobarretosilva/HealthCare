@@ -34,8 +34,6 @@ public class TelaInicial extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         if (FirebaseHelper.getFirebaseUser() != null) {
-            System.out.println(FirebaseHelper.getUIDUsuario());
-
             DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
                     .collection("Usuarios")
                     .document(FirebaseHelper.getUIDUsuario())

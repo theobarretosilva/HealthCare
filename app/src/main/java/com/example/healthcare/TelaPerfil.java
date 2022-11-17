@@ -110,30 +110,27 @@ public class TelaPerfil extends AppCompatActivity {
         String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                if (documentSnapshot != null){
-                    String nomeCompleto = documentSnapshot.getString("Nome completo");
-                    nomeUsu.setText(nomeCompleto);
+        documentReference.addSnapshotListener((documentSnapshot, error) -> {
+            if (documentSnapshot != null){
+                String nomeCompleto = documentSnapshot.getString("Nome completo");
+                nomeUsu.setText(nomeCompleto);
 
-                    String dataNasc = documentSnapshot.getString("Data de nascimento");
+                String dataNasc = documentSnapshot.getString("Data de nascimento");
 
-                    LocalDate dataNascFormatada = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                    LocalDate dataHoje = LocalDate.now();
+                LocalDate dataNascFormatada = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                LocalDate dataHoje = LocalDate.now();
 
-                    int idade = dataHoje.getYear() - dataNascFormatada.getYear();
-                    String idadeString = String.valueOf(idade);
-                    idadeUsu.setText("\uD83C\uDF82 "+ idadeString+" anos");
+                int idade = dataHoje.getYear() - dataNascFormatada.getYear();
+                String idadeString = String.valueOf(idade);
+                idadeUsu.setText("\uD83C\uDF82 "+ idadeString+" anos");
 
-                    String telefone = documentSnapshot.getString("Telefone");
-                    String telefoneE = "\uD83D\uDCDE " + telefone;
-                    telefoneUsu.setText(telefoneE);
+                String telefone = documentSnapshot.getString("Telefone");
+                String telefoneE = "\uD83D\uDCDE " + telefone;
+                telefoneUsu.setText(telefoneE);
 
-                    String email = documentSnapshot.getString("Email");
-                    String emailL = "\uD83D\uDCE7 " + email;
-                    emailUsu.setText(emailL);
-                }
+                String email = documentSnapshot.getString("Email");
+                String emailL = "\uD83D\uDCE7 " + email;
+                emailUsu.setText(emailL);
             }
         });
     }

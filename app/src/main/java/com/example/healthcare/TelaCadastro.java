@@ -34,6 +34,8 @@ public class TelaCadastro extends AppCompatActivity {
     String[] sexo = new String []{"Sexo", "Feminino", "Masculino"};
     Spinner spinnerSexo;
 
+    String erro;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,35 +44,32 @@ public class TelaCadastro extends AppCompatActivity {
         getSupportActionBar().hide();
 
         iniciarComponentes();
+    }
 
-        cadastrarUsu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String sexo = spinnerSexo.getSelectedItem().toString();
+    public void verificaPreenchimento(View k){
+        String sexo = spinnerSexo.getSelectedItem().toString();
 
-                if(primeiroNome.getText().length() <= 2){
-                    primeiroNome.setError("Insira seu primeiro nome corretamente");
-                }
-                else if(sobrenome.getText().length() <= 2){
-                    sobrenome.setError("Insira seu sobrenome corretamente");
-                }
-                else if (emailCadastro.getText().length() < 5){
-                    emailCadastro.setError("Insira um email válido!");
-                }
-                else if (senhaCadastro.getText().length() < 8){
-                    senhaCadastro.setError("A sua deve ter pelo menos 8 caracteres!");
-                }
-                else if(sexo == "Sexo"){
-                    TextView errorText = (TextView)spinnerSexo.getSelectedView();
-                    errorText.setError("anything here, just to add the icon");
-                    errorText.setTextColor(Color.RED);//just to highlight that this is an error
-                    errorText.setText("Selecione um sexo válido");
-                }
-                else{
-                    CadastrarUsuario(v);
-                }
-            }
-        });
+        if(primeiroNome.getText().length() <= 2){
+            primeiroNome.setError("Insira seu primeiro nome corretamente");
+        }
+        else if(sobrenome.getText().length() <= 2){
+            sobrenome.setError("Insira seu sobrenome corretamente");
+        }
+        else if (emailCadastro.getText().length() < 5){
+            emailCadastro.setError("Insira um email válido!");
+        }
+        else if (senhaCadastro.getText().length() < 8){
+            senhaCadastro.setError("A sua deve ter pelo menos 8 caracteres!");
+        }
+        else if(sexo == "Sexo"){
+            TextView errorText = (TextView)spinnerSexo.getSelectedView();
+            errorText.setError("anything here, just to add the icon");
+            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+            errorText.setText("Selecione um sexo válido");
+        }
+        else{
+            CadastrarUsuario(k);
+        }
     }
 
     public void iniciarComponentes(){
@@ -107,7 +106,6 @@ public class TelaCadastro extends AppCompatActivity {
 
                 startActivity(irTelaCadastroComplementar);
             }else{
-                String erro;
                 try {
                     throw task.getException();
                 }catch (FirebaseAuthWeakPasswordException e){

@@ -43,9 +43,9 @@ public class TelaAlimentacao2 extends AppCompatActivity {
         getSupportActionBar().hide();
 
         iniciarComponentes();
-        setarTipoAlimentacao();
         recuperarAlimentos();
         configReciclerView();
+        tipoAlimentacao.setText(TelaAlimentacao.tipoAlimentacao);
     }
 
     private void iniciarComponentes(){
@@ -122,10 +122,6 @@ public class TelaAlimentacao2 extends AppCompatActivity {
     public void voltarTelaAlimentacao(View ir){
         Intent voltarTela = new Intent(this, TelaAlimentacao.class);
         startActivity(voltarTela);
-    }
-
-    public void setarTipoAlimentacao(){
-        tipoAlimentacao.setText(TelaAlimentacao.tipoAlimentacao);
     }
 
     public void irTelaAddAlimentacao(View a){

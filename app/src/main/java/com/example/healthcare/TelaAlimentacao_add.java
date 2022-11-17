@@ -66,7 +66,7 @@ public class TelaAlimentacao_add extends AppCompatActivity {
             Intent irTelaAlimentacao2 = new Intent(this, TelaAlimentacao2.class);
             startActivity(irTelaAlimentacao2);
         }catch (Exception e){
-            Toast.makeText(this, "Não foi possível adicionar o exame!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Não foi possível adicionar a refeição!", Toast.LENGTH_SHORT).show();
         }
     }
 }

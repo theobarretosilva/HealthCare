@@ -14,9 +14,9 @@ public class FirebaseHelper {
     private static StorageReference storageReference;
     private static DatabaseReference databaseReference;
     private static FirebaseFirestore firebaseFirestore;
-    private static String UIDUsuario;
     private static FirebaseUser firebaseUser;
-    private static Boolean premium;
+    private static FirebaseAuth firebaseAuth;
+    private static String UIDUsuario;
 
     public static StorageReference getStorageReference(){
         if(storageReference == null){
@@ -39,13 +39,6 @@ public class FirebaseHelper {
         return firebaseFirestore;
     }
 
-    public static String getUIDUsuario() {
-        if (UIDUsuario == null){
-            UIDUsuario = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        }
-        return UIDUsuario;
-    }
-
     public static FirebaseUser getFirebaseUser(){
         if (firebaseUser == null){
             firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -53,18 +46,17 @@ public class FirebaseHelper {
         return firebaseUser;
     }
 
-    public static Boolean getPremium(){
-        DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
-                .collection("Usuarios")
-                .document(FirebaseHelper.getUIDUsuario())
-                .collection("Informações pessoais")
-                .document("Informações de cadastro");
+    public static FirebaseAuth getFirebaseAuth(){
+        if (firebaseAuth == null){
+            firebaseAuth = FirebaseAuth.getInstance();
+        }
+        return firebaseAuth;
+    }
 
-        documentReference.addSnapshotListener((documentSnapshot, error) -> {
-            if (documentSnapshot != null) {
-                premium = documentSnapshot.getBoolean("Premium");
-            }
-        });
-        return premium;
-    };
+    public static String getUIDUsuario() {
+        if (UIDUsuario == null){
+            UIDUsuario = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        }
+        return UIDUsuario;
+    }
 }

@@ -27,6 +27,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 
 public class TelaLogin extends AppCompatActivity {
 
@@ -34,6 +35,8 @@ public class TelaLogin extends AppCompatActivity {
     TextView esqueceu_senha;
     CheckBox ver_senha;
     Button logar;
+
+    String erro;
 
     SignInButton btnGoogle;
     private GoogleSignInClient mGoogleSignInClient;
@@ -82,12 +85,27 @@ public class TelaLogin extends AppCompatActivity {
         String email = email_login.getText().toString();
         String senha = senha_login.getText().toString();
 
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, senha).addOnCompleteListener(task -> {
+        FirebaseHelper.getFirebaseAuth().signInWithEmailAndPassword(email, senha).addOnCompleteListener(task -> {
             if (task.isSuccessful()){
-                startActivity(irTelaConteudos);
-            }else {
-                String erro;
+                DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
+                        .collection("Usuarios")
+                        .document(FirebaseHelper.getUIDUsuario())
+                        .collection("Informações pessoais")
+                        .document("Informações de cadastro");
 
+                documentReference.addSnapshotListener((documentSnapshot, error) -> {
+                    if (documentSnapshot != null){
+                        Boolean premium = documentSnapshot.getBoolean("Premium");
+                        if (premium){
+                            Intent iP = new Intent(this, TelaConteudos_Premium.class);
+                            startActivity(iP);
+                        }else{
+                            Intent i = new Intent(this, TelaConteudos.class);
+                            startActivity(i);
+                        }
+                    }
+                });
+            } else {
                 try {
                     throw task.getException();
                 }catch (Exception e){
