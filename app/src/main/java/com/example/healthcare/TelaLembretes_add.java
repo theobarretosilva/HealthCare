@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.Date;
+
 public class TelaLembretes_add extends AppCompatActivity {
 
     EditText descriLembrete, dataLembrete;
@@ -27,7 +29,14 @@ public class TelaLembretes_add extends AppCompatActivity {
     }
 
     public void mandarLembretesBD(View d){
-
+        if (descriLembrete.getText().length() == 0) {
+            descriLembrete.setError("Preencha este campo!");
+        } else if (dataLembrete.getText().length() == 0) {
+            dataLembrete.setError("Preencha este campo!");
+        } else {
+            String descricao = descriLembrete.getText().toString();
+            Date data =
+        }
     }
 
 }
