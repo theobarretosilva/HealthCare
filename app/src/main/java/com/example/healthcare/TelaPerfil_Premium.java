@@ -1,15 +1,5 @@
 package com.example.healthcare;
 
-import static java.lang.Integer.parseInt;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,23 +10,24 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.gun0912.tedpermission.PermissionListener;
@@ -53,7 +44,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TelaPerfil_Premium extends AppCompatActivity {
 
-    TextView nomeUsuP, idadeUsuP, telefoneUsuP, emailUsuP, pesoUsuP, alturaUsuP, biotipoUsuP;
+    TextView nomeUsuP, idadeUsuP, telefoneUsuP, emailUsuP, pesoUsuP, alturaUsuP, biotipoUsuP, nenhumLembrete;
     Button btnVoltarP, btnSairP;
     CircleImageView fotoUsuP;
 
@@ -94,6 +85,7 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         btnSairP = findViewById(R.id.btnSairP);
         fotoUsuP = findViewById(R.id.fotoUsuP);
         rvLembretes = findViewById(R.id.rvLembretes);
+        nenhumLembrete = findViewById(R.id.nenhumLembrete);
     }
 
     private void configRecyclerClinicas(){
@@ -119,12 +111,15 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         lembretesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot != null){
                     for (DataSnapshot snap : snapshot.getChildren()){
                         Lembrete lembrete = snap.getValue(Lembrete.class);
                         lembreteList.add(lembrete);
-                        System.out.println(snap.getValue());
+                        nenhumLembrete.setVisibility(View.INVISIBLE);
                     }
+                } else {
+                    rvLembretes.setVisibility(View.INVISIBLE);
+                    nenhumLembrete.setVisibility(View.VISIBLE);
                 }
             }
 
