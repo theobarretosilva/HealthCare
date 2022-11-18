@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import java.util.ArrayList;
 
@@ -103,5 +105,13 @@ public class TelaClinicas extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "Não foi possível vincular a clínica", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void voltarTelaConteudosP(View l){
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat
+                .makeCustomAnimation(
+                        getApplicationContext(), R.anim.fade_in, R.anim.mover_direita
+                );
+        ActivityCompat.startActivity(TelaClinicas.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
     }
 }

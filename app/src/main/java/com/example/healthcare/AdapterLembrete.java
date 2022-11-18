@@ -29,7 +29,7 @@ public class AdapterLembrete extends RecyclerView.Adapter<AdapterLembrete.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Lembrete lembrete = lembreteList.get(position);
 
-        holder.nomeLembrete.setText(lembrete.getNomeLembrete());
+        holder.nomeLembrete.setText(lembrete.getNomeLembrete() + ";");
     }
 
     @Override
@@ -43,7 +43,7 @@ public class AdapterLembrete extends RecyclerView.Adapter<AdapterLembrete.MyView
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            nomeLembrete = itemView.findViewById(R.id.descriLembrete);
+            nomeLembrete = itemView.findViewById(R.id.lembreDescri);
         }
     }
 }

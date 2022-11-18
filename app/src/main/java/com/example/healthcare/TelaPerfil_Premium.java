@@ -111,12 +111,13 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         lembretesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot != null){
+                if (snapshot.exists()){
                     for (DataSnapshot snap : snapshot.getChildren()){
                         Lembrete lembrete = snap.getValue(Lembrete.class);
                         lembreteList.add(lembrete);
                         nenhumLembrete.setVisibility(View.INVISIBLE);
                     }
+                    adapterLembrete.notifyDataSetChanged();
                 } else {
                     rvLembretes.setVisibility(View.INVISIBLE);
                     nenhumLembrete.setVisibility(View.VISIBLE);

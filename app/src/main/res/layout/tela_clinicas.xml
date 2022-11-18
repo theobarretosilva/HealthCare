@@ -22,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:onClick="voltarTelaConteudosP"
         app:layout_constraintBottom_toBottomOf="@+id/textView168"
         app:layout_constraintEnd_toEndOf="@+id/textView168"
         app:layout_constraintHorizontal_bias="0.0"
@@ -104,6 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         android:foregroundGravity="center"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -121,8 +123,8 @@
                 android:layout_width="316dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="0dp"
-                app:srcCompat="@drawable/clinica_sao_lucas"
-                android:onClick="setarSaoLucas"/>
+                android:onClick="setarSaoLucas"
+                app:srcCompat="@drawable/clinica_sao_lucas" />
 
             <TextView
                 android:id="@+id/textView173"
