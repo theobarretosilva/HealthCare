@@ -31,7 +31,7 @@
                 app:srcCompat="@drawable/imc_close_26" />
 
             <TextView
-                android:id="@+id/textView125"
+                android:id="@+id/nenhumaClinica"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
@@ -60,7 +60,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView125"
+                app:layout_constraintTop_toBottomOf="@+id/nenhumaClinica"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView

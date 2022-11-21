@@ -44,13 +44,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TelaPerfil_Premium extends AppCompatActivity {
 
-    TextView nomeUsuP, idadeUsuP, telefoneUsuP, emailUsuP, pesoUsuP, alturaUsuP, biotipoUsuP, nenhumLembrete;
+    TextView nomeUsuP, idadeUsuP, telefoneUsuP, emailUsuP, pesoUsuP, alturaUsuP, biotipoUsuP;
     Button btnVoltarP, btnSairP;
     CircleImageView fotoUsuP;
 
     private AdapterLembrete adapterLembrete;
     private List<Lembrete> lembreteList = new ArrayList<>();
     private RecyclerView rvLembretes;
+    TextView nenhumLembrete;
+
+    private AdapterClinicasVinculadas adapterClinicasVinculadas;
+    List<VincularClinicas> clinicasVinculadasList;
+    private RecyclerView rvClinicas;
+    TextView nenhumaClinica;
 
     private static final int REQUEST_GALERIA = 100;
     private String caminhoImagem;
@@ -86,14 +92,44 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         fotoUsuP = findViewById(R.id.fotoUsuP);
         rvLembretes = findViewById(R.id.rvLembretes);
         nenhumLembrete = findViewById(R.id.nenhumLembrete);
+        rvClinicas = findViewById(R.id.rvClinicas);
+        nenhumaClinica = findViewById(R.id.nenhumaClinica);
     }
 
     private void configRecyclerClinicas(){
-
+        rvClinicas.setLayoutManager(new LinearLayoutManager(this));
+        rvClinicas.setHasFixedSize(true);
+        adapterClinicasVinculadas = new AdapterClinicasVinculadas(clinicasVinculadasList);
+        rvClinicas.setAdapter(adapterClinicasVinculadas);
     }
 
     public void setarClinicas(){
+        DatabaseReference clinicasRef = FirebaseHelper.getDatabaseReference()
+                .child("Registros")
+                .child(FirebaseHelper.getUIDUsuario())
+                .child("Clínicas vinculadas");
+        clinicasRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                System.out.println("Entrou");
+                if (snapshot.exists()){
+                    for (DataSnapshot snap : snapshot.getChildren()){
+                        VincularClinicas vincularClinicas = snap.getValue(VincularClinicas.class);
+                        clinicasVinculadasList.add(vincularClinicas);
+                        nenhumaClinica.setVisibility(View.INVISIBLE);
+                    }
+                    adapterClinicasVinculadas.notifyDataSetChanged();
+                } else {
+                    rvClinicas.setVisibility(View.INVISIBLE);
+                    nenhumaClinica.setVisibility(View.VISIBLE);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void configRecyclerLembretes(){

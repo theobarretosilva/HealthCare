@@ -55,17 +55,29 @@ public class TelaCadastro extends AppCompatActivity {
         else if(sobrenome.getText().length() <= 2){
             sobrenome.setError("Insira seu sobrenome corretamente");
         }
-        else if (emailCadastro.getText().length() < 5){
-            emailCadastro.setError("Insira um email válido!");
+        else if (dataNascCadastro.getText().length() == 0){
+            dataNascCadastro.setError("Preencha a sua data de nascimento");
         }
-        else if (senhaCadastro.getText().length() < 8){
-            senhaCadastro.setError("A sua deve ter pelo menos 8 caracteres!");
+        else if (telefoneCadastro.getText().length() == 0){
+            telefoneCadastro.setError("Insira o seu telefone");
+        }
+        else if(enderecoCadastro.getText().length() < 5){
+            enderecoCadastro.setError("Insira seu endereço corretamente");
+        }
+        else if (cpfCadastro.getText().length() == 0){
+            cpfCadastro.setError("Preencha o seu cpf");
         }
         else if(sexo == "Sexo"){
             TextView errorText = (TextView)spinnerSexo.getSelectedView();
             errorText.setError("anything here, just to add the icon");
             errorText.setTextColor(Color.RED);//just to highlight that this is an error
             errorText.setText("Selecione um sexo válido");
+        }
+        else if (emailCadastro.getText().length() < 5){
+            emailCadastro.setError("Insira um email válido!");
+        }
+        else if (senhaCadastro.getText().length() < 8){
+            senhaCadastro.setError("A sua deve ter pelo menos 8 caracteres!");
         }
         else{
             CadastrarUsuario(k);

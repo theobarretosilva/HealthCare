@@ -29,6 +29,7 @@
         android:textColor="#063E44"
         android:textColorHint="#063E44"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:fontFamily="@font/urbanist"
         app:layout_constraintBottom_toBottomOf="@+id/textView51"
         app:layout_constraintEnd_toEndOf="parent"

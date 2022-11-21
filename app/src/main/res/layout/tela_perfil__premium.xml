@@ -281,23 +281,6 @@
         app:layout_constraintStart_toStartOf="@+id/textView142"
         app:layout_constraintTop_toTopOf="@+id/textView142" />
 
-    <TextView
-        android:id="@+id/clinicasP"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="@font/urbanist"
-        android:hint="🏥 São Lucas - Palhoça"
-        android:textColor="#063E44"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/textView141"
-        app:layout_constraintEnd_toEndOf="@+id/textView141"
-        app:layout_constraintStart_toStartOf="@+id/textView130"
-        app:layout_constraintTop_toBottomOf="@+id/textView130" />
-
     <ImageView
         android:id="@+id/imageView65"
         android:layout_width="wrap_content"
@@ -312,7 +295,7 @@
         app:srcCompat="@drawable/ic_baseline_add_24_preto" />
 
     <TextView
-        android:id="@+id/textView125"
+        android:id="@+id/nenhumaClinica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -352,5 +335,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView142"
         app:layout_constraintTop_toBottomOf="@+id/textView143"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvClinicas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView141"
+        app:layout_constraintEnd_toEndOf="@+id/textView141"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView141"
+        app:layout_constraintTop_toBottomOf="@+id/textView130"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
