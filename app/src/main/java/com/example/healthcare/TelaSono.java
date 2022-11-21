@@ -1,20 +1,14 @@
 package com.example.healthcare;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
@@ -23,6 +17,10 @@ import java.util.Date;
 public class TelaSono extends AppCompatActivity {
 
     TextView dataAtual, hDormiu, hAcordou, tempoDormido;
+
+    Date data = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    String dataHoje = sdf.format(data);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,39 +54,35 @@ public class TelaSono extends AppCompatActivity {
     }
 
     public void calculaSono (){
-        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
+                .collection("Usuarios")
+                .document(FirebaseHelper.getUIDUsuario())
+                .collection("Informações pessoais")
+                .document("Registros")
+                .collection("Sono")
+                .document(dataHoje);
+        documentReference.addSnapshotListener((documentSnapshot, error) -> {
+            if (documentSnapshot != null){
+                String dormiu = documentSnapshot.getString("Horário que dormiu");
+                hDormiu.setText(dormiu);
+                String acordou = documentSnapshot.getString("Horário que acordou");
+                hAcordou.setText(acordou);
 
-        Date data = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        String dataHoje = sdf.format(data);
+                LocalTime horarioD = LocalTime.parse(hDormiu.getText().toString());
+                LocalTime horarioA = LocalTime.parse(hAcordou.getText().toString());
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Sono").document(dataHoje);
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                if (documentSnapshot != null){
-                    String dormiu = documentSnapshot.getString("Horário que dormiu");
-                    hDormiu.setText(dormiu);
-                    String acordou = documentSnapshot.getString("Horário que acordou");
-                    hAcordou.setText(acordou);
-
-                    LocalTime horarioD = LocalTime.parse(hDormiu.getText().toString());
-                    LocalTime horarioA = LocalTime.parse(hAcordou.getText().toString());
-
-                    int horasDormidas = horarioD.getHour() - horarioA.getHour();
-                    if(horasDormidas < 0){
-                       horasDormidas = horasDormidas * -1;
-                    }
-
-                    int minDormidos = horarioD.getMinute() - horarioA.getMinute();
-                    if(minDormidos < 0){
-                        minDormidos = minDormidos * -1;
-                    }
-
-                    tempoDormido.setText(horasDormidas+":"+minDormidos);
-
+                int horasDormidas = horarioD.getHour() - horarioA.getHour();
+                if(horasDormidas < 0){
+                   horasDormidas = horasDormidas * -1;
                 }
+
+                int minDormidos = horarioD.getMinute() - horarioA.getMinute();
+                if(minDormidos < 0){
+                    minDormidos = minDormidos * -1;
+                }
+
+                tempoDormido.setText(horasDormidas+":"+minDormidos);
+
             }
         });
     }

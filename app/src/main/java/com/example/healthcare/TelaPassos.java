@@ -1,12 +1,7 @@
 package com.example.healthcare;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -16,8 +11,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+
+import com.google.firebase.firestore.DocumentReference;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TelaPassos extends AppCompatActivity implements SensorEventListener {
 
@@ -26,6 +29,10 @@ public class TelaPassos extends AppCompatActivity implements SensorEventListener
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Date data = new Date();
     String dataHoje = sdf.format(data);
+
+    SimpleDateFormat sdfTraco = new SimpleDateFormat("dd-MM-yyyy");
+    Date dataTraco = new Date();
+    String dataHojeTraco = sdfTraco.format(dataTraco);
 
     private SensorManager mSensorManager;
     private Sensor mStepDetectorSensor;
@@ -45,6 +52,7 @@ public class TelaPassos extends AppCompatActivity implements SensorEventListener
         mStepDetectorSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
 
         setarData();
+        setarQtdPassos();
     }
 
     public void setarData(){
@@ -54,8 +62,13 @@ public class TelaPassos extends AppCompatActivity implements SensorEventListener
     }
 
     public void voltarTelaConteudos(View g){
-        Intent voltarTelaConteudos = new Intent(this, TelaConteudos.class);
-        startActivity(voltarTelaConteudos);
+        if (TelaLogin.premium) {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaPassos.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
+        } else {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaPassos.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
+        }
     }
 
     @Override
@@ -68,15 +81,47 @@ public class TelaPassos extends AppCompatActivity implements SensorEventListener
         Sensor sensor = event.sensor;
 
         if(sensor.getType() == Sensor.TYPE_STEP_DETECTOR){
-            totalPassos ++;
-            dectaPasso.setText(""+totalPassos);
-            System.out.println(totalPassos);
-        }
+            if (totalPassos <= 6000){
+                totalPassos ++;
+                dectaPasso.setText(""+totalPassos);
 
+                Map<String, Object> passosBD = new HashMap<>();
+                passosBD.put("Passos dados", totalPassos);
+
+                DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
+                        .collection("Usuarios")
+                        .document(FirebaseHelper.getUIDUsuario())
+                        .collection("Informações pessoais")
+                        .document("Registros")
+                        .collection("Passos")
+                        .document(dataHojeTraco);
+                dr.set(passosBD);
+            }
+        }
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    public void setarQtdPassos(){
+        DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
+                .collection("Usuarios")
+                .document(FirebaseHelper.getUIDUsuario())
+                .collection("Informações pessoais")
+                .document("Registros")
+                .collection("Passos")
+                .document(dataHojeTraco);
+
+        dr.addSnapshotListener((documentSnapshot, error) -> {
+            if (documentSnapshot.exists()){
+                totalPassos = Math.toIntExact((Long) documentSnapshot.getData().get("Passos dados"));
+
+                if (totalPassos <= 6000){
+                    dectaPasso.setText(""+totalPassos);
+                }
+            }
+        });
     }
 }

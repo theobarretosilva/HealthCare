@@ -14,14 +14,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +37,6 @@ public class TelaCadastroComplementar extends AppCompatActivity{
         getSupportActionBar().hide();
 
         iniciarComponentes();
-        configSpinner();
     }
 
     public void iniciarComponentes(){
@@ -50,9 +44,7 @@ public class TelaCadastroComplementar extends AppCompatActivity{
         altura = findViewById(R.id.altura);
         btContinuar = findViewById(R.id.btContinuar);
         biotipo = findViewById(R.id.biotipo);
-    }
 
-    public void configSpinner(){
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spi_elemento, biotipoCorporal);
         adapter.setDropDownViewResource(R.layout.spi_dropdown_elemento);
         biotipo.setAdapter(adapter);

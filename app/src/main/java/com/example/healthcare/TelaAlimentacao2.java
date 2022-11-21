@@ -122,13 +122,8 @@ public class TelaAlimentacao2 extends AppCompatActivity {
     }
 
     public void voltarTelaAlimentacao(View ir){
-        if (TelaLogin.premium) {
-            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
-            ActivityCompat.startActivity(TelaAlimentacao2.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
-        } else {
-            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
-            ActivityCompat.startActivity(TelaAlimentacao2.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
-        }
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+        ActivityCompat.startActivity(TelaAlimentacao2.this, new Intent(this, TelaAlimentacao.class), activityOptionsCompat.toBundle());
     }
 
     public void irTelaAddAlimentacao(View a){

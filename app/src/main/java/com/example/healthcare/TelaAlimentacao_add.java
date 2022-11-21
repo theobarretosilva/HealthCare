@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 public class TelaAlimentacao_add extends AppCompatActivity {
 
@@ -68,5 +70,10 @@ public class TelaAlimentacao_add extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(this, "Não foi possível adicionar a refeição!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void voltarTelaAlimentacao2(View a){
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+        ActivityCompat.startActivity(TelaAlimentacao_add.this, new Intent(this, TelaAlimentacao2.class), activityOptionsCompat.toBundle());
     }
 }

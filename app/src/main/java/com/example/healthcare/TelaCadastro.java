@@ -1,5 +1,7 @@
 package com.example.healthcare;
 
+import static java.lang.Integer.parseInt;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.DocumentReference;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +52,14 @@ public class TelaCadastro extends AppCompatActivity {
     public void verificaPreenchimento(View k){
         String sexo = spinnerSexo.getSelectedItem().toString();
 
+        String[] dataNascimento = dataNascCadastro.getText().toString().split("/");
+        int diaNasc = parseInt(dataNascimento[0]);
+        int mesNasc = parseInt(dataNascimento[1]);
+        int anoNasc = parseInt(dataNascimento[2]);
+        Date dataAtual = new Date();
+        int anoAtual = dataAtual.getYear();
+
+
         if(primeiroNome.getText().length() <= 2){
             primeiroNome.setError("Insira seu primeiro nome corretamente");
         }
@@ -57,6 +68,8 @@ public class TelaCadastro extends AppCompatActivity {
         }
         else if (dataNascCadastro.getText().length() == 0){
             dataNascCadastro.setError("Preencha a sua data de nascimento");
+        }else if(diaNasc < 1 || diaNasc > 31 || mesNasc < 1 || mesNasc > 12 || anoNasc < 1920 || anoNasc > anoAtual){
+            dataNascCadastro.setError("Insira uma data de nascimento válida");
         }
         else if (telefoneCadastro.getText().length() == 0){
             telefoneCadastro.setError("Insira o seu telefone");
