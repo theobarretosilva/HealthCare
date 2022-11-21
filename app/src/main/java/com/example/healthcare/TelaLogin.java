@@ -1,8 +1,5 @@
 package com.example.healthcare;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,22 +8,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 
 public class TelaLogin extends AppCompatActivity {
@@ -37,6 +29,7 @@ public class TelaLogin extends AppCompatActivity {
     Button logar;
 
     String erro;
+    public static Boolean premium;
 
     SignInButton btnGoogle;
     private GoogleSignInClient mGoogleSignInClient;
@@ -80,8 +73,6 @@ public class TelaLogin extends AppCompatActivity {
     }
 
     public void autenticarUsuario(View a){
-        Intent irTelaConteudos = new Intent(this, TelaConteudos.class);
-
         String email = email_login.getText().toString();
         String senha = senha_login.getText().toString();
 
@@ -95,7 +86,7 @@ public class TelaLogin extends AppCompatActivity {
 
                 documentReference.addSnapshotListener((documentSnapshot, error) -> {
                     if (documentSnapshot != null){
-                        Boolean premium = documentSnapshot.getBoolean("Premium");
+                        premium = documentSnapshot.getBoolean("Premium");
                         if (premium){
                             Intent iP = new Intent(this, TelaConteudos_Premium.class);
                             startActivity(iP);

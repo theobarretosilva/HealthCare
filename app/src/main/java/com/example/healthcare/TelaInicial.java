@@ -42,11 +42,11 @@ public class TelaInicial extends AppCompatActivity {
 
             documentReference.addSnapshotListener((documentSnapshot, error) -> {
                 if (documentSnapshot != null){
-                    Boolean premium = documentSnapshot.getBoolean("Premium");
-                    if (premium){
+                    TelaLogin.premium = documentSnapshot.getBoolean("Premium");
+                    if (TelaLogin.premium){
                         Intent iP = new Intent(TelaInicial.this, TelaConteudos_Premium.class);
                         startActivity(iP);
-                    }else{
+                    } else {
                         Intent i = new Intent(TelaInicial.this, TelaConteudos.class);
                         startActivity(i);
                     }

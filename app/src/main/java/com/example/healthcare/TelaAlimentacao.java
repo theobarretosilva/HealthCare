@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,8 +35,13 @@ public class TelaAlimentacao extends AppCompatActivity {
     }
 
     public void voltarTelaConteudos(View m){
-        Intent irTelaConteudos = new Intent(this, TelaConteudos.class);
-        startActivity(irTelaConteudos);
+        if (TelaLogin.premium) {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaAlimentacao.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
+        } else {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaAlimentacao.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
+        }
     }
 
     public void setarCafeDaManha(View c){

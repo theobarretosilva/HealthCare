@@ -67,9 +67,8 @@ public class TelaVacinas extends AppCompatActivity {
     }
 
     public void voltarTelaConteudos(View d){
-        Intent voltarTelaConteudos = new Intent(this, TelaConteudos.class);
         ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
-        ActivityCompat.startActivity(TelaVacinas.this, voltarTelaConteudos, activityOptionsCompat.toBundle());
+        ActivityCompat.startActivity(TelaVacinas.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
     }
 
     public void irTelaPerfil(View f){
