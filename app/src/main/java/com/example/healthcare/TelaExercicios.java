@@ -7,13 +7,20 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class TelaExercicios extends AppCompatActivity {
 
     TextView dataAtual;
+
+    private AdapterExercicio adapterExercicio;
+    private List<Exercicio> exercicioList = new ArrayList<>();
+    private RecyclerView rvExercicios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -22,7 +22,6 @@ public class TelaExames extends AppCompatActivity {
 
     private AdapterExame adapterExame;
     private List<Exame> exameList = new ArrayList<>();
-
     private RecyclerView rvExames;
 
     @Override

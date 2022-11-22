@@ -2,8 +2,6 @@ package com.example.healthcare;
 
 import com.google.firebase.database.DatabaseReference;
 
-import java.util.Date;
-
 public class Lembrete {
     String nomeLembrete, dataLembrete;
     private String id;
