@@ -6,8 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,7 +27,7 @@ public class TelaExercicios extends AppCompatActivity {
 
     private AdapterExercicio adapterExercicio;
     private List<Exercicio> exercicioList = new ArrayList<>();
-    private RecyclerView rvExercicios;
+    RecyclerView rvExercicios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +37,42 @@ public class TelaExercicios extends AppCompatActivity {
         getSupportActionBar().hide();
 
         dataAtual = findViewById(R.id.dataAtualExercicios);
+        rvExercicios = findViewById(R.id.rvExercicios);
 
         setarData();
+        recuperaExames();
+        configRecyclerView();
+    }
+
+    public void configRecyclerView(){
+        rvExercicios.setLayoutManager(new LinearLayoutManager(this));
+        rvExercicios.setHasFixedSize(true);
+        adapterExercicio = new AdapterExercicio(exercicioList);
+        rvExercicios.setAdapter(adapterExercicio);
+    }
+
+    public void recuperaExames(){
+        DatabaseReference exerciciosRef = FirebaseHelper.getDatabaseReference()
+                .child("Registros")
+                .child(FirebaseHelper.getUIDUsuario())
+                .child("Exercicios");
+        exerciciosRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    for (DataSnapshot snap : snapshot.getChildren()){
+                        Exercicio exercicio = snap.getValue(Exercicio.class);
+                        exercicioList.add(exercicio);
+                    }
+                    adapterExercicio.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void setarData(){

@@ -30,31 +30,31 @@ public class TelaInicial extends AppCompatActivity {
         cadastrar.setOnClickListener(v -> irTelaCadastro());
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        if (FirebaseHelper.getFirebaseUser() != null) {
-//            DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
-//                    .collection("Usuarios")
-//                    .document(FirebaseHelper.getUIDUsuario())
-//                    .collection("Informações pessoais")
-//                    .document("Informações de cadastro");
-//
-//            documentReference.addSnapshotListener((documentSnapshot, error) -> {
-//                if (documentSnapshot != null){
-//                    TelaLogin.premium = documentSnapshot.getBoolean("Premium");
-//                    if (TelaLogin.premium){
-//                        Intent iP = new Intent(TelaInicial.this, TelaConteudos_Premium.class);
-//                        startActivity(iP);
-//                    } else {
-//                        Intent i = new Intent(TelaInicial.this, TelaConteudos.class);
-//                        startActivity(i);
-//                    }
-//                }
-//            });
-//
-//        }
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (FirebaseHelper.getFirebaseUser() != null) {
+            DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
+                    .collection("Usuarios")
+                    .document(FirebaseHelper.getUIDUsuario())
+                    .collection("Informações pessoais")
+                    .document("Informações de cadastro");
+
+            documentReference.addSnapshotListener((documentSnapshot, error) -> {
+                if (documentSnapshot != null){
+                    TelaLogin.premium = documentSnapshot.getBoolean("Premium");
+                    if (TelaLogin.premium){
+                        Intent iP = new Intent(TelaInicial.this, TelaConteudos_Premium.class);
+                        startActivity(iP);
+                    } else {
+                        Intent i = new Intent(TelaInicial.this, TelaConteudos.class);
+                        startActivity(i);
+                    }
+                }
+            });
+
+        }
+    }
 
     public void irTelaLogin(){
         Intent irTelaLogin = new Intent(this, TelaLogin.class);
