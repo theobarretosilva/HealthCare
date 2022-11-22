@@ -77,6 +77,17 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
     implementation 'com.google.android.material:material:1.0.0'
 
+    // Menu
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    //Navigation
+//    implementation 'androidx.navigation:navigation-frafment-ktx:2.2.0-rc03'
+//    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0-rc03'
+
+    implementation "androidx.navigation:navigation-fragment:2.5.3"
+    implementation "androidx.navigation:navigation-ui:2.5.3"
+
+
     implementation 'com.android.support:design:27.0.2'
     implementation 'com.android.support:support-v4:27.0.2'
 }
