@@ -68,10 +68,9 @@ public class TelaCadastro extends AppCompatActivity {
         }
         else if (dataNascCadastro.getText().length() == 0){
             dataNascCadastro.setError("Preencha a sua data de nascimento");
+        }else if(diaNasc < 1 || diaNasc > 31 || mesNasc < 1 || mesNasc > 12 || anoNasc < 1920 || anoNasc > anoAtual){
+            dataNascCadastro.setError("Insira uma data de nascimento válida");
         }
-//        else if(diaNasc < 1 || diaNasc > 31 || mesNasc < 1 || mesNasc > 12 || anoNasc < 1920 || anoNasc > anoAtual){
-//            dataNascCadastro.setError("Insira uma data de nascimento válida");
-//        }
         else if (telefoneCadastro.getText().length() == 0){
             telefoneCadastro.setError("Insira o seu telefone");
         }
