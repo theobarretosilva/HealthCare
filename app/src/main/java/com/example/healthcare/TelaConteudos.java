@@ -57,7 +57,6 @@ public class TelaConteudos extends AppCompatActivity {
 
     BottomSheetDialog dialog;
     Dialog dialogMenu;
-    DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
     TextView olaUsu, examesBox, clinicasBox;
     CircleImageView fotoUsu;
     ImageView examesLogo, clinicasLogo, cadeado, menu;
@@ -74,12 +73,14 @@ public class TelaConteudos extends AppCompatActivity {
         setContentView(R.layout.tela_conteudos);
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
         iniciarComponentes();
         setarImagemPerfil();
 
         menu.setOnClickListener(v -> {
            drawerLayout.openDrawer(GravityCompat.START);
+           navigationMenu();
         });
 
         dialog = new BottomSheetDialog(this);
@@ -111,6 +112,8 @@ public class TelaConteudos extends AppCompatActivity {
     }
 
     public void iniciarComponentes(){
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+
         olaUsu = findViewById(R.id.olaUsu);
         fotoUsu = findViewById(R.id.fotoUsu);
         examesBox = findViewById(R.id.examesBox);
@@ -130,7 +133,7 @@ public class TelaConteudos extends AppCompatActivity {
         alimento = drawerLayout.findViewById(R.id.alimento_img);
         textAlimento = drawerLayout.findViewById(R.id.alimento);
 
-        peso = drawerLayout.findViewById(R.id.peso_img;
+        peso = drawerLayout.findViewById(R.id.peso_img);
         textPeso = drawerLayout.findViewById(R.id.peso);
 
         vacinas = drawerLayout.findViewById(R.id.vacinas_img);
@@ -139,16 +142,29 @@ public class TelaConteudos extends AppCompatActivity {
         sono = drawerLayout.findViewById(R.id.sono_img);
         textSono = drawerLayout.findViewById(R.id.sono);
 
-        passos = drawerLayout.findViewById(R.id.passos_text);
-        exercicio = drawerLayout.findViewById(R.id.exercicios_text);
-        medicamento = drawerLayout.findViewById(R.id.medicamentos_text);
-        exames = drawerLayout.findViewById(R.id.text_exames);
-        clinicas = drawerLayout.findViewById(R.id.clinica_text);
-        sair = drawerLayout.findViewById(R.id.sair_text);
+        passos = drawerLayout.findViewById(R.id.passos_img);
+        textPassos = drawerLayout.findViewById(R.id.passos_text);
+
+        exercicio = drawerLayout.findViewById(R.id.exercicios_img);
+        textExercicio = drawerLayout.findViewById(R.id.exercicios_text);
+
+        medicamento = drawerLayout.findViewById(R.id.medicamentos_img);
+        textMedicamentos = drawerLayout.findViewById(R.id.medicamentos_text);
+
+        exames = drawerLayout.findViewById(R.id.exames_img);
+        textExercicio = drawerLayout.findViewById(R.id.text_exames);
+
+        clinicas = drawerLayout.findViewById(R.id.clinicas_img);
+        textClinicas = drawerLayout.findViewById(R.id.clinica_text);
+
+        sair = drawerLayout.findViewById(R.id.sair);
+        textSair = drawerLayout.findViewById(R.id.sair_text);
 
     }
 
     public void navigationMenu(){
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+
         inicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
