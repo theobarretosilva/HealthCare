@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
+        android:onClick="voltarTela"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +36,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView68" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/nomeDoMedicamento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -62,22 +63,22 @@
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintStart_toStartOf="@+id/nomeDoMedicamento"
+        app:layout_constraintTop_toBottomOf="@+id/nomeDoMedicamento" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="100dp"
+        android:id="@+id/quantidadeDoMedicamento"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:fontFamily="@font/urbanist"
         android:inputType="textPersonName"
-        android:maxLength="2"
-        android:textAlignment="viewEnd"
+        android:maxLength="1"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/textView194"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName3"
+        app:layout_constraintEnd_toEndOf="@+id/nomeDoMedicamento"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView194"
         app:layout_constraintTop_toTopOf="@+id/textView194" />
@@ -97,18 +98,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textView194" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
-        android:layout_width="100dp"
+        android:id="@+id/mgDosagemDoMedicamento"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="125dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:fontFamily="@font/urbanist"
         android:inputType="textPersonName"
-        android:maxLength="2"
-        android:textAlignment="viewEnd"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/textView195"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
+        app:layout_constraintEnd_toEndOf="@+id/quantidadeDoMedicamento"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView195"
         app:layout_constraintTop_toTopOf="@+id/textView195" />
@@ -122,6 +122,7 @@
         android:layout_marginEnd="65dp"
         android:backgroundTint="#6E9EA2"
         android:fontFamily="@font/urbanist"
+        android:onClick="mandarMedicamentosBD"
         android:paddingTop="9dp"
         android:paddingBottom="9dp"
         android:text="Gravar"
@@ -131,7 +132,39 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5"
+        app:layout_constraintTop_toBottomOf="@+id/horarioDoMedicamento"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView109"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Horário"
+        android:fontFamily="@font/urbanist"
+        android:textColor="#000000"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView195"
+        app:layout_constraintTop_toBottomOf="@+id/textView195" />
+
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/horarioDoMedicamento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="184dp"
+        android:ems="10"
+        android:inputType="time"
+        android:fontFamily="@font/urbanist"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/textView109"
+        app:layout_constraintEnd_toEndOf="@+id/mgDosagemDoMedicamento"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView109"
+        app:layout_constraintTop_toTopOf="@+id/textView109"
+        app:mask="__:__"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

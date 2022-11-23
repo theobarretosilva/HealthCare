@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView189"
+        android:id="@+id/horaMedi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -32,12 +32,12 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:cornerRadius="7dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView189"
-        app:layout_constraintStart_toStartOf="@+id/textView189"
-        app:layout_constraintTop_toBottomOf="@+id/textView189" />
+        app:layout_constraintEnd_toEndOf="@+id/horaMedi"
+        app:layout_constraintStart_toStartOf="@+id/horaMedi"
+        app:layout_constraintTop_toBottomOf="@+id/horaMedi" />
 
     <TextView
-        android:id="@+id/textView190"
+        android:id="@+id/nomeMedi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -49,24 +49,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/view23"
-        app:layout_constraintTop_toTopOf="@+id/textView189" />
+        app:layout_constraintTop_toTopOf="@+id/horaMedi" />
 
     <TextView
-        android:id="@+id/textView191"
+        android:id="@+id/qtdMedi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/urbanist"
         android:text="Qtd"
         android:textColor="#1E232C"
         android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView192"
-        app:layout_constraintEnd_toEndOf="@+id/textView190"
+        app:layout_constraintBottom_toTopOf="@+id/mgDosagemMedi"
+        app:layout_constraintEnd_toEndOf="@+id/nomeMedi"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView190"
-        app:layout_constraintTop_toBottomOf="@+id/textView190" />
+        app:layout_constraintStart_toStartOf="@+id/nomeMedi"
+        app:layout_constraintTop_toBottomOf="@+id/nomeMedi" />
 
     <TextView
-        android:id="@+id/textView192"
+        android:id="@+id/mgDosagemMedi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -87,7 +87,7 @@
         android:background="#0C5C64"
         app:layout_constraintBottom_toBottomOf="@+id/button10"
         app:layout_constraintStart_toEndOf="@+id/button10"
-        app:layout_constraintTop_toTopOf="@+id/textView189" />
+        app:layout_constraintTop_toTopOf="@+id/horaMedi" />
 
     <View
         android:id="@+id/view24"
@@ -95,7 +95,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
         android:background="#0C5C64"
-        app:layout_constraintEnd_toEndOf="@+id/textView190"
+        app:layout_constraintEnd_toEndOf="@+id/nomeMedi"
         app:layout_constraintStart_toStartOf="@+id/button10"
         app:layout_constraintTop_toBottomOf="@+id/view23" />
 
