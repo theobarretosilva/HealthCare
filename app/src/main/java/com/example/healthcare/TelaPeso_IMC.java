@@ -3,6 +3,8 @@ package com.example.healthcare;
 import static java.lang.Integer.parseInt;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -53,29 +55,18 @@ public class TelaPeso_IMC extends AppCompatActivity {
 
         idadePessoa = 0;
         calcular = findViewById(R.id.calcular);
-        calcular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calculaImc();
-            }
-        });
+        calcular.setOnClickListener(v -> calculaImc());
 
-        btnMenos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(idadePessoa != 0){
-                    idadePessoa -= 1;
-                    atualizaContador();
-                }
-            }
-        });
-        btnMais.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                idadePessoa += 1;
+        btnMenos.setOnClickListener(view -> {
+            if(idadePessoa != 0){
+                idadePessoa -= 1;
                 atualizaContador();
-
             }
+        });
+        btnMais.setOnClickListener(view -> {
+            idadePessoa += 1;
+            atualizaContador();
+
         });
 
     }
@@ -205,7 +196,12 @@ public class TelaPeso_IMC extends AppCompatActivity {
     }
 
     public  void retornaTela(View v){
-        Intent i = new Intent(this, TelaPeso.class);
-        startActivity(i);
+        if (TelaLogin.premium) {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaPeso_IMC.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
+        } else {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaPeso_IMC.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
+        }
     }
 }
