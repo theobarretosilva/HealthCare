@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/urbanist"
-        android:text="Após ingerir seus medicamentos"
+        android:text='Após ingerir seus medicamentos,\nmarque como "Ingerido".'
         android:textColor="#1E232C"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -128,12 +128,12 @@
         app:srcCompat="@drawable/logo2_saude" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMedicamentos"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView60"
-        app:layout_constraintEnd_toEndOf="@+id/view11"
+        app:layout_constraintEnd_toStartOf="@+id/imageView44"
         app:layout_constraintStart_toStartOf="@+id/textView39"
         app:layout_constraintTop_toBottomOf="@+id/imageView44"
         tools:itemCount="3"
