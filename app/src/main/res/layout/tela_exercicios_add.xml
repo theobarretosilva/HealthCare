@@ -67,7 +67,7 @@
         app:layout_constraintStart_toStartOf="@+id/nomeDoExercicio"
         app:layout_constraintTop_toBottomOf="@+id/nomeDoExercicio" />
 
-    <EditText
+    <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/tempoDoExercicio"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -75,14 +75,15 @@
         android:ems="10"
         android:fontFamily="@font/urbanist"
         android:inputType="number"
-        android:maxLength="2"
-        android:textAlignment="viewEnd"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/textView187"
         app:layout_constraintEnd_toStartOf="@+id/textView188"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView187"
-        app:layout_constraintTop_toTopOf="@+id/textView187" />
+        app:layout_constraintTop_toTopOf="@+id/textView187"
+        app:mask="__:__"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
 
     <TextView
         android:id="@+id/textView188"
