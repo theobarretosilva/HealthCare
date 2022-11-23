@@ -68,7 +68,7 @@ public class TelaSono extends AppCompatActivity {
                 String acordou = documentSnapshot.getString("Horário que acordou");
                 hAcordou.setText(acordou);
 
-                LocalTime horarioD = LocalTime.parse(hDormiu.getText().toString());
+                LocalTime horarioD = LocalTime.parse(hDormiu.getText().toString()); //disse que esta dando erro aqui
                 LocalTime horarioA = LocalTime.parse(hAcordou.getText().toString());
 
                 int horasDormidas = horarioD.getHour() - horarioA.getHour();
