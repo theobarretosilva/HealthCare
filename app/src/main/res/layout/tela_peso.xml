@@ -49,32 +49,17 @@
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
-    <ImageView
-        android:id="@+id/imageView16"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="590dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/botao_cadastro" />
-
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/box_conteudos_tela_peso"
         android:editable="false"
         android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView16"
+        app:layout_constraintTop_toBottomOf="@+id/textView108"
         tools:ignore="Deprecated" />
 
     <TextView
@@ -436,25 +421,25 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="13dp"
-        android:height="60dp"
         android:backgroundTint="#59A2A9"
         android:fontFamily="@font/urbanist"
         android:onClick="irTelaPesoIMC"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:text="Calculadora IMC"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:cornerRadius="45px"
+        app:backgroundTint="#4A858B"
+        app:cornerRadius="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView32"
-        app:layout_constraintVertical_bias="0.0"
-        app:strokeColor="#073C6D"
-        app:strokeWidth="1dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
         android:id="@+id/editPesoT"
@@ -468,5 +453,47 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView30"
         app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView107"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Aqui você pode acessar todas as\ninformações sobre o seu peso."
+        android:textColor="#1E232C"
+        android:textColorHint="#1E232C"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView108"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/urbanist"
+        android:hint="💪 04/08/2022"
+        android:textColor="#32976C"
+        android:textColorHint="#32976C"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView107"
+        app:layout_constraintTop_toBottomOf="@+id/textView107" />
+
+    <View
+        android:id="@+id/view18"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:background="#0C5C64"
+        app:layout_constraintBottom_toBottomOf="@+id/textView108"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/textView108"
+        app:layout_constraintTop_toTopOf="@+id/textView108" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

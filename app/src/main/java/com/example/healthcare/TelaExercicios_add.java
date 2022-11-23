@@ -31,15 +31,16 @@ public class TelaExercicios_add extends AppCompatActivity {
     }
 
     public void mandarExercicioBD(View a){
-
         if (nomeExercicio.getText().length() < 2){
             nomeExercicio.setError("Preencha este campo corretamente");
         } else if(tempoExercicio.getText().length() != 5){
             tempoExercicio.setError("Preencha este campo corretamente");
-        } else {
+        } else if(tempoExercicio.getText().toString().contains("_")){
+            tempoExercicio.setError("Preencha este campo corretamente");
+        }
+        else {
             String nome = nomeExercicio.getText().toString();
             String duracao = tempoExercicio.getText().toString();
-
             try {
                 Exercicio exercicio = new Exercicio();
                 exercicio.setNomeExercicio(nome);
