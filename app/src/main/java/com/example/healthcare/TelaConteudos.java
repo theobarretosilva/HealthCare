@@ -56,7 +56,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class TelaConteudos extends AppCompatActivity {
 
     BottomSheetDialog dialog;
-    Dialog dialogMenu;
     TextView olaUsu, examesBox, clinicasBox;
     CircleImageView fotoUsu;
     ImageView examesLogo, clinicasLogo, cadeado, menu;
@@ -77,10 +76,10 @@ public class TelaConteudos extends AppCompatActivity {
 
         iniciarComponentes();
         setarImagemPerfil();
-
+        navigationMenu();
         menu.setOnClickListener(v -> {
            drawerLayout.openDrawer(GravityCompat.START);
-           navigationMenu();
+
         });
 
         dialog = new BottomSheetDialog(this);
@@ -152,7 +151,7 @@ public class TelaConteudos extends AppCompatActivity {
         textMedicamentos = drawerLayout.findViewById(R.id.medicamentos_text);
 
         exames = drawerLayout.findViewById(R.id.exames_img);
-        textExercicio = drawerLayout.findViewById(R.id.text_exames);
+        textExames = drawerLayout.findViewById(R.id.text_exames);
 
         clinicas = drawerLayout.findViewById(R.id.clinicas_img);
         textClinicas = drawerLayout.findViewById(R.id.clinica_text);
@@ -160,29 +159,65 @@ public class TelaConteudos extends AppCompatActivity {
         sair = drawerLayout.findViewById(R.id.sair);
         textSair = drawerLayout.findViewById(R.id.sair_text);
 
+        user = drawerLayout.findViewById(R.id.imgPessoa);
+        nome_user = drawerLayout.findViewById(R.id.nameUser);
+        email_user = drawerLayout.findViewById(R.id.emailUser);
     }
 
     public void navigationMenu(){
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPerfil.class);
+                startActivity(irTela);
+            }
+        });
+        nome_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPerfil.class);
+                startActivity(irTela);
+            }
+        });
+        email_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPerfil.class);
+                startActivity(irTela);
+            }
+        });
+
+
+
         inicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayout.closeDrawer(GravityCompat.START);
+                drawerLayout.closeDrawer(GravityCompat.END);
             }
         });
         textIncio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayout.closeDrawer(GravityCompat.START);
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
             }
         });
 
         sair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-
+                Intent irTela = new Intent(TelaConteudos.this, TelaInicial.class);
+                startActivity(irTela);
+            }
+        });
+        textSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaInicial.class);
+                startActivity(irTela);
             }
         });
 
@@ -208,8 +243,22 @@ public class TelaConteudos extends AppCompatActivity {
                 startActivity(irTela);
             }
         });
+        textAlimento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaAlimentacao.class);
+                startActivity(irTela);
+            }
+        });
 
         peso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPeso.class);
+                startActivity(irTela);
+            }
+        });
+        textPeso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent irTela = new Intent(TelaConteudos.this, TelaPeso.class);
@@ -224,8 +273,22 @@ public class TelaConteudos extends AppCompatActivity {
                 startActivity(irTela);
             }
         });
+        textVacinas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaVacinas.class);
+                startActivity(irTela);
+            }
+        });
 
         sono.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaSono.class);
+                startActivity(irTela);
+            }
+        });
+        textSono.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent irTela = new Intent(TelaConteudos.this, TelaSono.class);
@@ -240,6 +303,13 @@ public class TelaConteudos extends AppCompatActivity {
                 startActivity(irTela);
             }
         });
+        textPassos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPassos.class);
+                startActivity(irTela);
+            }
+        });
 
         exercicio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,8 +318,22 @@ public class TelaConteudos extends AppCompatActivity {
                 startActivity(irTela);
             }
         });
+        textExercicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaExercicios.class);
+                startActivity(irTela);
+            }
+        });
 
         medicamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaMedicamentos.class);
+                startActivity(irTela);
+            }
+        });
+        textMedicamentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent irTela = new Intent(TelaConteudos.this, TelaMedicamentos.class);
@@ -266,8 +350,22 @@ public class TelaConteudos extends AppCompatActivity {
                 startActivity(irTela);
             }
         });
+        textExames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPremium.class);
+                startActivity(irTela);
+            }
+        });
 
         clinicas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPremium.class);
+                startActivity(irTela);
+            }
+        });
+        textClinicas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent irTela = new Intent(TelaConteudos.this, TelaPremium.class);
@@ -342,6 +440,10 @@ public class TelaConteudos extends AppCompatActivity {
                 .getDownloadUrl()
                 .addOnSuccessListener(uri ->
                         Picasso.get().load(uri).into(fotoUsu)
+
+                )
+                .addOnSuccessListener( uri ->
+                        Picasso.get().load(uri).into(user)
                 );
     }
 }

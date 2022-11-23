@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,488 +7,1009 @@
     android:background="#D5F0F0"
     tools:context=".TelaConteudos_Premium" >
 
-    <TextView
-        android:id="@+id/olaUsu_Premium"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/olaUsu_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/urbanist"
+            android:hint="@string/ola_nomeusu"
+            android:textColor="#0C5C64"
+            android:textColorHint="#0C5C64"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/textView11_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Aqui você pode acessar todos os\nconteúdos premium disponíveis."
+            android:textColor="#1E232C"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/olaUsu_Premium" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fotoUsu_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:onClick="irTelaPerfil_Premium"
+            android:src="@drawable/pessoa"
+            app:layout_constraintBottom_toBottomOf="@+id/textView11_Premium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView11_Premium"
+            app:layout_constraintTop_toTopOf="@+id/olaUsu_Premium" />
+
+        <TextView
+            android:id="@+id/textView12_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Conteúdos"
+            android:textColor="#0C5C64"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11_Premium" />
+
+        <View
+            android:id="@+id/view_Premium"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="25dp"
+            android:background="#0C5C64"
+            app:layout_constraintBottom_toBottomOf="@+id/textView12_Premium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView12_Premium"
+            app:layout_constraintTop_toTopOf="@+id/textView12_Premium" />
+
+        <TextView
+            android:id="@+id/textView13_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/botoes_conteudos"
+            android:editable="false"
+            android:enabled="false"
+            android:onClick="irTelaAgua"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12_Premium" />
+
+        <TextView
+            android:id="@+id/textView14_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/botoes_conteudos"
+            android:enabled="false"
+            android:onClick="irTelaAlimentacao"
+            app:layout_constraintEnd_toStartOf="@+id/textView15_Premium"
+            app:layout_constraintStart_toEndOf="@+id/textView13_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView12_Premium" />
+
+        <TextView
+            android:id="@+id/textView15_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/botoes_conteudos"
+            android:editable="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12_Premium" />
+
+        <TextView
+            android:id="@+id/textView18_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/botoes_conteudos"
+            android:editable="false"
+            android:enabled="false"
+            android:onClick="irTelaPassos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView23_Premium" />
+
+        <TextView
+            android:id="@+id/textView16_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/botoes_conteudos"
+            android:enabled="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21_Premium" />
+
+        <TextView
+            android:id="@+id/textView17_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/botoes_conteudos"
+            android:editable="false"
+            android:enabled="false"
+            android:onClick="irTelaSono"
+            app:layout_constraintEnd_toStartOf="@+id/textView18_Premium"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toEndOf="@+id/textView16_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView22_Premium" />
+
+        <TextView
+            android:id="@+id/textView20_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/botoes_conteudos"
+            android:editable="false"
+            android:enabled="false"
+            android:onClick="irTelaMedicamentos"
+            app:layout_constraintEnd_toStartOf="@+id/examesBox_Premium"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toEndOf="@+id/textView19_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView25_Premium" />
+
+        <TextView
+            android:id="@+id/textView19_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/botoes_conteudos"
+            android:editable="false"
+            android:enabled="false"
+            android:onClick="irTelaExercicios"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView24_Premium" />
+
+        <TextView
+            android:id="@+id/textView21_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Água"
+            android:textColor="#0C5C64"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView13_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView13_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView13_Premium" />
+
+        <TextView
+            android:id="@+id/textView22_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Alimentação"
+            android:textColor="#0C5C64"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView14_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView14_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView14_Premium" />
+
+        <TextView
+            android:id="@+id/textView23_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Peso"
+            android:textColor="#0C5C64"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView15_Premium"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toStartOf="@+id/textView15_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView15_Premium" />
+
+        <TextView
+            android:id="@+id/textView24_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Vacinas"
+            android:textColor="#0C5C64"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView16_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView16_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView16_Premium" />
+
+        <TextView
+            android:id="@+id/textView25_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Sono"
+            android:textColor="#0C5C64"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView17_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView17_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView17_Premium" />
+
+        <TextView
+            android:id="@+id/textView26_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Passos"
+            android:textColor="#0C5C64"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView18_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView18_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView18_Premium" />
+
+        <TextView
+            android:id="@+id/textView27_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Exercícios"
+            android:textColor="#0C5C64"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView19_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView19_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView19_Premium" />
+
+        <TextView
+            android:id="@+id/textView28_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Medicamentos"
+            android:textColor="#0C5C64"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView20_Premium"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toStartOf="@+id/textView20_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/textView20_Premium" />
+
+        <ImageView
+            android:id="@+id/imageView7_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="irTelaAgua"
+            app:layout_constraintBottom_toBottomOf="@+id/textView13_Premium"
+            app:layout_constraintEnd_toEndOf="@+id/textView13_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView13_Premium"
+            app:layout_constraintTop_toTopOf="@+id/textView13_Premium"
+            app:srcCompat="@drawable/agua" />
+
+        <ImageView
+            android:id="@+id/imageView8_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="irTelaAlimentacao"
+            app:layout_constraintBottom_toBottomOf="@+id/textView14_Premium"
+            app:layout_constraintEnd_toEndOf="@+id/textView14_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView14_Premium"
+            app:layout_constraintTop_toTopOf="@+id/textView14_Premium"
+            app:srcCompat="@drawable/alimentacao" />
+
+        <ImageView
+            android:id="@+id/imageView9_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="irTelaPeso"
+            app:layout_constraintBottom_toBottomOf="@+id/textView15_Premium"
+            app:layout_constraintEnd_toEndOf="@+id/textView15_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView15_Premium"
+            app:layout_constraintTop_toTopOf="@+id/textView15_Premium"
+            app:srcCompat="@drawable/peso" />
+
+        <ImageView
+            android:id="@+id/imageView10_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="irTelaVacinas"
+            app:layout_constraintBottom_toBottomOf="@+id/textView16_Premium"
+            app:layout_constraintEnd_toEndOf="@+id/textView16_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView16_Premium"
+            app:layout_constraintTop_toTopOf="@+id/textView16_Premium"
+            app:srcCompat="@drawable/vacinas" />
+
+        <ImageView
+            android:id="@+id/imageView11_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="irTelaSono"
+            app:layout_constraintBottom_toBottomOf="@+id/textView17_Premium"
+            app:layout_constraintEnd_toEndOf="@+id/textView17_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView17_Premium"
+            app:layout_constraintTop_toTopOf="@+id/textView17_Premium"
+            app:srcCompat="@drawable/sono" />
+
+        <ImageView
+            android:id="@+id/imageView12_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="irTelaPassos"
+            app:layout_constraintBottom_toBottomOf="@+id/textView18_Premium"
+            app:layout_constraintEnd_toEndOf="@+id/textView18_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView18_Premium"
+            app:layout_constraintTop_toTopOf="@+id/textView18_Premium"
+            app:srcCompat="@drawable/passos" />
+
+        <ImageView
+            android:id="@+id/imageView13_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="irTelaExercicios"
+            app:layout_constraintBottom_toBottomOf="@+id/textView19_Premium"
+            app:layout_constraintEnd_toEndOf="@+id/textView19_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView19_Premium"
+            app:layout_constraintTop_toTopOf="@+id/textView19_Premium"
+            app:srcCompat="@drawable/exercicios" />
+
+        <ImageView
+            android:id="@+id/imageView14_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="irTelaMedicamentos"
+            app:layout_constraintBottom_toBottomOf="@+id/textView20_Premium"
+            app:layout_constraintEnd_toEndOf="@+id/textView20_Premium"
+            app:layout_constraintStart_toStartOf="@+id/textView20_Premium"
+            app:layout_constraintTop_toTopOf="@+id/textView20_Premium"
+            app:srcCompat="@drawable/medicamentos" />
+
+        <TextView
+            android:id="@+id/examesBox_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/botoes_conteudos"
+            android:onClick="irTelaExames"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView26_Premium" />
+
+        <TextView
+            android:id="@+id/textView78_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Exames"
+            android:textColor="#0C5C64"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/examesBox_Premium"
+            app:layout_constraintStart_toStartOf="@+id/examesBox_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/examesBox_Premium" />
+
+        <ImageView
+            android:id="@+id/examesLogo_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="irTelaExames"
+            app:layout_constraintBottom_toBottomOf="@+id/examesBox_Premium"
+            app:layout_constraintEnd_toEndOf="@+id/examesBox_Premium"
+            app:layout_constraintStart_toStartOf="@+id/examesBox_Premium"
+            app:layout_constraintTop_toTopOf="@+id/examesBox_Premium"
+            app:srcCompat="@drawable/exames" />
+
+        <TextView
+            android:id="@+id/clinicasBox_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/botoes_conteudos"
+            android:enabled="false"
+            android:onClick="irTelaClinicas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView27_Premium" />
+
+        <ImageView
+            android:id="@+id/clinicasLogo_Premium"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="irTelaClinicas"
+            app:layout_constraintBottom_toBottomOf="@+id/clinicasBox_Premium"
+            app:layout_constraintEnd_toEndOf="@+id/clinicasBox_Premium"
+            app:layout_constraintStart_toStartOf="@+id/clinicasBox_Premium"
+            app:layout_constraintTop_toTopOf="@+id/clinicasBox_Premium"
+            app:srcCompat="@drawable/clinicas_parceiras" />
+
+        <TextView
+            android:id="@+id/textView84_Premium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/urbanist"
+            android:text="Clínicas parceiras"
+            android:textColor="#0C5C64"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/clinicasBox_Premium"
+            app:layout_constraintStart_toStartOf="@+id/clinicasBox_Premium"
+            app:layout_constraintTop_toBottomOf="@+id/clinicasBox_Premium" />
+
+        <ImageView
+            android:id="@+id/imageView31"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView84_Premium"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/logo2_saude" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_round_menu_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/urbanist"
-        android:hint="@string/ola_nomeusu"
-        android:textColor="#0C5C64"
-        android:textColorHint="#0C5C64"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFF">
 
-    <TextView
-        android:id="@+id/textView11_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Aqui você pode acessar todos os\nconteúdos premium disponíveis."
-        android:textColor="#1E232C"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/olaUsu_Premium" />
+            <TextView
+                android:id="@+id/textView183"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:background="#B9D5D8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fotoUsu_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:onClick="irTelaPerfil_Premium"
-        android:src="@drawable/pessoa"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11_Premium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView11_Premium"
-        app:layout_constraintTop_toTopOf="@+id/olaUsu_Premium" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgPessoaPremium"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="225dp"
+                android:src="@drawable/pessoa"
+                app:layout_constraintBottom_toBottomOf="@+id/textView183"
+                app:layout_constraintEnd_toEndOf="@+id/textView183"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView183"
+                app:layout_constraintVertical_bias="0.52"
+                app:srcCompat="@drawable/pessoa" />
 
-    <TextView
-        android:id="@+id/textView12_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Conteúdos"
-        android:textColor="#0C5C64"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11_Premium" />
+            <TextView
+                android:id="@+id/nameUserPremium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/urbanist"
+                android:hint="Name User"
+                android:textColor="#0C5C64"
+                android:textColorHint="#0C5C64"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView183"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imgPessoaPremium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.44" />
 
-    <View
-        android:id="@+id/view_Premium"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="25dp"
-        android:background="#0C5C64"
-        app:layout_constraintBottom_toBottomOf="@+id/textView12_Premium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView12_Premium"
-        app:layout_constraintTop_toTopOf="@+id/textView12_Premium" />
+            <TextView
+                android:id="@+id/emailUserPremium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/urbanist"
+                android:hint="user.email@emai.com"
+                android:textColor="#1E232C"
+                android:textColorHint="#1E232C"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView183"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imgPessoaPremium"
+                app:layout_constraintTop_toBottomOf="@+id/nameUserPremium"
+                app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textView13_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/botoes_conteudos"
-        android:editable="false"
-        android:enabled="false"
-        android:onClick="irTelaAgua"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12_Premium" />
+            <TextView
+                android:id="@+id/text_inicio_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="13dp"
+                android:text="Início"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/view12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/inicio_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/textView183" />
 
-    <TextView
-        android:id="@+id/textView14_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/botoes_conteudos"
-        android:enabled="false"
-        android:onClick="irTelaAlimentacao"
-        app:layout_constraintEnd_toStartOf="@+id/textView15_Premium"
-        app:layout_constraintStart_toEndOf="@+id/textView13_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView12_Premium" />
 
-    <TextView
-        android:id="@+id/textView15_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/botoes_conteudos"
-        android:editable="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12_Premium" />
+            <TextView
+                android:id="@+id/text_agua_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="@font/urbanist"
+                android:text="Água"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/agua_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/view12" />
 
-    <TextView
-        android:id="@+id/textView18_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/botoes_conteudos"
-        android:editable="false"
-        android:enabled="false"
-        android:onClick="irTelaPassos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23_Premium" />
+            <TextView
+                android:id="@+id/alimento_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:text="Alimentação"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/view20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/alimento_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/view38" />
 
-    <TextView
-        android:id="@+id/textView16_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/botoes_conteudos"
-        android:enabled="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21_Premium" />
+            <TextView
+                android:id="@+id/peso_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:text="Peso e IMC"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/view26"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/peso_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/view20" />
 
-    <TextView
-        android:id="@+id/textView17_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/botoes_conteudos"
-        android:editable="false"
-        android:enabled="false"
-        android:onClick="irTelaSono"
-        app:layout_constraintEnd_toStartOf="@+id/textView18_Premium"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toEndOf="@+id/textView16_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView22_Premium" />
+            <TextView
+                android:id="@+id/vacinas_text_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:text="Vacinas"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/view27"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/vacinas_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/view26" />
 
-    <TextView
-        android:id="@+id/textView20_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/botoes_conteudos"
-        android:editable="false"
-        android:enabled="false"
-        android:onClick="irTelaMedicamentos"
-        app:layout_constraintEnd_toStartOf="@+id/examesBox_Premium"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/textView19_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView25_Premium" />
+            <TextView
+                android:id="@+id/sono_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:text="Sono"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/view33"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/sono_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/view27" />
 
-    <TextView
-        android:id="@+id/textView19_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/botoes_conteudos"
-        android:editable="false"
-        android:enabled="false"
-        android:onClick="irTelaExercicios"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24_Premium" />
+            <TextView
+                android:id="@+id/passos_text_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:text="Passos"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/view39"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/passos_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/view33" />
 
-    <TextView
-        android:id="@+id/textView21_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Água"
-        android:textColor="#0C5C64"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView13_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView13_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView13_Premium" />
+            <ImageView
+                android:id="@+id/agua_img_premium"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view12"
+                app:srcCompat="@drawable/agua_preta" />
 
-    <TextView
-        android:id="@+id/textView22_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Alimentação"
-        android:textColor="#0C5C64"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView14_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView14_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView14_Premium" />
+            <TextView
+                android:id="@+id/exercicios_text_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:text="Exercícios"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/view35"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/exercicios_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/view39" />
 
-    <TextView
-        android:id="@+id/textView23_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Peso"
-        android:textColor="#0C5C64"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView15_Premium"
-        app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintStart_toStartOf="@+id/textView15_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView15_Premium" />
+            <TextView
+                android:id="@+id/medicamentos_text_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:text="Medicamentos"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/view30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/medicamentos_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/view35" />
 
-    <TextView
-        android:id="@+id/textView24_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Vacinas"
-        android:textColor="#0C5C64"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView16_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView16_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView16_Premium" />
+            <TextView
+                android:id="@+id/text_exames_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:text="Exames"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/view31"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/exames_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/view30" />
 
-    <TextView
-        android:id="@+id/textView25_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Sono"
-        android:textColor="#0C5C64"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView17_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView17_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView17_Premium" />
+            <TextView
+                android:id="@+id/clinica_text_premium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="13dp"
+                android:text="Clínicas Parceiras"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/clinicas_img_premium"
+                app:layout_constraintTop_toBottomOf="@+id/view31" />
 
-    <TextView
-        android:id="@+id/textView26_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Passos"
-        android:textColor="#0C5C64"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView18_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView18_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView18_Premium" />
+            <TextView
+                android:id="@+id/sair_text_premium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Sair"
+                android:textColor="#1E232C"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/sair_premium"
+                app:layout_constraintTop_toBottomOf="@+id/clinica_text_premium"
+                app:layout_constraintVertical_bias="0.71000004" />
 
-    <TextView
-        android:id="@+id/textView27_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Exercícios"
-        android:textColor="#0C5C64"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView19_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView19_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView19_Premium" />
+            <View
+                android:id="@+id/view12"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:background="#EBF3F3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inicio_img_premium" />
 
-    <TextView
-        android:id="@+id/textView28_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Medicamentos"
-        android:textColor="#0C5C64"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView20_Premium"
-        app:layout_constraintHorizontal_bias="0.50"
-        app:layout_constraintStart_toStartOf="@+id/textView20_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/textView20_Premium" />
+            <ImageView
+                android:id="@+id/alimento_img_premium"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view38"
+                app:srcCompat="@drawable/alimentacao_preta" />
 
-    <ImageView
-        android:id="@+id/imageView7_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="irTelaAgua"
-        app:layout_constraintBottom_toBottomOf="@+id/textView13_Premium"
-        app:layout_constraintEnd_toEndOf="@+id/textView13_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView13_Premium"
-        app:layout_constraintTop_toTopOf="@+id/textView13_Premium"
-        app:srcCompat="@drawable/agua" />
+            <View
+                android:id="@+id/view20"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="#EBF3F3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alimento_img_premium" />
 
-    <ImageView
-        android:id="@+id/imageView8_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="irTelaAlimentacao"
-        app:layout_constraintBottom_toBottomOf="@+id/textView14_Premium"
-        app:layout_constraintEnd_toEndOf="@+id/textView14_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView14_Premium"
-        app:layout_constraintTop_toTopOf="@+id/textView14_Premium"
-        app:srcCompat="@drawable/alimentacao" />
+            <ImageView
+                android:id="@+id/peso_img_premium"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view20"
+                app:srcCompat="@drawable/peso_preto" />
 
-    <ImageView
-        android:id="@+id/imageView9_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="irTelaPeso"
-        app:layout_constraintBottom_toBottomOf="@+id/textView15_Premium"
-        app:layout_constraintEnd_toEndOf="@+id/textView15_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView15_Premium"
-        app:layout_constraintTop_toTopOf="@+id/textView15_Premium"
-        app:srcCompat="@drawable/peso" />
+            <View
+                android:id="@+id/view26"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="#EBF3F3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/peso_img_premium" />
 
-    <ImageView
-        android:id="@+id/imageView10_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="irTelaVacinas"
-        app:layout_constraintBottom_toBottomOf="@+id/textView16_Premium"
-        app:layout_constraintEnd_toEndOf="@+id/textView16_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView16_Premium"
-        app:layout_constraintTop_toTopOf="@+id/textView16_Premium"
-        app:srcCompat="@drawable/vacinas" />
+            <ImageView
+                android:id="@+id/vacinas_img_premium"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view26"
+                app:srcCompat="@drawable/vacinas_preto" />
 
-    <ImageView
-        android:id="@+id/imageView11_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="irTelaSono"
-        app:layout_constraintBottom_toBottomOf="@+id/textView17_Premium"
-        app:layout_constraintEnd_toEndOf="@+id/textView17_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView17_Premium"
-        app:layout_constraintTop_toTopOf="@+id/textView17_Premium"
-        app:srcCompat="@drawable/sono" />
+            <View
+                android:id="@+id/view27"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="#EBF3F3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vacinas_img_premium" />
 
-    <ImageView
-        android:id="@+id/imageView12_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="irTelaPassos"
-        app:layout_constraintBottom_toBottomOf="@+id/textView18_Premium"
-        app:layout_constraintEnd_toEndOf="@+id/textView18_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView18_Premium"
-        app:layout_constraintTop_toTopOf="@+id/textView18_Premium"
-        app:srcCompat="@drawable/passos" />
+            <ImageView
+                android:id="@+id/sono_img_premium"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view27"
+                app:srcCompat="@drawable/sono_preto" />
 
-    <ImageView
-        android:id="@+id/imageView13_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="irTelaExercicios"
-        app:layout_constraintBottom_toBottomOf="@+id/textView19_Premium"
-        app:layout_constraintEnd_toEndOf="@+id/textView19_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView19_Premium"
-        app:layout_constraintTop_toTopOf="@+id/textView19_Premium"
-        app:srcCompat="@drawable/exercicios" />
+            <ImageView
+                android:id="@+id/passos_img_premium"
+                android:layout_width="32dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view33"
+                app:srcCompat="@drawable/passos_preto" />
 
-    <ImageView
-        android:id="@+id/imageView14_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="irTelaMedicamentos"
-        app:layout_constraintBottom_toBottomOf="@+id/textView20_Premium"
-        app:layout_constraintEnd_toEndOf="@+id/textView20_Premium"
-        app:layout_constraintStart_toStartOf="@+id/textView20_Premium"
-        app:layout_constraintTop_toTopOf="@+id/textView20_Premium"
-        app:srcCompat="@drawable/medicamentos" />
+            <ImageView
+                android:id="@+id/exercicios_img_premium"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view39"
+                app:srcCompat="@drawable/exercicios_preto" />
 
-    <TextView
-        android:id="@+id/examesBox_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/botoes_conteudos"
-        android:onClick="irTelaExames"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26_Premium" />
+            <ImageView
+                android:id="@+id/medicamentos_img_premium"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view35"
+                app:srcCompat="@drawable/medicamentos_preto" />
 
-    <TextView
-        android:id="@+id/textView78_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Exames"
-        android:textColor="#0C5C64"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/examesBox_Premium"
-        app:layout_constraintStart_toStartOf="@+id/examesBox_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/examesBox_Premium" />
+            <View
+                android:id="@+id/view30"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:background="#EBF3F3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/medicamentos_img_premium" />
 
-    <ImageView
-        android:id="@+id/examesLogo_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="irTelaExames"
-        app:layout_constraintBottom_toBottomOf="@+id/examesBox_Premium"
-        app:layout_constraintEnd_toEndOf="@+id/examesBox_Premium"
-        app:layout_constraintStart_toStartOf="@+id/examesBox_Premium"
-        app:layout_constraintTop_toTopOf="@+id/examesBox_Premium"
-        app:srcCompat="@drawable/exames" />
+            <ImageView
+                android:id="@+id/exames_img_premium"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view30"
+                app:srcCompat="@drawable/exames_preto" />
 
-    <TextView
-        android:id="@+id/clinicasBox_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/botoes_conteudos"
-        android:enabled="false"
-        android:onClick="irTelaClinicas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView27_Premium" />
+            <View
+                android:id="@+id/view31"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="10dp"
+                android:background="#EBF3F3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/exames_img_premium" />
 
-    <ImageView
-        android:id="@+id/clinicasLogo_Premium"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:onClick="irTelaClinicas"
-        app:layout_constraintBottom_toBottomOf="@+id/clinicasBox_Premium"
-        app:layout_constraintEnd_toEndOf="@+id/clinicasBox_Premium"
-        app:layout_constraintStart_toStartOf="@+id/clinicasBox_Premium"
-        app:layout_constraintTop_toTopOf="@+id/clinicasBox_Premium"
-        app:srcCompat="@drawable/clinicas_parceiras" />
+            <ImageView
+                android:id="@+id/clinicas_img_premium"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view31"
+                app:srcCompat="@drawable/clinicas_parceiras_preto" />
 
-    <TextView
-        android:id="@+id/textView84_Premium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/urbanist"
-        android:text="Clínicas parceiras"
-        android:textColor="#0C5C64"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/clinicasBox_Premium"
-        app:layout_constraintStart_toStartOf="@+id/clinicasBox_Premium"
-        app:layout_constraintTop_toBottomOf="@+id/clinicasBox_Premium" />
+            <ImageView
+                android:id="@+id/sair_premium"
+                android:layout_width="30dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clinicas_img_premium"
+                app:layout_constraintVertical_bias="0.73"
+                app:srcCompat="@drawable/log_in" />
 
-    <ImageView
-        android:id="@+id/imageView31"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView84_Premium"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/logo2_saude" />
+            <ImageView
+                android:id="@+id/inicio_img_premium"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="9dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView183"
+                app:srcCompat="@drawable/home" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:id="@+id/view33"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="#EBF3F3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sono_img_premium" />
+
+            <View
+                android:id="@+id/view35"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="#EBF3F3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/exercicios_img_premium" />
+
+            <View
+                android:id="@+id/view38"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="#EBF3F3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/agua_img_premium" />
+
+            <View
+                android:id="@+id/view39"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="#EBF3F3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passos_img_premium" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>
