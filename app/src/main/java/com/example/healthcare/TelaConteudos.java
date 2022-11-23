@@ -57,32 +57,34 @@ public class TelaConteudos extends AppCompatActivity {
 
     BottomSheetDialog dialog;
     Dialog dialogMenu;
-
     TextView olaUsu, examesBox, clinicasBox;
     CircleImageView fotoUsu;
     ImageView examesLogo, clinicasLogo, cadeado, menu;
 
+    ImageView user;
+    TextView nome_user, email_user;
+
+
+    ImageView inicio, agua, alimento, peso, vacinas, sono, passos, exercicio, medicamento, exames, clinicas, sair;
+    TextView textIncio, textAgua, textAlimento, textPeso, textVacinas, textSono, textPassos, textExercicio, textMedicamentos, textExames, textClinicas, textSair;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_conteudos);
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
         iniciarComponentes();
         setarImagemPerfil();
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
         menu.setOnClickListener(v -> {
            drawerLayout.openDrawer(GravityCompat.START);
+           navigationMenu();
         });
 
         dialog = new BottomSheetDialog(this);
         mostrarCardPremium();
-        dialogMenu = new Dialog(this);
-
-
-
 
         examesBox.setOnClickListener(view -> dialog.show());
         examesLogo.setOnClickListener(view -> dialog.show());
@@ -110,6 +112,8 @@ public class TelaConteudos extends AppCompatActivity {
     }
 
     public void iniciarComponentes(){
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+
         olaUsu = findViewById(R.id.olaUsu);
         fotoUsu = findViewById(R.id.fotoUsu);
         examesBox = findViewById(R.id.examesBox);
@@ -118,6 +122,158 @@ public class TelaConteudos extends AppCompatActivity {
         clinicasLogo = findViewById(R.id.clinicasLogo);
         cadeado = findViewById(R.id.cadeado);
         menu = findViewById(R.id.menu);
+
+        // componentes do menu lateral
+        inicio = drawerLayout.findViewById(R.id.inicio_img);
+        textIncio = drawerLayout.findViewById(R.id.text_inicio);
+
+        agua = drawerLayout.findViewById(R.id.agua_img);
+        textAgua = drawerLayout.findViewById(R.id.text_agua);
+
+        alimento = drawerLayout.findViewById(R.id.alimento_img);
+        textAlimento = drawerLayout.findViewById(R.id.alimento);
+
+        peso = drawerLayout.findViewById(R.id.peso_img);
+        textPeso = drawerLayout.findViewById(R.id.peso);
+
+        vacinas = drawerLayout.findViewById(R.id.vacinas_img);
+        textVacinas = drawerLayout.findViewById(R.id.vacinas_text);
+
+        sono = drawerLayout.findViewById(R.id.sono_img);
+        textSono = drawerLayout.findViewById(R.id.sono);
+
+        passos = drawerLayout.findViewById(R.id.passos_img);
+        textPassos = drawerLayout.findViewById(R.id.passos_text);
+
+        exercicio = drawerLayout.findViewById(R.id.exercicios_img);
+        textExercicio = drawerLayout.findViewById(R.id.exercicios_text);
+
+        medicamento = drawerLayout.findViewById(R.id.medicamentos_img);
+        textMedicamentos = drawerLayout.findViewById(R.id.medicamentos_text);
+
+        exames = drawerLayout.findViewById(R.id.exames_img);
+        textExercicio = drawerLayout.findViewById(R.id.text_exames);
+
+        clinicas = drawerLayout.findViewById(R.id.clinicas_img);
+        textClinicas = drawerLayout.findViewById(R.id.clinica_text);
+
+        sair = drawerLayout.findViewById(R.id.sair);
+        textSair = drawerLayout.findViewById(R.id.sair_text);
+
+    }
+
+    public void navigationMenu(){
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+
+        inicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+        textIncio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        sair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+            }
+        });
+
+        agua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaAgua.class);
+                startActivity(irTela);
+            }
+        });
+        textAgua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaAgua.class);
+                startActivity(irTela);
+            }
+        });
+
+        alimento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaAlimentacao.class);
+                startActivity(irTela);
+            }
+        });
+
+        peso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPeso.class);
+                startActivity(irTela);
+            }
+        });
+
+        vacinas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaVacinas.class);
+                startActivity(irTela);
+            }
+        });
+
+        sono.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaSono.class);
+                startActivity(irTela);
+            }
+        });
+
+        passos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPassos.class);
+                startActivity(irTela);
+            }
+        });
+
+        exercicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaExercicios.class);
+                startActivity(irTela);
+            }
+        });
+
+        medicamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaMedicamentos.class);
+                startActivity(irTela);
+            }
+        });
+
+        //Bloqueados
+
+        exames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPremium.class);
+                startActivity(irTela);
+            }
+        });
+
+        clinicas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent irTela = new Intent(TelaConteudos.this, TelaPremium.class);
+                startActivity(irTela);
+            }
+        });
     }
 
     public void irTelaPerfil(View t){

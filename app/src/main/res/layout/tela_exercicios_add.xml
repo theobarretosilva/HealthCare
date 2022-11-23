@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
+        android:onClick="voltarTelaExercicios"
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -36,7 +37,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView59" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/nomeDoExercicio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -63,25 +64,26 @@
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintStart_toStartOf="@+id/nomeDoExercicio"
+        app:layout_constraintTop_toBottomOf="@+id/nomeDoExercicio" />
 
-    <EditText
-        android:id="@+id/editTextNumber"
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/tempoDoExercicio"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:fontFamily="@font/urbanist"
         android:inputType="number"
-        android:maxLength="2"
-        android:textAlignment="viewEnd"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/textView187"
         app:layout_constraintEnd_toStartOf="@+id/textView188"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView187"
-        app:layout_constraintTop_toTopOf="@+id/textView187" />
+        app:layout_constraintTop_toTopOf="@+id/textView187"
+        app:mask="__:__"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
 
     <TextView
         android:id="@+id/textView188"
@@ -91,9 +93,9 @@
         android:text="min"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumber" />
+        app:layout_constraintBottom_toBottomOf="@+id/tempoDoExercicio"
+        app:layout_constraintEnd_toEndOf="@+id/nomeDoExercicio"
+        app:layout_constraintTop_toTopOf="@+id/tempoDoExercicio" />
 
     <Button
         android:id="@+id/button9"
@@ -104,6 +106,7 @@
         android:layout_marginEnd="65dp"
         android:backgroundTint="#6E9EA2"
         android:fontFamily="@font/urbanist"
+        android:onClick="mandarExercicioBD"
         android:paddingTop="9dp"
         android:paddingBottom="9dp"
         android:text="Gravar"
@@ -113,6 +116,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
+        app:layout_constraintTop_toBottomOf="@+id/tempoDoExercicio"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

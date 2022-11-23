@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/"
+        android:id="@+id/inicio"
+        android:icon="@drawable/home"
+        android:title="Início"
+        />
+    <item
+        android:id="@+id/agua"
+        android:icon="@drawable/agua_preta"
+        android:title="Água"
+        />
+    <item
+        android:id="@+id/alimetento"
+        android:icon="@drawable/alimentacao_preta"
+        android:title="Alimentação"
+        />
+    <item
+        android:id="@+id/peso_imc"
+        android:icon="@drawable/peso_preto"
+        android:title="Peso e IMC"
+        />
+    <item
+        android:id="@+id/a"
+        android:icon="@drawable/home"
+        android:title=""
         />
 </menu>
