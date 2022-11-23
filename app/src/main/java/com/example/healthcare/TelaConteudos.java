@@ -209,6 +209,7 @@ public class TelaConteudos extends AppCompatActivity {
         sair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 Intent irTela = new Intent(TelaConteudos.this, TelaInicial.class);
                 startActivity(irTela);
             }
