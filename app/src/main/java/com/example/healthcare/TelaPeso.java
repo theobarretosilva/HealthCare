@@ -2,6 +2,8 @@ package com.example.healthcare;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -44,7 +46,8 @@ public class TelaPeso extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-//        calcularIMCAtual();
+        iniciarComponentes();
+        calcularIMCAtual();
     }
 
     public void iniciarComponentes(){
@@ -70,8 +73,13 @@ public class TelaPeso extends AppCompatActivity {
     }
 
     public void voltarTelaConteudos(View v){
-        Intent irTelaConteudos = new Intent(this, TelaConteudos.class);
-        startActivity(irTelaConteudos);
+        if (TelaLogin.premium) {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaPeso.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
+        } else {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaPeso.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
+        }
     }
 
     public void irTelaPesoIMC(View m){
@@ -79,30 +87,30 @@ public class TelaPeso extends AppCompatActivity {
         startActivity(irTelaPesoIMC);
     }
 
-//    public void calcularIMCAtual(){
-//        DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
-//                .collection("Usuarios")
-//                .document(FirebaseHelper.getUIDUsuario())
-//                .collection("Informações pessoais")
-//                .document("Cadastro complementar");
-//        documentReference.addSnapshotListener((documentSnapshot, error) -> {
-//            if(documentSnapshot != null){
-//                int peso = Math.toIntExact((Long) documentSnapshot.getData().get("Peso (kg)"));
-//                int altura = Math.toIntExact((Long) documentSnapshot.getData().get("Altura (cm)"));
-//
-//                float alturaFinal = (altura/100)^2;
-//                float imc =(float) peso/alturaFinal;
-//                BigDecimal bd = new BigDecimal(imc);
-//                float res = bd.setScale(1, RoundingMode.FLOOR).floatValue();
-//                resIMC.setText(res+" kg/m²");
-//                pesoAtual.setText(peso+" kg");
-//
-//                setarNaTelaIMCHI(res);
-//
-//            }
-//        });
-//
-//    }
+    public void calcularIMCAtual(){
+        DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
+                .collection("Usuarios")
+                .document(FirebaseHelper.getUIDUsuario())
+                .collection("Informações pessoais")
+                .document("Cadastro complementar");
+        documentReference.addSnapshotListener((documentSnapshot, error) -> {
+            if(documentSnapshot != null){
+                int peso = Math.toIntExact((Long) documentSnapshot.getData().get("Peso (kg)"));
+                int altura = Math.toIntExact((Long) documentSnapshot.getData().get("Altura (cm)"));
+
+                float alturaFinal = (altura/100)^2;
+                float imc =(float) peso/alturaFinal;
+                BigDecimal bd = new BigDecimal(imc);
+                float res = bd.setScale(1, RoundingMode.FLOOR).floatValue();
+                resIMC.setText(res+" kg/m²");
+                pesoAtual.setText(peso+" kg");
+
+                setarNaTelaIMCHI(res);
+
+            }
+        });
+
+    }
 
     public void setarNaTelaIMCHI(float valor){
         DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
