@@ -2,12 +2,14 @@ package com.example.healthcare;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +29,10 @@ public class TelaConteudos_Premium extends AppCompatActivity {
 
   TextView olaUsu_Premium;
   CircleImageView fotoUsu;
+  DrawerLayout drawerLayout;
+  
+  ImageView inicio, agua, alimento, peso, vacinas, sono, passos, exercicio, medicamento, exames, clinicas, sair;
+  TextView textIncio, textAgua, textAlimento, textPeso, textVacinas, textSono, textPassos, textExercicio, textMedicamentos, textExames, textClinicas, textSair;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,8 @@ public class TelaConteudos_Premium extends AppCompatActivity {
     setContentView(R.layout.tela_conteudos__premium);
     getWindow().setStatusBarColor(Color.rgb(12,92,100));
     getSupportActionBar().hide();
+
+    drawerLayout = findViewById(R.id.drawerLayout);
 
     iniciarComponentes();
     setarImagemPerfil();
@@ -61,6 +69,47 @@ public class TelaConteudos_Premium extends AppCompatActivity {
   public void iniciarComponentes(){
     olaUsu_Premium = findViewById(R.id.olaUsu_Premium);
     fotoUsu = findViewById(R.id.fotoUsu_Premium);
+
+    //Menu
+    inicio = drawerLayout.findViewById(R.id.inicio_img);
+    textIncio = drawerLayout.findViewById(R.id.text_inicio);
+
+    agua = drawerLayout.findViewById(R.id.agua_img);
+    textAgua = drawerLayout.findViewById(R.id.text_agua);
+
+    alimento = drawerLayout.findViewById(R.id.alimento_img);
+    textAlimento = drawerLayout.findViewById(R.id.alimento);
+
+    peso = drawerLayout.findViewById(R.id.peso_img);
+    textPeso = drawerLayout.findViewById(R.id.peso);
+
+    vacinas = drawerLayout.findViewById(R.id.vacinas_img);
+    textVacinas = drawerLayout.findViewById(R.id.vacinas_text);
+
+    sono = drawerLayout.findViewById(R.id.sono_img);
+    textSono = drawerLayout.findViewById(R.id.sono);
+
+    passos = drawerLayout.findViewById(R.id.passos_img);
+    textPassos = drawerLayout.findViewById(R.id.passos_text);
+
+    exercicio = drawerLayout.findViewById(R.id.exercicios_img);
+    textExercicio = drawerLayout.findViewById(R.id.exercicios_text);
+
+    medicamento = drawerLayout.findViewById(R.id.medicamentos_img);
+    textMedicamentos = drawerLayout.findViewById(R.id.medicamentos_text);
+
+    exames = drawerLayout.findViewById(R.id.exames_img);
+    textExames = drawerLayout.findViewById(R.id.text_exames);
+
+    clinicas = drawerLayout.findViewById(R.id.clinicas_img);
+    textClinicas = drawerLayout.findViewById(R.id.clinica_text);
+
+    sair = drawerLayout.findViewById(R.id.sair);
+    textSair = drawerLayout.findViewById(R.id.sair_text);
+
+    user = drawerLayout.findViewById(R.id.imgPessoa);
+    nome_user = drawerLayout.findViewById(R.id.nameUser);
+    email_user = drawerLayout.findViewById(R.id.emailUser);
   }
 
   public void irTelaPerfil_Premium(View t){

@@ -177,16 +177,11 @@ public class TelaConteudos extends AppCompatActivity {
                     String nome =  snapshot.getString("Nome completo");
                     String email =  snapshot.getString("Email");
 
-                    String tete = "eduarda_franderlinde@estudante.sc.senai.br";
-
                     nome_user.setText(nome);
-//                    email_user.setText();
-                    String[] valorComSplit = tete.split("@");
-                    String redEmail = valorComSplit[0];
-                    String dominio = valorComSplit[1];
-                    if(tete.length() >= 25){
-                        email_user.setText(tete.substring(0,23)+"...");
-                        System.out.println(tete);
+                    if(email.length() >= 25){
+                        email_user.setText(email.substring(0,23)+"...");
+                    }else{
+                        email_user.setText(email);
                     }
 
                 }

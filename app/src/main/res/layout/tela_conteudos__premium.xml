@@ -571,7 +571,7 @@
                 android:hint="user.email@emai.com"
                 android:textColor="#1E232C"
                 android:textColorHint="#1E232C"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView183"
                 app:layout_constraintEnd_toEndOf="parent"
