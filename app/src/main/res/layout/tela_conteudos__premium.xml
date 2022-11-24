@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D5F0F0"
+    android:id="@+id/drawerPremium"
     tools:context=".TelaConteudos_Premium" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/menuPremium" />
 
         <TextView
             android:id="@+id/textView11_Premium"
@@ -496,7 +497,7 @@
             app:srcCompat="@drawable/logo2_saude" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/menuPremium"
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
@@ -571,7 +572,7 @@
                 android:hint="user.email@emai.com"
                 android:textColor="#1E232C"
                 android:textColorHint="#1E232C"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView183"
                 app:layout_constraintEnd_toEndOf="parent"

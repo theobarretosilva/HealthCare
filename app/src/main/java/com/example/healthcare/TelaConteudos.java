@@ -60,9 +60,9 @@ public class TelaConteudos extends AppCompatActivity {
     CircleImageView fotoUsu;
     ImageView examesLogo, clinicasLogo, cadeado, menu;
 
+    DrawerLayout drawerLayout;
     ImageView user;
     TextView nome_user, email_user;
-
 
     ImageView inicio, agua, alimento, peso, vacinas, sono, passos, exercicio, medicamento, exames, clinicas, sair;
     TextView textIncio, textAgua, textAlimento, textPeso, textVacinas, textSono, textPassos, textExercicio, textMedicamentos, textExames, textClinicas, textSair;
@@ -72,7 +72,7 @@ public class TelaConteudos extends AppCompatActivity {
         setContentView(R.layout.tela_conteudos);
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        drawerLayout = findViewById(R.id.drawerLayout);
 
         iniciarComponentes();
         setarImagemPerfil();
@@ -111,7 +111,7 @@ public class TelaConteudos extends AppCompatActivity {
     }
 
     public void iniciarComponentes(){
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+       // DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
         olaUsu = findViewById(R.id.olaUsu);
         fotoUsu = findViewById(R.id.fotoUsu);
@@ -165,7 +165,6 @@ public class TelaConteudos extends AppCompatActivity {
     }
 
     public void navigationMenu(){
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
         String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -177,16 +176,11 @@ public class TelaConteudos extends AppCompatActivity {
                     String nome =  snapshot.getString("Nome completo");
                     String email =  snapshot.getString("Email");
 
-                    String tete = "eduarda_franderlinde@estudante.sc.senai.br";
-
                     nome_user.setText(nome);
-//                    email_user.setText();
-                    String[] valorComSplit = tete.split("@");
-                    String redEmail = valorComSplit[0];
-                    String dominio = valorComSplit[1];
-                    if(tete.length() >= 25){
-                        email_user.setText(tete.substring(0,23)+"...");
-                        System.out.println(tete);
+                    if(email.length() >= 25){
+                        email_user.setText(email.substring(0,23)+"...");
+                    }else{
+                        email_user.setText(email);
                     }
 
                 }
@@ -243,6 +237,7 @@ public class TelaConteudos extends AppCompatActivity {
         textSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 Intent irTela = new Intent(TelaConteudos.this, TelaInicial.class);
                 startActivity(irTela);
             }
@@ -472,5 +467,6 @@ public class TelaConteudos extends AppCompatActivity {
                 .addOnSuccessListener( uri ->
                         Picasso.get().load(uri).into(user)
                 );
+
     }
 }
