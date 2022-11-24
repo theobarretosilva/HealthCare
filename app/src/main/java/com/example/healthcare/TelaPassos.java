@@ -1,5 +1,6 @@
 package com.example.healthcare;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,19 +8,25 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 
 import com.google.firebase.firestore.DocumentReference;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TelaPassos extends AppCompatActivity implements SensorEventListener {
@@ -38,6 +45,7 @@ public class TelaPassos extends AppCompatActivity implements SensorEventListener
     private Sensor mStepDetectorSensor;
     int totalPassos = 0;
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +61,34 @@ public class TelaPassos extends AppCompatActivity implements SensorEventListener
 
         setarData();
         setarQtdPassos();
+        verificaPermissaoSensores();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    public void verificaPermissaoSensores(){
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+
+            }
+
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+                Toast.makeText(TelaPassos.this, "Permissão negada.", Toast.LENGTH_SHORT).show();
+            }
+        };
+        showDialogPermissao(permissionListener, new String[]{Manifest.permission.BODY_SENSORS, Manifest.permission.ACTIVITY_RECOGNITION});
+    }
+
+    private void showDialogPermissao(PermissionListener listener, String[] permissoes){
+        TedPermission.create()
+                .setPermissionListener(listener)
+                .setDeniedTitle("Permissões")
+                .setDeniedMessage("Você negou a permissão para acessar o sensor de movimento do dispositivo, deseja permitir?")
+                .setDeniedCloseButtonText("Não")
+                .setGotoSettingButtonText("Sim")
+                .setPermissions(permissoes)
+                .check();
     }
 
     public void setarData(){
