@@ -167,6 +167,32 @@ public class TelaConteudos extends AppCompatActivity {
     public void navigationMenu(){
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
+        String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                if(snapshot.exists()){
+                    String nome =  snapshot.getString("Nome completo");
+                    String email =  snapshot.getString("Email");
+
+                    String tete = "eduarda_franderlinde@estudante.sc.senai.br";
+
+                    nome_user.setText(nome);
+//                    email_user.setText();
+                    String[] valorComSplit = tete.split("@");
+                    String redEmail = valorComSplit[0];
+                    String dominio = valorComSplit[1];
+                    if(tete.length() >= 25){
+                        email_user.setText(tete.substring(0,23)+"...");
+                        System.out.println(tete);
+                    }
+
+                }
+            }
+        });
+
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
