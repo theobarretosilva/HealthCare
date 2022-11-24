@@ -2,6 +2,7 @@ package com.example.healthcare;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -30,7 +31,10 @@ public class TelaConteudos_Premium extends AppCompatActivity {
   TextView olaUsu_Premium;
   CircleImageView fotoUsu;
   DrawerLayout drawerLayout;
-  
+
+  ImageView user;
+  TextView nome_user, email_user;
+
   ImageView inicio, agua, alimento, peso, vacinas, sono, passos, exercicio, medicamento, exames, clinicas, sair;
   TextView textIncio, textAgua, textAlimento, textPeso, textVacinas, textSono, textPassos, textExercicio, textMedicamentos, textExames, textClinicas, textSair;
 
@@ -41,10 +45,11 @@ public class TelaConteudos_Premium extends AppCompatActivity {
     getWindow().setStatusBarColor(Color.rgb(12,92,100));
     getSupportActionBar().hide();
 
-    drawerLayout = findViewById(R.id.drawerLayout);
+    drawerLayout = findViewById(R.id.drawerPremium);
 
     iniciarComponentes();
     setarImagemPerfil();
+    navigationMenu();
   }
 
   @Override
@@ -66,50 +71,281 @@ public class TelaConteudos_Premium extends AppCompatActivity {
     });
   }
 
+  public void navigationMenu(){
+    // DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+
+    String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
+    documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+      @Override
+      public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+        if(snapshot.exists()){
+          String nome =  snapshot.getString("Nome completo");
+          String email =  snapshot.getString("Email");
+
+          nome_user.setText(nome);
+          if(email.length() >= 25){
+            email_user.setText(email.substring(0,23)+"...");
+          }else{
+            email_user.setText(email);
+          }
+
+        }
+      }
+    });
+
+    user.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPerfil_Premium.class);
+        startActivity(irTela);
+      }
+    });
+    nome_user.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPerfil_Premium.class);
+        startActivity(irTela);
+      }
+    });
+    email_user.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPerfil_Premium.class);
+        startActivity(irTela);
+      }
+    });
+
+
+
+    inicio.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+          drawerLayout.closeDrawer(GravityCompat.START);
+        }      }
+    });
+    textIncio.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+          drawerLayout.closeDrawer(GravityCompat.START);
+        }
+      }
+    });
+
+    sair.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        FirebaseAuth.getInstance().signOut();
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaInicial.class);
+        startActivity(irTela);
+      }
+    });
+    textSair.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaInicial.class);
+        startActivity(irTela);
+      }
+    });
+
+    agua.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAgua.class);
+        startActivity(irTela);
+      }
+    });
+    textAgua.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAgua.class);
+        startActivity(irTela);
+      }
+    });
+
+    alimento.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAlimentacao.class);
+        startActivity(irTela);
+      }
+    });
+    textAlimento.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAlimentacao.class);
+        startActivity(irTela);
+      }
+    });
+
+    peso.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPeso.class);
+        startActivity(irTela);
+      }
+    });
+    textPeso.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPeso.class);
+        startActivity(irTela);
+      }
+    });
+
+    vacinas.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaVacinas.class);
+        startActivity(irTela);
+      }
+    });
+    textVacinas.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaVacinas.class);
+        startActivity(irTela);
+      }
+    });
+
+    sono.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaSono.class);
+        startActivity(irTela);
+      }
+    });
+    textSono.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaSono.class);
+        startActivity(irTela);
+      }
+    });
+
+    passos.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPassos.class);
+        startActivity(irTela);
+      }
+    });
+    textPassos.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPassos.class);
+        startActivity(irTela);
+      }
+    });
+
+    exercicio.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExercicios.class);
+        startActivity(irTela);
+      }
+    });
+    textExercicio.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExercicios.class);
+        startActivity(irTela);
+      }
+    });
+
+    medicamento.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaMedicamentos.class);
+        startActivity(irTela);
+      }
+    });
+    textMedicamentos.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaMedicamentos.class);
+        startActivity(irTela);
+      }
+    });
+
+    exames.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExames.class);
+        startActivity(irTela);
+      }
+    });
+    textExames.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExames.class);
+        startActivity(irTela);
+      }
+    });
+
+    clinicas.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaClinicas.class);
+        startActivity(irTela);
+      }
+    });
+    textClinicas.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaClinicas.class);
+        startActivity(irTela);
+      }
+    });
+  }
+
   public void iniciarComponentes(){
     olaUsu_Premium = findViewById(R.id.olaUsu_Premium);
     fotoUsu = findViewById(R.id.fotoUsu_Premium);
 
     //Menu
-    inicio = drawerLayout.findViewById(R.id.inicio_img);
-    textIncio = drawerLayout.findViewById(R.id.text_inicio);
+    inicio = drawerLayout.findViewById(R.id.inicio_img_premium);
+    textIncio = drawerLayout.findViewById(R.id.text_inicio_premium);
 
-    agua = drawerLayout.findViewById(R.id.agua_img);
-    textAgua = drawerLayout.findViewById(R.id.text_agua);
+    agua = drawerLayout.findViewById(R.id.agua_img_premium);
+    textAgua = drawerLayout.findViewById(R.id.text_agua_premium);
 
-    alimento = drawerLayout.findViewById(R.id.alimento_img);
-    textAlimento = drawerLayout.findViewById(R.id.alimento);
+    alimento = drawerLayout.findViewById(R.id.alimento_img_premium);
+    textAlimento = drawerLayout.findViewById(R.id.alimento_premium);
 
-    peso = drawerLayout.findViewById(R.id.peso_img);
-    textPeso = drawerLayout.findViewById(R.id.peso);
+    peso = drawerLayout.findViewById(R.id.peso_img_premium);
+    textPeso = drawerLayout.findViewById(R.id.peso_premium);
 
-    vacinas = drawerLayout.findViewById(R.id.vacinas_img);
-    textVacinas = drawerLayout.findViewById(R.id.vacinas_text);
+    vacinas = drawerLayout.findViewById(R.id.vacinas_img_premium);
+    textVacinas = drawerLayout.findViewById(R.id.vacinas_text_premium);
 
-    sono = drawerLayout.findViewById(R.id.sono_img);
-    textSono = drawerLayout.findViewById(R.id.sono);
+    sono = drawerLayout.findViewById(R.id.sono_img_premium);
+    textSono = drawerLayout.findViewById(R.id.sono_premium);
 
-    passos = drawerLayout.findViewById(R.id.passos_img);
-    textPassos = drawerLayout.findViewById(R.id.passos_text);
+    passos = drawerLayout.findViewById(R.id.passos_img_premium);
+    textPassos = drawerLayout.findViewById(R.id.passos_text_premium);
 
-    exercicio = drawerLayout.findViewById(R.id.exercicios_img);
-    textExercicio = drawerLayout.findViewById(R.id.exercicios_text);
+    exercicio = drawerLayout.findViewById(R.id.exercicios_img_premium);
+    textExercicio = drawerLayout.findViewById(R.id.exercicios_text_premium);
 
-    medicamento = drawerLayout.findViewById(R.id.medicamentos_img);
-    textMedicamentos = drawerLayout.findViewById(R.id.medicamentos_text);
+    medicamento = drawerLayout.findViewById(R.id.medicamentos_img_premium);
+    textMedicamentos = drawerLayout.findViewById(R.id.medicamentos_text_premium);
 
-    exames = drawerLayout.findViewById(R.id.exames_img);
-    textExames = drawerLayout.findViewById(R.id.text_exames);
+    exames = drawerLayout.findViewById(R.id.exames_img_premium);
+    textExames = drawerLayout.findViewById(R.id.text_exames_premium);
 
-    clinicas = drawerLayout.findViewById(R.id.clinicas_img);
-    textClinicas = drawerLayout.findViewById(R.id.clinica_text);
+    clinicas = drawerLayout.findViewById(R.id.clinicas_img_premium);
+    textClinicas = drawerLayout.findViewById(R.id.clinica_text_premium);
 
-    sair = drawerLayout.findViewById(R.id.sair);
-    textSair = drawerLayout.findViewById(R.id.sair_text);
+    sair = drawerLayout.findViewById(R.id.sair_premium);
+    textSair = drawerLayout.findViewById(R.id.sair_text_premium);
 
-    user = drawerLayout.findViewById(R.id.imgPessoa);
-    nome_user = drawerLayout.findViewById(R.id.nameUser);
-    email_user = drawerLayout.findViewById(R.id.emailUser);
+    user = drawerLayout.findViewById(R.id.imgPessoaPremium);
+    nome_user = drawerLayout.findViewById(R.id.nameUserPremium);
+    email_user = drawerLayout.findViewById(R.id.emailUserPremium);
   }
 
   public void irTelaPerfil_Premium(View t){

@@ -60,9 +60,9 @@ public class TelaConteudos extends AppCompatActivity {
     CircleImageView fotoUsu;
     ImageView examesLogo, clinicasLogo, cadeado, menu;
 
+    DrawerLayout drawerLayout;
     ImageView user;
     TextView nome_user, email_user;
-
 
     ImageView inicio, agua, alimento, peso, vacinas, sono, passos, exercicio, medicamento, exames, clinicas, sair;
     TextView textIncio, textAgua, textAlimento, textPeso, textVacinas, textSono, textPassos, textExercicio, textMedicamentos, textExames, textClinicas, textSair;
@@ -72,7 +72,7 @@ public class TelaConteudos extends AppCompatActivity {
         setContentView(R.layout.tela_conteudos);
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        drawerLayout = findViewById(R.id.drawerLayout);
 
         iniciarComponentes();
         setarImagemPerfil();
@@ -111,7 +111,7 @@ public class TelaConteudos extends AppCompatActivity {
     }
 
     public void iniciarComponentes(){
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+       // DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
         olaUsu = findViewById(R.id.olaUsu);
         fotoUsu = findViewById(R.id.fotoUsu);
@@ -165,7 +165,7 @@ public class TelaConteudos extends AppCompatActivity {
     }
 
     public void navigationMenu(){
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        // DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
         String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
