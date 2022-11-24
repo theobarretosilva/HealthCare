@@ -165,7 +165,6 @@ public class TelaConteudos extends AppCompatActivity {
     }
 
     public void navigationMenu(){
-        // DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
         String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -238,6 +237,7 @@ public class TelaConteudos extends AppCompatActivity {
         textSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 Intent irTela = new Intent(TelaConteudos.this, TelaInicial.class);
                 startActivity(irTela);
             }
@@ -467,5 +467,6 @@ public class TelaConteudos extends AppCompatActivity {
                 .addOnSuccessListener( uri ->
                         Picasso.get().load(uri).into(user)
                 );
+
     }
 }

@@ -27,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/menuPremium" />
 
         <TextView
             android:id="@+id/textView11_Premium"
@@ -497,7 +497,7 @@
             app:srcCompat="@drawable/logo2_saude" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/menuPremium"
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:layout_marginStart="20dp"

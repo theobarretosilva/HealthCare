@@ -32,7 +32,7 @@ public class TelaConteudos_Premium extends AppCompatActivity {
   CircleImageView fotoUsu;
   DrawerLayout drawerLayout;
 
-  ImageView user;
+  ImageView user, menu;
   TextView nome_user, email_user;
 
   ImageView inicio, agua, alimento, peso, vacinas, sono, passos, exercicio, medicamento, exames, clinicas, sair;
@@ -49,6 +49,12 @@ public class TelaConteudos_Premium extends AppCompatActivity {
 
     iniciarComponentes();
     setarImagemPerfil();
+    menu.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        drawerLayout.openDrawer(GravityCompat.START);
+      }
+    });
     navigationMenu();
   }
 
@@ -146,6 +152,7 @@ public class TelaConteudos_Premium extends AppCompatActivity {
     textSair.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        FirebaseAuth.getInstance().signOut();
         Intent irTela = new Intent(TelaConteudos_Premium.this, TelaInicial.class);
         startActivity(irTela);
       }
@@ -305,6 +312,7 @@ public class TelaConteudos_Premium extends AppCompatActivity {
   public void iniciarComponentes(){
     olaUsu_Premium = findViewById(R.id.olaUsu_Premium);
     fotoUsu = findViewById(R.id.fotoUsu_Premium);
+    menu =findViewById(R.id.menuPremium);
 
     //Menu
     inicio = drawerLayout.findViewById(R.id.inicio_img_premium);
@@ -409,7 +417,12 @@ public class TelaConteudos_Premium extends AppCompatActivity {
             .getDownloadUrl()
             .addOnSuccessListener(uri ->
                     Picasso.get().load(uri).into(fotoUsu)
+            )
+            .addOnSuccessListener(uri ->
+                    Picasso.get().load(uri).into(user)
             );
+
+
   }
 
 }
