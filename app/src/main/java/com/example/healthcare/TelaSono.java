@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -69,24 +70,29 @@ public class TelaSono extends AppCompatActivity {
                 hDormiu.setText(dormiu);
                 String acordou = documentSnapshot.getString("Horário que acordou");
                 hAcordou.setText(acordou);
-
-                LocalTime horarioD = LocalTime.parse(hDormiu.getText().toString()); //disse que esta dando erro aqui
-                LocalTime horarioA = LocalTime.parse(hAcordou.getText().toString());
-
-                int horasDormidas = horarioD.getHour() - horarioA.getHour();
-                if(horasDormidas < 0){
-                   horasDormidas = horasDormidas * -1;
-                }
-
-                int minDormidos = horarioD.getMinute() - horarioA.getMinute();
-                if(minDormidos < 0){
-                    minDormidos = minDormidos * -1;
-                }
-
-                tempoDormido.setText(horasDormidas+":"+minDormidos);
-
             }
         });
+    }
+
+    public void gerarRelatorio(View q){
+        if (!(hDormiu.getText().toString() == "")){
+            LocalTime horarioD = LocalTime.parse(hDormiu.getText().toString());
+            LocalTime horarioA = LocalTime.parse(hAcordou.getText().toString());
+
+            int horasDormidas = horarioD.getHour() - horarioA.getHour();
+            if(horasDormidas < 0){
+                horasDormidas = horasDormidas * -1;
+            }
+
+            int minDormidos = horarioD.getMinute() - horarioA.getMinute();
+            if(minDormidos < 0){
+                minDormidos = minDormidos * -1;
+            }
+
+            tempoDormido.setText(horasDormidas+":"+minDormidos);
+        } else {
+            Toast.makeText(this, "Você precisa adicionar as suas informações de sono primeiro!", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void voltarTela(View g){

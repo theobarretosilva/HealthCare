@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -87,7 +89,10 @@ public class TelaSono_add extends AppCompatActivity {
         } catch (Exception e){
             Toast.makeText(this, "Não foi possível cadastrar suas informações!", Toast.LENGTH_SHORT).show();
         }
+    }
 
-
+    public void voltarTela(View r){
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+        ActivityCompat.startActivity(TelaSono_add.this, new Intent(this, TelaSono.class), activityOptionsCompat.toBundle());
     }
 }
