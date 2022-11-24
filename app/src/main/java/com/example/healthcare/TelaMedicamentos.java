@@ -3,11 +3,13 @@ package com.example.healthcare;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +30,7 @@ public class TelaMedicamentos extends AppCompatActivity {
     private RecyclerView rvMedicamentos;
 
     Button ingerido;
+    ConstraintLayout button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +40,22 @@ public class TelaMedicamentos extends AppCompatActivity {
         getSupportActionBar().hide();
 
         rvMedicamentos = findViewById(R.id.rvMedicamentos);
-//        ingerido = findViewById(R.id.ingeridoMedica);
 
         configRecyclerView();
         recuperaMedicamentos();
 
+        button =  findViewById(R.id.itemMedicamento);
+        ingerido = findViewById(R.id.ingeridoMedica);
+//
 //        ingerido.setOnClickListener(view -> {
 //            ingerido.setText("Ingerido");
 //            ingerido.setEnabled(false);
 //        });
+    }
+
+    public void calmaTeste(View a){
+        ingerido.setText("Ingerido");
+        ingerido.setEnabled(false);
     }
 
     public void voltarTela(View h){

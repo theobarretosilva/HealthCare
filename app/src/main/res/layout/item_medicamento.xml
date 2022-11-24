@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/itemMedicamento"
     android:layout_height="wrap_content">
 
     <TextView
@@ -37,6 +38,7 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:onClick="calmaTeste"
         app:cornerRadius="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/view23"
