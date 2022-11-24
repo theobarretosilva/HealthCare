@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -86,7 +88,16 @@ public class TelaExercicios extends AppCompatActivity {
     }
 
     public void irTelaAddExercicio(View f){
-        Intent irTelaAddExercicios = new Intent(this, TelaExercicios_add.class);
-        startActivity(irTelaAddExercicios);
+        startActivity(new Intent(this, TelaExercicios_add.class));
+    }
+
+    public void voltarTela(View q){
+        if (TelaLogin.premium) {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaExercicios.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
+        } else {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaExercicios.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
+        }
     }
 }
