@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import com.google.firebase.firestore.DocumentReference;
 
@@ -62,7 +64,7 @@ public class TelaSono extends AppCompatActivity {
                 .collection("Sono")
                 .document(dataHoje);
         documentReference.addSnapshotListener((documentSnapshot, error) -> {
-            if (documentSnapshot != null){
+            if (documentSnapshot.exists()){
                 String dormiu = documentSnapshot.getString("Horário que dormiu");
                 hDormiu.setText(dormiu);
                 String acordou = documentSnapshot.getString("Horário que acordou");
@@ -85,5 +87,15 @@ public class TelaSono extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void voltarTela(View g){
+        if (TelaLogin.premium) {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaSono.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
+        } else {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaSono.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
+        }
     }
 }

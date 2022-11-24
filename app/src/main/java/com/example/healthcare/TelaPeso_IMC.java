@@ -1,11 +1,5 @@
 package com.example.healthcare;
 
-import static java.lang.Integer.parseInt;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityOptionsCompat;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,9 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 public class TelaPeso_IMC extends AppCompatActivity {
 
@@ -196,12 +193,7 @@ public class TelaPeso_IMC extends AppCompatActivity {
     }
 
     public  void retornaTela(View v){
-        if (TelaLogin.premium) {
-            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
-            ActivityCompat.startActivity(TelaPeso_IMC.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
-        } else {
-            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
-            ActivityCompat.startActivity(TelaPeso_IMC.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
-        }
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+        ActivityCompat.startActivity(TelaPeso_IMC.this, new Intent(this, TelaPeso.class), activityOptionsCompat.toBundle());
     }
 }

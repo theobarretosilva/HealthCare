@@ -1,12 +1,13 @@
 package com.example.healthcare;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -82,6 +83,7 @@ public class TelaSono_add extends AppCompatActivity {
             DocumentReference ns = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Registros").collection("Sono").document(dataHoje);
             ns.set(sonoAdd);
             Toast.makeText(this, "Sucesso!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(TelaSono_add.this, TelaSono.class));
         } catch (Exception e){
             Toast.makeText(this, "Não foi possível cadastrar suas informações!", Toast.LENGTH_SHORT).show();
         }

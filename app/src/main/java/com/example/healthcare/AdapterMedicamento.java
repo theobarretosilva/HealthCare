@@ -30,8 +30,8 @@ public class AdapterMedicamento extends RecyclerView.Adapter<AdapterMedicamento.
         Medicamento medicamento = medicamentoList.get(position);
 
         holder.nomeMedicamento.setText(medicamento.getNomeMedicamento());
-        holder.qtdMedicamento.setText(medicamento.getQtdMedicamento());
-        holder.mgDosagemMedicamento.setText(medicamento.getMgDosagemMedicamento());
+        holder.qtdMedicamento.setText(medicamento.getQtdMedicamento() + " Uni.");
+        holder.mgDosagemMedicamento.setText(medicamento.getMgDosagemMedicamento() + " mg/ml");
         holder.horarioMedicamento.setText(medicamento.getHorarioMedicamento());
     }
 

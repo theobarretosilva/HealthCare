@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,8 @@ public class TelaMedicamentos extends AppCompatActivity {
     private List<Medicamento> medicamentoList = new ArrayList<>();
     private RecyclerView rvMedicamentos;
 
+    Button ingerido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +37,15 @@ public class TelaMedicamentos extends AppCompatActivity {
         getSupportActionBar().hide();
 
         rvMedicamentos = findViewById(R.id.rvMedicamentos);
+//        ingerido = findViewById(R.id.ingeridoMedica);
 
         configRecyclerView();
         recuperaMedicamentos();
+
+//        ingerido.setOnClickListener(view -> {
+//            ingerido.setText("Ingerido");
+//            ingerido.setEnabled(false);
+//        });
     }
 
     public void voltarTela(View h){
@@ -83,4 +92,34 @@ public class TelaMedicamentos extends AppCompatActivity {
             }
         });
     }
+
+//    public void mandarNotificacao(){
+//        String horario = new Date().getHours() + ":" + new Date().getMinutes();
+//        DatabaseReference medicamentosRef = FirebaseHelper.getDatabaseReference()
+//                .child("Registros")
+//                .child(FirebaseHelper.getUIDUsuario())
+//                .child("Medicamentos");
+//        medicamentosRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()){
+//                    for (DataSnapshot snap : snapshot.getChildren()){
+//                        Medicamento medicamento = snap.getValue(Medicamento.class);
+//                        if (medicamento.getHorarioMedicamento() == horario){
+//                            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, )
+//                                    .setSmallIcon(R.drawable.logo2_saude)
+//                                    .setContentTitle(medicamento.getNomeMedicamento())
+//                                    .setContentText("Não esqueça de tomar o " + medicamento.getNomeMedicamento())
+//                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+//                        }
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 }
