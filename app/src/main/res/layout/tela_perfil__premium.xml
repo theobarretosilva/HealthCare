@@ -342,7 +342,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/txtClinicas"
+        android:id="@+id/txtClinica"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"

@@ -1,10 +1,5 @@
 package com.example.healthcare;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityOptionsCompat;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -12,15 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -103,16 +96,16 @@ public class TelaPeso extends AppCompatActivity {
                 BigDecimal bd = new BigDecimal(imc);
                 float res = bd.setScale(1, RoundingMode.FLOOR).floatValue();
                 resIMC.setText(res+" kg/m²");
-                pesoAtual.setText(peso+" kg");
+                pesoAtual.setText(peso + "");
 
-                setarNaTelaIMCHI(res);
+                setarNaTelaIMC(res);
 
             }
         });
 
     }
 
-    public void setarNaTelaIMCHI(float valor){
+    public void setarNaTelaIMC(float valor){
         DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
                 .collection("Usuarios")
                 .document(FirebaseHelper.getUIDUsuario())
@@ -120,66 +113,217 @@ public class TelaPeso extends AppCompatActivity {
                 .document("Informações de cadastro");
         dr.addSnapshotListener((documentSnapshot, error) -> {
             if (documentSnapshot != null){
-                String sexo = documentSnapshot.getString("Sexo");
                 String dataNasc = documentSnapshot.getString("Data de nascimento");
+                String sexo = documentSnapshot.getString("Sexo");
 
                 LocalDate dataNascFormatada = LocalDate.parse(dataNasc, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 LocalDate dataHoje = LocalDate.now();
 
                 int idade = dataHoje.getYear() - dataNascFormatada.getYear();
 
-                idade = 62;
+//                idade = 17;
 
-                if (sexo.equals("Masculino") && idade >= 60){
-                    imcMagreza.setText("<21.9");
-                    imcNormal.setText("22.0 a 27.0");
-                    imcSobrepeso.setText("27.1 a 30.0");
-                    imcObesidade.setText(">30.1");
+                if (idade >= 65){
+                    imcMagreza.setText("< 20.0");
+                    imcNormal.setText("20.0 a 30.0");
+                    imcSobrepeso.setText("30.0 a 35.0");
+                    imcObesidade.setText("> 35.0");
+                    pesoMagreza.setText("< 54.5 Kg");
+                    pesoNormal.setText("54.5 a 81.7 Kg");
+                    pesoSobrepeso.setText("81.7 a 95.3 Kg");
+                    pesoObesidade.setText("< 95.3 Kg");
 
-
+                    if(valor < 20.0){
                         fundoMagreza.setVisibility(View.VISIBLE);
-                        fundoNormal.setVisibility(View.INVISIBLE);
                         magreza.setTypeface(Typeface.DEFAULT_BOLD);
-                        imcMagreza.setTypeface(Typeface.DEFAULT_BOLD);
-                        pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
                         magreza.setTextColor(getResources().getColor(R.color.white));
+                        imcMagreza.setTypeface(Typeface.DEFAULT_BOLD);
                         imcMagreza.setTextColor(getResources().getColor(R.color.white));
+                        pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
                         pesoMagreza.setTextColor(getResources().getColor(R.color.white));
-                        normal.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-                        normal.setTextColor(getResources().getColor(R.color.azul_escuro));
-                        imcNormal.setTypeface(imcNormal.getTypeface(), Typeface.NORMAL);
-                        imcNormal.setTextColor(getResources().getColor(R.color.azul_escuro));
-                        pesoNormal.setTypeface(pesoNormal.getTypeface(), Typeface.NORMAL);
-                        pesoNormal.setTextColor(getResources().getColor(R.color.azul_escuro));
-                    if(valor>22.0  && valor<=27.0 ){
-
-                    }else if(valor>27.1  && valor<=30.0){
-
-                    }else if(valor>30.1){
-
+                    }else if(valor>20.0 && valor<=30.0){
+                        fundoNormal.setVisibility(View.VISIBLE);
+                        normal.setTypeface(Typeface.DEFAULT_BOLD);
+                        normal.setTextColor(getResources().getColor(R.color.white));
+                        imcNormal.setTypeface(Typeface.DEFAULT_BOLD);
+                        imcNormal.setTextColor(getResources().getColor(R.color.white));
+                        pesoNormal.setTypeface(Typeface.DEFAULT_BOLD);
+                        pesoNormal.setTextColor(getResources().getColor(R.color.white));
+                    }else if(valor>30.0  && valor<=35.0){
+                        fundoSobrepeso.setVisibility(View.VISIBLE);
+                        sobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                        sobrepeso.setTextColor(getResources().getColor(R.color.white));
+                        imcSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                        imcSobrepeso.setTextColor(getResources().getColor(R.color.white));
+                        pesoSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                        pesoSobrepeso.setTextColor(getResources().getColor(R.color.white));
+                    }else if(valor>35.0){
+                        fundoObesidade.setVisibility(View.VISIBLE);
+                        obesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                        obesidade.setTextColor(getResources().getColor(R.color.white));
+                        imcObesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                        imcObesidade.setTextColor(getResources().getColor(R.color.white));
+                        pesoObesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                        pesoObesidade.setTextColor(getResources().getColor(R.color.white));
                     }
+                } else if(idade < 65){
+                    imcMagreza.setText("< 18.5");
+                    imcNormal.setText("18.5 a 24.9");
+                    imcSobrepeso.setText("24.9 a 30.0");
+                    imcObesidade.setText("> 30.0");
+                    pesoMagreza.setText("< 50.4 Kg");
+                    pesoNormal.setText("50.4 a 67.8 Kg");
+                    pesoSobrepeso.setText("67.8 a 81.7 Kg");
+                    pesoObesidade.setText("> 81.7 Kg");
+
+                    if (valor<18.5){
+                        fundoMagreza.setVisibility(View.VISIBLE);
+                        magreza.setTypeface(Typeface.DEFAULT_BOLD);
+                        magreza.setTextColor(getResources().getColor(R.color.white));
+                        imcMagreza.setTypeface(Typeface.DEFAULT_BOLD);
+                        imcMagreza.setTextColor(getResources().getColor(R.color.white));
+                        pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
+                        pesoMagreza.setTextColor(getResources().getColor(R.color.white));
+                    } else if(valor>18.5 && valor<=24.9){
+                        fundoNormal.setVisibility(View.VISIBLE);
+                        normal.setTypeface(Typeface.DEFAULT_BOLD);
+                        normal.setTextColor(getResources().getColor(R.color.white));
+                        imcNormal.setTypeface(Typeface.DEFAULT_BOLD);
+                        imcNormal.setTextColor(getResources().getColor(R.color.white));
+                        pesoNormal.setTypeface(Typeface.DEFAULT_BOLD);
+                        pesoNormal.setTextColor(getResources().getColor(R.color.white));
+                    } else if (valor>24.9 && valor<=30.0){
+                        fundoSobrepeso.setVisibility(View.VISIBLE);
+                        sobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                        sobrepeso.setTextColor(getResources().getColor(R.color.white));
+                        imcSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                        imcSobrepeso.setTextColor(getResources().getColor(R.color.white));
+                        pesoSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                        pesoSobrepeso.setTextColor(getResources().getColor(R.color.white));
+                    } else if (valor>30.0){
+                        fundoObesidade.setVisibility(View.VISIBLE);
+                        obesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                        obesidade.setTextColor(getResources().getColor(R.color.white));
+                        imcObesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                        imcObesidade.setTextColor(getResources().getColor(R.color.white));
+                        pesoObesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                        pesoObesidade.setTextColor(getResources().getColor(R.color.white));
+                    }
+                } else if(idade <= 18){
+                    if(sexo.equals("Masculino")){
+                        imcMagreza.setText("< 17.3");
+                        imcNormal.setText("17.3 a 25.5");
+                        imcSobrepeso.setText("25.5 a 29.7");
+                        imcObesidade.setText("> 29.7");
+                        pesoMagreza.setText("< 47.1 Kg");
+                        pesoNormal.setText("47.1 a 69.4 Kg");
+                        pesoSobrepeso.setText("69.4 a 80.9 Kg");
+                        pesoObesidade.setText("> 80.9 Kg");
+
+                        if(valor<17.3){
+                            fundoMagreza.setVisibility(View.VISIBLE);
+                            magreza.setTypeface(Typeface.DEFAULT_BOLD);
+                            magreza.setTextColor(getResources().getColor(R.color.white));
+                            imcMagreza.setTypeface(Typeface.DEFAULT_BOLD);
+                            imcMagreza.setTextColor(getResources().getColor(R.color.white));
+                            pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
+                            pesoMagreza.setTextColor(getResources().getColor(R.color.white));
+                        } else if (valor>17.3 && valor<=25.5){
+                            fundoNormal.setVisibility(View.VISIBLE);
+                            normal.setTypeface(Typeface.DEFAULT_BOLD);
+                            normal.setTextColor(getResources().getColor(R.color.white));
+                            imcNormal.setTypeface(Typeface.DEFAULT_BOLD);
+                            imcNormal.setTextColor(getResources().getColor(R.color.white));
+                            pesoNormal.setTypeface(Typeface.DEFAULT_BOLD);
+                            pesoNormal.setTextColor(getResources().getColor(R.color.white));
+                        } else if (valor>25.5 && valor<=29.7){
+                            fundoSobrepeso.setVisibility(View.VISIBLE);
+                            sobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                            sobrepeso.setTextColor(getResources().getColor(R.color.white));
+                            imcSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                            imcSobrepeso.setTextColor(getResources().getColor(R.color.white));
+                            pesoSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                            pesoSobrepeso.setTextColor(getResources().getColor(R.color.white));
+                        } else if (valor>29.7){
+                            fundoObesidade.setVisibility(View.VISIBLE);
+                            obesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                            obesidade.setTextColor(getResources().getColor(R.color.white));
+                            imcObesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                            imcObesidade.setTextColor(getResources().getColor(R.color.white));
+                            pesoObesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                            pesoObesidade.setTextColor(getResources().getColor(R.color.white));
+                        }
+                    } else {
+                        imcMagreza.setText("< 16.4");
+                        imcNormal.setText("16.4 a 25.1");
+                        imcSobrepeso.setText("25.1 a 29.7");
+                        imcObesidade.setText("> 29.7");
+                        pesoMagreza.setText("< 44.6 Kg");
+                        pesoNormal.setText("44.6 a 68.3 Kg");
+                        pesoSobrepeso.setText("68.3 a 80.9 Kg");
+                        pesoObesidade.setText("> 80.9 Kg");
+
+                        if (valor<16.4){
+                            fundoMagreza.setVisibility(View.VISIBLE);
+                            magreza.setTypeface(Typeface.DEFAULT_BOLD);
+                            magreza.setTextColor(getResources().getColor(R.color.white));
+                            imcMagreza.setTypeface(Typeface.DEFAULT_BOLD);
+                            imcMagreza.setTextColor(getResources().getColor(R.color.white));
+                            pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
+                            pesoMagreza.setTextColor(getResources().getColor(R.color.white));
+                        } else if(valor>16.4 && valor<=25.1){
+                            fundoNormal.setVisibility(View.VISIBLE);
+                            normal.setTypeface(Typeface.DEFAULT_BOLD);
+                            normal.setTextColor(getResources().getColor(R.color.white));
+                            imcNormal.setTypeface(Typeface.DEFAULT_BOLD);
+                            imcNormal.setTextColor(getResources().getColor(R.color.white));
+                            pesoNormal.setTypeface(Typeface.DEFAULT_BOLD);
+                            pesoNormal.setTextColor(getResources().getColor(R.color.white));
+                        } else if (valor>25.1 && valor<=29.7){
+                            fundoSobrepeso.setVisibility(View.VISIBLE);
+                            sobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                            sobrepeso.setTextColor(getResources().getColor(R.color.white));
+                            imcSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                            imcSobrepeso.setTextColor(getResources().getColor(R.color.white));
+                            pesoSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
+                            pesoSobrepeso.setTextColor(getResources().getColor(R.color.white));
+                        } else if(valor>29.7){
+                            fundoObesidade.setVisibility(View.VISIBLE);
+                            obesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                            obesidade.setTextColor(getResources().getColor(R.color.white));
+                            imcObesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                            imcObesidade.setTextColor(getResources().getColor(R.color.white));
+                            pesoObesidade.setTypeface(Typeface.DEFAULT_BOLD);
+                            pesoObesidade.setTextColor(getResources().getColor(R.color.white));
+                        }
+                    }
+
+                    int teste = (int) 32.0;
                 }
             }
         });
     }
 
     public void setarPeso(View s){
-        if (editPeso.isChecked()){ // <- essa condição ta dando erro, tem que rever
-            System.out.println("ta checkado");
+        if (editPeso.isChecked()){
+            pesoAtual.setEnabled(true);
+            pesoAtual.requestFocus();
+        } else {
+            pesoAtual.setEnabled(false);
         }
-        String pesoTela = pesoAtual.getText().toString();
-        DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
-                .collection("Usuarios")
-                .document(FirebaseHelper.getUIDUsuario())
-                .collection("Informações pessoais")
-                .document("Cadastro complementar");
-        dr.addSnapshotListener((documentSnapshot, error) -> {
-            if (documentSnapshot != null){
-                String peso = documentSnapshot.getString("Peso (kg)");
-                if (!peso.equals(pesoTela)){
-
-                }
-            }
-        });
+//        int pesoTela = parseInt(pesoAtual.getText().toString().replace(" kg", ""));
+//        DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
+//                .collection("Usuarios")
+//                .document(FirebaseHelper.getUIDUsuario())
+//                .collection("Informações pessoais")
+//                .document("Cadastro complementar");
+//        dr.addSnapshotListener((documentSnapshot, error) -> {
+//            if (documentSnapshot != null){
+//                Long peso = documentSnapshot.getLong("Peso (kg)");
+//                if (!(peso == pesoTela)){
+//
+//                }
+//            }
+//        });
     }
 }

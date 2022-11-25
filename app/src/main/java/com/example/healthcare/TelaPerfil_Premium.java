@@ -41,8 +41,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -97,7 +95,7 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         rvLembretes = findViewById(R.id.rvLembretes);
         nenhumLembrete = findViewById(R.id.nenhumLembrete);
         nenhumaClinica = findViewById(R.id.nenhumaClinica);
-        txtClinicas = findViewById(R.id.txtClinicas);
+        txtClinicas = findViewById(R.id.txtClinica);
     }
 
     public void setarClinicasVinculadas(){
