@@ -35,10 +35,14 @@ import com.gun0912.tedpermission.normal.TedPermission;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -58,6 +62,10 @@ public class TelaPerfil_Premium extends AppCompatActivity {
     private static final int REQUEST_GALERIA = 100;
     private String caminhoImagem;
     private Bitmap imagem;
+
+    Date data = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    String dataHoje = sdf.format(data);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
