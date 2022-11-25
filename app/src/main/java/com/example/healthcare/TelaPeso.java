@@ -121,8 +121,6 @@ public class TelaPeso extends AppCompatActivity {
 
                 int idade = dataHoje.getYear() - dataNascFormatada.getYear();
 
-//                idade = 17;
-
                 if (idade >= 65){
                     imcMagreza.setText("< 20.0");
                     imcNormal.setText("20.0 a 30.0");
@@ -297,8 +295,6 @@ public class TelaPeso extends AppCompatActivity {
                             pesoObesidade.setTextColor(getResources().getColor(R.color.white));
                         }
                     }
-
-                    int teste = (int) 32.0;
                 }
             }
         });
