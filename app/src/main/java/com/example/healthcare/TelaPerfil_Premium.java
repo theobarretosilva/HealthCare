@@ -53,9 +53,6 @@ public class TelaPerfil_Premium extends AppCompatActivity {
     private RecyclerView rvLembretes;
     TextView nenhumLembrete;
 
-    private AdapterClinicasVinculadas adapterClinicasVinculadas;
-    private List<Clinica> clinicasVinculadasList = new ArrayList<>();
-    private RecyclerView rvClinicas;
     TextView nenhumaClinica;
 
     private static final int REQUEST_GALERIA = 100;
@@ -73,8 +70,6 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         setarInfoCadastroP();
         setarInfoCadasCompP();
         setarImagemPerfilP();
-        setarClinicas();
-        configRecyclerClinicas();
         setarLembretes();
         configRecyclerLembretes();
     }
@@ -92,45 +87,7 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         fotoUsuP = findViewById(R.id.fotoUsuP);
         rvLembretes = findViewById(R.id.rvLembretes);
         nenhumLembrete = findViewById(R.id.nenhumLembrete);
-        rvClinicas = findViewById(R.id.rvClinicas);
         nenhumaClinica = findViewById(R.id.nenhumaClinica);
-    }
-
-    private void configRecyclerClinicas(){
-        rvClinicas.setLayoutManager(new LinearLayoutManager(this));
-        rvClinicas.setHasFixedSize(true);
-        adapterClinicasVinculadas = new AdapterClinicasVinculadas(clinicasVinculadasList);
-        rvClinicas.setAdapter(adapterClinicasVinculadas);
-    }
-
-    public void setarClinicas(){
-        DatabaseReference clinicasRef = FirebaseHelper.getDatabaseReference()
-                .child("Registros")
-                .child(FirebaseHelper.getUIDUsuario())
-                .child("Clínicas vinculadas");
-        clinicasRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    System.out.println(snapshot.getValue().toString());
-                    for (DataSnapshot snap : snapshot.getChildren()){
-                        System.out.println(snap.getValue());
-                        Clinica clinica = snap.getValue(Clinica.class);
-                        clinicasVinculadasList.add(clinica);
-                        nenhumaClinica.setVisibility(View.INVISIBLE);
-                    }
-                    adapterClinicasVinculadas.notifyDataSetChanged();
-                } else {
-                    rvClinicas.setVisibility(View.INVISIBLE);
-                    nenhumaClinica.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 
     private void configRecyclerLembretes(){

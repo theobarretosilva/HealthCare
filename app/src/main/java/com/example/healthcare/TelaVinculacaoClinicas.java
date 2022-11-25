@@ -20,12 +20,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.ArrayList;
+
 public class TelaVinculacaoClinicas extends AppCompatActivity {
 
     TextView nomeClinica, enderecoClinica, telefoneClinica, servicosClinica;
     ImageView fotoClinica;
     CheckBox termos;
     BottomSheetDialog dialog;
+    ArrayList<String> clinicas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,48 +64,30 @@ public class TelaVinculacaoClinicas extends AppCompatActivity {
     public void voltarTela(View g){
         ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
         ActivityCompat.startActivity(TelaVinculacaoClinicas.this, new Intent(this, TelaClinicas.class), activityOptionsCompat.toBundle());
-
     }
 
     public void mostrarCard(){
         View view = getLayoutInflater().inflate(R.layout.card_clinica_vinculada, null, false);
 
         Button voltarTelaClinicas = view.findViewById(R.id.btnOk);
-        voltarTelaClinicas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                voltarTela(view);
-            }
-        });
+        voltarTelaClinicas.setOnClickListener(view1 -> voltarTela(view1));
 
         dialog.setContentView(view);
         dialog.show();
     }
 
     public void vincularClinica(View v){
-
         if (termos.isChecked()){
+            String nome = nomeClinica.getText().toString();
 
-            for (VincularClinicas c : TelaClinicas.lClinicas){
+            if (!clinicas.contains(nome)){
+                clinicas.add(nome);
 
-                DatabaseReference reference = FirebaseHelper.getDatabaseReference()
-                        .child("Registros")
+                DatabaseReference clinicasReference = FirebaseHelper.getDatabaseReference()
+                        .child("Registro")
                         .child(FirebaseHelper.getUIDUsuario())
-                        .child("Clínicas vinculadas")
-                        .child(c.getNomeClinica());
-
-                reference.setValue(c.getNomeClinica()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        mostrarCard();
-                    }
-
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(TelaVinculacaoClinicas.this, "Não foi possível vincular a clínica.", Toast.LENGTH_LONG).show();
-                    }
-                });
+                        .child("Clinicas vinculadas");
+                clinicasReference.setValue(clinicas);
             }
         } else {
             Toast.makeText(TelaVinculacaoClinicas.this, "Leia e concorde com os Termos de Vinculação!", Toast.LENGTH_SHORT).show();
