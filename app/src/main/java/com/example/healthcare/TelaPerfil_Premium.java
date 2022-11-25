@@ -44,7 +44,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TelaPerfil_Premium extends AppCompatActivity {
 
-    TextView nomeUsuP, idadeUsuP, telefoneUsuP, emailUsuP, pesoUsuP, alturaUsuP, biotipoUsuP;
+    TextView nomeUsuP, idadeUsuP, telefoneUsuP, emailUsuP, pesoUsuP, alturaUsuP, biotipoUsuP, txtClinicas;
     Button btnVoltarP, btnSairP;
     CircleImageView fotoUsuP;
 
@@ -72,6 +72,7 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         setarImagemPerfilP();
         setarLembretes();
         configRecyclerLembretes();
+        setarClinicasVinculadas();
     }
 
     public void iniciarComponentes(){
@@ -88,6 +89,34 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         rvLembretes = findViewById(R.id.rvLembretes);
         nenhumLembrete = findViewById(R.id.nenhumLembrete);
         nenhumaClinica = findViewById(R.id.nenhumaClinica);
+        txtClinicas = findViewById(R.id.txtClinicas);
+    }
+
+    public void setarClinicasVinculadas(){
+        DatabaseReference clinicasReference = FirebaseHelper.getDatabaseReference()
+                .child("Registros")
+                .child(FirebaseHelper.getUIDUsuario())
+                .child("Clinicas vinculadas");
+        clinicasReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    txtClinicas.setText(snapshot.getValue().toString()
+                            .replace("[", "")
+                            .replace("]", "")
+                            .replace(", ", "\n"));
+
+                    nenhumaClinica.setVisibility(View.INVISIBLE);
+                } else {
+                    txtClinicas.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void configRecyclerLembretes(){
