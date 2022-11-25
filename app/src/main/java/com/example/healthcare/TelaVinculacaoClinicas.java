@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -57,8 +59,9 @@ public class TelaVinculacaoClinicas extends AppCompatActivity {
     }
 
     public void voltarTela(View g){
-        Intent voltarTela = new Intent(this, TelaClinicas.class);
-        startActivity(voltarTela);
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+        ActivityCompat.startActivity(TelaVinculacaoClinicas.this, new Intent(this, TelaClinicas.class), activityOptionsCompat.toBundle());
+
     }
 
     public void mostrarCard(){

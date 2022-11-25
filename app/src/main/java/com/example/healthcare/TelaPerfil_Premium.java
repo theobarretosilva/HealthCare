@@ -54,7 +54,7 @@ public class TelaPerfil_Premium extends AppCompatActivity {
     TextView nenhumLembrete;
 
     private AdapterClinicasVinculadas adapterClinicasVinculadas;
-    List<VincularClinicas> clinicasVinculadasList;
+    private List<Clinica> clinicasVinculadasList = new ArrayList<>();
     private RecyclerView rvClinicas;
     TextView nenhumaClinica;
 
@@ -111,11 +111,12 @@ public class TelaPerfil_Premium extends AppCompatActivity {
         clinicasRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                System.out.println("Entrou");
                 if (snapshot.exists()){
+                    System.out.println(snapshot.getValue().toString());
                     for (DataSnapshot snap : snapshot.getChildren()){
-                        VincularClinicas vincularClinicas = snap.getValue(VincularClinicas.class);
-                        clinicasVinculadasList.add(vincularClinicas);
+                        System.out.println(snap.getValue());
+                        Clinica clinica = snap.getValue(Clinica.class);
+                        clinicasVinculadasList.add(clinica);
                         nenhumaClinica.setVisibility(View.INVISIBLE);
                     }
                     adapterClinicasVinculadas.notifyDataSetChanged();
@@ -315,5 +316,9 @@ public class TelaPerfil_Premium extends AppCompatActivity {
     public void irTelaAddLembretes(View f){
         Intent irTelaLembretes = new Intent(this, TelaLembretes_add.class);
         startActivity(irTelaLembretes);
+    }
+
+    public void irTelaVincularClinica(View t){
+        startActivity(new Intent(TelaPerfil_Premium.this, TelaClinicas.class));
     }
 }

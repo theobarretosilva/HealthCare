@@ -12,10 +12,10 @@ import java.util.List;
 
 public class AdapterClinicasVinculadas extends RecyclerView.Adapter<AdapterClinicasVinculadas.MyViewHolder> {
 
-    private List<VincularClinicas> clinicasVinculadasList;
+    private List<Clinica> clinicasList;
 
-    public AdapterClinicasVinculadas(List<VincularClinicas> clinicasVinculadasList) {
-        this.clinicasVinculadasList = clinicasVinculadasList;
+    public AdapterClinicasVinculadas(List<Clinica> clinicasVinculadasList) {
+        this.clinicasList = clinicasVinculadasList;
     }
 
     @NonNull
@@ -27,14 +27,14 @@ public class AdapterClinicasVinculadas extends RecyclerView.Adapter<AdapterClini
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        VincularClinicas vincularClinicas = clinicasVinculadasList.get(position);
+        Clinica clinica = clinicasList.get(position);
 
-        holder.nomeClinica.setText(vincularClinicas.getNomeClinica());
+        holder.nomeClinica.setText(clinica.getNomeClinica());
     }
 
     @Override
     public int getItemCount() {
-        return clinicasVinculadasList.size();
+        return clinicasList.size();
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{

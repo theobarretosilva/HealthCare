@@ -108,10 +108,12 @@ public class TelaClinicas extends AppCompatActivity {
     }
 
     public void voltarTelaConteudosP(View l){
-        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat
-                .makeCustomAnimation(
-                        getApplicationContext(), R.anim.fade_in, R.anim.mover_direita
-                );
-        ActivityCompat.startActivity(TelaClinicas.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
+        if (TelaLogin.premium) {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaClinicas.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
+        } else {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaClinicas.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
+        }
     }
 }

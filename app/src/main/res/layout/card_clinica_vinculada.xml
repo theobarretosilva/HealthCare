@@ -24,15 +24,16 @@
         android:id="@+id/btnOk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="OK"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="12dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="#4A858B"
         android:fontFamily="@font/urbanist"
+        android:text="Uhul!"
         android:textAllCaps="false"
-        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:cornerRadius="8dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="20dp"/>
+        app:cornerRadius="8dp" />
 </LinearLayout>
