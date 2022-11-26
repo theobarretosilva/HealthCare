@@ -16,18 +16,23 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.firestore.DocumentReference;
-
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class TelaCadastroComplementar extends AppCompatActivity{
-
     EditText peso, altura;
     Spinner biotipo;
     Button btContinuar;
 
     String[] biotipoCorporal = new String[]{"Biotipo corporal", "Ectomorfo", "Endomorfo", "Mesomorfo"};
+
+    GregorianCalendar calendar = new GregorianCalendar();
+    int dia = calendar.get(GregorianCalendar.DAY_OF_MONTH);
+    int mes = calendar.get(GregorianCalendar.MONTH);
+
+    Date dataAtual = new Date();
+    int horaAtual = dataAtual.getHours();
+    int minutosAtual = dataAtual.getMinutes();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,28 +72,23 @@ public class TelaCadastroComplementar extends AppCompatActivity{
     }
 
     public void mandarCadastroCompleBD(){
-        int pesoP = parseInt(peso.getText().toString());
-        int alturaA = parseInt(altura.getText().toString());
-        String biotipoC = biotipo.getSelectedItem().toString();
+        try {
+            CadastroComplementarUsuario cadastroComplementarUsuario = new CadastroComplementarUsuario();
+            cadastroComplementarUsuario.setPeso(parseInt(peso.getText().toString()));
+            cadastroComplementarUsuario.setAltura(parseInt(altura.getText().toString()));
+            cadastroComplementarUsuario.setBiotipo(biotipo.getSelectedItem().toString());
+            cadastroComplementarUsuario.cadastrarComplementoUsuario();
 
-        Map<String, Object> cadastroComplementar = new HashMap<>();
-        cadastroComplementar.put("Peso (kg)", pesoP);
-        cadastroComplementar.put("Altura (cm)", alturaA);
-        cadastroComplementar.put("Biotipo corporal", biotipoC);
+            Peso peso = new Peso();
+            peso.setPeso(parseInt(this.peso.getText().toString()));
+            peso.setDataPeso(dia + "-" + mes);
+            peso.setHoraPeso(horaAtual + ":" + minutosAtual);
+            peso.salvarPeso();
 
-        DocumentReference ns = FirebaseHelper.getFirebaseFirestore()
-                .collection("Usuarios")
-                .document(FirebaseHelper.getUIDUsuario())
-                .collection("Informações pessoais")
-                .document("Cadastro complementar");
-
-        ns.set(cadastroComplementar).addOnSuccessListener(unused -> {
-            Intent irTelaConteudos = new Intent(this, TelaConteudos.class);
-            startActivity(irTelaConteudos);
-        }).addOnFailureListener(e -> {
+            startActivity(new Intent(this, TelaConteudos.class));
+        }catch (Exception e){
             Toast.makeText(this, "Não foi possivel continuar o seu cadastro, tente novamente mais tarde!", Toast.LENGTH_LONG).show();
-        });
-
+        }
     }
 
     public void irTiposBiotipoInternet(View j){

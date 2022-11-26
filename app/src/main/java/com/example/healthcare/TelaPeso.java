@@ -1,5 +1,7 @@
 package com.example.healthcare;
 
+import static java.lang.Integer.parseInt;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -9,10 +11,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 
 import java.math.BigDecimal;
@@ -99,10 +106,26 @@ public class TelaPeso extends AppCompatActivity {
                 pesoAtual.setText(peso + "");
 
                 setarNaTelaIMC(res);
-
             }
         });
 
+        DatabaseReference pesoReference = FirebaseHelper.getDatabaseReference()
+                .child("Registros")
+                .child(FirebaseHelper.getUIDUsuario())
+                .child("Peso");
+        pesoReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snap : snapshot.getChildren()){
+                    Peso peso = snap.getValue(Peso.class);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void setarNaTelaIMC(float valor){
@@ -306,20 +329,21 @@ public class TelaPeso extends AppCompatActivity {
             pesoAtual.requestFocus();
         } else {
             pesoAtual.setEnabled(false);
+            int pesoTela = parseInt(pesoAtual.getText().toString());
+            DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
+                    .collection("Usuarios")
+                    .document(FirebaseHelper.getUIDUsuario())
+                    .collection("Informações pessoais")
+                    .document("Cadastro complementar");
+            dr.addSnapshotListener((documentSnapshot, error) -> {
+                if (documentSnapshot != null){
+                    Long peso = documentSnapshot.getLong("Peso (kg)");
+                    if (!(peso == pesoTela)){
+
+                    }
+                }
+            });
         }
-//        int pesoTela = parseInt(pesoAtual.getText().toString().replace(" kg", ""));
-//        DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
-//                .collection("Usuarios")
-//                .document(FirebaseHelper.getUIDUsuario())
-//                .collection("Informações pessoais")
-//                .document("Cadastro complementar");
-//        dr.addSnapshotListener((documentSnapshot, error) -> {
-//            if (documentSnapshot != null){
-//                Long peso = documentSnapshot.getLong("Peso (kg)");
-//                if (!(peso == pesoTela)){
-//
-//                }
-//            }
-//        });
+
     }
 }

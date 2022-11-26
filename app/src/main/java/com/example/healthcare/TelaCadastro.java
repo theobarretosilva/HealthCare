@@ -22,11 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.firestore.DocumentReference;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class TelaCadastro extends AppCompatActivity {
 
@@ -68,9 +65,10 @@ public class TelaCadastro extends AppCompatActivity {
         }
         else if (dataNascCadastro.getText().length() == 0){
             dataNascCadastro.setError("Preencha a sua data de nascimento");
-        }else if(diaNasc < 1 || diaNasc > 31 || mesNasc < 1 || mesNasc > 12 || anoNasc < 1920 || anoNasc > anoAtual){
-            dataNascCadastro.setError("Insira uma data de nascimento válida");
         }
+//        else if(diaNasc < 1 || diaNasc > 31 || mesNasc < 1 || mesNasc > 12 || anoNasc < 1920 || anoNasc > anoAtual){
+//            dataNascCadastro.setError("Insira uma data de nascimento válida");
+//        }
         else if (telefoneCadastro.getText().length() == 0){
             telefoneCadastro.setError("Insira o seu telefone");
         }
@@ -122,71 +120,51 @@ public class TelaCadastro extends AppCompatActivity {
         String email = emailCadastro.getText().toString();
         String senha = senhaCadastro.getText().toString();
 
-        Intent irTelaCadastroComplementar = new Intent(this, TelaCadastroComplementar.class);
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful()){
 
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha).addOnCompleteListener(task -> {
-            if (task.isSuccessful()){
+                    salvarDadosCadastro();
 
-                salvarDadosCadastro();
+                    startActivity(new Intent(this, TelaCadastroComplementar.class));
+                }else{
+                    try {
+                        throw task.getException();
+                    }catch (FirebaseAuthWeakPasswordException e){
+                        erro = "Digite uma senha com no mínimo 6 caracteres!";
+                    }catch (FirebaseAuthUserCollisionException e){
+                        erro = "Esta conta de email já está cadastrada!";
+                    }catch (FirebaseAuthInvalidCredentialsException e){
+                        erro = "Email inválido";
+                    }catch (Exception e){
+                        erro = "Erro ao cadastrar o usuário";
+                    }
 
-                startActivity(irTelaCadastroComplementar);
-            }else{
-                try {
-                    throw task.getException();
-                }catch (FirebaseAuthWeakPasswordException e){
-                    erro = "Digite uma senha com no mínimo 6 caracteres!";
-                }catch (FirebaseAuthUserCollisionException e){
-                    erro = "Esta conta de email já está cadastrada!";
-                }catch (FirebaseAuthInvalidCredentialsException e){
-                    erro = "Email inválido";
-                }catch (Exception e){
-                    erro = "Erro ao cadastrar o usuário";
+                    Snackbar snackbar = Snackbar.make(v,erro,Snackbar.LENGTH_LONG);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
                 }
-
-                Snackbar snackbar = Snackbar.make(v,erro,Snackbar.LENGTH_LONG);
-                snackbar.setBackgroundTint(Color.WHITE);
-                snackbar.setTextColor(Color.BLACK);
-                snackbar.show();
-            }
-        });
+            });
     }
 
     public void salvarDadosCadastro(){
-
-        Intent irTelaCadastroComplementar = new Intent(this, TelaCadastroComplementar.class);
-
-        String primeiroN = primeiroNome.getText().toString();
-        String sobrenomE = sobrenome.getText().toString();
-        String dataNasc = dataNascCadastro.getText().toString();
-        String telefone = telefoneCadastro.getText().toString();
-        String endereco = enderecoCadastro.getText().toString();
-        String cpf = cpfCadastro.getText().toString();
-        String sexo = spinnerSexo.getSelectedItem().toString();
-        String email = emailCadastro.getText().toString();
-        String senha = senhaCadastro.getText().toString();
-
-        Map<String, Object> cadastroUsuario = new HashMap<>();
-        cadastroUsuario.put("Nome completo", primeiroN + " " + sobrenomE);
-        cadastroUsuario.put("Primeiro nome", primeiroN);
-        cadastroUsuario.put("Sobrenome", sobrenomE);
-        cadastroUsuario.put("Data de nascimento", dataNasc);
-        cadastroUsuario.put("Telefone", telefone);
-        cadastroUsuario.put("Endereço", endereco);
-        cadastroUsuario.put("CPF", cpf);
-        cadastroUsuario.put("Sexo", sexo);
-        cadastroUsuario.put("Email", email);
-        cadastroUsuario.put("Senha", senha);
-        cadastroUsuario.put("Premium", false);
-
         try {
-            DocumentReference ns = FirebaseHelper.getFirebaseFirestore()
-                    .collection("Usuarios")
-                    .document(FirebaseHelper.getUIDUsuario())
-                    .collection("Informações pessoais")
-                    .document("Informações de cadastro");
-            ns.set(cadastroUsuario);
-        } catch (Exception e){
-            startActivity(irTelaCadastroComplementar);
+            CadastroUsuario cadastroUsuario = new CadastroUsuario();
+            cadastroUsuario.setPrimeiroNome(primeiroNome.getText().toString());
+            cadastroUsuario.setSobrenome(sobrenome.getText().toString());
+            cadastroUsuario.setDataNascimento(dataNascCadastro.getText().toString());
+            cadastroUsuario.setTelefone(telefoneCadastro.getText().toString());
+            cadastroUsuario.setEndereco(enderecoCadastro.getText().toString());
+            cadastroUsuario.setCpf(cpfCadastro.getText().toString());
+            cadastroUsuario.setSexo(spinnerSexo.getSelectedItem().toString());
+            cadastroUsuario.setEmail(emailCadastro.getText().toString());
+            cadastroUsuario.setSenha(senhaCadastro.getText().toString());
+
+            cadastroUsuario.cadastrarUsuario();
+            startActivity(new Intent(this, TelaCadastroComplementar.class));
+        }catch (Exception e){
+            Toast.makeText(this, "Não foi possível fazer o seu cadastro. Tente novamente mais tarde!", Toast.LENGTH_LONG).show();
         }
     }
 

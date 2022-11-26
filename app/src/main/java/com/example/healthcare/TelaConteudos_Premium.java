@@ -1,27 +1,18 @@
 package com.example.healthcare;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -49,12 +40,7 @@ public class TelaConteudos_Premium extends AppCompatActivity {
 
     iniciarComponentes();
     setarImagemPerfil();
-    menu.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        drawerLayout.openDrawer(GravityCompat.START);
-      }
-    });
+    menu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
     navigationMenu();
   }
 
@@ -80,232 +66,150 @@ public class TelaConteudos_Premium extends AppCompatActivity {
   public void navigationMenu(){
     // DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
-    String usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference documentReference = db.collection("Usuarios").document(usuarioID).collection("Informações pessoais").document("Informações de cadastro");
-    documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-      @Override
-      public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException error) {
-        if(snapshot.exists()){
-          String nome =  snapshot.getString("Nome completo");
-          String email =  snapshot.getString("Email");
+    DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
+            .collection("Usuarios")
+            .document(FirebaseHelper.getUIDUsuario())
+            .collection("Informações pessoais")
+            .document("Informações de cadastro");
+    documentReference.addSnapshotListener((snapshot, error) -> {
+      if(snapshot.exists()){
+        String nome =  snapshot.getString("Nome completo");
+        String email =  snapshot.getString("Email");
 
-          nome_user.setText(nome);
-          if(email.length() >= 25){
-            email_user.setText(email.substring(0,23)+"...");
-          }else{
-            email_user.setText(email);
-          }
-
+        nome_user.setText(nome);
+        if(email.length() >= 25){
+          email_user.setText(email.substring(0,23)+"...");
+        }else{
+          email_user.setText(email);
         }
+
       }
     });
 
-    user.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPerfil_Premium.class);
-        startActivity(irTela);
-      }
+    user.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPerfil_Premium.class);
+      startActivity(irTela);
     });
-    nome_user.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPerfil_Premium.class);
-        startActivity(irTela);
-      }
+    nome_user.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPerfil_Premium.class);
+      startActivity(irTela);
     });
-    email_user.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPerfil_Premium.class);
-        startActivity(irTela);
-      }
+    email_user.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPerfil_Premium.class);
+      startActivity(irTela);
     });
 
 
 
-    inicio.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-          drawerLayout.closeDrawer(GravityCompat.START);
-        }      }
-    });
-    textIncio.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-          drawerLayout.closeDrawer(GravityCompat.START);
-        }
+    inicio.setOnClickListener(v -> {
+      if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+      }      });
+    textIncio.setOnClickListener(v -> {
+      if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+        drawerLayout.closeDrawer(GravityCompat.START);
       }
     });
 
-    sair.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        FirebaseAuth.getInstance().signOut();
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaInicial.class);
-        startActivity(irTela);
-      }
+    sair.setOnClickListener(v -> {
+      FirebaseAuth.getInstance().signOut();
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaInicial.class);
+      startActivity(irTela);
     });
-    textSair.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        FirebaseAuth.getInstance().signOut();
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaInicial.class);
-        startActivity(irTela);
-      }
+    textSair.setOnClickListener(v -> {
+      FirebaseAuth.getInstance().signOut();
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaInicial.class);
+      startActivity(irTela);
     });
 
-    agua.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAgua.class);
-        startActivity(irTela);
-      }
+    agua.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAgua.class);
+      startActivity(irTela);
     });
-    textAgua.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAgua.class);
-        startActivity(irTela);
-      }
+    textAgua.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAgua.class);
+      startActivity(irTela);
     });
 
-    alimento.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAlimentacao.class);
-        startActivity(irTela);
-      }
+    alimento.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAlimentacao.class);
+      startActivity(irTela);
     });
-    textAlimento.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAlimentacao.class);
-        startActivity(irTela);
-      }
+    textAlimento.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaAlimentacao.class);
+      startActivity(irTela);
     });
 
-    peso.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPeso.class);
-        startActivity(irTela);
-      }
+    peso.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPeso.class);
+      startActivity(irTela);
     });
-    textPeso.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPeso.class);
-        startActivity(irTela);
-      }
+    textPeso.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPeso.class);
+      startActivity(irTela);
     });
 
-    vacinas.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaVacinas.class);
-        startActivity(irTela);
-      }
+    vacinas.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaVacinas.class);
+      startActivity(irTela);
     });
-    textVacinas.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaVacinas.class);
-        startActivity(irTela);
-      }
+    textVacinas.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaVacinas.class);
+      startActivity(irTela);
     });
 
-    sono.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaSono.class);
-        startActivity(irTela);
-      }
+    sono.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaSono.class);
+      startActivity(irTela);
     });
-    textSono.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaSono.class);
-        startActivity(irTela);
-      }
+    textSono.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaSono.class);
+      startActivity(irTela);
     });
 
-    passos.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPassos.class);
-        startActivity(irTela);
-      }
+    passos.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPassos.class);
+      startActivity(irTela);
     });
-    textPassos.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPassos.class);
-        startActivity(irTela);
-      }
+    textPassos.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaPassos.class);
+      startActivity(irTela);
     });
 
-    exercicio.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExercicios.class);
-        startActivity(irTela);
-      }
+    exercicio.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExercicios.class);
+      startActivity(irTela);
     });
-    textExercicio.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExercicios.class);
-        startActivity(irTela);
-      }
+    textExercicio.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExercicios.class);
+      startActivity(irTela);
     });
 
-    medicamento.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaMedicamentos.class);
-        startActivity(irTela);
-      }
+    medicamento.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaMedicamentos.class);
+      startActivity(irTela);
     });
-    textMedicamentos.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaMedicamentos.class);
-        startActivity(irTela);
-      }
+    textMedicamentos.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaMedicamentos.class);
+      startActivity(irTela);
     });
 
-    exames.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExames.class);
-        startActivity(irTela);
-      }
+    exames.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExames.class);
+      startActivity(irTela);
     });
-    textExames.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExames.class);
-        startActivity(irTela);
-      }
+    textExames.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaExames.class);
+      startActivity(irTela);
     });
 
-    clinicas.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaClinicas.class);
-        startActivity(irTela);
-      }
+    clinicas.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaClinicas.class);
+      startActivity(irTela);
     });
-    textClinicas.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent irTela = new Intent(TelaConteudos_Premium.this, TelaClinicas.class);
-        startActivity(irTela);
-      }
+    textClinicas.setOnClickListener(v -> {
+      Intent irTela = new Intent(TelaConteudos_Premium.this, TelaClinicas.class);
+      startActivity(irTela);
     });
   }
 

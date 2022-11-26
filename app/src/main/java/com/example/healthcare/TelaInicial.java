@@ -20,7 +20,7 @@ public class TelaInicial extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-//        Intent irDireto = new Intent (this, TelaConteudos.class);
+//        Intent irDireto = new Intent (this, TelaCadastroComplementar.class);
 //        startActivity(irDireto);
 
         login = findViewById(R.id.login);
@@ -41,7 +41,7 @@ public class TelaInicial extends AppCompatActivity {
                     .document("Informações de cadastro");
 
             documentReference.addSnapshotListener((documentSnapshot, error) -> {
-                if (documentSnapshot != null){
+                if (documentSnapshot.exists()){
                     TelaLogin.premium = documentSnapshot.getBoolean("Premium");
                     if (TelaLogin.premium){
                         Intent iP = new Intent(TelaInicial.this, TelaConteudos_Premium.class);
