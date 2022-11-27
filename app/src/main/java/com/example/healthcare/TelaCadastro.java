@@ -17,11 +17,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import java.util.Calendar;
 
@@ -33,8 +31,6 @@ public class TelaCadastro extends AppCompatActivity {
 
     String[] sexo = new String []{"Sexo", "Feminino", "Masculino"};
     Spinner spinnerSexo;
-
-    String erro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,79 +71,74 @@ public class TelaCadastro extends AppCompatActivity {
         int anoNasc = parseInt(dataNascimento[2]);
         Calendar cal = Calendar.getInstance();
         int anoAtual = cal.get(Calendar.YEAR);
-        System.out.println(diaNasc);
-        System.out.println(mesNasc);
-        System.out.println(anoNasc);
-        System.out.println(anoAtual);
-
 
         if(primeiroNome.getText().length() <= 2){
             primeiroNome.setError("Insira seu primeiro nome corretamente");
-        }
-        else if(sobrenome.getText().length() <= 2){
+        } else if(sobrenome.getText().length() <= 2){
             sobrenome.setError("Insira seu sobrenome corretamente");
-        }
-        else if (dataNascCadastro.getText().length() == 0){
+        } else if(dataNascCadastro.getText().length() == 0){
             dataNascCadastro.setError("Preencha a sua data de nascimento");
-        }
-        else if(diaNasc >= 1 && diaNasc <= 31 && mesNasc >= 1 && mesNasc <= 12 && anoNasc > 1920 && anoNasc < anoAtual){
+        } else if(diaNasc < 1){
+            dataNascCadastro.setError("Insira um dia de nascimento válido");
+        } else if(diaNasc > 31){
+            dataNascCadastro.setError("Insira um dia de nascimento válido");
+        } else if(mesNasc < 1){
+            dataNascCadastro.setError("Insira um mês de nascimento válido");
+        } else if(mesNasc > 12){
+            dataNascCadastro.setError("Insira um mês de nascimento válido");
+        } else if(anoNasc < 1920){
+            dataNascCadastro.setError("Insira um ano de nascimento válido");
+        } else if(anoNasc >= anoAtual){
+            dataNascCadastro.setError("Insira um ano de nascimento válido");
+        } else if(dataNascCadastro.getText().toString().contains("_")){
             dataNascCadastro.setError("Insira uma data de nascimento válida");
-        }
-        else if (telefoneCadastro.getText().length() == 0){
-            telefoneCadastro.setError("Insira o seu telefone");
-        }
-        else if(enderecoCadastro.getText().length() < 5){
+        } else if(mesNasc == 2 && diaNasc > 29){
+            dataNascCadastro.setError("Insira um dia de nascimento válido");
+        } else if(telefoneCadastro.getText().toString().contains("_")){
+            telefoneCadastro.setError("Insira um telefone válido!");
+        } else if(telefoneCadastro.getText().length() > 15){
+            telefoneCadastro.setError("Insira um telefone válido!");
+        } else if(enderecoCadastro.getText().length() < 5){
             enderecoCadastro.setError("Insira seu endereço corretamente");
-        }
-        else if (cpfCadastro.getText().length() == 0){
-            cpfCadastro.setError("Preencha o seu cpf");
-        }
-        else if(sexo == "Sexo"){
+        } else if(cpfCadastro.getText().length() == 0){
+            cpfCadastro.setError("Preencha o seu CPF");
+        } else if(cpfCadastro.getText().toString().contains("_")){
+            cpfCadastro.setError("Insira um CPF válido!");
+        } else if(sexo == "Sexo"){
             TextView errorText = (TextView)spinnerSexo.getSelectedView();
             errorText.setError("anything here, just to add the icon");
-            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+            errorText.setTextColor(Color.RED);
             errorText.setText("Selecione um sexo válido");
-        }
-        else if (emailCadastro.getText().length() < 5){
+        } else if(emailCadastro.getText().length() < 5){
             emailCadastro.setError("Insira um email válido!");
-        }
-        else if (senhaCadastro.getText().length() < 8){
+        } else if(senhaCadastro.getText().length() < 8){
             senhaCadastro.setError("A sua deve ter pelo menos 8 caracteres!");
-        }
-        else{
-            CadastrarUsuario(k);
+        } else {
+            CadastrarUsuario();
         }
     }
 
-    public void CadastrarUsuario(View v){
+    public void CadastrarUsuario(){
 
         String email = emailCadastro.getText().toString();
         String senha = senhaCadastro.getText().toString();
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
-            .addOnCompleteListener(task -> {
-                if (task.isSuccessful()){
-
-                    salvarDadosCadastro();
-
-                    startActivity(new Intent(this, TelaCadastroComplementar.class));
-                }else{
-                    try {
-                        throw task.getException();
-                    }catch (FirebaseAuthWeakPasswordException e){
-                        erro = "Digite uma senha com no mínimo 6 caracteres!";
-                    }catch (FirebaseAuthUserCollisionException e){
-                        erro = "Esta conta de email já está cadastrada!";
-                    }catch (FirebaseAuthInvalidCredentialsException e){
-                        erro = "Email inválido";
-                    }catch (Exception e){
-                        erro = "Erro ao cadastrar o usuário";
-                    }
-
-                    Snackbar snackbar = Snackbar.make(v,erro,Snackbar.LENGTH_LONG);
-                    snackbar.setBackgroundTint(Color.WHITE);
-                    snackbar.setTextColor(Color.BLACK);
-                    snackbar.show();
+            .addOnSuccessListener(authResult -> {
+                salvarDadosCadastro();
+                startActivity(new Intent(TelaCadastro.this, TelaCadastroComplementar.class));
+            })
+            .addOnFailureListener(e -> {
+                try {
+                    throw e.getCause();
+                }catch (FirebaseAuthUserCollisionException exception){
+                    emailCadastro.setError("Esta conta de email já está cadastrada!");
+                }catch (FirebaseAuthInvalidCredentialsException exception){
+                    emailCadastro.setError("Email inválido!");
+                }catch (Exception exception){
+                    Toast.makeText(this, "Erro ao cadastrar o usuário", Toast.LENGTH_LONG).show();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
                 }
             });
     }
@@ -166,7 +157,6 @@ public class TelaCadastro extends AppCompatActivity {
             cadastroUsuario.setSenha(senhaCadastro.getText().toString());
 
             cadastroUsuario.cadastrarUsuario();
-            startActivity(new Intent(this, TelaCadastroComplementar.class));
         }catch (Exception e){
             Toast.makeText(this, "Não foi possível fazer o seu cadastro. Tente novamente mais tarde!", Toast.LENGTH_LONG).show();
         }
