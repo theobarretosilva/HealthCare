@@ -85,7 +85,7 @@ public class TelaLogin extends AppCompatActivity {
                         .document("Informações de cadastro");
 
                 documentReference.addSnapshotListener((documentSnapshot, error) -> {
-                    if (documentSnapshot != null){
+                    if (documentSnapshot.exists()){
                         premium = documentSnapshot.getBoolean("Premium");
                         if (premium){
                             Intent iP = new Intent(this, TelaConteudos_Premium.class);
