@@ -43,7 +43,6 @@ public class TelaAgua extends AppCompatActivity {
         getSupportActionBar().hide();
 
         iniciarComponentes();
-        dataAtual.setText(dataHojeBarra);
         setarQtndAgua();
     }
 
@@ -54,6 +53,7 @@ public class TelaAgua extends AppCompatActivity {
         tituloAgua = findViewById(R.id.tituloAgua);
         texto = findViewById(R.id.texto);
         btnIngerido = findViewById(R.id.btnIngerido);
+        dataAtual.setText(dataHojeBarra);
     }
 
     public void mandarAguaBD(View r){
@@ -78,7 +78,6 @@ public class TelaAgua extends AppCompatActivity {
     }
 
     public void setarQtndAgua(){
-
         DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
                 .collection("Usuarios")
                 .document(FirebaseHelper.getUIDUsuario())
@@ -91,37 +90,50 @@ public class TelaAgua extends AppCompatActivity {
             if (documentSnapshot.exists()){
                 int valorAgua = Math.toIntExact((Long) documentSnapshot.getData().get("Água ingerida"));
                 aguaIngerida = Math.toIntExact((Long) documentSnapshot.getData().get("Água ingerida"));
+                String qtdAgua = valorAgua + " / 3000ml";
 
-                if(valorAgua == 250){
-                    imgGarrafa.setImageResource(R.drawable.garrafa1);
-                }else if(valorAgua == 500){
-                    imgGarrafa.setImageResource(R.drawable.garrafa2);
-                }else if(valorAgua == 750){
-                    imgGarrafa.setImageResource(R.drawable.garrafa3);
-                }else if(valorAgua == 1000){
-                    imgGarrafa.setImageResource(R.drawable.garrafa4);
-                }else if(valorAgua == 1250){
-                    imgGarrafa.setImageResource(R.drawable.garrafa5);
-                }else if(valorAgua == 1500){
-                    imgGarrafa.setImageResource(R.drawable.garrafa6);
-                }else if(valorAgua == 1750){
-                    imgGarrafa.setImageResource(R.drawable.garrafa7);
-                }else if(valorAgua == 2000){
-                    imgGarrafa.setImageResource(R.drawable.garrafa8);
-                }else if(valorAgua == 2250){
-                    imgGarrafa.setImageResource(R.drawable.garrafa9);
-                }else if(valorAgua == 2500){
-                    imgGarrafa.setImageResource(R.drawable.garrafa10);
-                }else if(valorAgua == 2750){
-                    imgGarrafa.setImageResource(R.drawable.garrafa11);
-                }else if(valorAgua == 3000){
-                    imgGarrafa.setImageResource(R.drawable.garrafa12);
-                    tituloAgua.setText("Você concluiu sua meta! \uD83C\uDF89");
-                    texto.setText(" ");
-                    btnIngerido.setVisibility(View.GONE);
+                switch (valorAgua){
+                    case 250: imgGarrafa.setImageResource(R.drawable.garrafa1);
+                    break;
+
+                    case 500: imgGarrafa.setImageResource(R.drawable.garrafa2);
+                    break;
+
+                    case 750: imgGarrafa.setImageResource(R.drawable.garrafa3);
+                    break;
+
+                    case 1000: imgGarrafa.setImageResource(R.drawable.garrafa4);
+                    break;
+
+                    case 1250: imgGarrafa.setImageResource(R.drawable.garrafa5);
+                    break;
+
+                    case 1500: imgGarrafa.setImageResource(R.drawable.garrafa6);
+                    break;
+
+                    case 1750: imgGarrafa.setImageResource(R.drawable.garrafa7);
+                    break;
+
+                    case 2000: imgGarrafa.setImageResource(R.drawable.garrafa8);
+                    break;
+
+                    case 2250: imgGarrafa.setImageResource(R.drawable.garrafa9);
+                    break;
+
+                    case 2500: imgGarrafa.setImageResource(R.drawable.garrafa10);
+                    break;
+
+                    case 2750: imgGarrafa.setImageResource(R.drawable.garrafa11);
+                    break;
+
+                    case 3000:
+                        imgGarrafa.setImageResource(R.drawable.garrafa12);
+                        tituloAgua.setText("Você concluiu sua meta! \uD83C\uDF89");
+                        texto.setText("");
+                        btnIngerido.setVisibility(View.GONE);
+                    break;
                 }
-
-                qntdAgua.setText(valorAgua + " / 3000ml");
+                qntdAgua.setText(qtdAgua);
             }else if(!documentSnapshot.exists()){
                 imgGarrafa.setImageResource(R.drawable.garrafa0);
             }

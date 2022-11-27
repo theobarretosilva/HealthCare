@@ -54,19 +54,22 @@ public class TelaAlimentacao_add extends AppCompatActivity {
             alimentacao.setKcal(kcal);
             alimentacao.setGramas(g);
 
-            if (TelaAlimentacao.tipoAlimentacao.equals("Café da manhã")) {
-                alimentacao.salvarCafeDaManha();
-            }else if (TelaAlimentacao.tipoAlimentacao.equals("Almoço")) {
-                alimentacao.salvarAlmoco();
-            }else if (TelaAlimentacao.tipoAlimentacao.equals("Jantar")) {
-                alimentacao.salvarJantar();
-            }else if (TelaAlimentacao.tipoAlimentacao.equals("Lanches")) {
-                alimentacao.salvarLanches();
+            switch (TelaAlimentacao.tipoAlimentacao){
+                case "Café da manhã": alimentacao.salvarCafeDaManha();
+                break;
+
+                case "Almoço": alimentacao.salvarAlmoco();
+                break;
+
+                case "Jantar": alimentacao.salvarJantar();
+                break;
+
+                case "Lanches": alimentacao.salvarLanches();
+                break;
             }
 
             Toast.makeText(this, "Sucesso ao adicionar a refeição!", Toast.LENGTH_SHORT).show();
-            Intent irTelaAlimentacao2 = new Intent(this, TelaAlimentacao2.class);
-            startActivity(irTelaAlimentacao2);
+            startActivity(new Intent(TelaAlimentacao_add.this, TelaAlimentacao2.class));
         }catch (Exception e){
             Toast.makeText(this, "Não foi possível adicionar a refeição!", Toast.LENGTH_SHORT).show();
         }
@@ -74,6 +77,6 @@ public class TelaAlimentacao_add extends AppCompatActivity {
 
     public void voltarTelaAlimentacao2(View a){
         ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
-        ActivityCompat.startActivity(TelaAlimentacao_add.this, new Intent(this, TelaAlimentacao2.class), activityOptionsCompat.toBundle());
+        ActivityCompat.startActivity(TelaAlimentacao_add.this, new Intent(TelaAlimentacao_add.this, TelaAlimentacao2.class), activityOptionsCompat.toBundle());
     }
 }

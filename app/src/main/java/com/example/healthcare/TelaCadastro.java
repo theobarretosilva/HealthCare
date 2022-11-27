@@ -46,6 +46,26 @@ public class TelaCadastro extends AppCompatActivity {
         iniciarComponentes();
     }
 
+    public void iniciarComponentes(){
+        primeiroNome = findViewById(R.id.primeiroNome);
+        sobrenome = findViewById(R.id.sobrenome);
+        dataNascCadastro = findViewById(R.id.dataNascCadasatro);
+        telefoneCadastro = findViewById(R.id.telefoneCadastro);
+        enderecoCadastro = findViewById(R.id.enderecoCadastro);
+        cpfCadastro = findViewById(R.id.cpfCadastro);
+        emailCadastro = findViewById(R.id.emailCadastro);
+        senhaCadastro = findViewById(R.id.senhaCadastro);
+        cadastrarUsu = findViewById(R.id.cadastrarUsu);
+        mostrarSenhaCadastro = findViewById(R.id.mostrarSenhaCadastro);
+        receberNewsLetter = findViewById(R.id.receberNews);
+
+        spinnerSexo = findViewById(R.id.sexoCadastro);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, R.layout.spi_elemento, sexo);
+        adapter3.setDropDownViewResource(R.layout.spi_dropdown_elemento);
+        spinnerSexo.setAdapter(adapter3);
+        spinnerSexo.setSelection(0, false);
+    }
+
     public void verificaPreenchimento(View k){
         String sexo = spinnerSexo.getSelectedItem().toString();
 
@@ -66,9 +86,9 @@ public class TelaCadastro extends AppCompatActivity {
         else if (dataNascCadastro.getText().length() == 0){
             dataNascCadastro.setError("Preencha a sua data de nascimento");
         }
-//        else if(diaNasc < 1 || diaNasc > 31 || mesNasc < 1 || mesNasc > 12 || anoNasc < 1920 || anoNasc > anoAtual){
-//            dataNascCadastro.setError("Insira uma data de nascimento válida");
-//        }
+        else if(diaNasc < 1 || diaNasc > 31 || mesNasc < 1 || mesNasc > 12 || anoNasc < 1920 || anoNasc > anoAtual){
+            dataNascCadastro.setError("Insira uma data de nascimento válida");
+        }
         else if (telefoneCadastro.getText().length() == 0){
             telefoneCadastro.setError("Insira o seu telefone");
         }
@@ -93,26 +113,6 @@ public class TelaCadastro extends AppCompatActivity {
         else{
             CadastrarUsuario(k);
         }
-    }
-
-    public void iniciarComponentes(){
-        primeiroNome = findViewById(R.id.primeiroNome);
-        sobrenome = findViewById(R.id.sobrenome);
-        dataNascCadastro = findViewById(R.id.dataNascCadasatro);
-        telefoneCadastro = findViewById(R.id.telefoneCadastro);
-        enderecoCadastro = findViewById(R.id.enderecoCadastro);
-        cpfCadastro = findViewById(R.id.cpfCadastro);
-        emailCadastro = findViewById(R.id.emailCadastro);
-        senhaCadastro = findViewById(R.id.senhaCadastro);
-        cadastrarUsu = findViewById(R.id.cadastrarUsu);
-        mostrarSenhaCadastro = findViewById(R.id.mostrarSenhaCadastro);
-        receberNewsLetter = findViewById(R.id.receberNews);
-
-        spinnerSexo = findViewById(R.id.sexoCadastro);
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, R.layout.spi_elemento, sexo);
-        adapter3.setDropDownViewResource(R.layout.spi_dropdown_elemento);
-        spinnerSexo.setAdapter(adapter3);
-        spinnerSexo.setSelection(0, false);
     }
 
     public void CadastrarUsuario(View v){

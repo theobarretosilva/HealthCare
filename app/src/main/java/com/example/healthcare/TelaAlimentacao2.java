@@ -47,7 +47,6 @@ public class TelaAlimentacao2 extends AppCompatActivity {
         iniciarComponentes();
         recuperarAlimentos();
         configReciclerView();
-        tipoAlimentacao.setText(TelaAlimentacao.tipoAlimentacao);
     }
 
     private void iniciarComponentes(){
@@ -58,6 +57,7 @@ public class TelaAlimentacao2 extends AppCompatActivity {
         textSemAlimento = findViewById(R.id.textSemAlimento);
         imgSemAlimento = findViewById(R.id.imgSemAlimento);
         maisAlimento = findViewById(R.id.maisAlimento);
+        tipoAlimentacao.setText(TelaAlimentacao.tipoAlimentacao);
     }
 
     @Override
