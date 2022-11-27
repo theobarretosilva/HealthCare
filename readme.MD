@@ -1,6 +1,6 @@
-<h1 align="center" >HealthCare</h1>
 
-<div style="display: inline_block" align="center">
+<div style="display: flex"; align="center";>
+  <h1>HealthCare</h1>
   <img width="200px" align="center" src="https://user-images.githubusercontent.com/108769434/204153551-719b1e64-a89c-4b58-bfff-2b6af288be65.png" />
 </div>
 
@@ -10,10 +10,12 @@
 
   Além disso, para tornar a experiência ainda melhor contamos com um pacote premium, com funções que podem encaminhar o paciente para clínicas parceiras e acessar seus resultados de exames sem sair de casa.
   
+  Para saber mais entre em nosso <a href="https://health-care-site.vercel.app/">website</a>
+  
   ## 📐 Layout
 
 <div>
- // <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20de%20cadastro.png" width="450"/>
+  <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20de%20cadastro.png" width="450"/>
   <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20de%20login.png" width="450"/>
   <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20inicial.png" width="450"/>
   <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20de%20detalhes%20do%20disp.png" width="450"/>
@@ -27,7 +29,18 @@
 
 <div style="display: inline_block"; align= "center"; >
 <br>
-  <img align="center" alt="Firebase" height="80px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg">
-  <img align="center" alt="Android Studio" height="80px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg">
-  <img align="center" alt="JAVA" height="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg">
+  <img align="center" alt="Firebase" height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg">
+  <img align="center" alt="Android Studio" height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg">
+  <img align="center" alt="JAVA" height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg">
 </div>
+
+## Autores
+
+ <div align="center"; margin="0">
+  <img height="550" src="https://user-images.githubusercontent.com/108769434/204157149-493ba9d1-8fa9-4dd5-95dd-0508b3403983.png">
+ </div>
+
+
+
+<br>
+Feito com ❤️ pela equipe HealthCare 👋🏽 Entre em contato!
