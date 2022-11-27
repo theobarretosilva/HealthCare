@@ -119,7 +119,6 @@ public class TelaCadastro extends AppCompatActivity {
     }
 
     public void CadastrarUsuario(){
-
         String email = emailCadastro.getText().toString();
         String senha = senhaCadastro.getText().toString();
 

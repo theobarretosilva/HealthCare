@@ -3,6 +3,7 @@ package com.example.healthcare;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,10 @@ public class AdapterMedicamento extends RecyclerView.Adapter<AdapterMedicamento.
         holder.qtdMedicamento.setText(medicamento.getQtdMedicamento() + " Uni.");
         holder.mgDosagemMedicamento.setText(medicamento.getMgDosagemMedicamento() + " mg/ml");
         holder.horarioMedicamento.setText(medicamento.getHorarioMedicamento());
+//        holder.btnIngerido.setOnClickListener(view -> {
+//            holder.btnIngerido.setText("Ingerido");
+//            holder.btnIngerido.setEnabled(false);
+//        });
     }
 
     @Override
@@ -43,6 +48,7 @@ public class AdapterMedicamento extends RecyclerView.Adapter<AdapterMedicamento.
     static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView nomeMedicamento, qtdMedicamento, mgDosagemMedicamento, horarioMedicamento;
+        Button btnIngerido;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -50,6 +56,7 @@ public class AdapterMedicamento extends RecyclerView.Adapter<AdapterMedicamento.
             qtdMedicamento = itemView.findViewById(R.id.qtdMedi);
             mgDosagemMedicamento = itemView.findViewById(R.id.mgDosagemMedi);
             horarioMedicamento = itemView.findViewById(R.id.horaMedi);
+            btnIngerido = itemView.findViewById(R.id.ingeridoMedica);
         }
     }
 }
