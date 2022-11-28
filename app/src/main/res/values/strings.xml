@@ -68,4 +68,6 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_menu_lateral">MenuLateral</string>
+
+    <string name="server_client_id">120097756940-g2ptut08sfjv0cpiifau0jspb8rnvphf.apps.googleusercontent.com</string>
 </resources>

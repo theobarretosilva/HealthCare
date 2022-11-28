@@ -27,7 +27,7 @@ public class TelaCadastro extends AppCompatActivity {
 
     EditText primeiroNome, sobrenome, dataNascCadastro, telefoneCadastro, enderecoCadastro, cpfCadastro, emailCadastro, senhaCadastro;
     Button cadastrarUsu;
-    CheckBox mostrarSenhaCadastro, receberNewsLetter;
+    CheckBox mostrarSenhaCadastro, aceitarDireitos;
 
     String[] sexo = new String []{"Sexo", "Feminino", "Masculino"};
     Spinner spinnerSexo;
@@ -53,7 +53,7 @@ public class TelaCadastro extends AppCompatActivity {
         senhaCadastro = findViewById(R.id.senhaCadastro);
         cadastrarUsu = findViewById(R.id.cadastrarUsu);
         mostrarSenhaCadastro = findViewById(R.id.mostrarSenhaCadastro);
-        receberNewsLetter = findViewById(R.id.receberNews);
+        aceitarDireitos = findViewById(R.id.aceitarDireitos);
 
         spinnerSexo = findViewById(R.id.sexoCadastro);
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, R.layout.spi_elemento, sexo);
@@ -113,6 +113,8 @@ public class TelaCadastro extends AppCompatActivity {
             emailCadastro.setError("Insira um email válido!");
         } else if(senhaCadastro.getText().length() < 8){
             senhaCadastro.setError("A sua deve ter pelo menos 8 caracteres!");
+        } else if(!aceitarDireitos.isChecked()){
+            aceitarDireitos.setError("Você deve aceitar o uso dos seus dados!");
         } else {
             CadastrarUsuario();
         }
@@ -169,10 +171,8 @@ public class TelaCadastro extends AppCompatActivity {
         }
     }
 
-    public void receberNewsLetter(View r){
-        if(receberNewsLetter.isChecked()){
-            Toast.makeText(this, "A partir de agora você receberá nossas NewsLetter", Toast.LENGTH_LONG).show();
-        }
+    public void irTelaAhQuePena(View a){
+        startActivity(new Intent(TelaCadastro.this, TelaAhQuePena.class));
     }
 
 }

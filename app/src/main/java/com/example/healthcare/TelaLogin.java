@@ -11,14 +11,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 
 public class TelaLogin extends AppCompatActivity {
@@ -34,6 +43,8 @@ public class TelaLogin extends AppCompatActivity {
     SignInButton btnGoogle;
     private GoogleSignInClient mGoogleSignInClient;
     public static final int RC_SIGN_IN = 123;
+    private FirebaseAuth mAuth;
+    AlertDialog.Builder ad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +53,16 @@ public class TelaLogin extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
+        ad = new AlertDialog.Builder(this);
+        mAuth = FirebaseAuth.getInstance();
+
         iniciarComponentes();
         btnGoogle.setOnClickListener(view -> {
             signIn();
         });
         requisita();
+
+
     }
 
     public void iniciarComponentes(){
@@ -70,6 +86,38 @@ public class TelaLogin extends AppCompatActivity {
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, (OnCompleteListener<AuthResult>) task -> {
+                    if (task.isSuccessful()) {
+                        Intent i = new Intent(TelaLogin.this, TelaConteudos.class);
+                        startActivity(i);
+                    } else {
+                        ad.setTitle("Falha de Autenticação!");
+                        ad.setMessage("Usuário ou Senha Incorreta");
+                        ad.show();
+                    }
+                });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account.getIdToken());
+            } catch (ApiException e) {
+//                ad.setTitle("Falha de Login!");
+//                ad.setMessage("Algo inesperado aconteceu!");
+//                ad.show();
+            }
+        }
     }
 
     public void autenticarUsuario(View a){
@@ -140,7 +188,10 @@ public class TelaLogin extends AppCompatActivity {
     }
 
     public void irTelaCadastro(View i){
-        Intent irTelaCadastro = new Intent(this, TelaCadastro.class);
-        startActivity(irTelaCadastro);
+        startActivity(new Intent(TelaLogin.this, TelaCadastro.class));
+    }
+
+    public void irTelaAhQuePena(View a){
+        startActivity(new Intent(TelaLogin.this, TelaAhQuePena.class));
     }
 }

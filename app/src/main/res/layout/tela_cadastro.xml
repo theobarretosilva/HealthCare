@@ -202,14 +202,13 @@
       app:layout_constraintTop_toBottomOf="@+id/emailCadastro" />
 
   <CheckBox
-      android:id="@+id/receberNews"
+      android:id="@+id/aceitarDireitos"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="30dp"
       android:buttonTint="#000000"
       android:fontFamily="@font/urbanist"
-      android:onClick="receberNewsLetter"
-      android:text="@string/receberNewsletter"
+      android:text="Eu aceito o uso dos meus dados"
       android:textColor="#000000"
       android:textSize="15sp"
       app:layout_constraintStart_toStartOf="parent"
@@ -233,7 +232,7 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/receberNews"
+      app:layout_constraintTop_toBottomOf="@+id/aceitarDireitos"
       app:layout_constraintVertical_bias="0.0" />
 
   <CheckBox
@@ -275,9 +274,10 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="95dp"
       android:fontFamily="@font/urbanist"
+      android:onClick="irTelaAhQuePena"
       android:text="@string/cadastreSeComo"
       android:textColor="#000000"
-      android:textSize="16sp"
+      android:textSize="17sp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
@@ -291,9 +291,10 @@
       android:layout_marginStart="4dp"
       android:layout_marginEnd="77dp"
       android:fontFamily="@font/urbanist"
+      android:onClick="irTelaAhQuePena"
       android:text="@string/empresa"
       android:textColor="#073C6D"
-      android:textSize="16sp"
+      android:textSize="17sp"
       android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="@+id/textView81"
       app:layout_constraintEnd_toEndOf="parent"
