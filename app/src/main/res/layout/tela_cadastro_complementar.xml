@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginBottom="120dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:contentDescription="@string/logoHealthCare"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
@@ -145,7 +145,7 @@
         android:onClick="irTiposBiotipoInternet"
         android:text="Não sabe o seu biotipo?"
         android:textColor="#073C6D"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

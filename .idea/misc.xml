@@ -21,6 +21,11 @@
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.107" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/drawable/ic_launcher_background.xml" value="0.107" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/font/font_urbanist.xml" value="0.38564102564102565" />
+        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout-large/tela_agua.xml" value="0.33" />
+        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout-normal/tela_agua.xml" value="0.22894736842105262" />
+        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout-normal/tela_ah_que_pena.xml" value="0.25" />
+        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout-small/tela_agua.xml" value="2.0" />
+        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout-xlarge/tela_agua.xml" value="0.271875" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/activity_tela_perfil.xml" value="0.3484375" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/card_clinica_vinculada.xml" value="0.29743589743589743" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/card_premium.xml" value="0.3625" />
@@ -37,8 +42,8 @@
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/spi_dropdown_elemento2.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/spi_elemento.xml" value="0.3625" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/spinner_theclub.xml" value="0.3614583333333333" />
-        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_agua.xml" value="0.22" />
-        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_ah_que_pena.xml" value="0.33" />
+        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_agua.xml" value="0.33" />
+        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_ah_que_pena.xml" value="1.5" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_alimentacao.xml" value="0.25" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_alimentacao1.xml" value="0.5" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_alimentacao2.xml" value="0.33" />
@@ -67,6 +72,7 @@
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_peso.xml" value="0.5" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_peso_imc.xml" value="0.9" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_premium.xml" value="0.33" />
+        <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_que_pena.xml" value="0.33" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_sono.xml" value="0.3625" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_sono_add.xml" value="0.67" />
         <entry key="..\:/Users/barre/AndroidStudioProjects/HealthCare-master/app/src/main/res/layout/tela_sono_adicionar.xml" value="0.5" />

@@ -53,7 +53,6 @@ public class TelaAgua extends AppCompatActivity {
         tituloAgua = findViewById(R.id.tituloAgua);
         texto = findViewById(R.id.texto);
         btnIngerido = findViewById(R.id.btnIngerido);
-        dataAtual.setText(dataHojeBarra);
     }
 
     public void mandarAguaBD(View r){
@@ -138,6 +137,7 @@ public class TelaAgua extends AppCompatActivity {
                 imgGarrafa.setImageResource(R.drawable.garrafa0);
             }
         });
+        dataAtual.setText(dataHojeBarra);
     }
 
     public void voltarTelaAgua(View t){
