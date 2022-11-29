@@ -116,7 +116,7 @@ public class TelaCadastro extends AppCompatActivity {
         } else if(!aceitarDireitos.isChecked()){
             aceitarDireitos.setError("Você deve aceitar o uso dos seus dados!");
         } else {
-            salvarDadosCadastro();
+            CadastrarUsuario();
         }
     }
 
@@ -125,40 +125,38 @@ public class TelaCadastro extends AppCompatActivity {
         String senha = senhaCadastro.getText().toString();
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha)
-            .addOnSuccessListener(authResult -> {
-                salvarDadosCadastro();
-                startActivity(new Intent(TelaCadastro.this, TelaCadastroComplementar.class));
-            })
-            .addOnFailureListener(e -> {
-                try {
-                    throw e.getCause();
-                }catch (FirebaseAuthUserCollisionException exception){
-                    emailCadastro.setError("Esta conta de email já está cadastrada!");
-                }catch (FirebaseAuthInvalidCredentialsException exception){
-                    emailCadastro.setError("Email inválido!");
-                }catch (Exception exception){
-                    Toast.makeText(this, "Erro ao cadastrar o usuário", Toast.LENGTH_LONG).show();
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                }
-            });
-    }
-
-    public void salvarDadosCadastro(){
-        try {
-            CadastroUsuario cadastroUsuario = new CadastroUsuario();
-            cadastroUsuario.setPrimeiroNome(primeiroNome.getText().toString());
-            cadastroUsuario.setSobrenome(sobrenome.getText().toString());
-            cadastroUsuario.setDataNascimento(dataNascCadastro.getText().toString());
-            cadastroUsuario.setTelefone(telefoneCadastro.getText().toString());
-            cadastroUsuario.setEndereco(enderecoCadastro.getText().toString());
-            cadastroUsuario.setCpf(cpfCadastro.getText().toString());
-            cadastroUsuario.setSexo(spinnerSexo.getSelectedItem().toString());
-            cadastroUsuario.setEmail(emailCadastro.getText().toString());
-            cadastroUsuario.setSenha(senhaCadastro.getText().toString());
-        }catch (Exception e){
-            Toast.makeText(this, "Não foi possível fazer o seu cadastro. Tente novamente mais tarde!", Toast.LENGTH_LONG).show();
-        }
+                .addOnSuccessListener(authResult -> {
+                    try {
+                        CadastroUsuario cadastroUsuario = new CadastroUsuario(
+                                primeiroNome.getText().toString(),
+                                sobrenome.getText().toString(),
+                                dataNascCadastro.getText().toString(),
+                                telefoneCadastro.getText().toString(),
+                                enderecoCadastro.getText().toString(),
+                                cpfCadastro.getText().toString(),
+                                spinnerSexo.getSelectedItem().toString(),
+                                emailCadastro.getText().toString(),
+                                senhaCadastro.getText().toString()
+                        );
+                        cadastroUsuario.cadastrarUsuario();
+                        startActivity(new Intent(TelaCadastro.this, TelaCadastroComplementar.class));
+                    }catch (Exception e){
+                        Toast.makeText(this, "Não foi possível fazer o seu cadastro. Tente novamente mais tarde!", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    try {
+                        throw e.getCause();
+                    }catch (FirebaseAuthUserCollisionException exception){
+                        emailCadastro.setError("Esta conta de email já está cadastrada!");
+                    }catch (FirebaseAuthInvalidCredentialsException exception){
+                        emailCadastro.setError("Email inválido!");
+                    }catch (Exception exception){
+                        Toast.makeText(this, "Erro ao cadastrar o usuário", Toast.LENGTH_LONG).show();
+                    } catch (Throwable throwable) {
+                        throwable.printStackTrace();
+                    }
+                });
     }
 
     public void mostrarSenha(View m) {

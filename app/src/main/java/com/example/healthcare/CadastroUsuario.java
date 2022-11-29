@@ -6,7 +6,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CadastroUsuario {
+
     String primeiroNome, sobrenome, dataNascimento, telefone, endereco, cpf, sexo, email, senha;
+
+    public CadastroUsuario(String primeiroNome, String sobrenome, String dataNascimento, String telefone, String endereco, String cpf, String sexo, String email, String senha) {
+        this.primeiroNome = primeiroNome;
+        this.sobrenome = sobrenome;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.cpf = cpf;
+        this.sexo = sexo;
+        this.email = email;
+        this.senha = senha;
+    }
 
     public void cadastrarUsuario(){
         Map<String, Object> cadastroUsuario = new HashMap<>();
@@ -28,8 +41,6 @@ public class CadastroUsuario {
                 .collection("Informações pessoais")
                 .document("Informações de cadastro");
         ns.set(cadastroUsuario);
-
-
     }
 
     public String getPrimeiroNome() {

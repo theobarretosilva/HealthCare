@@ -34,6 +34,8 @@ public class TelaCadastroComplementar extends AppCompatActivity{
     int horaAtual = dataAtual.getHours();
     int minutosAtual = dataAtual.getMinutes();
 
+    CadastroUsuario cadastroUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +75,6 @@ public class TelaCadastroComplementar extends AppCompatActivity{
 
     public void mandarCadastroCompleBD(){
         try {
-            CadastroUsuario cadastroUsuario = new CadastroUsuario();
             cadastroUsuario.cadastrarUsuario();
             CadastroComplementarUsuario cadastroComplementarUsuario = new CadastroComplementarUsuario();
             cadastroComplementarUsuario.setPeso(parseInt(peso.getText().toString()));

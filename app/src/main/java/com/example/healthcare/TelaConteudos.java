@@ -61,6 +61,8 @@ public class TelaConteudos extends AppCompatActivity {
         examesLogo.setOnClickListener(view -> dialog.show());
         clinicasBox.setOnClickListener(v -> dialog.show());
         clinicasLogo.setOnClickListener(v -> dialog.show());
+
+        System.out.println(FirebaseAuth.getInstance().getCurrentUser().getUid());
     }
 
     @Override
