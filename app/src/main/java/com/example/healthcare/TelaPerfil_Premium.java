@@ -161,15 +161,17 @@ public class TelaPerfil_Premium extends AppCompatActivity {
     }
 
     public void voltarTelaConteudosPremium(View d){
-        Intent voltarTelaConteudosPremium = new Intent(this, TelaConteudos_Premium.class);
         ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
-        ActivityCompat.startActivity(TelaPerfil_Premium.this, voltarTelaConteudosPremium, activityOptionsCompat.toBundle());
+        ActivityCompat.startActivity(
+                TelaPerfil_Premium.this,
+                new Intent(this, TelaConteudos_Premium.class),
+                activityOptionsCompat.toBundle()
+        );
     }
 
     public void logoff(View a){
         FirebaseAuth.getInstance().signOut();
-        Intent logout = new Intent(TelaPerfil_Premium.this, TelaInicial.class);
-        startActivity(logout);
+        this.finishAffinity();
     }
 
     public void verificaPermissaoGaleriaP(View viewp){

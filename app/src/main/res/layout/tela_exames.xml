@@ -269,26 +269,13 @@
         app:layout_constraintTop_toTopOf="@+id/textView167"
         app:srcCompat="@drawable/loading" />
 
-    <ImageView
-        android:id="@+id/imageView56"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView162"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/logo2_saude" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="0dp"
-        android:layout_height="350dp"
+        android:layout_height="0dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="190dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView53"
         app:layout_constraintStart_toStartOf="@+id/textView147"
         app:layout_constraintTop_toBottomOf="@+id/textView147"

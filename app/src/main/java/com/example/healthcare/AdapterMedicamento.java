@@ -1,5 +1,6 @@
 package com.example.healthcare;
 
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Date;
 import java.util.List;
 
 public class AdapterMedicamento extends RecyclerView.Adapter<AdapterMedicamento.MyViewHolder> {
@@ -34,10 +36,12 @@ public class AdapterMedicamento extends RecyclerView.Adapter<AdapterMedicamento.
         holder.qtdMedicamento.setText(medicamento.getQtdMedicamento() + " Uni.");
         holder.mgDosagemMedicamento.setText(medicamento.getMgDosagemMedicamento() + " mg/ml");
         holder.horarioMedicamento.setText(medicamento.getHorarioMedicamento());
-//        holder.btnIngerido.setOnClickListener(view -> {
-//            holder.btnIngerido.setText("Ingerido");
-//            holder.btnIngerido.setEnabled(false);
-//        });
+        Date data = new Date();
+        int horaAtual = data.getHours();
+        int minutoAtual = data.getMinutes();
+        String time = horaAtual + ":" + minutoAtual;
+
+        Time tempo = new Time(medicamento.getHorarioMedicamento());
     }
 
     @Override

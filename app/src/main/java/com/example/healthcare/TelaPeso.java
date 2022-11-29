@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -336,10 +337,13 @@ public class TelaPeso extends AppCompatActivity {
                     .collection("Informações pessoais")
                     .document("Cadastro complementar");
             dr.addSnapshotListener((documentSnapshot, error) -> {
-                if (documentSnapshot != null){
+                if (documentSnapshot.exists()){
                     Long peso = documentSnapshot.getLong("Peso (kg)");
-                    if (!(peso == pesoTela)){
-
+                    if (pesoTela != peso){
+                        dr.update("Peso (kg)", pesoTela)
+                                .addOnSuccessListener(unused -> {
+                                    Toast.makeText(TelaPeso.this, "Sucesso ao editar o seu peso!", Toast.LENGTH_SHORT).show();
+                                });
                     }
                 }
             });
