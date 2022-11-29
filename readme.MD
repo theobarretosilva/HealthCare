@@ -13,16 +13,32 @@
   Para saber mais entre em nosso <a href="https://health-care-site.vercel.app/">website</a>
   
   ## 📐 Layout
+  
+  <div align="center">
+  <img margin="100"; src="https://user-images.githubusercontent.com/108769434/204531649-32465b61-cc1a-49db-b1c3-a46a9425fc07.jpeg" width="180"/>
+  <img src="https://user-images.githubusercontent.com/108769434/204531892-c9715558-3850-4124-bc60-b1a94ca44f43.jpeg" width="180"/>
+  <img src="https://user-images.githubusercontent.com/108769434/204532114-974145ea-101a-48e7-8ec8-7bce1e1dd7cf.jpeg" width="180"/>
+  <img src="https://user-images.githubusercontent.com/108769434/204532226-eb394a43-3bc7-442d-b12c-18d8bcb053ea.jpeg" width="180"/>
+  <img src="https://user-images.githubusercontent.com/108769434/204532553-4b8f0a6d-f6c7-4acf-bc4e-39eee0dd1a53.jpeg" width="180"/>
+</div>
+  
+  ### Funcionalidades gratuitas
 
-<div>
-  <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20de%20cadastro.png" width="450"/>
-  <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20de%20login.png" width="450"/>
-  <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20inicial.png" width="450"/>
-  <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20de%20detalhes%20do%20disp.png" width="450"/>
-  <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20de%20dispositivos.png" width="450"/>
-  <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20de%20perfil%20do%20usuario.png" width="450"/>
-  <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Tela%20de%20edicao%20de%20dados%20do%20usu.png" width="450"/>
-  <img src="https://github.com/theobarretosilva/Connect-Lab/blob/main/Connect-Lab/src/assets/imgs/Modal%20add%20disp.png" width="450"/>
+<div align="center" margin="0";>
+  <img src="https://user-images.githubusercontent.com/108769434/204548772-da65ab03-8f6d-42d9-b47b-8ed2aa7ca2c5.jpeg" width="180"/>
+  <img src="https://user-images.githubusercontent.com/108769434/204614490-fcc43f13-53ff-4fdf-9ff7-c7a54270f338.jpeg" width="180"/>
+  <img src="https://user-images.githubusercontent.com/108769434/204535443-655b3b47-2afd-4a16-b19d-1c03364cc551.jpeg" width="180"/>
+  <img src="https://user-images.githubusercontent.com/108769434/204551642-89b221c6-13c6-4e5e-93c1-9208a4fbc831.jpeg" width="180"/>
+  <img src="https://user-images.githubusercontent.com/108769434/204553400-0dd91bf2-7905-466e-8330-ae04aa5404ad.jpeg" width="180"/>
+</div>
+
+### Funcionalidades Premium
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/108769434/204549467-3f0f452f-5a67-407b-a408-60c1d81de408.jpeg" width="180"/>
+
+  <img src="https://user-images.githubusercontent.com/108769434/204614785-2b28cc34-4b1f-4d26-837c-90d1f4b938ce.jpeg" width="180"/>
+  <img src="https://user-images.githubusercontent.com/108769434/204613622-65e511a8-1836-475c-86e2-da677e8ea293.jpeg" width="180"/>
 </div>
 
 ## 🛠 Tecnologias utilizadas
