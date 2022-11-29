@@ -28,7 +28,7 @@ public class TelaInicial extends AppCompatActivity {
 
         login.setOnClickListener(v -> irTelaLogin());
         cadastrar.setOnClickListener(v -> irTelaCadastro());
-        verificaLogado();
+//        verificaLogado();
     }
 
     public void verificaLogado(){

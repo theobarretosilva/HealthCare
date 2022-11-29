@@ -81,7 +81,7 @@ public class TelaCadastroComplementar extends AppCompatActivity{
             cadastroComplementarUsuario.setAltura(parseInt(altura.getText().toString()));
             cadastroComplementarUsuario.setBiotipo(biotipo.getSelectedItem().toString());
             cadastroComplementarUsuario.cadastrarComplementoUsuario();
-
+            System.out.println("Ei entrou");
             startActivity(new Intent(this, TelaConteudos.class));
         }catch (Exception e){
             Toast.makeText(this, "Não foi possivel continuar o seu cadastro, tente novamente mais tarde!", Toast.LENGTH_LONG).show();
