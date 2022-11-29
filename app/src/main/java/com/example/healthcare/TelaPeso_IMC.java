@@ -95,40 +95,6 @@ public class TelaPeso_IMC extends AppCompatActivity {
         System.out.println(imc);
         Toast.makeText(this, "Seu resultado: "+res, Toast.LENGTH_SHORT).show();
 
-        if(idadePessoa> 1 && idadePessoa<18){
-//            Magreza: <17,3 (< 47.1 Kg)
-//            Normal: 17.3 a 25.5 (47.1 a 69.4 Kg)
-//            Sobrepeso: 25.5 a 29.7  (69.4 a 80.9 Kg)
-//            Obesidade: > 29.7 (> 80.9 Kg)
-
-            if(res < 17.3){
-                String magreza = "";
-            }else if(res>17.3  && res<25.5 ){
-                String normal = "";
-            }else if(res>25.5  && res<60){
-                String sobrepeso = "";
-            }else if(res>29.7){
-                String obesidade = "";
-            }else{
-                Toast.makeText(this, "Reveja suas informações!", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(idadePessoa> 18 && idadePessoa<60){
-            String magreza = "";
-            String normal = "";
-            String sobrepeso = "";
-            String obesidade = "";
-        }
-
-        if(idadePessoa> 60 && idadePessoa<101 &&  genero.equals("feminino")){
-
-        }
-        if(idadePessoa> 60 && idadePessoa<101 &&  genero.equals("masculino")){
-
-        }
-
         openModalImc(res);
     }
 
@@ -160,12 +126,12 @@ public class TelaPeso_IMC extends AppCompatActivity {
 
         resIMC.setText(""+valor);
 
-        if(idadePessoa> 1 && idadePessoa<18){
+        if(idadePessoa> 1 && idadePessoa<65){
             if(valor < 17.3){
                tipo.setText("Magreza");
             }else if(valor>17.3  && valor<25.5 ){
                 tipo.setText("Normal");
-            }else if(valor>25.5  && valor<60){
+            }else if(valor>25.5  && valor<29.7){
                 tipo.setText("Sobrepeso");
             }else if(valor>29.7){
                 tipo.setText("Obesidade");
@@ -175,19 +141,20 @@ public class TelaPeso_IMC extends AppCompatActivity {
 
         }
 
-        if(idadePessoa> 18 && idadePessoa<60){
-            String magreza = "";
-            String normal = "";
-            String sobrepeso = "";
-            String obesidade = "";
+        if(idadePessoa>= 65 ){
+            if(valor <=20.0){
+                tipo.setText("Magreza");
+            }else if(valor>20.0  && valor<=30.0 ){
+                tipo.setText("Normal");
+            }else if(valor>30.0  && valor<=35.0){
+                tipo.setText("Sobrepeso");
+            }else if(valor>35.0){
+                tipo.setText("Obesidade");
+            }else{
+                Toast.makeText(this, "Reveja suas informações!", Toast.LENGTH_SHORT).show();
+            }
         }
 
-        if(idadePessoa> 60 && idadePessoa<101 &&  genero.equals("feminino")){
-
-        }
-        if(idadePessoa> 60 && idadePessoa<101 &&  genero.equals("masculino")){
-
-        }
 
         dialog.show();
     }

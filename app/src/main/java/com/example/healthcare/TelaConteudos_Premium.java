@@ -73,7 +73,7 @@ public class TelaConteudos_Premium extends AppCompatActivity {
             .document("Informações de cadastro");
     documentReference.addSnapshotListener((snapshot, error) -> {
       if(snapshot.exists()){
-        String nome =  snapshot.getString("Nome completo");
+        String nome =  snapshot.getString("Primeiro nome");
         String email =  snapshot.getString("Email");
 
         nome_user.setText(nome);

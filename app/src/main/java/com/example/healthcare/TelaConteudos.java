@@ -147,7 +147,7 @@ public class TelaConteudos extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException error) {
                 if(snapshot.exists()){
-                    String nome =  snapshot.getString("Nome completo");
+                    String nome =  snapshot.getString("Primeiro nome");
                     String email =  snapshot.getString("Email");
 
                     nome_user.setText(nome);
