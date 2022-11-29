@@ -9,9 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class AdapterMedicamento extends RecyclerView.Adapter<AdapterMedicamento.MyViewHolder> {
@@ -35,18 +32,18 @@ public class AdapterMedicamento extends RecyclerView.Adapter<AdapterMedicamento.
 
         holder.nomeMedicamento.setText(medicamento.getNomeMedicamento());
         holder.qtdMedicamento.setText(medicamento.getQtdMedicamento() + " Uni.");
-        holder.mgDosagemMedicamento.setText(medicamento.getMgDosagemMedicamento() + " mg/ml");
+        holder.mgDosagemMedicamento.setText(medicamento.getMgDosagemMedicamento() + " mg ou ml");
         holder.horarioMedicamento.setText(medicamento.getHorarioMedicamento());
 
-        Date data = new Date(medicamento.getHorarioMedicamento());
-
-        ZonedDateTime dataAtual = ZonedDateTime.now();
-        ZonedDateTime pedido = data.toInstant().atZone(ZoneId.systemDefault());
-
-        if (pedido.toLocalTime().isAfter(dataAtual.toLocalTime())){
-            holder.btnIngerido.setText("Ingerido!");
-            holder.btnIngerido.setEnabled(false);
-        }
+//        Date data = new Date(medicamento.getHorarioMedicamento());
+//
+//        ZonedDateTime dataAtual = ZonedDateTime.now();
+//        ZonedDateTime pedido = data.toInstant().atZone(ZoneId.systemDefault());
+//
+//        if (pedido.toLocalTime().isAfter(dataAtual.toLocalTime())){
+//            holder.btnIngerido.setText("Ingerido!");
+//            holder.btnIngerido.setEnabled(false);
+//        }
     }
 
     @Override

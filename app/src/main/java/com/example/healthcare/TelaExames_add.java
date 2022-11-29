@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 public class TelaExames_add extends AppCompatActivity {
 
@@ -55,8 +57,7 @@ public class TelaExames_add extends AppCompatActivity {
 
                 exame.salvarExame();
                 Toast.makeText(this, "Sucesso ao adicionar o exame!", Toast.LENGTH_SHORT).show();
-                Intent irTelaExames = new Intent(TelaExames_add.this, TelaExames.class);
-                startActivity(irTelaExames);
+                startActivity(new Intent(TelaExames_add.this, TelaExames.class));
             }catch (Exception e){
                 Toast.makeText(this, "Não foi possível adicionar o exame!", Toast.LENGTH_SHORT).show();
             }
@@ -64,7 +65,7 @@ public class TelaExames_add extends AppCompatActivity {
     }
 
     public void voltarTela(View h){
-        Intent voltarTelaExames = new Intent(this, TelaExames.class);
-        startActivity(voltarTelaExames);
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+        ActivityCompat.startActivity(TelaExames_add.this, new Intent(this, TelaExames.class), activityOptionsCompat.toBundle());
     }
 }

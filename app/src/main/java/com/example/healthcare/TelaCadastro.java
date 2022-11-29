@@ -156,8 +156,6 @@ public class TelaCadastro extends AppCompatActivity {
             cadastroUsuario.setSexo(spinnerSexo.getSelectedItem().toString());
             cadastroUsuario.setEmail(emailCadastro.getText().toString());
             cadastroUsuario.setSenha(senhaCadastro.getText().toString());
-
-            cadastroUsuario.cadastrarUsuario();
         }catch (Exception e){
             Toast.makeText(this, "Não foi possível fazer o seu cadastro. Tente novamente mais tarde!", Toast.LENGTH_LONG).show();
         }

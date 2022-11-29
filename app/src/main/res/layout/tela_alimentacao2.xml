@@ -74,17 +74,17 @@
         android:text="Nenhum alimento foi adicionado"
         android:textColor="#1E232C"
         android:textSize="19sp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dataAlimentacao2" />
 
     <ImageView
         android:id="@+id/imgSemAlimento"
-        android:layout_width="75dp"
+        android:layout_width="65dp"
         android:layout_height="65dp"
         android:onClick="irTelaAddAlimentacao"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

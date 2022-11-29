@@ -73,17 +73,13 @@ public class TelaCadastroComplementar extends AppCompatActivity{
 
     public void mandarCadastroCompleBD(){
         try {
+            CadastroUsuario cadastroUsuario = new CadastroUsuario();
+            cadastroUsuario.cadastrarUsuario();
             CadastroComplementarUsuario cadastroComplementarUsuario = new CadastroComplementarUsuario();
             cadastroComplementarUsuario.setPeso(parseInt(peso.getText().toString()));
             cadastroComplementarUsuario.setAltura(parseInt(altura.getText().toString()));
             cadastroComplementarUsuario.setBiotipo(biotipo.getSelectedItem().toString());
             cadastroComplementarUsuario.cadastrarComplementoUsuario();
-
-            Peso peso = new Peso();
-            peso.setPeso(parseInt(this.peso.getText().toString()));
-            peso.setDataPeso(dia + "-" + mes);
-            peso.setHoraPeso(horaAtual + ":" + minutosAtual);
-            peso.salvarPeso();
 
             startActivity(new Intent(this, TelaConteudos.class));
         }catch (Exception e){

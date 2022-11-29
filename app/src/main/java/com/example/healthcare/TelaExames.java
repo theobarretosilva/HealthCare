@@ -7,6 +7,8 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,8 +45,13 @@ public class TelaExames extends AppCompatActivity {
     }
 
     public void voltarTelaConteudos(View h){
-        Intent voltarTelaConteudos = new Intent(this, TelaConteudos_Premium.class);
-        startActivity(voltarTelaConteudos);
+        if (TelaLogin.premium) {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaExames.this, new Intent(this, TelaConteudos_Premium.class), activityOptionsCompat.toBundle());
+        } else {
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(TelaExames.this, new Intent(this, TelaConteudos.class), activityOptionsCompat.toBundle());
+        }
     }
 
     private void configReciclerView(){

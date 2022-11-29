@@ -12,15 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 
 import java.math.BigDecimal;
@@ -107,24 +102,6 @@ public class TelaPeso extends AppCompatActivity {
                 pesoAtual.setText(peso + "");
 
                 setarNaTelaIMC(res);
-            }
-        });
-
-        DatabaseReference pesoReference = FirebaseHelper.getDatabaseReference()
-                .child("Registros")
-                .child(FirebaseHelper.getUIDUsuario())
-                .child("Peso");
-        pesoReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snap : snapshot.getChildren()){
-                    Peso peso = snap.getValue(Peso.class);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
