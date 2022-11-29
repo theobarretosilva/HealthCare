@@ -16,7 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -133,6 +135,10 @@ public class TelaPeso extends AppCompatActivity {
                     pesoObesidade.setText("< 95.3 Kg");
 
                     if(valor < 20.0){
+                        fundoNormal.setVisibility(View.INVISIBLE);
+                        fundoObesidade.setVisibility(View.INVISIBLE);
+                        fundoSobrepeso.setVisibility(View.INVISIBLE);
+
                         fundoMagreza.setVisibility(View.VISIBLE);
                         magreza.setTypeface(Typeface.DEFAULT_BOLD);
                         magreza.setTextColor(getResources().getColor(R.color.white));
@@ -141,6 +147,10 @@ public class TelaPeso extends AppCompatActivity {
                         pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
                         pesoMagreza.setTextColor(getResources().getColor(R.color.white));
                     }else if(valor>20.0 && valor<=30.0){
+                        fundoMagreza.setVisibility(View.INVISIBLE);
+                        fundoObesidade.setVisibility(View.INVISIBLE);
+                        fundoSobrepeso.setVisibility(View.INVISIBLE);
+
                         fundoNormal.setVisibility(View.VISIBLE);
                         normal.setTypeface(Typeface.DEFAULT_BOLD);
                         normal.setTextColor(getResources().getColor(R.color.white));
@@ -149,6 +159,10 @@ public class TelaPeso extends AppCompatActivity {
                         pesoNormal.setTypeface(Typeface.DEFAULT_BOLD);
                         pesoNormal.setTextColor(getResources().getColor(R.color.white));
                     }else if(valor>30.0  && valor<=35.0){
+                        fundoNormal.setVisibility(View.INVISIBLE);
+                        fundoObesidade.setVisibility(View.INVISIBLE);
+                        fundoSobrepeso.setVisibility(View.INVISIBLE);
+
                         fundoSobrepeso.setVisibility(View.VISIBLE);
                         sobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
                         sobrepeso.setTextColor(getResources().getColor(R.color.white));
@@ -157,6 +171,10 @@ public class TelaPeso extends AppCompatActivity {
                         pesoSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
                         pesoSobrepeso.setTextColor(getResources().getColor(R.color.white));
                     }else if(valor>35.0){
+                        fundoMagreza.setVisibility(View.INVISIBLE);
+                        fundoNormal.setVisibility(View.INVISIBLE);
+                        fundoSobrepeso.setVisibility(View.INVISIBLE);
+
                         fundoObesidade.setVisibility(View.VISIBLE);
                         obesidade.setTypeface(Typeface.DEFAULT_BOLD);
                         obesidade.setTextColor(getResources().getColor(R.color.white));
@@ -176,6 +194,10 @@ public class TelaPeso extends AppCompatActivity {
                     pesoObesidade.setText("> 81.7 Kg");
 
                     if (valor<18.5){
+                        fundoNormal.setVisibility(View.INVISIBLE);
+                        fundoObesidade.setVisibility(View.INVISIBLE);
+                        fundoSobrepeso.setVisibility(View.INVISIBLE);
+
                         fundoMagreza.setVisibility(View.VISIBLE);
                         magreza.setTypeface(Typeface.DEFAULT_BOLD);
                         magreza.setTextColor(getResources().getColor(R.color.white));
@@ -184,6 +206,10 @@ public class TelaPeso extends AppCompatActivity {
                         pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
                         pesoMagreza.setTextColor(getResources().getColor(R.color.white));
                     } else if(valor>18.5 && valor<=24.9){
+                        fundoMagreza.setVisibility(View.INVISIBLE);
+                        fundoObesidade.setVisibility(View.INVISIBLE);
+                        fundoSobrepeso.setVisibility(View.INVISIBLE);
+
                         fundoNormal.setVisibility(View.VISIBLE);
                         normal.setTypeface(Typeface.DEFAULT_BOLD);
                         normal.setTextColor(getResources().getColor(R.color.white));
@@ -192,6 +218,10 @@ public class TelaPeso extends AppCompatActivity {
                         pesoNormal.setTypeface(Typeface.DEFAULT_BOLD);
                         pesoNormal.setTextColor(getResources().getColor(R.color.white));
                     } else if (valor>24.9 && valor<=30.0){
+                        fundoNormal.setVisibility(View.INVISIBLE);
+                        fundoObesidade.setVisibility(View.INVISIBLE);
+                        fundoMagreza.setVisibility(View.INVISIBLE);
+
                         fundoSobrepeso.setVisibility(View.VISIBLE);
                         sobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
                         sobrepeso.setTextColor(getResources().getColor(R.color.white));
@@ -200,6 +230,10 @@ public class TelaPeso extends AppCompatActivity {
                         pesoSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
                         pesoSobrepeso.setTextColor(getResources().getColor(R.color.white));
                     } else if (valor>30.0){
+                        fundoNormal.setVisibility(View.INVISIBLE);
+                        fundoMagreza.setVisibility(View.INVISIBLE);
+                        fundoSobrepeso.setVisibility(View.INVISIBLE);
+
                         fundoObesidade.setVisibility(View.VISIBLE);
                         obesidade.setTypeface(Typeface.DEFAULT_BOLD);
                         obesidade.setTextColor(getResources().getColor(R.color.white));
@@ -220,6 +254,10 @@ public class TelaPeso extends AppCompatActivity {
                         pesoObesidade.setText("> 80.9 Kg");
 
                         if(valor<17.3){
+                            fundoNormal.setVisibility(View.INVISIBLE);
+                            fundoObesidade.setVisibility(View.INVISIBLE);
+                            fundoSobrepeso.setVisibility(View.INVISIBLE);
+
                             fundoMagreza.setVisibility(View.VISIBLE);
                             magreza.setTypeface(Typeface.DEFAULT_BOLD);
                             magreza.setTextColor(getResources().getColor(R.color.white));
@@ -228,6 +266,10 @@ public class TelaPeso extends AppCompatActivity {
                             pesoMagreza.setTypeface(Typeface.DEFAULT_BOLD);
                             pesoMagreza.setTextColor(getResources().getColor(R.color.white));
                         } else if (valor>17.3 && valor<=25.5){
+                            fundoMagreza.setVisibility(View.INVISIBLE);
+                            fundoObesidade.setVisibility(View.INVISIBLE);
+                            fundoSobrepeso.setVisibility(View.INVISIBLE);
+
                             fundoNormal.setVisibility(View.VISIBLE);
                             normal.setTypeface(Typeface.DEFAULT_BOLD);
                             normal.setTextColor(getResources().getColor(R.color.white));
@@ -236,6 +278,10 @@ public class TelaPeso extends AppCompatActivity {
                             pesoNormal.setTypeface(Typeface.DEFAULT_BOLD);
                             pesoNormal.setTextColor(getResources().getColor(R.color.white));
                         } else if (valor>25.5 && valor<=29.7){
+                            fundoNormal.setVisibility(View.INVISIBLE);
+                            fundoObesidade.setVisibility(View.INVISIBLE);
+                            fundoMagreza.setVisibility(View.INVISIBLE);
+
                             fundoSobrepeso.setVisibility(View.VISIBLE);
                             sobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
                             sobrepeso.setTextColor(getResources().getColor(R.color.white));
@@ -244,6 +290,10 @@ public class TelaPeso extends AppCompatActivity {
                             pesoSobrepeso.setTypeface(Typeface.DEFAULT_BOLD);
                             pesoSobrepeso.setTextColor(getResources().getColor(R.color.white));
                         } else if (valor>29.7){
+                            fundoNormal.setVisibility(View.INVISIBLE);
+                            fundoMagreza.setVisibility(View.INVISIBLE);
+                            fundoSobrepeso.setVisibility(View.INVISIBLE);
+
                             fundoObesidade.setVisibility(View.VISIBLE);
                             obesidade.setTypeface(Typeface.DEFAULT_BOLD);
                             obesidade.setTextColor(getResources().getColor(R.color.white));
