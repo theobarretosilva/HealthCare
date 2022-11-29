@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view14" />
 
     <ImageView
-        android:id="@+id/imageView53"
+        android:id="@+id/maisExame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="irTelaAddExame"
@@ -276,9 +276,33 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="190dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView53"
+        app:layout_constraintEnd_toEndOf="@+id/maisExame"
         app:layout_constraintStart_toStartOf="@+id/textView147"
         app:layout_constraintTop_toBottomOf="@+id/textView147"
         tools:listitem="@layout/item_exame" />
+
+    <TextView
+        android:id="@+id/textSemExame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Nenhum exame foi adicionado"
+        android:textColor="#1E232C"
+        android:textSize="19sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maisExame" />
+
+    <ImageView
+        android:id="@+id/imgSemExame"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:onClick="irTelaAddExame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSemExame"
+        app:srcCompat="@drawable/adicionar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +28,9 @@ public class TelaExames extends AppCompatActivity {
     private List<Exame> exameList = new ArrayList<>();
     private RecyclerView rvExames;
 
+    TextView textSemExame;
+    ImageView maisExame, imgSemExame;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +38,46 @@ public class TelaExames extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-        rvExames = findViewById(R.id.rv);
-
+        iniciarComponentes();
         recuperaExames();
         configReciclerView();
+    }
+
+    public void iniciarComponentes(){
+        rvExames = findViewById(R.id.rv);
+        textSemExame = findViewById(R.id.textSemExame);
+        maisExame = findViewById(R.id.maisExame);
+        imgSemExame = findViewById(R.id.imgSemExame);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        DatabaseReference examesRef = FirebaseHelper.getDatabaseReference()
+                .child("Registros")
+                .child(FirebaseHelper.getUIDUsuario())
+                .child("Exames");
+        examesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.exists()){
+                    rvExames.setVisibility(View.INVISIBLE);
+                    maisExame.setVisibility(View.INVISIBLE);
+                    textSemExame.setVisibility(View.VISIBLE);
+                    imgSemExame.setVisibility(View.VISIBLE);
+                } else {
+                    rvExames.setVisibility(View.VISIBLE);
+                    maisExame.setVisibility(View.VISIBLE);
+                    textSemExame.setVisibility(View.INVISIBLE);
+                    imgSemExame.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void irTelaAddExame(View g){

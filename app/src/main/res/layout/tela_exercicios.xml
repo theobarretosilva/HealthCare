@@ -102,7 +102,7 @@
         app:layout_constraintTop_toTopOf="@+id/dataAtualExercicios" />
 
     <ImageView
-        android:id="@+id/imageView58"
+        android:id="@+id/maisExercicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -154,4 +154,28 @@
         app:layout_constraintStart_toStartOf="@+id/dataAtualExercicios"
         app:layout_constraintTop_toBottomOf="@+id/textView157"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textSemExercicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/urbanist"
+        android:text="Nenhum exercício foi adicionado"
+        android:textColor="#1E232C"
+        android:textSize="19sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView157" />
+
+    <ImageView
+        android:id="@+id/imgSemExercicio"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:onClick="irTelaAddExercicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSemExercicio"
+        app:srcCompat="@drawable/adicionar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

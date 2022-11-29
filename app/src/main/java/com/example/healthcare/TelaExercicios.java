@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +26,8 @@ import java.util.List;
 
 public class TelaExercicios extends AppCompatActivity {
 
-    TextView dataAtual;
+    TextView dataAtual, textSemExercicio;
+    ImageView maisExercicio, imgSemExercicio;
 
     private AdapterExercicio adapterExercicio;
     private List<Exercicio> exercicioList = new ArrayList<>();
@@ -38,12 +40,48 @@ public class TelaExercicios extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-        dataAtual = findViewById(R.id.dataAtualExercicios);
-        rvExercicios = findViewById(R.id.rvExercicios);
-
+        iniciarComponentes();
         setarData();
         recuperaExames();
         configRecyclerView();
+    }
+
+    public void iniciarComponentes(){
+        dataAtual = findViewById(R.id.dataAtualExercicios);
+        rvExercicios = findViewById(R.id.rvExercicios);
+        textSemExercicio = findViewById(R.id.textSemExercicio);
+        maisExercicio = findViewById(R.id.maisExercicio);
+        imgSemExercicio = findViewById(R.id.imgSemExercicio);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        DatabaseReference exerciciosRef = FirebaseHelper.getDatabaseReference()
+                .child("Registros")
+                .child(FirebaseHelper.getUIDUsuario())
+                .child("Exercicios");
+        exerciciosRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.exists()){
+                    rvExercicios.setVisibility(View.INVISIBLE);
+                    maisExercicio.setVisibility(View.INVISIBLE);
+                    textSemExercicio.setVisibility(View.VISIBLE);
+                    imgSemExercicio.setVisibility(View.VISIBLE);
+                } else {
+                    rvExercicios.setVisibility(View.VISIBLE);
+                    maisExercicio.setVisibility(View.VISIBLE);
+                    textSemExercicio.setVisibility(View.INVISIBLE);
+                    imgSemExercicio.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void configRecyclerView(){
