@@ -11,23 +11,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.identity.BeginSignInRequest;
+import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 
 public class TelaLogin extends AppCompatActivity {
@@ -41,10 +38,14 @@ public class TelaLogin extends AppCompatActivity {
     public static Boolean premium;
 
     SignInButton btnGoogle;
-    private GoogleSignInClient mGoogleSignInClient;
+    GoogleSignInClient mGoogleSignInClient;
     public static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
     AlertDialog.Builder ad;
+    private SignInClient oneTapClient;
+    private BeginSignInRequest signInRequest;
+    private static final int REQ_ONE_TAP = 1234;
+    private boolean showOneTapUI = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +59,18 @@ public class TelaLogin extends AppCompatActivity {
 
         iniciarComponentes();
         btnGoogle.setOnClickListener(view -> {
-            signIn();
+//            switch (view.getId()) {
+//                case R.id.btnGoogle:
+                    signIn();
+//                    break;
+//            }
         });
-        requisita();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("120097756940-sics663t7a1of4p3hgt0n5euedgkhnn4.apps.googleusercontent.com")
+                .requestEmail()
+                .build();
 
-
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
 
     public void iniciarComponentes(){
@@ -74,49 +82,37 @@ public class TelaLogin extends AppCompatActivity {
         logar = findViewById(R.id.logar);
     }
 
-    private void requisita() {
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-    }
-
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    private void firebaseAuthWithGoogle(String idToken) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, (OnCompleteListener<AuthResult>) task -> {
-                    if (task.isSuccessful()) {
-                        Intent i = new Intent(TelaLogin.this, TelaConteudos.class);
-                        startActivity(i);
-                    } else {
-                        ad.setTitle("Falha de Autenticação!");
-                        ad.setMessage("Usuário ou Senha Incorreta");
-                        ad.show();
-                    }
-                });
-    }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RC_SIGN_IN){
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account.getIdToken());
-            } catch (ApiException e) {
-//                ad.setTitle("Falha de Login!");
-//                ad.setMessage("Algo inesperado aconteceu!");
-//                ad.show();
-            }
+            handleSignInResult(task);
+            System.out.println("Aqui foi");
+        }
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
+            System.out.println(account.getEmail());
+            System.out.println("porra aqui não foi");
+
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            System.out.println(e.getStatusCode());
+
         }
     }
 
