@@ -116,7 +116,7 @@ public class TelaCadastro extends AppCompatActivity {
         } else if(!aceitarDireitos.isChecked()){
             aceitarDireitos.setError("Você deve aceitar o uso dos seus dados!");
         } else {
-            CadastrarUsuario();
+            salvarDadosCadastro();
         }
     }
 

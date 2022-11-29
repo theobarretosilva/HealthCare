@@ -28,6 +28,8 @@ public class CadastroUsuario {
                 .collection("Informações pessoais")
                 .document("Informações de cadastro");
         ns.set(cadastroUsuario);
+
+
     }
 
     public String getPrimeiroNome() {
