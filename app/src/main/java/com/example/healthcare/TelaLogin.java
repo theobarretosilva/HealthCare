@@ -11,18 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.SignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -37,16 +27,6 @@ public class TelaLogin extends AppCompatActivity {
     String erro;
     public static Boolean premium;
 
-    SignInButton btnGoogle;
-    GoogleSignInClient mGoogleSignInClient;
-    public static final int RC_SIGN_IN = 123;
-    private FirebaseAuth mAuth;
-    AlertDialog.Builder ad;
-    private SignInClient oneTapClient;
-    private BeginSignInRequest signInRequest;
-    private static final int REQ_ONE_TAP = 1234;
-    private boolean showOneTapUI = true;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,66 +34,15 @@ public class TelaLogin extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.rgb(12,92,100));
         getSupportActionBar().hide();
 
-        ad = new AlertDialog.Builder(this);
-        mAuth = FirebaseAuth.getInstance();
-
         iniciarComponentes();
-        btnGoogle.setOnClickListener(view -> {
-//            switch (view.getId()) {
-//                case R.id.btnGoogle:
-                    signIn();
-//                    break;
-//            }
-        });
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("120097756940-sics663t7a1of4p3hgt0n5euedgkhnn4.apps.googleusercontent.com")
-                .requestEmail()
-                .build();
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
 
     public void iniciarComponentes(){
-        btnGoogle = findViewById(R.id.btnGoogle);
         email_login = findViewById(R.id.email_login);
         senha_login = findViewById(R.id.senha_login);
         esqueceu_senha = findViewById(R.id.esqueceu_senha);
         ver_senha = findViewById(R.id.ver_senha);
         logar = findViewById(R.id.logar);
-    }
-
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-            System.out.println("Aqui foi");
-        }
-    }
-
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
-        try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
-            System.out.println(account.getEmail());
-            System.out.println("porra aqui não foi");
-
-        } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            System.out.println(e.getStatusCode());
-
-        }
     }
 
     public void autenticarUsuario(View a){

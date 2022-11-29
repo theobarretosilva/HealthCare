@@ -34,16 +34,6 @@ public class AdapterMedicamento extends RecyclerView.Adapter<AdapterMedicamento.
         holder.qtdMedicamento.setText(medicamento.getQtdMedicamento() + " Uni.");
         holder.mgDosagemMedicamento.setText(medicamento.getMgDosagemMedicamento() + " mg ou ml");
         holder.horarioMedicamento.setText(medicamento.getHorarioMedicamento());
-
-//        Date data = new Date(medicamento.getHorarioMedicamento());
-//
-//        ZonedDateTime dataAtual = ZonedDateTime.now();
-//        ZonedDateTime pedido = data.toInstant().atZone(ZoneId.systemDefault());
-//
-//        if (pedido.toLocalTime().isAfter(dataAtual.toLocalTime())){
-//            holder.btnIngerido.setText("Ingerido!");
-//            holder.btnIngerido.setEnabled(false);
-//        }
     }
 
     @Override

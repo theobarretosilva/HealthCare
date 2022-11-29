@@ -77,6 +77,11 @@ public class TelaAlimentacao2 extends AppCompatActivity {
                         maisAlimento.setVisibility(View.GONE);
                         textSemAlimento.setVisibility(View.VISIBLE);
                         imgSemAlimento.setVisibility(View.VISIBLE);
+                    } else {
+                        rvAlimentos.setVisibility(View.VISIBLE);
+                        maisAlimento.setVisibility(View.VISIBLE);
+                        textSemAlimento.setVisibility(View.GONE);
+                        imgSemAlimento.setVisibility(View.GONE);
                     }
                 }
 
