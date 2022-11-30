@@ -14,8 +14,11 @@ import androidx.core.app.ActivityOptionsCompat;
 import com.google.firebase.firestore.DocumentReference;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class TelaSono extends AppCompatActivity {
 
@@ -75,19 +78,44 @@ public class TelaSono extends AppCompatActivity {
     }
 
     public void gerarRelatorio(View q){
+        int horasDormidas = 0 , minDormidos =0 ;
         if (!(hDormiu.getText().toString() == "")){
             LocalTime horarioD = LocalTime.parse(hDormiu.getText().toString());
             LocalTime horarioA = LocalTime.parse(hAcordou.getText().toString());
 
-            int horasDormidas = horarioD.getHour() - horarioA.getHour();
-            if(horasDormidas < 0){
-                horasDormidas = horasDormidas * -1;
+           if(horarioD.getHour() < horarioA.getHour()){
+               Duration horas = Duration.between(horarioD, horarioA);
+               long hora = horas.toHours();
+               long minuto = horas.toMinutes();
+               System.out.println(hora+" : "+minuto%60);
+               tempoDormido.setText(hora+":"+minuto%60);
+               return;
+           }
+
+            if(horarioD.getHour() > horarioA.getHour()){
+                int diferencaH = 24 - horarioD.getHour();
+                horasDormidas = horarioA.getHour() + diferencaH;
+
+
+                if(horarioD.getMinute() > horarioA.getMinute()){
+                    int diferecaM = 60 - horarioD.getMinute();
+                    minDormidos = horarioA.getMinute() + diferecaM;
+                    if(horarioD.getMinute() > 0){
+                        horasDormidas = horasDormidas -1;
+                    }
+
+                }
+
+                if(horasDormidas < 0){
+                    horasDormidas = horasDormidas * -1;
+                }
+                if(minDormidos < 0){
+                    minDormidos = minDormidos * -1;
+                }
+                System.out.println(horasDormidas+":"+minDormidos);
             }
 
-            int minDormidos = horarioD.getMinute() - horarioA.getMinute();
-            if(minDormidos < 0){
-                minDormidos = minDormidos * -1;
-            }
+
 
             tempoDormido.setText(horasDormidas+":"+minDormidos);
         } else {
