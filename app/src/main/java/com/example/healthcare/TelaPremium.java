@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -48,18 +47,6 @@ public class TelaPremium extends AppCompatActivity {
         }
     }
 
-    public void showCard(){
-        View view = getLayoutInflater().inflate(R.layout.card_assinou_premium, null, false);
-
-        Button irTelaConteudosPremium = view.findViewById(R.id.btnIrContPremi);
-        irTelaConteudosPremium.setOnClickListener(view1 ->
-                startActivity(new Intent(TelaPremium.this, TelaConteudos_Premium.class))
-        );
-
-        dialog.setContentView(view);
-        dialog.show();
-    }
-
     public void assinarPremium(View a){
         DocumentReference documentReference = FirebaseHelper.getFirebaseFirestore()
                 .collection("Usuarios")
@@ -70,7 +57,6 @@ public class TelaPremium extends AppCompatActivity {
         documentReference.addSnapshotListener((documentSnapshot, error) -> {
             if (documentSnapshot.exists()){
                 documentReference.update("Premium", true);
-                showCard();
             }
         });
     }

@@ -231,8 +231,11 @@ public class TelaPerfil_Premium extends AppCompatActivity {
                 telefoneUsuP.setText(telefoneE);
 
                 String email = documentSnapshot.getString("Email");
-                String emailL = "\uD83D\uDCE7 " + email;
-                emailUsuP.setText(emailL);
+                if(email.length() >= 25){
+                    emailUsuP.setText("\uD83D\uDCE7 " + email.substring(0,18)+"...");
+                }else{
+                    emailUsuP.setText(email);
+                }
             }
         });
     };

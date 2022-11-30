@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,13 +62,16 @@ public class TelaPerfil extends AppCompatActivity {
         iniciarComponentes();
 
         btnVoltar.setOnClickListener(view -> {
-            Intent voltarTelaConteudos = new Intent(TelaPerfil.this, TelaConteudos.class);
-            startActivity(voltarTelaConteudos);
+            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(getApplicationContext(), R.anim.fade_in, R.anim.mover_direita);
+            ActivityCompat.startActivity(
+                    TelaPerfil.this,
+                    new Intent(this, TelaConteudos.class),
+                    activityOptionsCompat.toBundle()
+            );
         });
         btnLogout.setOnClickListener(view -> {
             FirebaseAuth.getInstance().signOut();
-            Intent logout = new Intent(TelaPerfil.this, TelaInicial.class);
-            startActivity(logout);
+            this.finishAffinity();
         });
 
         setarInfoCadastro();
@@ -129,8 +134,11 @@ public class TelaPerfil extends AppCompatActivity {
                 telefoneUsu.setText(telefoneE);
 
                 String email = documentSnapshot.getString("Email");
-                String emailL = "\uD83D\uDCE7 " + email;
-                emailUsu.setText(emailL);
+                if(email.length() >= 25){
+                    emailUsu.setText("\uD83D\uDCE7 " + email.substring(0,18)+"...");
+                }else{
+                    emailUsu.setText(email);
+                }
             }
         });
     }
