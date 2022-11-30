@@ -1,24 +1,18 @@
 package com.example.healthcare;
 
-import static java.lang.Integer.parseInt;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -35,7 +29,6 @@ public class TelaPeso extends AppCompatActivity {
     TextView imcObesidade, pesoObesidade;
     TextView fundoMagreza, fundoNormal, fundoSobrepeso, fundoObesidade;
     EditText pesoAtual;
-    CheckBox editPeso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +60,6 @@ public class TelaPeso extends AppCompatActivity {
         normal = findViewById(R.id.normal);
         sobrepeso = findViewById(R.id.sobrepeso);
         obesidade = findViewById(R.id.obesidade);
-        editPeso = findViewById(R.id.editPesoT);
     }
 
     public void voltarTelaConteudos(View v){
@@ -349,32 +341,5 @@ public class TelaPeso extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void setarPeso(View s){
-        if (editPeso.isChecked()){
-            pesoAtual.setEnabled(true);
-            pesoAtual.requestFocus();
-        } else {
-            pesoAtual.setEnabled(false);
-            int pesoTela = parseInt(pesoAtual.getText().toString());
-            DocumentReference dr = FirebaseHelper.getFirebaseFirestore()
-                    .collection("Usuarios")
-                    .document(FirebaseHelper.getUIDUsuario())
-                    .collection("Informações pessoais")
-                    .document("Cadastro complementar");
-            dr.addSnapshotListener((documentSnapshot, error) -> {
-                if (documentSnapshot.exists()){
-                    Long peso = documentSnapshot.getLong("Peso (kg)");
-                    if (pesoTela != peso){
-                        dr.update("Peso (kg)", pesoTela)
-                                .addOnSuccessListener(unused -> {
-                                    Toast.makeText(TelaPeso.this, "Sucesso ao editar o seu peso!", Toast.LENGTH_SHORT).show();
-                                });
-                    }
-                }
-            });
-        }
-
     }
 }
